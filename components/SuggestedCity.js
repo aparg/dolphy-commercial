@@ -10,7 +10,10 @@ const SuggestedCity = ({ defaultCitiesData }) => {
   useEffect(() => {
     // Retrieve values from local storage on component mount
     let storedCityValues = JSON.parse(localStorage.getItem("searchedCities"));
-    if (!storedCityValues) return;
+    if (!storedCityValues) {
+      setCitiesData(defaultCitiesData);
+      return;
+    }
     // Check if the size is smaller than 3
     if (storedCityValues.length < 3) {
       // Add other elements to the array
@@ -19,7 +22,6 @@ const SuggestedCity = ({ defaultCitiesData }) => {
         ...defaultData.slice(0, 3 - storedCityValues.length),
       ];
     }
-    console.log(storedCityValues);
     //Make sure only three values remain in array
     storedCityValues.length > 3 && storedCityValues.slice(0, 3);
     // Retrieve object with city and data
@@ -47,7 +49,6 @@ const SuggestedCity = ({ defaultCitiesData }) => {
 
   return (
     <>
-      {console.log(citiesData)}
       {citiesData.map((cityData) => {
         return (
           <div className="container-fluid">

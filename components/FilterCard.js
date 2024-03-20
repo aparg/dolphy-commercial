@@ -13,7 +13,7 @@ const FilterCard = () => {
     <div className="bg-white flex flex-row rounded-lg justify-around h-full w-full p-2 flex-wrap">
       <Link
         href="/"
-        className="text-black rounded-md flex justify-center p-2 px-2 hover:bg-slate-100 hover:decoration-[#a5ce97]"
+        className="text-black rounded-md flex justify-center p-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
           <img src="/office.png" className="max-w-full object-scale-down"></img>
@@ -25,7 +25,7 @@ const FilterCard = () => {
       </Link>
       <Link
         href="/"
-        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100 hover:decoration-[#a5ce97]"
+        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
           <img src="/office.png" className="max-w-full object-scale-down"></img>
@@ -37,7 +37,7 @@ const FilterCard = () => {
       </Link>
       <Link
         href="/"
-        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100 hover:decoration-[#a5ce97]"
+        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
           <img src="/office.png" className="max-w-full object-scale-down"></img>
@@ -49,7 +49,7 @@ const FilterCard = () => {
       </Link>
       <Link
         href="/"
-        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100 hover:decoration-[#a5ce97]"
+        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
           <img src="/office.png" className="max-w-full object-scale-down"></img>
@@ -61,7 +61,7 @@ const FilterCard = () => {
       </Link>
       <Link
         href="/"
-        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100 hover:decoration-[#a5ce97] "
+        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100 "
       >
         <div className="w-10">
           <img src="/office.png" className="max-w-full object-scale-down"></img>
@@ -73,7 +73,7 @@ const FilterCard = () => {
       </Link>
       <Link
         href="/"
-        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100 hover:decoration-[#a5ce97]"
+        className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
           <img src="/office.png" className="max-w-full object-scale-down"></img>

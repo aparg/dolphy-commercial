@@ -13,7 +13,7 @@ const TextOverImageCard = ({ imageSrc, title }) => {
       >
         <img className="w-full" src={imageSrc} alt="Card" />
         <div
-          className={`px-6 py-4 absolute bottom-0 z-50 text-white ${
+          className={`px-6 py-4 absolute bottom-0 z-10 text-white ${
             hovered && "transition delay:300 translate-y-[-0.300rem]"
           }`}
         >

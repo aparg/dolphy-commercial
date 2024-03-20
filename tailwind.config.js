@@ -7,7 +7,6 @@ const config = {
     "./app/**/*.{js,ts,html}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.js",
-    "!./components/Navbar.js",
     "!./components/reso/*.js",
   ],
   theme: {
