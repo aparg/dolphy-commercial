@@ -45,19 +45,14 @@ const cardsData = [
 ];
 const PopularCities = () => {
   return (
-    <>
+    <div>
       <h3 className="main-title fs-2">Popular Cities in Canada</h3>
-      <div className="flex flex-wrap justify-start items-start">
+      <div className="flex flex-row w-full justify-start py-12 items-center flex-wrap overflow-hidden">
         {cardsData.map((card) => (
-          <div
-            key={card.id}
-            className="w-full h-full sm:w-1/2 md:w-1/8 lg:w-1/4 p-2"
-          >
-            <TextOverImageCard {...card} />
-          </div>
+          <TextOverImageCard {...card} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

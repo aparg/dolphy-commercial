@@ -7,12 +7,15 @@ const config = {
     "./app/**/*.{js,ts,html}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.js",
-    "!./components/reso/*.js",
+    // "!./components/reso/*.js",
   ],
   theme: {
     extend: {
       width: {
         "1/8": "12.5%",
+      },
+      colors: {
+        "primary-green": "#217955",
       },
     },
   },

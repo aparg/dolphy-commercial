@@ -138,6 +138,7 @@ const SearchBar = () => {
   // Autosuggest input props
   const inputProps = {
     placeholder: "Search for city",
+    // className: "searchbar",
     value,
     onChange: (event, { newValue }) => setValue(newValue),
     onKeyDown: (event) => {

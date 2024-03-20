@@ -5,10 +5,11 @@ import "react-quill/dist/quill.snow.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NextTopLoader from "nextjs-toploader";
-import { Public_Sans } from "next/font/google";
+import { Public_Sans, Figtree } from "next/font/google";
 import { Providers } from "./providers";
 
 const public_sans = Public_Sans({ subsets: ["latin"] });
+const figtree = Figtree({ subsets: ["latin"] });
 
 export const metadata = {
   alternates: {
@@ -54,7 +55,7 @@ export default async function RootLayout({ children }) {
   let cities = await getCities();
   return (
     <html lang="en">
-      <body className={public_sans.className} style={{ overflowX: "hidden" }}>
+      <body className={figtree.className} style={{ overflowX: "hidden" }}>
         <NextTopLoader
           color="#FFFFFF"
           initialPosition={0.08}

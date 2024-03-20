@@ -5,23 +5,26 @@ import React, { useState } from "react";
 const TextOverImageCard = ({ imageSrc, title }) => {
   const [hovered, setHovered] = useState(false);
   return (
-    <Link href="/" className="w-1/5">
-      <div
-        className="rounded overflow-hidden shadow-lg bg-gradient-to-b from-transparent to-black relative"
-        onMouseOver={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        <img className="w-full" src={imageSrc} alt="Card" />
+    <div className="w-80 h-56 w-full rounded-md overflow-hidden relative group/card mb-5">
+      <Link href="/" className="w-full h-full inline ">
         <div
-          className={`px-6 py-4 absolute bottom-0 z-10 text-white ${
-            hovered && "transition delay:300 translate-y-[-0.300rem]"
-          }`}
+          className="rounded w-full h-full shadow-lg bg-gradient-to-t from-black to-transparent absolute"
+          onMouseOver={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        ></div>
+        <img
+          className="object-fill w-full h-full rounded-md z-0"
+          src={imageSrc}
+          alt="Card"
+        />
+        <div
+          className={`px-6 py-4 absolute bottom-0 z-10 text-white group-hover/card:transition group-hover/card:delay:300 group-hover/card:translate-y-[-0.300rem]`}
         >
           <b className="font-bold text-xl mb-2">{title}</b>
           <p className="text-base font-semibold">Homes For Sale</p>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

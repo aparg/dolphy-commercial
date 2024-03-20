@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SearchBar from "@/components/reso/SearchBar";
+import { Image } from "react-bootstrap";
 
 const Navbar = (props) => {
   const [isSticky, setIsSticky] = useState(false);
@@ -17,6 +18,9 @@ const Navbar = (props) => {
   const isHomePage = useMemo(() => {
     return pathname === "/";
   }, [pathname]);
+
+  const whiteLogoPath = "/logo/whitelogo.svg";
+  const blackLogoPath = "/logo/blacklogo.svg";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -336,7 +340,7 @@ const Navbar = (props) => {
   //                 }`}
   //                 href="#"
   //               >
-  //                 Blogs
+  //                 Resources
   //               </a>
   //             </li>
   //             <li className="nav-item">
@@ -367,8 +371,8 @@ const Navbar = (props) => {
   // );
   return (
     <header
-      className={`pb-6 lg:pb-0 relative z-50 ${
-        isSticky && "bg-white sticky top-0"
+      className={`pb-6 lg:pb-0 relative z-50 bg-white ${
+        isSticky ? "bg-white sticky top-0" : "md:bg-transparent "
       }`}
     >
       <div
@@ -379,9 +383,38 @@ const Navbar = (props) => {
         <nav className={`flex items-center justify-between h-16 lg:h-20`}>
           <div className="flex-shrink-0">
             <Link href="/" className="logo d-flex align-items-center ">
-              <span className="fs-1">Dolphy </span>
+              <Image
+                className="w-20 hidden md:block"
+                src={isSticky || !isHomePage ? blackLogoPath : whiteLogoPath}
+              />
+              <Image className="w-20 md:hidden" src={blackLogoPath} />
             </Link>
           </div>
+
+          {!isHomePage || isSticky ? (
+            <div className="input-group input-group-search me-2 me-md-0">
+              <SearchBar />
+              <button
+                className="input-group-text btn bg-light2 bg-lh mybtn d-block py-search"
+                type="button"
+                aria-label="Search Button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="svg"
+                  viewBox="0 0 30 30"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="22"
+                  width="22"
+                >
+                  <path
+                    d="M20.756 18.876l6.155 6.154-1.88 1.881-6.155-6.155A9.269 9.269 0 0 1 13.3 22.61a9.31 9.31 0 1 1 9.31-9.31c0 2.091-.69 4.021-1.854 5.576zM13.3 19.95a6.65 6.65 0 1 0 0-13.3 6.65 6.65 0 0 0 0 13.3z"
+                    fill="#000000"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          ) : null}
 
           <button
             type="button"
@@ -423,20 +456,28 @@ const Navbar = (props) => {
             <Link
               href="#"
               title=""
-              className={`text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600 ${
-                isHomePage && !isSticky && "lg:text-white"
-              }`}
+              className={`text-base font-medium transition-all duration-200 focus:text-blue-600 ${
+                isHomePage && !isSticky && "lg:text-white hover:text-green-200"
+              } ${
+                (isSticky || !isHomePage) &&
+                "text-black hover:text-primary-green"
+              }
+               ${!isHomePage && "text-black"}`}
             >
               {" "}
-              Latest Projects{" "}
+              Buy{" "}
             </Link>
 
             <Link
               href="#"
               title=""
-              className={`text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600 ${
-                isHomePage && !isSticky && "lg:text-white"
-              }`}
+              className={`text-base font-medium transition-all duration-200 focus:text-blue-600 ${
+                isHomePage && !isSticky && "lg:text-white hover:text-green-200"
+              } ${
+                (isSticky || !isHomePage) &&
+                "text-black hover:text-primary-green"
+              }
+               ${!isHomePage && "text-black"}`}
             >
               {" "}
               Cities{" "}
@@ -445,20 +486,28 @@ const Navbar = (props) => {
             <Link
               href="#"
               title=""
-              className={`text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600 ${
-                isHomePage && !isSticky && "lg:text-white"
-              }`}
+              className={`text-base font-medium transition-all duration-200 focus:text-blue-600 ${
+                isHomePage && !isSticky && "lg:text-white hover:text-green-200"
+              } ${
+                (isSticky || !isHomePage) &&
+                "text-black hover:text-primary-green"
+              }
+               ${!isHomePage && "text-black"}`}
             >
               {" "}
-              Blogs{" "}
+              Resources{" "}
             </Link>
 
             <Link
               href="#"
               title=""
-              className={`text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600 ${
-                isHomePage && !isSticky && "lg:text-white"
-              }`}
+              className={`text-base font-medium transition-all duration-200 focus:text-blue-600 ${
+                isHomePage && !isSticky && "lg:text-white hover:text-green-200"
+              } ${
+                (isSticky || !isHomePage) &&
+                "text-black hover:text-primary-green"
+              }
+               ${!isHomePage && "text-black"}`}
             >
               {" "}
               Contact{" "}
@@ -468,7 +517,11 @@ const Navbar = (props) => {
           <Link
             href="tel:6476745958"
             title=""
-            className="items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md lg:inline-flex hover:bg-blue-700 focus:bg-blue-700"
+            className={`items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold transition-all duration-200 border rounded-md lg:inline-flex hover:bg-primary-green hover:text-white ${
+              isSticky
+                ? "text-white border-primary-green bg-primary-green"
+                : "text-white border-white hover:border-primary-green"
+            } ${!isHomePage && "bg-primary-green"}`}
             role="button"
           >
             {" "}
@@ -486,10 +539,10 @@ const Navbar = (props) => {
               <Link
                 href="#"
                 title=""
-                className={`inline-flex py-2 text-base font-medium transition-all duration-200 hover:text-blue-600 focus:text-blue-600 text-black lg:text-white`}
+                className={`inline-flex py-2 text-base font-medium transition-all duration-200 hover:text-blue-600 focus:text-blue-600 text-black lg:text-white text-black hover:text-primary-green`}
               >
                 {" "}
-                Latest Projects{" "}
+                Buy{" "}
               </Link>
 
               <Link
@@ -507,7 +560,7 @@ const Navbar = (props) => {
                 className={`inline-flex py-2 text-base font-medium transition-all duration-200 hover:text-blue-600 focus:text-blue-600 text-black `}
               >
                 {" "}
-                Blogs{" "}
+                Resources{" "}
               </Link>
 
               <Link
@@ -525,7 +578,11 @@ const Navbar = (props) => {
             <Link
               href="tel:6476745958"
               title=""
-              className="inline-flex justify-center px-4 py-3 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md tems-center hover:bg-blue-700 focus:bg-blue-700"
+              className={`inline-flex justify-center px-4 py-3 text-base text-white font-semibold transition-all duration-200 bg-primary-green border border-transparent rounded-md tems-center hover:bg-blue-700 focus:bg-primary-green ${
+                isSticky
+                  ? "border-primary-green"
+                  : "border-white hover:border-primary-green"
+              }`}
               role="button"
             >
               Call : 647 527 4970

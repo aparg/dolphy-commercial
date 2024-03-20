@@ -23,8 +23,8 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
   };
 
   return (
-    <div className="mt-3 position-relative">
-      <div className=" d-flex justify-content-between pt-5 explore-container">
+    <div className="position-relative">
+      <div className="d-flex justify-content-between pt-5 explore-container">
         <div>
           <h3 className="main-title fs-2">
             Explore New {listingType ? `${listingType}` : ``} Listings in {city}
@@ -57,7 +57,7 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
         </button>
       </div>
       <div
-        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-3"
+        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-1"
         id="slider"
         ref={scrollRef}
       >

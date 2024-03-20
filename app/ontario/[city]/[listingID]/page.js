@@ -20,7 +20,6 @@ const INITIAL_LIMIT = 10;
 const page = async ({ params }) => {
   const city = params.city;
   const formattedSlug = capitalizeFirstLetter(city);
-
   const listingID = params.listingID;
 
   const options = {

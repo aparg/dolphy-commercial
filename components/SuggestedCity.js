@@ -51,7 +51,7 @@ const SuggestedCity = ({ defaultCitiesData }) => {
     <>
       {citiesData.map((cityData) => {
         return (
-          <div className="container-fluid">
+          <div className="container-fluid mt-14" key={cityData.city}>
             <section className="additonal__listing">
               {cityData.data && (
                 <AdditionalListing
