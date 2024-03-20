@@ -44,7 +44,7 @@ export default async function Home() {
       <div className="">
         <div className="">
           <div
-            className="container-fluid relative flex flex-col items-center w-screen justify-center mb-20 md:mb-10 md:max-md:mt-10"
+            className="container-fluid relative flex flex-col items-center w-screen justify-center md:max-md:mt-10"
             id="hero"
           >
             <div>
@@ -57,13 +57,13 @@ export default async function Home() {
                 us.
               </p>
 
-              <div className="pb-1 pt-3 ">
+              <div className="pb-1 pt-3">
                 <div className="pb-1 ww w-100 d-flex justify-content-center">
                   <SearchBar />
                 </div>
               </div>
             </div>
-            <div className="mt-5 absolute bottom-[-20%] sm:bottom-[-5%] lg:bottom-[-10%] md:w-[850px] rounded-lg w-screen shadow-md border-t-8 bg-[#a5ce97] border-[#a5ce97]">
+            <div className="mt-5 md:mb-10 sm:mb-0 absolute bottom-[-30%] sm:bottom-[-10%] lg:bottom-[-15%] lg:w-[850px] rounded-lg w-screen shadow-md border-t-8 bg-[#a5ce97] border-[#a5ce97] w-5/6">
               <FilterCard />
             </div>
           </div>
@@ -96,7 +96,7 @@ export default async function Home() {
               </section>
             </div>
           ) : null} */}
-          <div className="mt-20 lg: mt-0">
+          <div className="mt-44 sm:mt-24">
             <SuggestedCity defaultCitiesData={defaultCitiesData} />
           </div>
           <div className="container-fluid pt-4 pb-4">
