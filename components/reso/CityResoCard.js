@@ -19,6 +19,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
     index: 1,
   };
   const imgSrc = commercial.photos.replace(/MLS|index/gi, function (matched) {
+    console.log(curElem);
     return mapObj[matched];
   });
 
@@ -96,6 +97,9 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
             </div>
             <div className="flex-1 py-5 sm:p-3 px-2">
               <p className="text-xl font-bold text-gray-900 pt-3">{price}</p>
+              <p className="text-xs font-bold text-black">
+                Property Type: {curElem.Category}
+              </p>
               <div className="flex flex-row justify-between">
                 {/* <div className="flex">
                   <Image
@@ -134,12 +138,16 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   </p>
                 </div>
               </div> */}
-                <div className="text-lg">
-                  <span>LOCATION</span>
+                <div className="text-sm text-black font-medium truncate text-ellipsis">
+                  <span className="">
+                    {curElem.Street} {curElem.StreetName}{" "}
+                    {curElem.StreetAbbreviation} {curElem.Municipality},{" "}
+                    {curElem.Province}{" "}
+                  </span>
                 </div>
               </div>
-              <div className="font-semibold truncate overflow-hidden overflow-ellipsis pt-2 text-black hover:text-black visited:text-black">
-                Oakville
+              <div className="text-black font-medium truncate text-ellipsis text-xs">
+                Listed by {curElem.ListBrokerage}
               </div>
             </div>
 
