@@ -12,7 +12,6 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
   const formattedCity = city.toLowerCase();
   const slideLeft = () => {
     const dynamicWidthOfCard = cardRef.current.offsetWidth;
-    console.log(dynamicWidthOfCard);
     // @ts-ignore
     scrollRef.current.scrollLeft = slider.scrollLeft - dynamicWidthOfCard;
   };
@@ -58,7 +57,7 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
         </button>
       </div>
       <div
-        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-1"
+        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-0"
         id="slider"
         ref={scrollRef}
       >

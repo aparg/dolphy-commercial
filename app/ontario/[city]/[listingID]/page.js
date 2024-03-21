@@ -44,7 +44,6 @@ const page = async ({ params }) => {
 
   const imageURLs = generateImageURLs(listingID);
 
-  console.log(main_data?.Street);
   const address = `${main_data?.Street} ${main_data.StreetName} ${main_data.StreetAbbreviation}`;
 
   return (

@@ -47,7 +47,7 @@ const PopularCities = () => {
   return (
     <div>
       <h3 className="main-title fs-2">Popular Cities in Canada</h3>
-      <div className="flex flex-row m-auto items-center w-full justify-center md:justify-start py-12 items-center flex-wrap">
+      <div className="flex flex-row m-auto items-center w-full justify-center md:justify-start items-center flex-wrap">
         {cardsData.map((card) => (
           <TextOverImageCard {...card} />
         ))}

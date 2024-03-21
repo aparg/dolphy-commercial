@@ -1,26 +1,26 @@
-import ResoCard from '@/components/reso/ResoCard'
-import Link from 'next/link'
-import React from 'react'
-import SearchBar from '@/components/reso/SearchBar'
+import ResoCard from "@/components/reso/ResoCard";
+import Link from "next/link";
+import React from "react";
+import SearchBar from "@/components/reso/SearchBar";
 
 //ENDPOINTS
-import { commercial } from '@/api/routes'
+import { commercial } from "@/api/routes";
 
 const page = async () => {
-  const province = 'Ontario'
+  const province = "Ontario";
 
   const url = commercial.properties.replace(
-    '$query',
+    "$query",
     `?$limit=10&$skip=0&$select=Province=${province}`
-  )
+  );
 
   const options = {
-    method: 'GET',
-  }
-  const res = await fetch(url, options)
-  const data = await res.json()
+    method: "GET",
+  };
+  const res = await fetch(url, options);
+  const data = await res.json();
 
-  const main_data = data.results
+  const main_data = data.results;
 
   return (
     <>
@@ -49,12 +49,13 @@ const page = async () => {
           </button>
         </div>
         <h1 className="main-title d-flex text-capitalize pt-4">
-          {province} Homes for Sale | Real Estate Updated Daily Listings
+          {province} Commercial properties for Sale | Real Estate Updated Daily
+          Listings
         </h1>
         <p>
           Refine your <span className="text-capitalize">{province}</span> real
           estate search by price, bedroom, or type (house, townhouse, or condo).
-          View up-to-date MLS® listings in{' '}
+          View up-to-date MLS® listings in{" "}
           <span className="text-capitalize">{province}</span> .
         </p>
 
@@ -67,16 +68,16 @@ const page = async () => {
                   key={curElem?.MLS}
                   curElem={curElem}
                 />
-              )
+              );
             }
-            return null
+            return null;
           })}
         </div>
       </div>
 
       <div></div>
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;

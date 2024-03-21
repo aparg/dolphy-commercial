@@ -82,22 +82,22 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
   //   </>
   // )
   return (
-    <section className="sm:py-16 h-96" ref={ref}>
+    <section className="h-96" ref={ref}>
       <Link href={`/ontario/${city}/${curElem.MLS}`}>
-        <div className="lg:px-3 h-full w-full">
+        <div className="lg:px-2 h-full w-full">
           {/* <div className="grid grid-cols-1 gap-6  mt-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:px-0"> */}
-          <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl p-2 hover:shadow-lg hover:-translate-y-1 relative">
-            <div className="w-7/8 h-44 overflow-hidden">
+          <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl p-0 hover:shadow-lg hover:-translate-y-1 relative">
+            <div className="w-7/8 h-56 overflow-hidden">
               <img
-                className="object-cover w-full h-full transition-all duration-200 transform rounded-xl group-hover:scale-110"
+                className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110"
                 src={imgSrc}
                 alt="property image"
               />
             </div>
-            <div className="flex-1 py-5 sm:p-1 px-2">
+            <div className="flex-1 py-5 sm:p-3 px-2">
               <p className="text-xl font-bold text-gray-900 pt-3">{price}</p>
               <div className="flex flex-row justify-between">
-                <div className="flex">
+                {/* <div className="flex">
                   <Image
                     alt="bedrooms"
                     className="w-4 aspect-square"
@@ -116,8 +116,8 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   <p className="font-bold text-gray-900">
                     <span className="pl-1 text-xs">2</span>
                   </p>
-                </div>
-                <div className="flex">
+                </div> */}
+                {/* <div className="flex">
                   <Image
                     alt="square rulers"
                     className="w-4 aspect-square"
@@ -132,6 +132,10 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   <p className="font-bold text-gray-900">
                     <span className="pl-1 text-xs">Single family</span>
                   </p>
+                </div>
+              </div> */}
+                <div className="text-lg">
+                  <span>LOCATION</span>
                 </div>
               </div>
               <div className="font-semibold truncate overflow-hidden overflow-ellipsis pt-2 text-black hover:text-black visited:text-black">

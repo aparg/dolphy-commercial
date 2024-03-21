@@ -1,20 +1,20 @@
-'use client'
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
+"use client";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 //HELPERS
-import { capitalizeFirstLetter } from '@/helpers/capitalizeFIrstLetter'
-import { useInView } from 'react-intersection-observer'
-import { ImSpinner } from 'react-icons/im'
+import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
+import { useInView } from "react-intersection-observer";
+import { ImSpinner } from "react-icons/im";
 
 //COMPONENT
-import ResoCard from '@/components/reso/ResoCard'
+import ResoCard from "@/components/reso/ResoCard";
 
 //SERVER
-import { getFilteredRetsData } from '@/actions/fetchCommercialActions'
+import { getFilteredRetsData } from "@/actions/fetchCommercialActions";
 
 //CONSTANT
-import { saleLease, listingType } from '@/constant'
+import { saleLease, listingType } from "@/constant";
 
 const SalesList = ({
   salesData,
@@ -25,9 +25,9 @@ const SalesList = ({
   setOffset,
   filterState,
 }) => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { ref, inView } = useInView()
+  const { ref, inView } = useInView();
 
   const loadMoreSalesData = async () => {
     const queryParams = {
@@ -42,23 +42,23 @@ const SalesList = ({
       houseType: Object.values(listingType).find(
         (type) => type.name === filterState.type
       )?.value,
-    }
+    };
+    console.log(queryParams);
+    setIsLoading(true);
+    const moreSalesListData = await getFilteredRetsData(queryParams);
 
-    setIsLoading(true)
-    const moreSalesListData = await getFilteredRetsData(queryParams)
-
-    setSalesData([...salesData, ...moreSalesListData])
+    setSalesData([...salesData, ...moreSalesListData]);
     setOffset((prev) => {
-      return prev + INITIAL_LIMIT
-    })
-    setIsLoading(false)
-  }
+      return prev + INITIAL_LIMIT;
+    });
+    setIsLoading(false);
+  };
 
   useEffect(() => {
     if (inView) {
-      loadMoreSalesData()
+      loadMoreSalesData();
     }
-  }, [inView])
+  }, [inView]);
 
   return (
     <>
@@ -66,7 +66,7 @@ const SalesList = ({
         <>
           {salesData.map((curElem, index) => {
             // if (curElem.PhotoCount > 0) {
-            return <ResoCard city={city} key={index} curElem={curElem} />
+            return <ResoCard city={city} key={index} curElem={curElem} />;
             // }
             // return null
           })}
@@ -89,7 +89,7 @@ const SalesList = ({
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default SalesList
+export default SalesList;

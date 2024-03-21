@@ -27,15 +27,24 @@ const SuggestedCity = ({ defaultCitiesData }) => {
     // Retrieve object with city and data
     const fetchCitiesData = async () => {
       // fetchDataForCity is a function that fetches data for a given city
-      const dataPromises = storedCityValues.map((cityData) => {
+      const dataPromises = storedCityValues.map((cityData, idx) => {
         if (!cityData?.data) {
-          return fetchDataForCity(cityData);
+          const data = fetchDataForCity(cityData);
+          if (data) return data;
+          else return defaultData[3 - storedCityValues.length];
         }
         return cityData;
       });
 
       const citiesData = await Promise.all(dataPromises);
-      setCitiesData(citiesData);
+      //check if there is no property listings for given city and populate with other city data
+      const populatedData = await citiesData.map((cityData, idx) => {
+        if (cityData.data.length < 1) {
+          return defaultData[4 - storedCityValues.length];
+        }
+        return cityData;
+      });
+      setCitiesData(populatedData);
     };
 
     fetchCitiesData();

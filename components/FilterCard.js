@@ -16,7 +16,10 @@ const FilterCard = () => {
         className="text-black rounded-md flex justify-center p-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
-          <img src="/office.png" className="max-w-full object-scale-down"></img>
+          <img
+            src="/icons/office.svg"
+            className="max-w-full object-scale-down"
+          ></img>
         </div>
 
         <b className="self-center text-xs tracking-wide text-black pl-1">
@@ -28,7 +31,10 @@ const FilterCard = () => {
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
-          <img src="/office.png" className="max-w-full object-scale-down"></img>
+          <img
+            src="/icons/retail.svg"
+            className="max-w-full object-scale-down"
+          ></img>
         </div>
 
         <b className="self-center text-xs tracking-wide text-black pl-1">
@@ -40,7 +46,10 @@ const FilterCard = () => {
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
-          <img src="/office.png" className="max-w-full object-scale-down"></img>
+          <img
+            src="/icons/industry.svg"
+            className="max-w-full object-scale-down"
+          ></img>
         </div>
 
         <b className="self-center text-xs tracking-wide text-black pl-1">
@@ -52,7 +61,10 @@ const FilterCard = () => {
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
-          <img src="/office.png" className="max-w-full object-scale-down"></img>
+          <img
+            src="/icons/investment.svg"
+            className="max-w-full object-scale-down"
+          ></img>
         </div>
 
         <b className="self-center text-xs tracking-wide text-black pl-1">
@@ -64,7 +76,10 @@ const FilterCard = () => {
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100 "
       >
         <div className="w-10">
-          <img src="/office.png" className="max-w-full object-scale-down"></img>
+          <img
+            src="/icons/land.svg"
+            className="max-w-full object-scale-down"
+          ></img>
         </div>
 
         <b className="self-center text-xs tracking-wide text-black pl-1">
@@ -76,11 +91,14 @@ const FilterCard = () => {
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
-          <img src="/office.png" className="max-w-full object-scale-down"></img>
+          <img
+            src="/icons/business.svg"
+            className="max-w-full object-scale-down"
+          ></img>
         </div>
 
         <b className="self-center text-xs tracking-wide text-black pl-1">
-          Office
+          Business
         </b>
       </Link>
     </div>
