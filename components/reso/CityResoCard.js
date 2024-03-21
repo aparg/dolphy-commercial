@@ -91,7 +91,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
               <img
                 className="object-cover w-full h-full transition-all duration-200 transform rounded-xl group-hover:scale-110"
                 src={imgSrc}
-                alt=""
+                alt="property image"
               />
             </div>
             <div className="flex-1 py-5 sm:p-1 px-2">
@@ -99,9 +99,9 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
               <div className="flex flex-row justify-between">
                 <div className="flex">
                   <Image
-                    alt="bedrooms.png"
+                    alt="bedrooms"
                     className="w-4 aspect-square"
-                    src="/bedrooms.png"
+                    src="/bedrooms.svg"
                   ></Image>
                   <p className="font-bold text-gray-900">
                     <span className="pl-1 text-xs">2</span>
@@ -109,9 +109,9 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                 </div>
                 <div className="flex">
                   <Image
-                    alt="bedrooms.png"
+                    alt="bathrooms"
                     className="w-4 aspect-square"
-                    src="/shower.png"
+                    src="/bathrooms.svg"
                   ></Image>
                   <p className="font-bold text-gray-900">
                     <span className="pl-1 text-xs">2</span>
@@ -119,20 +119,16 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                 </div>
                 <div className="flex">
                   <Image
-                    alt="bedrooms.png"
+                    alt="square rulers"
                     className="w-4 aspect-square"
-                    src="/square-ruler.png"
+                    src="/ruler.svg"
                   ></Image>
                   <p className="font-bold text-gray-900">
                     <span className="pl-1 text-xs">2</span>
                   </p>
                 </div>
                 <div className="flex">
-                  <Image
-                    alt="bedrooms.png"
-                    className="w-5"
-                    src="/family.png"
-                  ></Image>
+                  <Image alt="family" className="w-5" src="/family.svg"></Image>
                   <p className="font-bold text-gray-900">
                     <span className="pl-1 text-xs">Single family</span>
                   </p>

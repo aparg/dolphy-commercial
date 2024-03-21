@@ -12,10 +12,11 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
   const formattedCity = city.toLowerCase();
   const slideLeft = () => {
     const dynamicWidthOfCard = cardRef.current.offsetWidth;
+    console.log(dynamicWidthOfCard);
     // @ts-ignore
     scrollRef.current.scrollLeft = slider.scrollLeft - dynamicWidthOfCard;
   };
-
+  2;
   const slideRight = () => {
     const dynamicWidthOfCard = cardRef.current.offsetWidth;
     // @ts-ignore
