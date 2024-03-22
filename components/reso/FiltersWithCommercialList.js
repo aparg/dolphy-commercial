@@ -38,7 +38,6 @@ const FiltersWithCommercialList = ({
       offset: 0,
       ...payload,
     };
-    console.log(queryParams);
     const filteredSalesData = await getFilteredRetsData(queryParams);
     setSalesData(filteredSalesData);
     setOffset(INITIAL_LIMIT);
@@ -46,7 +45,7 @@ const FiltersWithCommercialList = ({
 
   return (
     <div>
-      <div className="filter-container">
+      <div className="filter-container flex">
         <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
       </div>
       <h2
@@ -68,7 +67,7 @@ const FiltersWithCommercialList = ({
       <div
         className={`${
           isMobileView ? "pt-1" : "pt-3"
-        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-0 g-md-2`}
+        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-3`}
       >
         <SalesList
           {...{

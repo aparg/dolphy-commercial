@@ -109,7 +109,7 @@ export default async function Home() {
         </div>
         <div className="">
           <div className="py-md-5"></div>
-          <div className="py-5">
+          {/* <div className="py-5">
             <h3 className="fs-2 text-mine fw-bold text-center mb-0">
               We bring you home from credible builders
             </h3>
@@ -125,7 +125,7 @@ export default async function Home() {
                 className="img-fluid mt-3 w-100 w-md-75"
               />
             </div>
-          </div>
+          </div> */}
           <div className="py-5 my-5" id="mycontact">
             <div className="container-fluid">
               <div className="row justify-content-center">
@@ -135,10 +135,7 @@ export default async function Home() {
                   className="img-fluid w-25 w-smm-50 mb-3"
                 />
               </div>
-              <h2 className="fw-mine text-center px-md-4 fs-4">
-                Don't know where to start ?
-              </h2>
-              <h2 className="fw-mine text-center px-md-4 fs-4">
+              <h2 className=" text-center px-md-4 fs-4 text-md mb-10 font-bold">
                 Contact Dolphy now!
               </h2>
               <div className="row row-cols-1 row-cols-md-3 mt-5">

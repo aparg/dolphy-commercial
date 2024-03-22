@@ -19,7 +19,6 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
     index: 1,
   };
   const imgSrc = commercial.photos.replace(/MLS|index/gi, function (matched) {
-    console.log(curElem);
     return mapObj[matched];
   });
 
@@ -84,8 +83,11 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
   // )
   return (
     <section className="h-96" ref={ref}>
-      <Link href={`/ontario/${city}/${curElem.MLS}`}>
-        <div className="lg:px-2 h-full w-full">
+      <Link
+        href={`/commercial/ontario/${city}/${curElem.MLS}`}
+        className="text-black"
+      >
+        <div className="lg:px-0 h-full w-full">
           {/* <div className="grid grid-cols-1 gap-6  mt-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:px-0"> */}
           <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl p-0 hover:shadow-lg hover:-translate-y-1 relative">
             <div className="w-7/8 h-56 overflow-hidden">
@@ -93,13 +95,47 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                 className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110"
                 src={imgSrc}
                 alt="property image"
+                onError={handleImageError}
               />
+              <div className="absolute top-3 left-2 flex flex-row">
+                <div
+                  className="text-white text-xs px-1 py-1 rounded-md mx-1"
+                  style={{
+                    background: "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
+                  }}
+                >
+                  {curElem.TypeOwn1Out}{" "}
+                </div>
+              </div>
             </div>
             <div className="flex-1 py-5 sm:p-3 px-2">
-              <p className="text-xl font-bold text-gray-900 pt-3">{price}</p>
-              <p className="text-xs font-bold text-black">
-                Property Type: {curElem.Category}
-              </p>
+              <div className="relative inline-flex group">
+                {/* <div
+                  className="absolute duration-1000 rotate-180 transitiona-all opacity-50 -inset-px rounded-sm blur-lg filter group-hover:opacity-70 group-hover:-inset-1 group-hover:duration-200"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #44ff9a -0.55%, #44b0ff 22.86%, #8b44ff 48.36%, #ff6644 73.33%, #ebff70 99.34%)",
+                  }}
+                ></div>
+
+                <a
+                  href="#"
+                  title=""
+                  className="relative inline-flex items-center justify-center py-1 text-xs font-bold text-black transition-all duration-200 bg-white border border-transparent px-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 font-pj hover:bg-opacity-70 rounded-sm"
+                  role="button"
+                > */}
+                <div className="text-primary-green text-sm font-bold">
+                  {curElem.Category}
+                </div>
+                {/* </a> */}
+              </div>
+              <div className="flex justify-between pt-1 items-center">
+                <p className="text-xl font-bold text-gray-900">{price}</p>
+                <p className="mb-0 text-xs text-black font-normal">
+                  {" "}
+                  MLS® #{curElem.MLS}
+                </p>
+              </div>
               <div className="flex flex-row justify-between">
                 {/* <div className="flex">
                   <Image
@@ -148,6 +184,9 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
               </div>
               <div className="text-black font-medium truncate text-ellipsis text-xs">
                 Listed by {curElem.ListBrokerage}
+              </div>
+              <div className="text-black text-xs px-0 py-1 rounded-md mx-0 font-bold">
+                <TimeAgo modificationTimestamp={curElem.TimestampSql} />
               </div>
             </div>
 

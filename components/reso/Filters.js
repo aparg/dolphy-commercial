@@ -98,11 +98,11 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
   return (
     <>
       <div
-        className={`filters d-flex flex-wrap gap-2 gap-md-3 ${
+        className={`filters d-flex gap-2 gap-md-3 flex ${
           navbar ? "filter__scrolled" : ""
         } `}
       >
-        <div className="sales-lease__filter">
+        <div className={`sales-lease__filter ${isMobileView && "hidden"}`}>
           <IndividualFilterButton
             options={saleLeaseOptions}
             name="saleLease"
@@ -111,7 +111,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           />
         </div>
 
-        <div className="price-range__filter">
+        <div className={`price-range__filter ${isMobileView && "hidden"}`}>
           <PriceRangeFilter
             name="priceRange"
             value={filterState.priceRange}
@@ -120,7 +120,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           />
         </div>
 
-        <div className="house-type__filter">
+        <div className="flex flex-row">
           <IndividualFilterButton
             options={houseTypeOptions}
             name="type"
@@ -355,15 +355,14 @@ const PriceRangeFilterBottom = ({
           classNames={{
             base: "max-w-md slider gap-3",
             track: "bg-light border border-secondary",
-            filler:
-              "custom-range-thumb bg-gradient-to-r from-secondary to-secondary",
+            filler: "bg-primary-green bg-gradient-to-r",
           }}
           renderThumb={(props) => (
             <div
               {...props}
               className="p-1 top-50 bg-light border border-secondary rounded-circle shadow cursor-grab"
             >
-              <span className="custom-range-thumb shadow rounded-circle w-5 h-5 d-block" />
+              <span className="bg-primary-green shadow rounded-circle w-5 h-5 d-block" />
             </div>
           )}
         />
@@ -391,13 +390,13 @@ const IndividualFilterButton = ({
   };
 
   return (
-    <div className="d-flex gap-2 gap-md-3 flex-wrap">
+    <div className="d-flex gap-2 gap-md-3">
       {options.map((option, index) => {
         return (
           <div
             key={index}
             className={`px-3 py-1 cursor-pointer text-nowrap text-small dynamic d-flex justify-content-center align-items-center ${
-              isActive(option) ? "active-pills" : ""
+              isActive(option) ? "bg-primary-green text-white" : ""
             }`}
             onClick={() => handleClick(name, option)}
             style={{ border: "2px solid #cdcdcd", borderRadius: "12px" }}

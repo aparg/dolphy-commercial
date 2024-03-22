@@ -5,6 +5,7 @@ import SearchBar from "@/components/reso/SearchBar";
 
 //ENDPOINTS
 import { commercial } from "@/api/routes";
+import CityResoCard from "@/components/reso/CityResoCard";
 
 const page = async () => {
   const province = "Ontario";
@@ -25,7 +26,7 @@ const page = async () => {
   return (
     <>
       <div className="container-fluid">
-        <div className="input-group input-group-search me-2 me-md-0">
+        {/* <div className="input-group input-group-search me-2 me-md-0">
           <SearchBar />
 
           <button
@@ -47,7 +48,7 @@ const page = async () => {
               ></path>
             </svg>
           </button>
-        </div>
+        </div> */}
         <h1 className="main-title d-flex text-capitalize pt-4">
           {province} Commercial properties for Sale | Real Estate Updated Daily
           Listings
@@ -63,7 +64,7 @@ const page = async () => {
           {main_data.map((curElem, index) => {
             if (curElem.PhotoCount > 0) {
               return (
-                <ResoCard
+                <CityResoCard
                   city={curElem?.Municipality.toLowerCase()}
                   key={curElem?.MLS}
                   curElem={curElem}

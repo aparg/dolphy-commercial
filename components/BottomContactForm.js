@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import ContactFormSubmit from "./ContactFormSubmit";
-import React from 'react'
+import React from "react";
 
 export default function BottomContactForm(props) {
   const [submitbtn, setSubmitbtn] = useState("Contact now");
@@ -113,7 +113,7 @@ export default function BottomContactForm(props) {
       <input
         type="submit"
         value={submitbtn}
-        className="btn btn-call btn-lg w-100 mb-2"
+        className="btn bg-black btn-lg w-100 mb-2 text-white"
         id="subbtn"
       />
     </form>

@@ -33,7 +33,7 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
 
         <div>
           <a
-            href={`/ontario/${formattedCity}`}
+            href={`/commercial/ontario/${formattedCity}`}
             className="btn btn-outline-primary float-end btn-explore"
           >
             Explore All
@@ -57,7 +57,7 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
         </button>
       </div>
       <div
-        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-0"
+        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-2"
         id="slider"
         ref={scrollRef}
       >

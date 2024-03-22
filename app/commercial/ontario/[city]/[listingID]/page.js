@@ -62,10 +62,12 @@ const page = async ({ params }) => {
                 <Link href="/">Dolphy</Link>
               </li>
               <li className="breadcrumb-item ">
-                <Link href="/ontario">ON</Link>
+                <Link href="/commercial/ontario">ON</Link>
               </li>
               <li className="breadcrumb-item ">
-                <Link href={`/ontario/${city}/`}>{main_data.Municipality}</Link>
+                <Link href={`/commercial/ontario/${city}/`}>
+                  {main_data.Municipality}
+                </Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 {address}

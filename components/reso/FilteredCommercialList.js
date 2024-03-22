@@ -15,6 +15,7 @@ import useDeviceView from "@/helpers/useDeviceView";
 import ResoCard from "./ResoCard";
 import { ImSpinner } from "react-icons/im";
 import { useInView } from "react-intersection-observer";
+import CityResoCard from "./CityResoCard";
 
 const FilteredCommercialList = ({
   INITIAL_LIMIT,
@@ -23,7 +24,6 @@ const FilteredCommercialList = ({
   saleLeaseValue = undefined,
 }) => {
   const filterState = useMemo(() => {
-    console.log(saleLeaseValue);
     return {
       saleLease: saleLeaseValue ? saleLease[saleLeaseValue].value : "Sale",
       priceRange: {
@@ -54,7 +54,6 @@ const FilteredCommercialList = ({
       washroom: undefined,
       saleLease: filterState.saleLease || undefined,
     };
-    console.log(queryParams);
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
     setSalesData([...salesData, ...filteredSalesData]);
@@ -96,7 +95,7 @@ const FilteredCommercialList = ({
         {salesData.length > 0 && (
           <>
             {salesData.map((curElem, index) => {
-              return <ResoCard city={city} key={index} curElem={curElem} />;
+              return <CityResoCard city={city} key={index} curElem={curElem} />;
             })}
           </>
         )}

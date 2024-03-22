@@ -15,6 +15,7 @@ import { getFilteredRetsData } from "@/actions/fetchCommercialActions";
 
 //CONSTANT
 import { saleLease, listingType } from "@/constant";
+import CityResoCard from "./CityResoCard";
 
 const SalesList = ({
   salesData,
@@ -43,7 +44,6 @@ const SalesList = ({
         (type) => type.name === filterState.type
       )?.value,
     };
-    console.log(queryParams);
     setIsLoading(true);
     const moreSalesListData = await getFilteredRetsData(queryParams);
 
@@ -66,7 +66,7 @@ const SalesList = ({
         <>
           {salesData.map((curElem, index) => {
             // if (curElem.PhotoCount > 0) {
-            return <ResoCard city={city} key={index} curElem={curElem} />;
+            return <CityResoCard city={city} key={index} curElem={curElem} />;
             // }
             // return null
           })}

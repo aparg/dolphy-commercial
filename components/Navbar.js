@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SearchBar from "@/components/reso/SearchBar";
 import { Image } from "react-bootstrap";
+import Dropdown from "./Dropdown";
 
 const Navbar = (props) => {
   const [isSticky, setIsSticky] = useState(false);
@@ -371,15 +372,11 @@ const Navbar = (props) => {
   // );
   return (
     <header
-      className={`pb-6 lg:pb-0 relative z-50 bg-white ${
+      className={`container-fluid lg:pb-0 relative z-50 bg-white ${
         isSticky ? "bg-white sticky top-0" : "md:bg-transparent "
       }`}
     >
-      <div
-        className={`px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ${
-          isSticky && "sticky"
-        }`}
-      >
+      <div className={`max-w-7xl sm:px-6 lg:px-8 ${isSticky && "sticky"}`}>
         <nav className={`flex items-center justify-between h-16 lg:h-20`}>
           <div className="flex-shrink-0">
             <Link href="/" className="logo d-flex align-items-center ">
@@ -453,26 +450,27 @@ const Navbar = (props) => {
           </button>
 
           <div className="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
-            <Link
-              href="#"
-              title=""
-              className={`text-base font-medium transition-all duration-200 focus:text-blue-600 ${
-                isHomePage && !isSticky && "lg:text-white hover:text-green-200"
-              } ${
-                (isSticky || !isHomePage) &&
-                "text-black hover:text-primary-green"
-              }
-               ${!isHomePage && "text-black"}`}
-            >
-              {" "}
-              Buy{" "}
-            </Link>
+            <Dropdown
+              options={[
+                {
+                  name: "Office for Sale",
+                  link: "/office/sale/ontario/toronto",
+                },
+                {
+                  name: "Retail for Sale",
+                  link: "/retail/sale/ontario/toronto",
+                },
+              ]}
+              text={isSticky || !isHomePage ? "black" : "white"}
+            />
 
             <Link
               href="#"
               title=""
-              className={`text-base font-medium transition-all duration-200 focus:text-blue-600 ${
-                isHomePage && !isSticky && "lg:text-white hover:text-green-200"
+              className={`text-base font-medium transition-all duration-200 ${
+                isHomePage &&
+                !isSticky &&
+                "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
               } ${
                 (isSticky || !isHomePage) &&
                 "text-black hover:text-primary-green"
@@ -486,8 +484,10 @@ const Navbar = (props) => {
             <Link
               href="#"
               title=""
-              className={`text-base font-medium transition-all duration-200 focus:text-blue-600 ${
-                isHomePage && !isSticky && "lg:text-white hover:text-green-200"
+              className={`text-base font-medium transition-all duration-200 ${
+                isHomePage &&
+                !isSticky &&
+                "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
               } ${
                 (isSticky || !isHomePage) &&
                 "text-black hover:text-primary-green"
@@ -501,8 +501,10 @@ const Navbar = (props) => {
             <Link
               href="#"
               title=""
-              className={`text-base font-medium transition-all duration-200 focus:text-blue-600 ${
-                isHomePage && !isSticky && "lg:text-white hover:text-green-200"
+              className={`text-base font-medium transition-all duration-200 ${
+                isHomePage &&
+                !isSticky &&
+                "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
               } ${
                 (isSticky || !isHomePage) &&
                 "text-black hover:text-primary-green"
@@ -530,7 +532,7 @@ const Navbar = (props) => {
         </nav>
 
         <nav
-          className={`pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md ${
+          className={`pt-4 bg-white border border-gray-200 rounded-md shadow-md ${
             hidden && "hidden"
           } lg:hidden`}
         >
@@ -539,7 +541,7 @@ const Navbar = (props) => {
               <Link
                 href="#"
                 title=""
-                className={`inline-flex py-2 text-base font-medium transition-all duration-200 hover:text-blue-600 focus:text-blue-600 text-black lg:text-white text-black hover:text-primary-green`}
+                className={`inline-flex py-2 text-base font-medium transition-all duration-200 text-black lg:text-white text-black hover:text-primary-green active:text-primary-green focus:text-primary-green`}
               >
                 {" "}
                 Buy{" "}
@@ -548,7 +550,7 @@ const Navbar = (props) => {
               <Link
                 href="#"
                 title=""
-                className={`inline-flex py-2 text-base font-medium transition-all duration-200 hover:text-blue-600 focus:text-blue-600 text-black `}
+                className={`inline-flex py-2 text-base font-medium transition-all duration-200 text-black `}
               >
                 {" "}
                 Cities{" "}
@@ -557,7 +559,7 @@ const Navbar = (props) => {
               <Link
                 href="#"
                 title=""
-                className={`inline-flex py-2 text-base font-medium transition-all duration-200 hover:text-blue-600 focus:text-blue-600 text-black `}
+                className={`inline-flex py-2 text-base font-medium transition-all duration-200 text-black `}
               >
                 {" "}
                 Resources{" "}
@@ -566,7 +568,7 @@ const Navbar = (props) => {
               <Link
                 href="#"
                 title=""
-                className={`inline-flex py-2 text-base font-medium transition-all duration-200 hover:text-blue-600 focus:text-blue-600 text-black `}
+                className={`inline-flex py-2 text-base font-medium transition-all duration-200 text-black `}
               >
                 {" "}
                 Contact{" "}
