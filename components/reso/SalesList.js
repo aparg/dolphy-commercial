@@ -34,7 +34,7 @@ const SalesList = ({
     const queryParams = {
       offset,
       limit: INITIAL_LIMIT,
-      city: capitalizeFirstLetter(city),
+      city: city ? capitalizeFirstLetter(city) : undefined,
       saleLease: Object.values(saleLease).filter(
         (state) => state.name === filterState.saleLease
       )[0].value,

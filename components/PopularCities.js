@@ -5,41 +5,49 @@ const cardsData = [
     id: 1,
     imageSrc: "/cities/toronto1.jpg",
     title: "Toronto",
+    link: "/ontario/toronto/sale/office",
   },
   {
     id: 2,
     imageSrc: "/cities/brampton.jpg",
     title: "Brampton",
+    link: "/ontario/brampton/sale/office",
   },
   {
     id: 3,
     imageSrc: "/cities/cambridge.jpg",
     title: "Cambridge",
+    link: "/ontario/cambridge/sale/office",
   },
   {
     id: 4,
     imageSrc: "/cities/edmonton.jpeg",
     title: "Edmonton",
+    link: "/ontario/edmonton/sale/office",
   },
   {
     id: 5,
     imageSrc: "/cities/winnipeg.jpeg",
     title: "Winnipeg",
+    link: "/ontario/winnipeg/sale/office",
   },
   {
     id: 6,
     imageSrc: "/cities/halifax.jpeg",
     title: "Halifax",
+    link: "/ontario/halifax/sale/office",
   },
   {
     id: 7,
     imageSrc: "/cities/calgary.jpeg",
     title: "Calgary",
+    link: "/ontario/",
   },
   {
     id: 8,
     imageSrc: "/cities/grimsby.jpg",
     title: "Grimsby",
+    link: "/ontario/",
   },
   // Add more cards as needed
 ];

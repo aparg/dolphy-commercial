@@ -21,7 +21,7 @@ const page = async ({ params }) => {
   const city = params.city;
   const formattedSlug = capitalizeFirstLetter(city);
   const listingID = params.listingID;
-
+  console.log();
   const options = {
     method: "GET",
   };
@@ -77,18 +77,16 @@ const page = async ({ params }) => {
           <Gallery data={imageURLs} />
         </div>
 
-        <section>
-          <div className="padding-top">
-            <div className="row d-flex justify-content-center gap-3">
-              <div className="col-md-7">
+        <section className="padding-top flex items-center w-full text-sm">
+          <div className="padding-top flex items-center w-full">
+            <div
+              className={`mx-auto row justify-between gap-0 w-full md:max-w-[80%]`}
+            >
+              <div className="col-md-8">
                 <PropertyPage {...{ main_data }} />
-                <div className="z-20 relative">
+                <div className="z-20 relative my-4">
                   <h3 className="main-title fs-2">Map View</h3>
                   <Map main_data={main_data} />
-                </div>
-
-                <div>
-                  <MortgageCalculator />
                 </div>
               </div>
 
@@ -97,12 +95,15 @@ const page = async ({ params }) => {
                   defaultmessage={`Please book a showing for this property "${address}"`}
                   city={main_data.Municipality}
                 ></BookShowingForm>
+                <div>
+                  <MortgageCalculator />
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="additonal__listing">
+        <section className="additonal__listing md:max-w-[75%] mx-auto">
           <AdditionalListing
             city={formattedSlug}
             newSalesData={newSalesData}

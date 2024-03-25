@@ -231,7 +231,7 @@ nav {
 /* Card */
 
 .card {
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
@@ -1636,10 +1636,9 @@ label {
 }
 
 .fixed-title {
-  padding: 5em 0;
   width: 100%;
-  position: sticky;
   top: 1rem;
+  box-shadow: #000;
 }
 
 .pty-description {

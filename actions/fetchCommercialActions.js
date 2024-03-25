@@ -51,7 +51,7 @@ export const getFilteredRetsData = async (queryParams) => {
       "$query",
       `?$select=${selectQuery}&$skip=${skipQuery}&$limit=${limitQuery}&$range=${rangeQuery}`
     );
-
+    console.log(url);
     const options = {
       method: "GET",
       cache: "no-store",

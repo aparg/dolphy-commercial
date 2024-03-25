@@ -1,17 +1,17 @@
-'use client'
-import React, { useState, useEffect } from 'react'
+"use client";
+import React, { useState, useEffect } from "react";
 
-import TimeAgo from '@/components/TimeAgo'
+import TimeAgo from "@/components/TimeAgo";
 
 //CUSTOM HOOKS
-import useDeviceView from '@/helpers/useDeviceView'
+import useDeviceView from "@/helpers/useDeviceView";
 
-import Collapse from '@/components/reso/Collapse'
-import { saleLease } from '@/constant'
+import Collapse from "@/components/reso/Collapse";
+import { saleLease } from "@/constant";
 
 const PropertyPage = ({ main_data }) => {
-  const [navbar, setNavbar] = useState(false)
-  const { isMobileView } = useDeviceView()
+  const [navbar, setNavbar] = useState(false);
+  const { isMobileView } = useDeviceView();
   const getCommunityFeatures = () => {
     const {
       PropertyFeatures1,
@@ -20,7 +20,7 @@ const PropertyPage = ({ main_data }) => {
       PropertyFeatures4,
       PropertyFeatures5,
       PropertyFeatures6,
-    } = main_data
+    } = main_data;
 
     return [
       PropertyFeatures1,
@@ -29,80 +29,80 @@ const PropertyPage = ({ main_data }) => {
       PropertyFeatures4,
       PropertyFeatures5,
       PropertyFeatures6,
-    ].join(', ')
-  }
+    ].join(", ");
+  };
 
   const formatNumber = (value) => {
     // Check if the value is not null or undefined
     if (value != null) {
-      return Number(value).toLocaleString('en-US')
+      return Number(value).toLocaleString("en-US");
     } else {
       // Handle the case where the value is null or undefined
-      return 'N/A' // or any default value or message you prefer
+      return "N/A"; // or any default value or message you prefer
     }
-  }
+  };
 
   function formatCurrency(value) {
     // Check if the value is not null or undefined
     if (value != null) {
-      return Number(value).toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
+      return Number(value).toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
         maximumFractionDigits: 0,
-      })
+      });
     } else {
       // Handle the case where the value is null or undefined
-      return 'N/A' // or any default value or message you prefer
+      return "N/A"; // or any default value or message you prefer
     }
   }
 
   const handleScrollToContactAgent = () => {
-    const element = document.getElementById('contact')
+    const element = document.getElementById("contact");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
-  const price = formatCurrency(main_data?.ListPrice)
-  const TaxAnnualAmount = formatCurrency(main_data?.Taxes)
-  const AssociationFee = formatCurrency(main_data?.AddlMonthlyFees)
+  const price = formatCurrency(main_data?.ListPrice);
+  const TaxAnnualAmount = formatCurrency(main_data?.Taxes);
+  const AssociationFee = formatCurrency(main_data?.AddlMonthlyFees);
 
   useEffect(() => {
     if (window) {
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         if (window.scrollY >= 870) {
-          setNavbar(true)
+          setNavbar(true);
         } else {
-          setNavbar(false)
+          setNavbar(false);
         }
-      })
+      });
     }
-  }, [])
+  }, []);
 
   return (
-    <>
+    <div>
       <div
-        className={`border-0 p-4 rounded-3 bg-light ${
-          isMobileView ? 'mt-2' : 'mt-4'
+        className={`border-0 p-6 rounded-3 bg-light ${
+          isMobileView ? "mt-2" : "my-4"
         }`}
       >
-        <div className={`d-flex ${isMobileView ? 'gap-2' : 'gap-3'}`}>
+        <div className={`d-flex ${isMobileView ? "gap-2" : "gap-3"}`}>
           <span
             className="badge custom-badge text-dark"
-            style={{ backgroundColor: '#ddd !important' }}
+            style={{ backgroundColor: "#ddd !important" }}
           >
             {saleLease[main_data.SaleLease.toLowerCase()].name}
           </span>
           <span
             className="badge custom-badge text-dark"
-            style={{ backgroundColor: '#ddd !important' }}
+            style={{ backgroundColor: "#ddd !important" }}
           >
             <TimeAgo modificationTimestamp={main_data.TimestampSql} />
           </span>
         </div>
         <div className="row row-cols-lg-2 row-cols-1 pt-2 pt-md-0">
           <div className="col">
-            <div className={` ${isMobileView ? 'pt-1' : 'pt-4'} `}>
+            <div className={` ${isMobileView ? "pt-1" : "pt-4"} `}>
               <h2 className="main-title fs-3 mb-0">C{price}</h2>
               <p className="cardd-subtitle">
                 est. {formatCurrency((main_data.ListPrice / 60).toFixed(0))} /
@@ -111,13 +111,13 @@ const PropertyPage = ({ main_data }) => {
             </div>
           </div>
 
-          <div className={` col pt-3  ${isMobileView ? 'pt-0' : 'pt-4'}`}>
+          <div className={` col pt-3  ${isMobileView ? "pt-0" : "pt-4"}`}>
             <h1 className="main-title fs-3 mb-0">
-              {main_data.Street} {main_data.StreetName}{' '}
+              {main_data.Street} {main_data.StreetName}{" "}
               {main_data.StreetAbbreviation}
             </h1>
             <p className="cardd-subtitle">
-              {main_data.Municipality}, {main_data.Province},{' '}
+              {main_data.Municipality}, {main_data.Province},{" "}
               {main_data.PostalCode}
             </p>
           </div>
@@ -126,7 +126,7 @@ const PropertyPage = ({ main_data }) => {
         {isMobileView ? (
           <div
             className={`contact-agent mt-3 ${
-              navbar ? 'contact__scrolled' : ''
+              navbar ? "contact__scrolled" : ""
             }`}
           >
             <button
@@ -140,12 +140,12 @@ const PropertyPage = ({ main_data }) => {
       </div>
 
       {/* Description */}
-      <div className={`${isMobileView ? 'pt-4' : 'pt-4'}`}>
-        <div className="border border-0 p-4  rounded-3 bg-light">
+      <div className={`${isMobileView ? "mt-4" : "mt-4"}`}>
+        <div className="border border-0 p-6 rounded-3 bg-light">
           <h3 className="fw-bold cardd-title pb-3">Description</h3>
           <div
             className={`row row-cols-2  row-cols-md-4 w-100 ${
-              isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+              isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
             }`}
           >
             <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -168,7 +168,7 @@ const PropertyPage = ({ main_data }) => {
 
           <div
             className={`row row-cols-2  row-cols-md-4 w-100 ${
-              isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+              isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
             }`}
           >
             <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -191,7 +191,7 @@ const PropertyPage = ({ main_data }) => {
 
           <div
             className={`row row-cols-2  row-cols-md-4 w-100 ${
-              isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+              isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
             }`}
           >
             <div className="col-7 col-md border-bottom border-sm   py-2 py-md-3">
@@ -201,7 +201,7 @@ const PropertyPage = ({ main_data }) => {
               <p className="fw-bold cardd-subtitle_bg-black">
                 {formatNumber(
                   (main_data.LotDepth * main_data.LotFront).toFixed(0)
-                )}{' '}
+                )}{" "}
                 Sqft
               </p>
             </div>
@@ -214,19 +214,21 @@ const PropertyPage = ({ main_data }) => {
               </p>
             </div>
           </div>
-          <p className="pty-description pt-4">{main_data.RemarksForClients}</p>
+          <p className="pty-description pt-4 text-sm">
+            {main_data.RemarksForClients}
+          </p>
         </div>
       </div>
 
       {/*Home Overview  */}
-      <div className={`${isMobileView ? 'pt-4 pb-4' : 'pt-4 pb-4'}`}>
+      <div className={`${isMobileView ? "pt-4 pb-4" : "pt-4 pb-4"}`}>
         <div className="row row-cols-1 row-cols-md-2">
           <div className="col-md-12">
-            <div className="container bg-light rounded-3 p-4 border-0">
+            <div className="container bg-light rounded-3 p-6 border-0 my-4">
               <h5 className="fw-bold cardd-title pb-4">Property Overview</h5>
               <div
                 className={`row row-cols-2  row-cols-md-4 w-100 ${
-                  isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                  isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                 }`}
               >
                 <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -238,7 +240,7 @@ const PropertyPage = ({ main_data }) => {
                   <p className="fw-bold cardd-subtitle_bg-black">
                     {main_data?.Basement1
                       ? `${main_data?.Basement1}, ${main_data?.Basement2}`
-                      : 'None'}
+                      : "None"}
                   </p>
                 </div>
                 <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -255,7 +257,7 @@ const PropertyPage = ({ main_data }) => {
 
               <div
                 className={`row row-cols-2  row-cols-md-4 w-100 ${
-                  isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                  isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                 }`}
               >
                 <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -278,7 +280,7 @@ const PropertyPage = ({ main_data }) => {
 
               <div
                 className={`row row-cols-2  row-cols-md-4 w-100 ${
-                  isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                  isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                 }`}
               >
                 <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -286,7 +288,7 @@ const PropertyPage = ({ main_data }) => {
                 </div>
                 <div className="col-5 col-md border-bottom py-2 py-md-3">
                   <p className="fw-bold cardd-subtitle_bg-black">
-                    {main_data.Status === 'A' ? 'Active' : 'In-Active'}
+                    {main_data.Status === "A" ? "Active" : "In-Active"}
                   </p>
                 </div>
                 <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -301,7 +303,7 @@ const PropertyPage = ({ main_data }) => {
 
               <div
                 className={`row row-cols-2  row-cols-md-4 w-100 ${
-                  isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                  isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                 }`}
               >
                 <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -324,7 +326,7 @@ const PropertyPage = ({ main_data }) => {
 
               <div
                 className={`row row-cols-2  row-cols-md-4 w-100 ${
-                  isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                  isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                 }`}
               >
                 <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -340,7 +342,7 @@ const PropertyPage = ({ main_data }) => {
                 </div>
                 <div className="col-5 col-md border-bottom py-2 py-md-3">
                   <p className="fw-bold cardd-subtitle_bg-black">
-                    {main_data.AssessmentYear || '--'}
+                    {main_data.AssessmentYear || "--"}
                   </p>
                 </div>
               </div>
@@ -350,7 +352,7 @@ const PropertyPage = ({ main_data }) => {
                 <h5 className="py-2 fw-bold pt-5">Interior</h5>
                 <div
                   className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -373,7 +375,7 @@ const PropertyPage = ({ main_data }) => {
 
                 <div
                   className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -398,7 +400,7 @@ const PropertyPage = ({ main_data }) => {
 
                 <div
                   className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -408,7 +410,7 @@ const PropertyPage = ({ main_data }) => {
                   </div>
                   <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="fw-bold cardd-subtitle_bg-black">
-                      {Boolean(Number(main_data.FamilyRoom) > 0) ? 'Yes' : 'No'}
+                      {Boolean(Number(main_data.FamilyRoom) > 0) ? "Yes" : "No"}
                     </p>
                   </div>
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -427,7 +429,7 @@ const PropertyPage = ({ main_data }) => {
                 <h5 className="py-2 fw-bold pt-5">Exterior</h5>
                 <div
                   className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -452,7 +454,7 @@ const PropertyPage = ({ main_data }) => {
 
                 <div
                   className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -475,7 +477,7 @@ const PropertyPage = ({ main_data }) => {
 
                 <div
                   className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -493,14 +495,14 @@ const PropertyPage = ({ main_data }) => {
                   </div>
                   <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="fw-bold cardd-subtitle_bg-black">
-                      {main_data.Basement1 ? 'Yes' : 'No'}
+                      {main_data.Basement1 ? "Yes" : "No"}
                     </p>
                   </div>
                 </div>
 
                 <div
                   className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -508,7 +510,7 @@ const PropertyPage = ({ main_data }) => {
                   </div>
                   <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="fw-bold cardd-subtitle_bg-black">
-                      {main_data.GarageType ? 'Yes' : 'No'}
+                      {main_data.GarageType ? "Yes" : "No"}
                     </p>
                   </div>
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -525,7 +527,7 @@ const PropertyPage = ({ main_data }) => {
                 <h5 className="py-2 fw-bold pt-5">Amenities / Utilities</h5>
                 <div
                   className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -566,7 +568,7 @@ const PropertyPage = ({ main_data }) => {
                 <h5 className="py-2 fw-bold pt-5">Location</h5>
                 <div
                   className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? 'flex-wrap' : 'flex-nowrap prp-gap'
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -623,8 +625,8 @@ const PropertyPage = ({ main_data }) => {
         </div>
         <div></div>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default PropertyPage
+export default PropertyPage;

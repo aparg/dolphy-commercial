@@ -23,25 +23,22 @@ const FilteredCommercialList = ({
   type = undefined,
   saleLeaseValue = undefined,
 }) => {
-  const filterState = useMemo(() => {
-    return {
-      saleLease: saleLeaseValue ? saleLease[saleLeaseValue].value : "Sale",
-      priceRange: {
-        min: 0,
-        max: 0,
-      },
-      type: capitalizeFirstLetter(type),
-    };
-  }, [type]);
+  const [filterState, setFilterState] = useState({
+    saleLease: saleLeaseValue ? saleLease[saleLeaseValue].name : "For Sale",
+    priceRange: {
+      min: 0,
+      max: 0,
+    },
+    type: type ? capitalizeFirstLetter(type) : type,
+  });
   const [salesData, setSalesData] = useState([]);
   const [offset, setOffset] = useState(0);
   const { isMobileView } = useDeviceView();
-  const [isLoading, setLoading] = useState(true);
-  const { ref, inView } = useInView();
+  const [loading, setLoading] = useState(true);
 
-  const fetchFilteredData = async () => {
+  const fetchFilteredData = async (payload) => {
     const queryParams = {
-      city: capitalizeFirstLetter(city),
+      city: city ? capitalizeFirstLetter(city) : undefined,
       limit: INITIAL_LIMIT,
       houseType: Object.values(listingType).find(
         (type) => type.name === filterState.type
@@ -52,25 +49,33 @@ const FilteredCommercialList = ({
       minListPrice: 0,
       sepEntrance: undefined,
       washroom: undefined,
-      saleLease: filterState.saleLease || undefined,
+      saleLease:
+        Object.values(saleLease).filter(
+          (state) => state.name === filterState.saleLease
+        )[0].value || undefined,
+      ...payload,
     };
+    console.log(queryParams);
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
-    setSalesData([...salesData, ...filteredSalesData]);
+    console.log(filteredSalesData);
+
+    setSalesData([...filteredSalesData]);
     setLoading(false);
-    setOffset((prev) => {
-      return prev + INITIAL_LIMIT;
-    });
+    // setOffset((prev) => {
+    //   return prev + INITIAL_LIMIT;
+    // });
   };
 
   useEffect(() => {
-    if (inView) {
-      fetchFilteredData();
-    }
-  }, [inView]);
+    fetchFilteredData();
+  }, []);
 
   return (
     <div className="container-fluid">
+      <div className="filter-container flex">
+        <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
+      </div>
       <h2
         className={`city-headline d-flex text-capitalize ${
           isMobileView ? "pt-3" : "pt-4"
@@ -82,9 +87,9 @@ const FilteredCommercialList = ({
         className="fw-light"
         style={isMobileView ? { fontSize: "0.9rem" } : {}}
       >
-        Streamline your {capitalizeFirstLetter(city)} commercial real estate
-        search by price, or listing type. Explore the latest MLS® listings for
-        up-to-date information.
+        Streamline your {city ? capitalizeFirstLetter(city) : ""} commercial
+        real estate search by price, or listing type. Explore the latest MLS®
+        listings for up-to-date information.
       </p>
 
       <div
@@ -92,17 +97,27 @@ const FilteredCommercialList = ({
           isMobileView ? "pt-1" : "pt-3"
         } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-0 g-md-2`}
       >
-        {salesData.length > 0 && (
-          <>
-            {salesData.map((curElem, index) => {
-              return <CityResoCard city={city} key={index} curElem={curElem} />;
-            })}
-          </>
+        {!loading ? (
+          <SalesList
+            {...{
+              salesData,
+              city,
+              INITIAL_LIMIT,
+              setSalesData,
+              offset,
+              setOffset,
+              filterState,
+            }}
+          />
+        ) : (
+          <div className="w-full flex justify-center">
+            <ImSpinner size={24} />
+          </div>
         )}
-        <div ref={ref} className="flex w-screen items-center justify-center">
+        {/* <div ref={ref} className="flex w-screen items-center justify-center">
           {" "}
           {isLoading && <ImSpinner size={24} />}
-        </div>
+        </div> */}
       </div>
     </div>
   );

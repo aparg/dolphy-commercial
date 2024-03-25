@@ -82,7 +82,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
   //   </>
   // )
   return (
-    <section className="h-96" ref={ref}>
+    <section className="h-[28rem]" ref={ref}>
       <Link
         href={`/commercial/ontario/${city}/${curElem.MLS}`}
         className="text-black"
@@ -90,7 +90,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
         <div className="lg:px-0 h-full w-full">
           {/* <div className="grid grid-cols-1 gap-6  mt-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:px-0"> */}
           <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl p-0 hover:shadow-lg hover:-translate-y-1 relative">
-            <div className="w-7/8 h-56 overflow-hidden">
+            <div className="h-72 overflow-hidden">
               <img
                 className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110"
                 src={imgSrc}
@@ -108,7 +108,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                 </div>
               </div>
             </div>
-            <div className="flex-1 py-5 sm:p-3 px-2">
+            <div className="flex-1 py-2 sm:px-3 sm:py-1 px-2">
               <div className="relative inline-flex group">
                 {/* <div
                   className="absolute duration-1000 rotate-180 transitiona-all opacity-50 -inset-px rounded-sm blur-lg filter group-hover:opacity-70 group-hover:-inset-1 group-hover:duration-200"
@@ -130,7 +130,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                 {/* </a> */}
               </div>
               <div className="flex justify-between pt-1 items-center">
-                <p className="text-xl font-bold text-gray-900">{price}</p>
+                <p className="text-2xl font-bold text-gray-900">{price}</p>
                 <p className="mb-0 text-xs text-black font-normal">
                   {" "}
                   MLS® #{curElem.MLS}

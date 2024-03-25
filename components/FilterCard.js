@@ -12,7 +12,7 @@ const FilterCard = () => {
   return (
     <div className="bg-white flex flex-row rounded-lg justify-around h-full w-full p-2 flex-wrap">
       <Link
-        href="/"
+        href="/ontario/toronto/sale/office"
         className="text-black rounded-md flex justify-center p-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
@@ -27,7 +27,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/"
+        href="/ontario/toronto/sale/retail"
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
@@ -42,7 +42,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/"
+        href="/ontario/toronto/sale/industrial"
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
@@ -57,7 +57,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/"
+        href="/ontario/toronto/sale/investment"
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
@@ -72,7 +72,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/"
+        href="/ontario/toronto/sale/land"
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100 "
       >
         <div className="w-10">
@@ -87,7 +87,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/"
+        href="/ontario/toronto/sale/business"
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">

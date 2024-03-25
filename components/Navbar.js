@@ -454,11 +454,11 @@ const Navbar = (props) => {
               options={[
                 {
                   name: "Office for Sale",
-                  link: "/office/sale/ontario/toronto",
+                  link: "/ontario/toronto/sale/office",
                 },
                 {
                   name: "Retail for Sale",
-                  link: "/retail/sale/ontario/toronto",
+                  link: "/ontario/toronto/sale/retail",
                 },
               ]}
               text={isSticky || !isHomePage ? "black" : "white"}

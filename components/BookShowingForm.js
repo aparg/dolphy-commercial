@@ -30,8 +30,8 @@ export default function BookShowingForm(props) {
     ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
   };
   return (
-    <div className="fixed-title mt-mine pt-4 mt-3 pe-0 ">
-      <div className="m-1 p-4 py-3 mt-2 pb-0 shadow-sm rounded-mine bordt bg-light">
+    <div className="fixed-title pe-0 ">
+      <div className="p-6 pb-0 shadow-2xl rounded-mine bordt bg-white border-[#e8e9ea]">
         <h5 className="fw-bold text-center linem fs-4  mb-0">Book a showing</h5>
         <p className="text-center pt-2 cardd-subtitle_bg-black">
           with a {credentials.city}{" "}

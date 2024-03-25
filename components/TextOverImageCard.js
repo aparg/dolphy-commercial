@@ -2,11 +2,11 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-const TextOverImageCard = ({ imageSrc, title }) => {
+const TextOverImageCard = ({ imageSrc, title, link }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <div className="h-56 w-80 mx-2 rounded-md overflow-hidden relative group/card mb-5">
-      <Link href="/" className="w-full h-full inline ">
+      <Link href={link} className="w-full h-full inline ">
         <div
           className="rounded w-full h-full shadow-lg bg-gradient-to-t from-black to-transparent absolute"
           onMouseOver={() => setHovered(true)}

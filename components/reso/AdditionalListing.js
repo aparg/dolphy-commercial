@@ -24,7 +24,7 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
 
   return (
     <div className="position-relative">
-      <div className="d-flex justify-content-between pt-5 explore-container">
+      <div className="d-flex justify-content-between pt-5 explore-container my-4">
         <div>
           <h3 className="main-title fs-2">
             Explore New {listingType ? `${listingType}` : ``} Listings in {city}
