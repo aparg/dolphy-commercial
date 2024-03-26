@@ -111,7 +111,11 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           />
         </div>
 
-        <div className={`price-range__filter ${isMobileView && "hidden"}`}>
+        <div
+          className={`price-range__filter ${
+            isMobileView && "hidden"
+          } rounded-pill`}
+        >
           <PriceRangeFilter
             name="priceRange"
             value={filterState.priceRange}
@@ -230,7 +234,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
       <DropdownTrigger disableAnimation={true}>
         <Button
           variant="faded"
-          className="capitalize bg-color dynamic"
+          className="capitalize bg-color dynamic rounded-pill"
           size="md"
         >
           {valueToDisplay}

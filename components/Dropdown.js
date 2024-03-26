@@ -6,7 +6,9 @@ const Dropdown = ({ options, text = "white" }) => {
   return (
     <div className="relative">
       <button
-        className={`px-4 py-2 text-${text} rounded-md focus:outline focus:text-primary-green bg-transparent ${
+        className={`sm:px-4 py-2 ${
+          shown ? `text-black` : `text-${text}`
+        } rounded-md focus:outline focus:text-primary-green bg-transparent ${
           shown && "bg-white"
         }`}
         onClick={() => setShown(!shown)}

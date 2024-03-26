@@ -376,7 +376,7 @@ const Navbar = (props) => {
         isSticky ? "bg-white sticky top-0" : "md:bg-transparent "
       }`}
     >
-      <div className={`max-w-7xl sm:px-6 lg:px-8 ${isSticky && "sticky"}`}>
+      <div className={`${isSticky && "sticky"}`}>
         <nav className={`flex items-center justify-between h-16 lg:h-20`}>
           <div className="flex-shrink-0">
             <Link href="/" className="logo d-flex align-items-center ">
@@ -538,14 +538,19 @@ const Navbar = (props) => {
         >
           <div className="flow-root">
             <div className="flex flex-col px-6 -my-2 space-y-1">
-              <Link
-                href="#"
-                title=""
-                className={`inline-flex py-2 text-base font-medium transition-all duration-200 text-black lg:text-white text-black hover:text-primary-green active:text-primary-green focus:text-primary-green`}
-              >
-                {" "}
-                Buy{" "}
-              </Link>
+              <Dropdown
+                options={[
+                  {
+                    name: "Office for Sale",
+                    link: "/ontario/toronto/sale/office",
+                  },
+                  {
+                    name: "Retail for Sale",
+                    link: "/ontario/toronto/sale/retail",
+                  },
+                ]}
+                text={isSticky || isHomePage ? "black" : "white"}
+              />
 
               <Link
                 href="#"
