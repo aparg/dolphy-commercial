@@ -84,19 +84,19 @@ const page = async ({ params }) => {
               <div className="col-md-8">
                 <PropertyPage {...{ main_data }} />
                 <div className="z-20 relative my-4">
-                  <h3 className="main-title fs-2">Map View</h3>
+                  <h3 className="main-title fs-2 aff2">Map View</h3>
                   <Map main_data={main_data} />
+                </div>
+                <div>
+                  <MortgageCalculator price={main_data?.ListPrice} />
                 </div>
               </div>
 
-              <div className="col col-md-4 ps-md-2 pt-5 pt-md-0 " id="contact">
+              <div className="col col-md-4 ps-md-2 pt-5 pt-md-0" id="contact">
                 <BookShowingForm
                   defaultmessage={`Please book a showing for this property "${address}"`}
                   city={main_data.Municipality}
                 ></BookShowingForm>
-                <div>
-                  <MortgageCalculator />
-                </div>
               </div>
             </div>
           </div>

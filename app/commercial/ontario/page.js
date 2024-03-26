@@ -50,8 +50,8 @@ const page = async () => {
           </button>
         </div> */}
         <h1 className="main-title d-flex text-capitalize pt-4">
-          {province} Commercial properties for Sale | Real Estate Updated Daily
-          Listings
+          {province} Commercial properties for Sale in {} | Real Estate Updated
+          Daily Listings
         </h1>
         <p>
           Refine your <span className="text-capitalize">{province}</span> real

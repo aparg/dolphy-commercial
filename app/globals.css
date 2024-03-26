@@ -266,6 +266,23 @@ nav {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+.card-data {
+  font-size: 14px;
+  font-weight: 500;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+}
+
+.price {
+  color: red !important;
+  font-weight: 800 !important;
+  font-size: 16px;
+}
+
+.bva {
+  font-size: 13px !important;
+}
 /* Alerts */
 
 .alert-heading {
@@ -1637,8 +1654,7 @@ label {
 
 .fixed-title {
   width: 100%;
-  top: 1rem;
-  box-shadow: #000;
+  top: 5rem;
 }
 
 .pty-description {
@@ -2203,4 +2219,48 @@ div.dynamic {
   .price-filter__bottom:active {
     opacity: 1; /* Increase opacity on hover or click for mobile devices */
   }
+}
+
+/*--------------------------------------------------------------
+# Property Detail page
+--------------------------------------------------------------*/
+.aff2 {
+  position: relative;
+  z-index: 0;
+}
+
+.aff2::before {
+  z-index: -1;
+  content: "";
+  width: 100%;
+  height: 10px;
+  background-color: rgb(255 141 31 / 28%);
+  position: absolute;
+  top: 10px;
+  border-radius: 1%;
+  left: 1px;
+}
+
+.card-subtitle,
+.card-subtitle2 {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgb(0, 0, 0);
+}
+
+.fw-mine {
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+.fw-mine2 {
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  font-size: 1rem;
+}
+
+.fw-mine3 {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  font-size: 1rem;
 }

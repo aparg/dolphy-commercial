@@ -79,7 +79,8 @@ const FilteredCommercialList = ({
           isMobileView ? "pt-3" : "pt-4"
         }`}
       >
-        Commercial Real Estate {city} {filterState.saleLease}
+        {filterState.type ? filterState.type : "Commercial Real Estate"} in{" "}
+        {city} {filterState.saleLease}
       </h2>
       <p
         className="fw-light"

@@ -395,11 +395,12 @@ const IndividualFilterButton = ({
         return (
           <div
             key={index}
-            className={`px-3 py-1 cursor-pointer text-nowrap text-small dynamic d-flex justify-content-center align-items-center ${
-              isActive(option) ? "bg-primary-green text-white" : ""
+            className={`px-3 py-1 cursor-pointer text-nowrap text-small h-[34px] d-flex justify-content-center align-items-center rounded-pill border-2 ${
+              isActive(option)
+                ? "bg-primary-green text-white border-primary-green"
+                : ""
             }`}
             onClick={() => handleClick(name, option)}
-            style={{ border: "2px solid #cdcdcd", borderRadius: "12px" }}
           >
             {option}
           </div>

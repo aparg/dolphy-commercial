@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -60,19 +60,20 @@ const Map = ({ main_data }) => {
       {state.lat && isMounted ? (
         <MapContainer
           center={[state.lat, state.lon]}
-          zoom={17}
+          zoom={14}
           style={{
-            height: "200px",
+            height: "400px",
             width: "100%",
             borderRadius: "5px",
             marginTop: "1rem",
           }}
           attributionControl={false}
         >
-          <TileLayer
+          {/* <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+          /> */}
+          <TileLayer url="https://www.google.cn/maps/vt?lyrs=m@189&gl=cn&x={x}&y={y}&z={z}" />
           <Marker
             position={[state.lat, state.lon]}
             icon={L.icon({

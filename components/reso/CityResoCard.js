@@ -99,7 +99,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
               />
               <div className="absolute top-3 left-2 flex flex-row">
                 <div
-                  className="text-white text-xs px-1 py-1 rounded-md mx-1"
+                  className="text-white text-sm p-1 rounded-md mx-1"
                   style={{
                     background: "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
                   }}
@@ -108,9 +108,8 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                 </div>
               </div>
             </div>
-            <div className="flex-1 py-2 sm:px-3 sm:py-1 px-2">
-              <div className="relative inline-flex group">
-                {/* <div
+            <div className="flex-1 sm:px-3 py-2 px-2">
+              {/* <div
                   className="absolute duration-1000 rotate-180 transitiona-all opacity-50 -inset-px rounded-sm blur-lg filter group-hover:opacity-70 group-hover:-inset-1 group-hover:duration-200"
                   style={{
                     background:
@@ -124,18 +123,26 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   className="relative inline-flex items-center justify-center py-1 text-xs font-bold text-black transition-all duration-200 bg-white border border-transparent px-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 font-pj hover:bg-opacity-70 rounded-sm"
                   role="button"
                 > */}
-                <div className="text-primary-green text-sm font-bold">
-                  {curElem.Category}
-                </div>
-                {/* </a> */}
+              {/* </a> */}
+              {/* <div className="flex justify-between items-center"></div> */}
+              {/* <p className="text-2xl font-extrabold text-red-500">{price}</p> */}
+              <h2 className="price fw-bold mb-1 fs-3 fw-bold d-flex align-items-center justify-content-start">
+                {price}
+                <span className="shadow-lg p-1 ms-1 text-black text-xs card-data">
+                  {curElem.TotalArea} Sqft
+                </span>
+              </h2>
+              <div className="d-flex align-items-center">
+                <span>{curElem.Category}</span>
+                <h3 className="fw-bold mx-2 mb-0 lh-0">.</h3>
               </div>
-              <div className="flex justify-between pt-1 items-center">
-                <p className="text-2xl font-bold text-gray-900">{price}</p>
-                <p className="mb-0 text-xs text-black font-normal">
-                  {" "}
-                  MLS® #{curElem.MLS}
-                </p>
-              </div>
+              {/* <div className="text-black text-sm font-bold">
+                {curElem.Category}
+              </div> */}
+              <p className="mb-0 fs-mine text-limit fw-normall pb-0">
+                {" "}
+                MLS® #{curElem.MLS}
+              </p>
               <div className="flex flex-row justify-between">
                 {/* <div className="flex">
                   <Image
@@ -174,20 +181,19 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   </p>
                 </div>
               </div> */}
-                <div className="text-sm text-black font-medium truncate text-ellipsis">
-                  <span className="">
+                <div className="text-black truncate mb-4 text-ellipsis">
+                  <span className="text-dark bva ">
                     {curElem.Street} {curElem.StreetName}{" "}
-                    {curElem.StreetAbbreviation} {curElem.Municipality},{" "}
-                    {curElem.Province}{" "}
+                    {curElem.StreetAbbreviation}
                   </span>
                 </div>
               </div>
               <div className="text-black font-medium truncate text-ellipsis text-xs">
                 Listed by {curElem.ListBrokerage}
               </div>
-              <div className="text-black text-xs px-0 py-1 rounded-md mx-0 font-bold">
+              {/* <div className="text-black text-xs px-0 py-1 rounded-md mx-0 font-bold">
                 <TimeAgo modificationTimestamp={curElem.TimestampSql} />
-              </div>
+              </div> */}
             </div>
 
             {/* <div className="absolute w-1/6 h-2/6 top-2 left-2">
@@ -197,6 +203,13 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
               {highlight[1]} */}
             {/* </div> */}
           </div>
+          {/* <h4 className="fs-5 mt-1 text-dark d-flex align-items-center">
+            <p className="fw-bold mb-0 lh-0">
+              {" "}
+              <span className="fs-2 bg-none">.</span>
+              {curElem.Municipality}
+            </p>
+          </h4> */}
           {/* </div> */}
         </div>
       </Link>
