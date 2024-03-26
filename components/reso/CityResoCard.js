@@ -90,7 +90,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
         <div className="lg:px-0 h-full w-full">
           {/* <div className="grid grid-cols-1 gap-6  mt-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:px-0"> */}
           <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl p-0 hover:shadow-lg hover:-translate-y-1 relative">
-            <div className="h-72 overflow-hidden">
+            <div className="h-72 overflow-hidden relative">
               <img
                 className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110"
                 src={imgSrc}
@@ -105,6 +105,11 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   }}
                 >
                   {curElem.TypeOwn1Out}{" "}
+                </div>
+              </div>
+              <div className="absolute bottom-3 left-2 z-10">
+                <div className="text-black text-xs p-1 px-2 rounded-md mx-1 bg-white">
+                  <TimeAgo modificationTimestamp={curElem.TimestampSql} />
                 </div>
               </div>
             </div>

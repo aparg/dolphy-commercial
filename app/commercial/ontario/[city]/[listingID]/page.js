@@ -102,7 +102,7 @@ const page = async ({ params }) => {
           </div>
         </section>
 
-        <section className="additonal__listing md:max-w-[75%] mx-auto">
+        <section className="additonal__listing w-full mx-auto">
           <AdditionalListing
             city={formattedSlug}
             newSalesData={newSalesData}
