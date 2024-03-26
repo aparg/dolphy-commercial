@@ -21,7 +21,6 @@ const page = async ({ params }) => {
   const city = params.city;
   const formattedSlug = capitalizeFirstLetter(city);
   const listingID = params.listingID;
-  console.log();
   const options = {
     method: "GET",
   };

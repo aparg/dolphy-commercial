@@ -43,7 +43,7 @@ const FilteredCommercialList = ({
       houseType: Object.values(listingType).find(
         (type) => type.name === filterState.type
       )?.value,
-      offset: offset,
+      offset: 0,
       hasBasement: undefined,
       maxListPrice: 0,
       minListPrice: 0,
@@ -55,13 +55,11 @@ const FilteredCommercialList = ({
         )[0].value || undefined,
       ...payload,
     };
-    console.log(queryParams);
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
-    console.log(filteredSalesData);
-
     setSalesData([...filteredSalesData]);
     setLoading(false);
+    setOffset(INITIAL_LIMIT);
     // setOffset((prev) => {
     //   return prev + INITIAL_LIMIT;
     // });

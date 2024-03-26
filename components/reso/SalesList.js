@@ -46,7 +46,6 @@ const SalesList = ({
     };
     setIsLoading(true);
     const moreSalesListData = await getFilteredRetsData(queryParams);
-
     setSalesData([...salesData, ...moreSalesListData]);
     setOffset((prev) => {
       return prev + INITIAL_LIMIT;

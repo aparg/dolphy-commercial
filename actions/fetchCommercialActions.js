@@ -34,7 +34,9 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
 export const getFilteredRetsData = async (queryParams) => {
   try {
     //all the necessary queries possible
-    let selectQuery = `Municipality=${queryParams.city},SaleLease=${queryParams.saleLease}`;
+    let selectQuery = `${
+      queryParams.city ? `Municipality=${queryParams.city},` : ""
+    }${queryParams.saleLease ? `SaleLease=${queryParams.saleLease}` : ""}`;
     const skipQuery = `${queryParams.offset}`;
     const limitQuery = `${queryParams.limit}`;
     let rangeQuery = `minListPrice=${queryParams.minListPrice}`;
@@ -51,12 +53,11 @@ export const getFilteredRetsData = async (queryParams) => {
       "$query",
       `?$select=${selectQuery}&$skip=${skipQuery}&$limit=${limitQuery}&$range=${rangeQuery}`
     );
-    console.log(url);
     const options = {
       method: "GET",
       cache: "no-store",
     };
-
+    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data.results;
