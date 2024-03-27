@@ -113,7 +113,7 @@ export default function BookShowingForm(props) {
             </div>
           </div>
 
-          <div className="row me-0">
+          {/* <div className="row me-0">
             <div className="mb-3">
               <Checkbox
                 defaultSelected
@@ -133,7 +133,7 @@ export default function BookShowingForm(props) {
                 </p>
               </Checkbox>
             </div>
-          </div>
+          </div> */}
           <input
             type="submit"
             value={submitbtn}

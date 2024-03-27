@@ -7,7 +7,7 @@ const config = {
     "./app/**/*.{js,ts,html}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.js",
-    // "!./components/reso/*.js",
+    // "!./components/reso/Filters.js",
   ],
   theme: {
     extend: {

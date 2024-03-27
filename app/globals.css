@@ -276,11 +276,15 @@ nav {
 
 .price {
   font-weight: 800 !important;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .bva {
   font-size: 13px !important;
+}
+
+.roundedPill {
+  border-radius: 50rem !important;
 }
 /* Alerts */
 

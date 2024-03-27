@@ -234,7 +234,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
       <DropdownTrigger disableAnimation={true}>
         <Button
           variant="faded"
-          className="capitalize bg-color dynamic rounded-pill"
+          className="capitalize bg-color roundedPill h-[34px]"
           size="md"
         >
           {valueToDisplay}

@@ -64,6 +64,8 @@ const PropertyPage = ({ main_data }) => {
     }
   };
 
+  const dashedStreetName = `${main_data.Street}-${main_data.StreetName}-${main_data.StreetAbbreviation}`;
+
   const price = formatCurrency(main_data?.ListPrice);
   const TaxAnnualAmount = formatCurrency(main_data?.Taxes);
   const AssociationFee = formatCurrency(main_data?.AddlMonthlyFees);
@@ -79,6 +81,9 @@ const PropertyPage = ({ main_data }) => {
       });
     }
     console.log(main_data);
+    console.log(
+      `https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`
+    );
   }, []);
 
   // return (
@@ -695,11 +700,10 @@ const PropertyPage = ({ main_data }) => {
             </p>
           </div>
         </div>
-        <div className="my-2 py-2 py-md-3"></div>
         <div className="py-3 py-md-3">
-          <div className="border-bottom"></div>
+          <div className="border-top"></div>
         </div>
-        <div className="pb-3 pb-md-5">
+        <div className="pb-3 pb-md-5 mt-20">
           <h2 className="text-4xl font-extrabold leading-10">
             <span className="aff2">About this property</span>
           </h2>
@@ -752,28 +756,28 @@ const PropertyPage = ({ main_data }) => {
           </div> */}
         </div>
       </div>
-      {/* <div className="py-3 my-5">
+      <div className="mt-4 sm:mt-24">
         <h2 className="fw-bold fs-4 pb-3">
-          <img alt="" className="w-6 mr-2" src="/icons/walking.png" alt="..." className="w-5" />
-          <span className="mx-1"></span>
-          Walk Score for {props.post.house_detail.project_address}
+          <Image
+            alt="walking  "
+            className="w-10 inline mr-2"
+            src="/walking.svg"
+          />
+          Walk Score for {main_data.Street} {main_data.StreetName}{" "}
+          {main_data.StreetAbbreviation}
         </h2>
 
-        <div>
+        <div className="">
           <div className="p-1">
             <div className="walkscore-container mt-2 p-1 rounded-mine">
               <script type="text/javascript"></script>
-              <div id="ws-walkscore-tile" className="ham2 w-5">
+              <div id="ws-walkscore-tile" className="ham2 w-full">
                 <iframe
                   height="500px"
                   title="Walk Score"
                   className="ham"
                   width="100%"
-                  src={
-                    "https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=" +
-                    convDash(props.post.house_detail.project_address) +
-                    "&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737"
-                  }
+                  src={`https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`}
                 ></iframe>
               </div>
               <script
@@ -783,7 +787,7 @@ const PropertyPage = ({ main_data }) => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
       {/* <div className="py-3 py-md-5 my-5">
         <h2 className="fs-2 fw-bold">
           <span className="aff2">Mortgage Calculator</span>

@@ -82,3 +82,18 @@ const page = async () => {
 };
 
 export default page;
+
+export async function generateMetadata({ params }, parent) {
+  return {
+    ...parent,
+    alternates: {
+      canonical: `https://dolphy-commercial-two.vercel.app/commercial/ontario/ontario`,
+    },
+    openGraph: {
+      images: "/reso/card-img.jpeg",
+    },
+    title: "Looking for commercial real estate in ontario? ",
+    description:
+      "Search our selection of commercial real estate for sale or lease in Ontario. Our ever-changing portfolio of pre constructions brings you closer to your ideal office, retail, business, industrial, investment, land in the growing province of Ontario.",
+  };
+}

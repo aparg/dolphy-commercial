@@ -17,14 +17,10 @@ import PropertyPage from "@/components/reso/propertyPage";
 const INITIAL_OFFSET = 0;
 const INITIAL_LIMIT = 10;
 
-const page = async ({ params }) => {
-  const city = params.city;
-  const formattedSlug = capitalizeFirstLetter(city);
-  const listingID = params.listingID;
+const fetchData = async (listingID) => {
   const options = {
     method: "GET",
   };
-
   const urlToFetchMLSDetail = commercial.properties.replace(
     "$query",
     `?$select=MLS='${listingID}'`
@@ -32,7 +28,18 @@ const page = async ({ params }) => {
 
   const resMLSDetail = await fetch(urlToFetchMLSDetail, options);
   const data = await resMLSDetail.json();
-  const main_data = data.results[0]; //always a single object inside the array
+  return data.results[0];
+};
+
+const page = async ({ params }) => {
+  const city = params.city;
+  const formattedSlug = capitalizeFirstLetter(city);
+  const parts = params.listingID.split("-");
+  const lastPart = parts[parts.length - 1];
+  const listingID = lastPart;
+  console.log(params);
+
+  const main_data = await fetchData(listingID); //always a single object inside the array
 
   const newSalesData = await getCommercialData(
     INITIAL_OFFSET,
@@ -83,11 +90,11 @@ const page = async ({ params }) => {
             >
               <div className="col-md-8">
                 <PropertyPage {...{ main_data }} />
-                <div className="z-20 relative my-4">
+                <div className="z-20 relative mt-24">
                   <h3 className="main-title fs-2 aff2">Map View</h3>
                   <Map main_data={main_data} />
                 </div>
-                <div>
+                <div className="mt-24">
                   <MortgageCalculator price={main_data?.ListPrice} />
                 </div>
               </div>
@@ -102,16 +109,49 @@ const page = async ({ params }) => {
           </div>
         </section>
 
-        <section className="additonal__listing w-full mx-auto">
-          <AdditionalListing
-            city={formattedSlug}
-            newSalesData={newSalesData}
-            listingType={main_data?.TypeOwn1Out}
-          />
-        </section>
+        {formattedSlug && (
+          <section className="additonal__listing w-full mx-auto mt-24">
+            <AdditionalListing
+              city={formattedSlug}
+              newSalesData={newSalesData}
+              listingType={main_data?.TypeOwn1Out}
+            />
+          </section>
+        )}
       </div>
     </>
   );
 };
 
 export default page;
+
+// export async function generateMetadata({ params }, parent) {
+//   const parts = params.listingID.split("-");
+//   const lastPart = parts[parts.length - 1];
+//   const listingID = lastPart;
+//   const imageURLs = generateImageURLs(listingID);
+//   return {
+//     ...parent,
+//     alternates: {
+//       // canonical: `https://dolphy.ca/pre-construction-homes/${params.city}/${params.slug}`,
+//     },
+//     openGraph: {
+//       images: await fetch(imageURLs[0]),
+//     },
+//     title: `${main_data?.Street} ${main_data.StreetName} ${main_data.StreetAbbreviation}`,
+//     //   data.project_name +
+//     //   " in " +
+//     //   data.city.name +
+//     //   " by " +
+//     //   data.developer.name,
+//     // description:
+//     //   data.project_name +
+//     //   " in " +
+//     //   data.city.name +
+//     //   " by " +
+//     //   data.developer.name +
+//     //   " prices starting from " +
+//     //   Nformatter(data.price_starting_from, 2) +
+//     //   " CAD",
+//   };
+// }

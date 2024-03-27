@@ -79,22 +79,28 @@ const FilteredCommercialList = ({
           isMobileView ? "pt-3" : "pt-4"
         }`}
       >
-        {filterState.type ? filterState.type : "Commercial Real Estate"} in{" "}
-        {city} {filterState.saleLease}
+        Find {filterState.type ? filterState.type : "Commercial Real Estate"}{" "}
+        {filterState.saleLease || "For Sale"} in {city || "Ontario"}{" "}
+        {filterState.priceRange.max
+          ? `under $${filterState.priceRange.max}`
+          : ``}
       </h2>
       <p
         className="fw-light"
         style={isMobileView ? { fontSize: "0.9rem" } : {}}
       >
-        Streamline your {city ? capitalizeFirstLetter(city) : ""} commercial
-        real estate search by price, or listing type. Explore the latest MLS®
-        listings for up-to-date information.
+        {/* Streamline your {filterState.type}{" "}
+        {city ? capitalizeFirstLetter(city) : ""} commercial real estate search
+        by price, or listing type. Explore the latest MLS® listings for
+        up-to-date information. */}
+        Explore top {filterState.type}s in {city || "Ontario"} and select the
+        best ones.
       </p>
 
       <div
         className={`${
           isMobileView ? "pt-1" : "pt-3"
-        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-0 g-md-2`}
+        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-y-2 g-md-3`}
       >
         {!loading ? (
           <SalesList

@@ -100,10 +100,10 @@ export default async function Home() {
           <div className="mt-80 sm:mt-44">
             <SuggestedCity defaultCitiesData={defaultCitiesData} />
           </div>
-          <div className="container-fluid pt-4 pb-4 mt-4 sm:mt-14">
+          <div className="container-fluid mt-4 sm:mt-24">
             <PopularCities />
           </div>
-          <div className="container-fluid pt-8 pb-2 mt-4 sm:mt-14">
+          <div className="container-fluid mt-4 sm:mt-24">
             <RealEstateNews />
           </div>
         </div>

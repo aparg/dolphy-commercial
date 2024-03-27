@@ -17,14 +17,14 @@ const Dropdown = ({ options, text = "white" }) => {
       </button>
 
       <div
-        className={`absolute top-full mt-2 w-40 bg-white rounded-md shadow-lg z-10 ${
+        className={`absolute top-full mt-2 w-40 bg-white rounded-md shadow-lg z-10 text-sm ${
           !shown && "hidden"
         }`}
       >
         {options.map((option) => (
           <a
             href={option.link}
-            className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            className="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:rounded-md"
           >
             {option.name}
           </a>

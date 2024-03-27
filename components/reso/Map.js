@@ -68,6 +68,7 @@ const Map = ({ main_data }) => {
             marginTop: "1rem",
           }}
           attributionControl={false}
+          scrollWheelZoom={false}
         >
           {/* <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

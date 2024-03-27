@@ -27,3 +27,20 @@ const page = async ({ params }) => {
 };
 
 export default page;
+
+export async function generateMetadata({ params }, parent) {
+  return {
+    ...parent,
+    alternates: {
+      canonical: `https://dolphy-commercial-two.vercel.app/${params.filter}/ontario`,
+    },
+    openGraph: {
+      images: "/reso/card-img.jpeg",
+    },
+    title: `Looking for ${params.filter} in ontario? `,
+    description:
+      "Search our selection of commercial real estate for sale or lease in Ontario. Our ever-changing portfolio of pre constructions brings you closer to your ideal " +
+      params.filter +
+      " in the growing province of Ontario.",
+  };
+}

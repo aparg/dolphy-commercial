@@ -88,7 +88,7 @@ const Footer = ({ cities }) => {
     //   </div>
     // </footer>
     <>
-      <footer className="bg-gray-50 mt-6 w-screen">
+      <footer className="bg-gray-50 mt-20 w-screen">
         <div className="w-full flex flex-col">
           <div className="relative overflow-hidden bg-primary-green w-full ">
             <div className="relative px-8 py-12 md:p-16 xl:p-24 flex flex-col justify-center">
