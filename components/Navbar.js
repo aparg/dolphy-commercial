@@ -39,10 +39,10 @@ const Navbar = (props) => {
   }, []);
 
   useEffect(() => {
-    const comparisions = JSON.parse(
+    const comparingProperties = JSON.parse(
       localStorage.getItem("comparingProperties")
     );
-    setComparisionData(comparisions);
+    comparingProperties?.length > 0 && setComparisionData(comparingProperties);
   }, []);
   return (
     <header
@@ -153,7 +153,7 @@ const Navbar = (props) => {
             <Dropdown
               name="Comparision"
               options={[
-                ...comparisionData.map(() => {
+                ...comparisionData?.map(() => {
                   return { name: comparisionData };
                 }),
                 {
