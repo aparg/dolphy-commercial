@@ -5,6 +5,7 @@ import TimeAgo from "../TimeAgo";
 
 import { commercial } from "@/api/routes";
 import { Image } from "react-bootstrap";
+import { listingType, saleLease } from "@/constant";
 
 const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
   // const [address, setAddress] = useState("");
@@ -138,6 +139,12 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
               {/* <p className="text-2xl font-extrabold text-red-500">{price}</p> */}
               <h2 className="price text-primary-green fw-bold mb-1 fs-3 fw-bold d-flex align-items-center justify-content-start">
                 {price}
+                {""}
+
+                {curElem.SaleLease === saleLease.lease.value && (
+                  <span> /mo</span>
+                )}
+
                 <span className="shadow-lg p-1 ms-1 text-black text-xs card-data">
                   {curElem.TotalArea} Sqft
                 </span>
@@ -192,10 +199,14 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                 </div>
               </div> */}
                 <div className="text-black truncate mb-4 text-ellipsis">
-                  <span className="text-dark bva ">
-                    {curElem.Street} {curElem.StreetName}{" "}
-                    {curElem.StreetAbbreviation}
-                  </span>
+                  <div className="text-dark bva">
+                    {curElem.StreetName ? (
+                      `${curElem.Street} ${curElem.StreetName}${" "}
+                    ${curElem.StreetAbbreviation}`
+                    ) : (
+                      <span className="p-4"></span>
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="text-black font-medium truncate text-ellipsis text-xs">

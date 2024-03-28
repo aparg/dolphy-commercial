@@ -25,6 +25,7 @@ const FiltersWithCommercialList = ({
       max: 0,
     },
     type: null,
+    numberOfDays: null,
   });
   const [salesData, setSalesData] = useState(commercialListData);
   const [offset, setOffset] = useState(INITIAL_LIMIT);

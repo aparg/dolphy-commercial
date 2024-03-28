@@ -35,7 +35,7 @@ export async function generateMetadata({ params }, parent) {
       canonical: `https://dolphy-commercial-two.vercel.app/${params.filter}/ontario`,
     },
     openGraph: {
-      images: "/reso/card-img.jpeg",
+      images: "/logo/logo-black.svg",
     },
     title: `Looking for ${params.filter} in ontario? `,
     description:

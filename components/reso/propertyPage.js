@@ -8,11 +8,13 @@ import useDeviceView from "@/helpers/useDeviceView";
 
 import Collapse from "@/components/reso/Collapse";
 import { saleLease } from "@/constant";
-import { Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
+import { Tooltip } from "@nextui-org/react";
 
 const PropertyPage = ({ main_data }) => {
   const [navbar, setNavbar] = useState(false);
   const { isMobileView } = useDeviceView();
+  const [addedToComparisionList, setAddedToComparisionList] = useState(false);
   const getCommunityFeatures = () => {
     const {
       PropertyFeatures1,
@@ -80,11 +82,31 @@ const PropertyPage = ({ main_data }) => {
         }
       });
     }
-    console.log(main_data);
     console.log(
       `https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`
     );
   }, []);
+
+  useEffect(() => {
+    if (
+      JSON.parse(localStorage.getItem("comparingProperties"))?.includes(
+        main_data.MLS
+      )
+    )
+      setAddedToComparisionList(true);
+  }, []);
+
+  const prependToLocalStorageArray = (newValue) => {
+    // Retrieve the array from local storage or initialize an empty array
+    let storedArray =
+      JSON.parse(localStorage.getItem("comparingProperties")) || [];
+
+    // Prepend the new value to the array
+    if (!storedArray.includes(newValue)) storedArray.unshift(newValue);
+    storedArray = storedArray.slice(0, 3);
+    // Store the updated array back to local storage
+    localStorage.setItem("comparingProperties", JSON.stringify(storedArray));
+  };
 
   // return (
   //   <div>
@@ -646,10 +668,44 @@ const PropertyPage = ({ main_data }) => {
                 {/* {main_data.Municipality}, {main_data.Province},{" "}
                 {main_data.PostalCode} */}
                 <p className="shadow-lg d-inline text-sm px-2 rounded-mine p-1 ms-1">
-                  <span className=" text-dark">For Sale</span>
+                  <span className=" text-dark">For {main_data.SaleLease}</span>
                 </p>
               </h1>
-              <h3 className="main-title fs-4">{price}</h3>
+              <div className="flex flex-col items-center">
+                <h3 className="main-title fs-3">{price}</h3>
+                {/* <Image
+                  src="/add-btn.svg"
+                  onClick={() => prependToLocalStorageArray(main_data.MLS)}
+                  className="w-10 self-center"
+                  alt="Compare"
+                ></Image> */}
+                <Tooltip
+                  showArrow={true}
+                  content={
+                    addedToComparisionList
+                      ? "Already added to comparision list!"
+                      : "Add to comparision list"
+                  }
+                >
+                  <Button
+                    className="w-10 h-10 rounded-full bg-primary-green text-white text-4xl flex justify-center items-center p-0"
+                    onClick={() => {
+                      prependToLocalStorageArray(main_data.MLS);
+                      setAddedToComparisionList(true);
+                    }}
+                  >
+                    {addedToComparisionList ? (
+                      <Image
+                        src="/tick.svg"
+                        alt="added"
+                        className="w-8 h-8"
+                      ></Image>
+                    ) : (
+                      "+"
+                    )}
+                  </Button>
+                </Tooltip>
+              </div>
             </div>
             <div className="d-flex align-items-center justify-content-start mb-0">
               {/* <h3 className="fw-bold me-2">

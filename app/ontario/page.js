@@ -6,14 +6,12 @@ import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import FilteredCommercialList from "@/components/reso/FilteredCommercialList";
 
 const page = async ({ params }) => {
-  const city = params.city;
   const INITIAL_LIMIT = 30;
-  // const saleLeaseValue = params.saleLease;
+
   return (
     <div className="">
       <FilteredCommercialList
         {...{
-          city,
           INITIAL_LIMIT,
         }}
       />
@@ -22,17 +20,3 @@ const page = async ({ params }) => {
 };
 
 export default page;
-
-export async function generateMetadata({ params }, parent) {
-  return {
-    ...parent,
-    alternates: {
-      canonical: `https://dolphy-commercial-two.vercel.app/ontario/${params.city}`,
-    },
-    openGraph: {
-      images: "/logo/logo-black.svg",
-    },
-    title: `Find Commercial Real Estate For Sale in ${params.city}`,
-    description: `Explore top comercial real estates in ${params.city} and select the best ones`,
-  };
-}

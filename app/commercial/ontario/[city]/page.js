@@ -52,32 +52,3 @@ const page = async ({ params }) => {
 };
 
 export default page;
-
-export async function generateMetadata({ params }, parent) {
-  const data = await getData(params.slug);
-
-  return {
-    ...parent,
-    alternates: {
-      canonical: `https://dolphy.ca/pre-construction-homes/${params.city}/${params.slug}`,
-    },
-    openGraph: {
-      images: retImage(data),
-    },
-    title:
-      data.project_name +
-      " in " +
-      data.city.name +
-      " by " +
-      data.developer.name,
-    description:
-      data.project_name +
-      " in " +
-      data.city.name +
-      " by " +
-      data.developer.name +
-      " prices starting from " +
-      Nformatter(data.price_starting_from, 2) +
-      " CAD",
-  };
-}

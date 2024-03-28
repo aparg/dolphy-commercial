@@ -37,7 +37,6 @@ const page = async ({ params }) => {
   const parts = params.listingID.split("-");
   const lastPart = parts[parts.length - 1];
   const listingID = lastPart;
-  console.log(params);
 
   const main_data = await fetchData(listingID); //always a single object inside the array
 
@@ -50,7 +49,7 @@ const page = async ({ params }) => {
 
   const imageURLs = generateImageURLs(listingID);
 
-  const address = `${main_data?.Street} ${main_data.StreetName} ${main_data.StreetAbbreviation}`;
+  const address = `${main_data?.Street} ${main_data?.StreetName} ${main_data?.StreetAbbreviation}`;
 
   return (
     <>
@@ -125,33 +124,24 @@ const page = async ({ params }) => {
 
 export default page;
 
-// export async function generateMetadata({ params }, parent) {
-//   const parts = params.listingID.split("-");
-//   const lastPart = parts[parts.length - 1];
-//   const listingID = lastPart;
-//   const imageURLs = generateImageURLs(listingID);
-//   return {
-//     ...parent,
-//     alternates: {
-//       // canonical: `https://dolphy.ca/pre-construction-homes/${params.city}/${params.slug}`,
-//     },
-//     openGraph: {
-//       images: await fetch(imageURLs[0]),
-//     },
-//     title: `${main_data?.Street} ${main_data.StreetName} ${main_data.StreetAbbreviation}`,
-//     //   data.project_name +
-//     //   " in " +
-//     //   data.city.name +
-//     //   " by " +
-//     //   data.developer.name,
-//     // description:
-//     //   data.project_name +
-//     //   " in " +
-//     //   data.city.name +
-//     //   " by " +
-//     //   data.developer.name +
-//     //   " prices starting from " +
-//     //   Nformatter(data.price_starting_from, 2) +
-//     //   " CAD",
-//   };
-// }
+export async function generateMetadata({ params }, parent) {
+  const parts = params.listingID.split("-");
+  const lastPart = parts[parts.length - 1];
+  const listingID = lastPart;
+  const main_data = await fetchData(listingID);
+  const imageURLs = generateImageURLs(listingID);
+  return {
+    ...parent,
+    alternates: {
+      // canonical: `https://dolphy.ca/pre-construction-homes/${params.city}/${params.slug}`,
+    },
+    openGraph: {
+      images: await fetch(imageURLs[0]),
+    },
+    title: `${main_data?.Street} ${main_data?.StreetName} ${main_data?.StreetAbbreviation}`,
+    description: `${parseInt(main_data?.TotalArea).toFixed(0)}.
+    ${main_data?.TotalAreaCode}.${main_data?.TypeOwn1Out}.${
+      main_data?.Municipality
+    }`,
+  };
+}

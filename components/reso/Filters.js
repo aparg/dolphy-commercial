@@ -12,8 +12,9 @@ import {
 } from "@nextui-org/react";
 
 //CONSTANT
-import { saleLease, listingType } from "@/constant";
+import { saleLease, listingType, numberOfDays } from "@/constant";
 import useDeviceView from "@/helpers/useDeviceView";
+import { Navbar } from "react-bootstrap";
 
 const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
   const [navbar, setNavbar] = useState(false);
@@ -24,6 +25,10 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
   const saleLeaseOptions = Object.values(saleLease).map((item) => item.name);
   //options for house type
   const houseTypeOptions = Object.values(listingType).map((item) => item.name);
+  //options for house type
+  const numberOfDaysOptions = Object.values(numberOfDays).map(
+    (item) => item.name
+  );
 
   //dynamic price range generator based on sale or lease options
   const minMaxPrice = useMemo(() => {
@@ -98,9 +103,8 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
   return (
     <>
       <div
-        className={`filters d-flex gap-2 gap-md-3 flex ${
-          navbar ? "filter__scrolled" : ""
-        } `}
+        className={`filters d-flex gap-2 gap-md-3 flex 
+         ${navbar ? "filter__scrolled mt-4 pb-4 container-fluid" : ""} `}
       >
         <div className={`sales-lease__filter ${isMobileView && "hidden"}`}>
           <IndividualFilterButton
@@ -129,6 +133,15 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
             options={houseTypeOptions}
             name="type"
             value={filterState.type}
+            handleFilterChange={handleFilterChange}
+          />
+        </div>
+
+        <div className="flex flex-row">
+          <TimeFilterButton
+            options={numberOfDaysOptions}
+            name="numberOfDays"
+            value={filterState.numberOfDays}
             handleFilterChange={handleFilterChange}
           />
         </div>
@@ -189,6 +202,49 @@ const IndividualFilter = ({ options, name, value, handleFilterChange }) => {
   );
 };
 
+const TimeFilterButton = ({ name, handleFilterChange }) => {
+  const [selectedKeys, setSelectedKeys] = useState();
+  const handleTime = (value) => {
+    setSelectedKeys(value);
+    handleFilterChange(name, value);
+  };
+
+  return (
+    <Dropdown>
+      <DropdownTrigger disableAnimation={true}>
+        <Button
+          variant="faded"
+          className="capitalize bg-color roundedPill h-[34px] border-2"
+          size="md"
+        >
+          {selectedKeys || "Number Of Days"}
+          <i className="bi bi-chevron-down"></i>
+        </Button>
+      </DropdownTrigger>
+      <DropdownMenu
+        aria-label="price filter"
+        itemClasses={{
+          base: ["data-[hover=true]:bg-default-0"],
+        }}
+        disallowEmptySelection
+        selectionMode="single"
+      >
+        {Object.values(numberOfDays).map((option) => {
+          console.log(option.value);
+          return (
+            <DropdownItem
+              key={option.name}
+              onClick={() => handleTime(option.value)}
+            >
+              {option.name}
+            </DropdownItem>
+          );
+        })}
+      </DropdownMenu>
+    </Dropdown>
+  );
+};
+
 const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
   const [price, setPrice] = useState({
     min: 0,
@@ -234,7 +290,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
       <DropdownTrigger disableAnimation={true}>
         <Button
           variant="faded"
-          className="capitalize bg-color roundedPill h-[34px]"
+          className="capitalize bg-color roundedPill h-[34px] border-2"
           size="md"
         >
           {valueToDisplay}
@@ -298,6 +354,17 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
                 defaultValue={[minMaxPrice.min, minMaxPrice.max]}
                 formatOptions={{ style: "currency", currency: "USD" }}
                 className="max-w-md"
+                classNames={{
+                  filler: "bg-primary-green",
+                }}
+                renderThumb={(props) => (
+                  <div
+                    {...props}
+                    className="bg-primary-green group p-1 top-1/2 shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
+                  >
+                    <span className="transition-transform shadow-small rounded-full w-3 h-3 block group-data-[dragging=true]:scale-80"></span>
+                  </div>
+                )}
               />
             </div>
           </DropdownItem>
@@ -382,7 +449,6 @@ const IndividualFilterButton = ({
   handleFilterChange,
 }) => {
   const [activeFilter, setActiveFilter] = useState(value);
-
   const isActive = (key) => {
     const foundSalesLease = options.find((option) => option === key);
     return foundSalesLease === activeFilter;

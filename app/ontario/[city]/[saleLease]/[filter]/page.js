@@ -36,3 +36,19 @@ const page = async ({ params }) => {
 };
 
 export default page;
+
+export async function generateMetadata({ params }, parent) {
+  return {
+    ...parent,
+    alternates: {
+      canonical: `https://dolphy-commercial-two.vercel.app/ontario/${params.city}/${params.saleLease}/${params.filter}`,
+    },
+    openGraph: {
+      images: "/logo/logo-black.svg",
+    },
+    title: `Find ${params.filter} ${saleLease[params.saleLease].name} in ${
+      params.city
+    }`,
+    description: `Explore top ${params.filter}s in ${params.city} and select the best ones`,
+  };
+}

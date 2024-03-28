@@ -30,6 +30,7 @@ const FilteredCommercialList = ({
       max: 0,
     },
     type: type ? capitalizeFirstLetter(type) : type,
+    numberOfDays: null,
   });
   const [salesData, setSalesData] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -53,6 +54,7 @@ const FilteredCommercialList = ({
         Object.values(saleLease).filter(
           (state) => state.name === filterState.saleLease
         )[0].value || undefined,
+      minTimestampSql: filterState.numberOfDays,
       ...payload,
     };
     setLoading(true);
@@ -93,14 +95,15 @@ const FilteredCommercialList = ({
         {city ? capitalizeFirstLetter(city) : ""} commercial real estate search
         by price, or listing type. Explore the latest MLS® listings for
         up-to-date information. */}
-        Explore top {filterState.type}s in {city || "Ontario"} and select the
-        best ones.
+        Explore top{" "}
+        {filterState.type ? `${filterState.type}s` : "Commercial Real Estate"}{" "}
+        in {city || "Ontario"} and select the best ones.
       </p>
 
       <div
         className={`${
           isMobileView ? "pt-1" : "pt-3"
-        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-y-2 g-md-3`}
+        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-y-3 g-md-4`}
       >
         {!loading ? (
           <SalesList

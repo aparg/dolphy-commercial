@@ -276,7 +276,7 @@ nav {
 
 .price {
   font-weight: 800 !important;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .bva {
@@ -285,7 +285,16 @@ nav {
 
 .roundedPill {
   border-radius: 50rem !important;
+  border-color: #e5e7eb !important;
 }
+
+/* .roundedPill:focus {
+  border-color: #217955 !important;
+  border-color: #e5e7eb !important;
+  opacity: 1;
+  background-color: #217955 !important;
+  color: white;
+} */
 /* Alerts */
 
 .alert-heading {

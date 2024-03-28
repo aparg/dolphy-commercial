@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const Dropdown = ({ options, text = "white" }) => {
+const Dropdown = ({ name, options, text = "white" }) => {
   const [shown, setShown] = useState(false);
   return (
     <div className="relative">
@@ -13,7 +13,7 @@ const Dropdown = ({ options, text = "white" }) => {
         }`}
         onClick={() => setShown(!shown)}
       >
-        Businesses for Sale
+        {name}
       </button>
 
       <div

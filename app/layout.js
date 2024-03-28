@@ -15,9 +15,9 @@ export const metadata = {
   alternates: {
     canonical: `https://dolphy.ca/`,
   },
-  title: "Dolphy - Pre Construction Home Developments for Sale in Calgary",
+  title: "Dolphy - Commercial Real Estate for Sale in Ontario",
   description:
-    "Find the latest Pre Construction home developments for sale in Calgary with the Calgary's most user-friendly pre construction portal. Search new homes to buy in Calgary.",
+    "Find the latest Commercial Real Estate for sale in Ontario with the Ontario's most user-friendly portal. Search real estate to buy in Ontario.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",

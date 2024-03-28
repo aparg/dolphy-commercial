@@ -50,7 +50,7 @@ const page = async () => {
           </button>
         </div> */}
         <h1 className="main-title d-flex text-capitalize pt-4">
-          {province} Commercial properties for Sale in {} | Real Estate Updated
+          Commercial properties for Sale in {province} | Real Estate Updated
           Daily Listings
         </h1>
         <p>
@@ -90,10 +90,11 @@ export async function generateMetadata({ params }, parent) {
       canonical: `https://dolphy-commercial-two.vercel.app/commercial/ontario/ontario`,
     },
     openGraph: {
-      images: "/reso/card-img.jpeg",
+      images: "/logo/logo-black.svg",
     },
-    title: "Looking for commercial real estate in ontario? ",
+    title:
+      "Discover Prime Commercial Real Estate Opportunities in Ontario | Your Gateway to Profitable Investments",
     description:
-      "Search our selection of commercial real estate for sale or lease in Ontario. Our ever-changing portfolio of pre constructions brings you closer to your ideal office, retail, business, industrial, investment, land in the growing province of Ontario.",
+      "Explore a diverse range of commercial real estate opportunities in Ontario with our comprehensive listings. From bustling urban centers to serene suburban landscapes, find the perfect office, retail, or industrial space to meet your business needs. Our experienced agents provide expert guidance for investors seeking lucrative ventures in Ontario's dynamic commercial property market. Start your journey towards success today!",
   };
 }
