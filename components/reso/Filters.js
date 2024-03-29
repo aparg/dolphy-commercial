@@ -56,9 +56,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         max: 0,
       };
     }
-
     setFilterState({ ...newFilterState });
-
     const payload = {
       saleLease: Object.values(saleLease).find(
         (saleLeaseObj) => saleLeaseObj.name === newFilterState.saleLease
@@ -71,8 +69,12 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
       hasBasement: newFilterState.hasBasement,
       sepEntrance: newFilterState.sepEntrance,
       washroom: newFilterState.washroom,
+      minTimestampSql: Object.values(numberOfDays).find((obj) => {
+        console.log(obj.name, newFilterState.minTimestampSql);
+        return obj.value == newFilterState.minTimestampSql;
+      })?.value,
     };
-
+    console.log(payload);
     fetchFilteredData(payload);
   };
 
@@ -140,7 +142,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         <div className="flex flex-row">
           <TimeFilterButton
             options={numberOfDaysOptions}
-            name="numberOfDays"
+            name="minTimestampSql"
             value={filterState.numberOfDays}
             handleFilterChange={handleFilterChange}
           />
@@ -204,9 +206,10 @@ const IndividualFilter = ({ options, name, value, handleFilterChange }) => {
 
 const TimeFilterButton = ({ name, handleFilterChange }) => {
   const [selectedKeys, setSelectedKeys] = useState();
-  const handleTime = (value) => {
-    setSelectedKeys(value);
-    handleFilterChange(name, value);
+  const handleTime = (optionName, optionValue) => {
+    console.log(name, optionValue);
+    setSelectedKeys(optionName);
+    handleFilterChange(name, optionValue);
   };
 
   return (
@@ -230,11 +233,10 @@ const TimeFilterButton = ({ name, handleFilterChange }) => {
         selectionMode="single"
       >
         {Object.values(numberOfDays).map((option) => {
-          console.log(option.value);
           return (
             <DropdownItem
               key={option.name}
-              onClick={() => handleTime(option.value)}
+              onClick={() => handleTime(option.name, option.value)}
             >
               {option.name}
             </DropdownItem>

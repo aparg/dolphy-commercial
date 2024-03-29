@@ -6,12 +6,17 @@ import { usePathname } from "next/navigation";
 import SearchBar from "@/components/reso/SearchBar";
 import { Image } from "react-bootstrap";
 import Dropdown from "./Dropdown";
+import {
+  useComparingProperties,
+  useComparisionFlag,
+} from "./context/ComparisonFlagContext";
 
 const Navbar = (props) => {
   const [isSticky, setIsSticky] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [comparisionData, setComparisionData] = useState([]);
   const pathname = usePathname();
+  const { comparisonFlag } = useComparisionFlag();
 
   if (pathname.startsWith("/admin")) {
     return <></>;
@@ -43,7 +48,8 @@ const Navbar = (props) => {
       localStorage.getItem("comparingProperties")
     );
     comparingProperties?.length > 0 && setComparisionData(comparingProperties);
-  }, []);
+    console.log("called");
+  }, [comparisonFlag]);
   return (
     <header
       className={`container-fluid lg:pb-0 relative z-50 bg-white ${
@@ -151,14 +157,14 @@ const Navbar = (props) => {
               text={isSticky || !isHomePage ? "black" : "white"}
             />
             <Dropdown
-              name="Comparision"
+              name="Compare"
               options={[
-                ...comparisionData?.map(() => {
-                  return { name: comparisionData };
+                ...comparisionData?.map((data) => {
+                  return { name: data };
                 }),
                 {
                   name: "View Comparision",
-                  // link: `/compare/${comparisionData.join("-")}`,
+                  link: `/compare/${comparisionData.join("-")}`,
                 },
               ]}
               text={isSticky || !isHomePage ? "black" : "white"}

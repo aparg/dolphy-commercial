@@ -30,7 +30,7 @@ const FilteredCommercialList = ({
       max: 0,
     },
     type: type ? capitalizeFirstLetter(type) : type,
-    numberOfDays: null,
+    minTimestampSql: undefined,
   });
   const [salesData, setSalesData] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -38,6 +38,7 @@ const FilteredCommercialList = ({
   const [loading, setLoading] = useState(true);
 
   const fetchFilteredData = async (payload) => {
+    console.log(payload);
     const queryParams = {
       city: city ? capitalizeFirstLetter(city) : undefined,
       limit: INITIAL_LIMIT,
@@ -54,9 +55,10 @@ const FilteredCommercialList = ({
         Object.values(saleLease).filter(
           (state) => state.name === filterState.saleLease
         )[0].value || undefined,
-      minTimestampSql: filterState.numberOfDays,
+      minTimestampSql: filterState.minTimestampSql,
       ...payload,
     };
+    console.log(queryParams);
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
     setSalesData([...filteredSalesData]);

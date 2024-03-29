@@ -7,38 +7,39 @@ import Footer from "@/components/Footer";
 import NextTopLoader from "nextjs-toploader";
 import { Public_Sans, Figtree } from "next/font/google";
 import { Providers } from "./providers";
+import { ComparisionFlagProvider } from "@/components/context/ComparisonFlagContext";
 
 const public_sans = Public_Sans({ subsets: ["latin"] });
 const figtree = Figtree({ subsets: ["latin"] });
 
-export const metadata = {
-  alternates: {
-    canonical: `https://dolphy.ca/`,
-  },
-  title: "Dolphy - Commercial Real Estate for Sale in Ontario",
-  description:
-    "Find the latest Commercial Real Estate for sale in Ontario with the Ontario's most user-friendly portal. Search real estate to buy in Ontario.",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: true,
-    },
-  },
-  category: "real estate",
-};
+// export const metadata = {
+//   alternates: {
+//     canonical: `https://dolphy.ca/`,
+//   },
+//   title: "Dolphy - Commercial Real Estate for Sale in Ontario",
+//   description:
+//     "Find the latest Commercial Real Estate for sale in Ontario with the Ontario's most user-friendly portal. Search real estate to buy in Ontario.",
+//   icons: {
+//     icon: "/favicon.ico",
+//     shortcut: "/favicon-16x16.png",
+//     apple: "/apple-touch-icon.png",
+//   },
+//   viewport: {
+//     width: "device-width",
+//     initialScale: 1,
+//     maximumScale: 1,
+//   },
+//   robots: {
+//     index: true,
+//     follow: true,
+//     googleBot: {
+//       index: true,
+//       follow: true,
+//       noimageindex: true,
+//     },
+//   },
+//   category: "real estate",
+// };
 
 async function getCities() {
   const res = await fetch("https://api.dolphy.ca/api/all-city", {
@@ -68,9 +69,11 @@ export default async function RootLayout({ children }) {
           shadow="0 0 10px #00A1FF,0 0 5px #00A1FF"
         />
         <Providers>
-          <Navbar></Navbar>
-          {children}
-          <Footer cities={cities}></Footer>
+          <ComparisionFlagProvider>
+            <Navbar></Navbar>
+            {children}
+            <Footer cities={cities}></Footer>
+          </ComparisionFlagProvider>
         </Providers>
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
