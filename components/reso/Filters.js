@@ -70,11 +70,9 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
       sepEntrance: newFilterState.sepEntrance,
       washroom: newFilterState.washroom,
       minTimestampSql: Object.values(numberOfDays).find((obj) => {
-        console.log(obj.name, newFilterState.minTimestampSql);
         return obj.value == newFilterState.minTimestampSql;
       })?.value,
     };
-    console.log(payload);
     fetchFilteredData(payload);
   };
 
@@ -207,7 +205,6 @@ const IndividualFilter = ({ options, name, value, handleFilterChange }) => {
 const TimeFilterButton = ({ name, handleFilterChange }) => {
   const [selectedKeys, setSelectedKeys] = useState();
   const handleTime = (optionName, optionValue) => {
-    console.log(name, optionValue);
     setSelectedKeys(optionName);
     handleFilterChange(name, optionValue);
   };

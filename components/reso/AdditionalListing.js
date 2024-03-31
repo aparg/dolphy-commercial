@@ -15,7 +15,6 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
     // @ts-ignore
     scrollRef.current.scrollLeft = slider.scrollLeft - dynamicWidthOfCard;
   };
-  2;
   const slideRight = () => {
     const dynamicWidthOfCard = cardRef.current.offsetWidth;
     // @ts-ignore
@@ -24,19 +23,16 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
 
   return (
     <div className="position-relative">
-      <div className="d-flex justify-content-between pt-5 explore-container my-4">
-        <div>
-          <h3 className="main-title fs-2">
+      <div className="d-flex justify-content-between pt-5 explore-container my-0 sm:my-4">
+        <div className="w-full flex flex-row justify-between">
+          <h3 className="main-title fs-1 fs-sm-2 ">
             Explore New {listingType ? `${listingType}` : ``} Listings in {city}
           </h3>
-        </div>
-
-        <div>
           <a
             href={`/commercial/ontario/${formattedCity}`}
-            className="btn btn-outline-primary float-end btn-explore"
+            className="btn btn-outline-primary float-end btn-explore px-2 sm:px-2 py-0 sm:py-2 h-6 sm:h-11"
           >
-            Explore All
+            <span className="hidden sm:inline">Explore </span>All
           </a>
         </div>
       </div>
@@ -57,7 +53,7 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
         </button>
       </div>
       <div
-        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-2"
+        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-4"
         id="slider"
         ref={scrollRef}
       >

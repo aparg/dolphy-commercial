@@ -6,6 +6,7 @@ import TimeAgo from "../TimeAgo";
 import { commercial } from "@/api/routes";
 import { Image } from "react-bootstrap";
 import { listingType, saleLease } from "@/constant";
+import CompareButton from "../CompareButton";
 
 const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
   // const [address, setAddress] = useState("");
@@ -113,6 +114,9 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   {curElem.TypeOwn1Out}{" "}
                 </div>
               </div>
+              <div className="absolute top-2 right-2 w-6 h-6">
+                <CompareButton main_data={curElem} width={6} />
+              </div>
               <div className="absolute bottom-3 left-2 z-10">
                 <div className="text-black text-xs p-1 px-2 rounded-md mx-1 bg-white">
                   <TimeAgo modificationTimestamp={curElem.TimestampSql} />
@@ -149,10 +153,10 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   {curElem.TotalArea} Sqft
                 </span>
               </h2>
-              <div className="d-flex align-items-center">
+              {/* <div className="d-flex align-items-center">
                 <span>{curElem.Category}</span>
                 <h3 className="fw-bold mx-2 mb-0 lh-0">.</h3>
-              </div>
+              </div> */}
               {/* <div className="text-black text-sm font-bold">
                 {curElem.Category}
               </div> */}
@@ -198,11 +202,13 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   </p>
                 </div>
               </div> */}
-                <div className="text-black truncate mb-4 text-ellipsis">
+                <div className="text-black truncate text-ellipsis">
                   <div className="text-dark bva">
                     {curElem.StreetName ? (
                       `${curElem.Street} ${curElem.StreetName}${" "}
-                    ${curElem.StreetAbbreviation}`
+                    ${curElem.StreetAbbreviation} ${
+                        curElem.Municipality
+                      }, Ontario`
                     ) : (
                       <span className="p-4"></span>
                     )}

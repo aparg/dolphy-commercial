@@ -29,7 +29,6 @@ const firstDateofLastSixMonths = () => {
   currentDate.setDate(1);
 
   var formattedDate = currentDate.toISOString().slice(0, 10);
-  console.log(formattedDate);
   return formattedDate;
 };
 

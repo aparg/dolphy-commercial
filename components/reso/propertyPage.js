@@ -10,14 +10,15 @@ import Collapse from "@/components/reso/Collapse";
 import { saleLease } from "@/constant";
 import { Button, Image } from "react-bootstrap";
 import { Tooltip } from "@nextui-org/react";
-import prependToLocalStorageArray from "@/helpers/prependToLocalStorageArray";
+import prependToLocalStorageArray from "@/helpers/handleLocalStorageArray";
 import { generateImageURLs } from "@/helpers/generateImageURLs";
 import { useComparisionFlag } from "../context/ComparisonFlagContext";
+import CompareButton from "../CompareButton";
+import BookShowingForm from "../BookShowingForm";
 
 const PropertyPage = ({ main_data }) => {
   const [navbar, setNavbar] = useState(false);
   const { isMobileView } = useDeviceView();
-  const [addedToComparisionList, setAddedToComparisionList] = useState(false);
   const getCommunityFeatures = () => {
     const {
       PropertyFeatures1,
@@ -74,7 +75,6 @@ const PropertyPage = ({ main_data }) => {
   const price = formatCurrency(main_data?.ListPrice);
   const TaxAnnualAmount = formatCurrency(main_data?.Taxes);
   const AssociationFee = formatCurrency(main_data?.AddlMonthlyFees);
-  const { comparisonFlag, setComparisonFlag } = useComparisionFlag();
   useEffect(() => {
     if (window) {
       window.addEventListener("scroll", () => {
@@ -85,18 +85,6 @@ const PropertyPage = ({ main_data }) => {
         }
       });
     }
-    console.log(
-      `https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`
-    );
-  }, []);
-
-  useEffect(() => {
-    if (
-      JSON.parse(localStorage.getItem("comparingProperties"))?.includes(
-        main_data.MLS
-      )
-    )
-      setAddedToComparisionList(true);
   }, []);
 
   return (
@@ -106,13 +94,21 @@ const PropertyPage = ({ main_data }) => {
           <div className="col-sm-12">
             <div className="d-flex justify-content-between align-items-md-center flex-column gap-2 flex-md-row">
               <h1 className="vmain-title mb-0 mt-4 mt-md-2">
+                <div className="uppercase bannerSection">
+                  <div className="listingStatus"></div>
+                  FOR {main_data.SaleLease} -{" "}
+                  {/* tailwind style classname for bottom dashed border gray*/}
+                  <span className="border-gray-500 border-dotted border-b">
+                    ACTIVE
+                  </span>
+                </div>
                 {main_data.Street} {main_data.StreetName}{" "}
                 {main_data.StreetAbbreviation}
                 {/* {main_data.Municipality}, {main_data.Province},{" "}
                 {main_data.PostalCode} */}
-                <p className="shadow-lg d-inline text-sm px-2 rounded-mine p-1 ms-1">
-                  <span className=" text-dark">For {main_data.SaleLease}</span>
-                </p>
+                {/* <p className="shadow-lg d-inline text-sm px-2 rounded-mine p-1 ms-1">
+                  <span className="text-dark">For {main_data.SaleLease}</span>
+                </p> */}
               </h1>
               <div className="flex flex-col items-center">
                 <h3 className="main-title fs-3 pt-8">{price}</h3>
@@ -122,37 +118,7 @@ const PropertyPage = ({ main_data }) => {
                   className="w-10 self-center"
                   alt="Compare"
                 ></Image> */}
-                <Tooltip
-                  showArrow={true}
-                  content={
-                    addedToComparisionList
-                      ? "Already added to comparision list!"
-                      : "Add to comparision list"
-                  }
-                >
-                  <Button
-                    className="w-10 h-10 rounded-full bg-primary-green text-white text-4xl flex justify-center items-center p-0 mt-2"
-                    onClick={() => {
-                      prependToLocalStorageArray(
-                        "comparingProperties",
-                        main_data.MLS,
-                        3
-                      );
-                      setComparisonFlag(!comparisonFlag);
-                      setAddedToComparisionList(true);
-                    }}
-                  >
-                    {addedToComparisionList ? (
-                      <Image
-                        src="/tick.svg"
-                        alt="added"
-                        className="w-8 h-8"
-                      ></Image>
-                    ) : (
-                      "+"
-                    )}
-                  </Button>
-                </Tooltip>
+                <CompareButton main_data={main_data} width={8} />
               </div>
             </div>
             <div className="d-flex align-items-center justify-content-start mb-0">
@@ -281,7 +247,7 @@ const PropertyPage = ({ main_data }) => {
                   title="Walk Score"
                   className="ham"
                   width="100%"
-                  src={`https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`}
+                  src={`https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName},${main_data.Municipality}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`}
                 ></iframe>
               </div>
               <script

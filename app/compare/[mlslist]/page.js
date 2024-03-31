@@ -1,14 +1,21 @@
+"use client";
 import { commercial } from "@/api/routes";
+import CompareButton from "@/components/CompareButton";
 import Gallery from "@/components/reso/Gallery";
 import { generateImageURLs } from "@/helpers/generateImageURLs";
+import { set } from "date-fns";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 
 const fetchData = async (listingID) => {
   const options = {
     method: "GET",
+    // headers: {
+    //   mode: "no-cors",
+    // },
   };
+  console.log(listingID);
   const urlToFetchMLSDetail = commercial.properties.replace(
     "$query",
     `?$select=MLS='${listingID}'`
@@ -19,13 +26,32 @@ const fetchData = async (listingID) => {
   return data.results[0];
 };
 
-const page = async ({ params }) => {
-  const MLSArray = params.mlslist.split("-");
-  console.log(MLSArray);
-  const main_data = MLSArray.map(async (mls) => {
-    return fetchData(mls);
-  });
-  const dataArray = await Promise.all(main_data);
+const page = () => {
+  // const MLSArray = params.mlslist.split("-");
+  const [MLSArray, setMLSArray] = useState([]);
+  const [dataArray, setDataArray] = useState([]);
+  //useffect that fetches from localstorage with key comparingProperties and assigns it to MLSArray
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    const storedProperties = localStorage.getItem("comparingProperties");
+    if (storedProperties) {
+      setMLSArray(JSON.parse(storedProperties));
+    }
+  };
+
+  useEffect(() => {
+    console.log(MLSArray);
+    const main_data = MLSArray.map(async (mls) => {
+      return fetchData(mls);
+    });
+    //assign to getData variable after all promises are resolved
+    Promise.all(main_data).then((data) => {
+      setDataArray(data);
+    });
+  }, [MLSArray]);
 
   const getMax = (property) =>
     Math.max(...dataArray.map((data) => parseFloat(data[property])));
@@ -41,7 +67,7 @@ const page = async ({ params }) => {
         <div className="h-42 w-64">
           <Image
             src={generateImageURLs(data.MLS)[0]}
-            className="object-cover block  rounded-md"
+            className="object-cover block rounded-md"
             alt="propertyImage"
           ></Image>
         </div>
@@ -85,23 +111,33 @@ const page = async ({ params }) => {
   });
   return (
     <div className="container-fluid">
-      <h3 className="main-title fs-2">Compare listings</h3>
+      <h3 className="main-title fs-2">Your Comparisions</h3>
       <table className="table-auto w-full">
         <thead>
           <th className="p-2 border-b"></th>
           {dataArray.map((data) => (
             <th className="p-2 border-b">
-              <Link
-                href={`/commercial/ontario/${data.Municipality}/${data.MLS}`}
-              >
-                {data.MLS}
-              </Link>
+              <div className="flex items-center">
+                <Link
+                  href={`/commercial/ontario/${data.Municipality}/${data.MLS}`}
+                  className="mr-2"
+                >
+                  {data.MLS}
+                </Link>
+                <CompareButton
+                  main_data={data}
+                  width={5}
+                  callback={() => {
+                    getData();
+                  }}
+                />
+              </div>
             </th>
           ))}
         </thead>
         <tbody>
           <tr>
-            <th></th>
+            <th className="p-2 border-b"></th>
             {images}
           </tr>
           <tr className="">

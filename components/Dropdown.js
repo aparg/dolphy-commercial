@@ -10,7 +10,7 @@ const Dropdown = ({ name, options, text = "white" }) => {
           shown ? `text-black` : `text-${text}`
         } rounded-md focus:outline focus:text-primary-green bg-transparent ${
           shown && "bg-white"
-        }`}
+        } hover:`}
         onClick={() => setShown(!shown)}
       >
         {name}

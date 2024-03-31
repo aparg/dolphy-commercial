@@ -44,14 +44,13 @@ export default async function Home() {
       <div className="">
         <div className="">
           <div
-            className="container-fluid relative flex flex-col items-center w-screen justify-center md:max-md:mt-10"
+            className="container-fluid relative flex flex-col items-center w-screen justify-center md:max-md:mt-10 sm:h-[85vh]"
             id="hero"
           >
             <div>
-              <h1 className="main-titlee pb-0 mb-0 mt-2 mt-md-0 relative text-center">
-                <span className="d-block mb-5">Find Your</span>{" "}
-                <span className="hero-main-text text-white">Dream Home </span>
-                with us
+              <h1 className="text-[1.6rem] sm:text-[4rem] main-titlee pb-0 mb-0 mt-2 mt-md-0 relative text-center">
+                <span className="d-block mb-5">Find Your Next </span>{" "}
+                <span className="text-white">Commercial Property </span>
               </h1>
               {/* <p className="text-center mt-0 pt-3 text-white text-xl font-semibold text-shadow">
                 Explore Endless Possibilities in Finding Your Dream Home with
@@ -64,9 +63,9 @@ export default async function Home() {
                 </div>
               </div>
             </div>
-            <div className="mt-5 md:mb-10 sm:mb-0 absolute bottom-[-30%] sm:bottom-[-10%] lg:bottom-[-15%] lg:w-[850px] rounded-lg w-screen shadow-md border-t-8 bg-primary-green border-primary-green w-5/6">
+            {/* <div className="mt-5 md:mb-10 sm:mb-0 absolute bottom-[-30%] sm:bottom-[-10%] lg:bottom-[-15%] lg:w-[850px] rounded-lg w-screen shadow-md border-t-8 bg-primary-green border-primary-green w-5/6">
               <FilterCard />
-            </div>
+            </div> */}
           </div>
           {/* {torontoData?.length > 0 ? (
             <div className="pt-5 pb-2 ">
@@ -97,7 +96,8 @@ export default async function Home() {
               </section>
             </div>
           ) : null} */}
-          <div className="mt-80 sm:mt-44">
+          {/* <div className="mt-80 mt-4 sm:mt-24"> */}
+          <div className="container-fluid mt-4 sm:mt-24">
             <SuggestedCity defaultCitiesData={defaultCitiesData} />
           </div>
           <div className="container-fluid mt-4 sm:mt-24">

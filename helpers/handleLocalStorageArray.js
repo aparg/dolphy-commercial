@@ -9,4 +9,11 @@ const prependToLocalStorageArray = (key, value, number = 3) => {
   localStorage.setItem(key, JSON.stringify(storedArray));
 };
 
-export default prependToLocalStorageArray;
+//remove given string from the localstorage array function
+const removeFromLocalStorageArray = (key, value) => {
+  let storedArray = JSON.parse(localStorage.getItem(key)) || [];
+  storedArray = storedArray.filter((item) => item !== value);
+  localStorage.setItem(key, JSON.stringify(storedArray));
+};
+
+export { prependToLocalStorageArray, removeFromLocalStorageArray };

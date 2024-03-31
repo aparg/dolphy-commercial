@@ -48,12 +48,11 @@ const Navbar = (props) => {
       localStorage.getItem("comparingProperties")
     );
     comparingProperties?.length > 0 && setComparisionData(comparingProperties);
-    console.log("called");
   }, [comparisonFlag]);
   return (
     <header
       className={`container-fluid lg:pb-0 relative z-50 bg-white ${
-        isSticky ? "bg-white sticky top-0" : "md:bg-transparent "
+        isSticky ? "bg-white sticky top-0 shadow-lg" : "md:bg-transparent "
       }`}
     >
       <div className={`${isSticky && "sticky"}`}>
@@ -156,7 +155,7 @@ const Navbar = (props) => {
               ]}
               text={isSticky || !isHomePage ? "black" : "white"}
             />
-            <Dropdown
+            {/* <Dropdown
               name="Compare"
               options={[
                 ...comparisionData?.map((data) => {
@@ -168,8 +167,23 @@ const Navbar = (props) => {
                 },
               ]}
               text={isSticky || !isHomePage ? "black" : "white"}
-            />
-
+            /> */}
+            <Link
+              href={`/compare/${comparisionData.join("-")}`}
+              title=""
+              className={`text-base font-medium transition-all duration-200 ${
+                isHomePage &&
+                !isSticky &&
+                "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
+              } ${
+                (isSticky || !isHomePage) &&
+                "text-black hover:text-primary-green"
+              }
+               ${!isHomePage && "text-black"}`}
+            >
+              {" "}
+              Compare Listings{" "}
+            </Link>
             <Link
               href="#"
               title=""

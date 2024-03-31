@@ -47,7 +47,6 @@ const SalesList = ({
         return obj.value == filterState.minTimestampSql;
       })?.value,
     };
-    console.log(queryParams);
     setIsLoading(true);
     const moreSalesListData = await getFilteredRetsData(queryParams);
     setSalesData([...salesData, ...moreSalesListData]);

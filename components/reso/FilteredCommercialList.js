@@ -75,20 +75,13 @@ const FilteredCommercialList = ({
 
   return (
     <div className="container-fluid">
-      <div className="filter-container flex">
-        <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
-      </div>
-      <h2
-        className={`city-headline d-flex text-capitalize ${
-          isMobileView ? "pt-3" : "pt-4"
-        }`}
-      >
+      <h3 className={`main-title fs-2 ${isMobileView ? "pt-3" : "pt-4"}`}>
         Find {filterState.type ? filterState.type : "Commercial Real Estate"}{" "}
         {filterState.saleLease || "For Sale"} in {city || "Ontario"}{" "}
         {filterState.priceRange.max
           ? `under $${filterState.priceRange.max}`
           : ``}
-      </h2>
+      </h3>
       <p
         className="fw-light"
         style={isMobileView ? { fontSize: "0.9rem" } : {}}
@@ -96,12 +89,15 @@ const FilteredCommercialList = ({
         {/* Streamline your {filterState.type}{" "}
         {city ? capitalizeFirstLetter(city) : ""} commercial real estate search
         by price, or listing type. Explore the latest MLS® listings for
-        up-to-date information. */}
+      up-to-date information. */}
         Explore top{" "}
         {filterState.type ? `${filterState.type}s` : "Commercial Real Estate"}{" "}
         in {city || "Ontario"} and select the best ones.
       </p>
 
+      <div className="filter-container flex">
+        <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
+      </div>
       <div
         className={`${
           isMobileView ? "pt-1" : "pt-3"

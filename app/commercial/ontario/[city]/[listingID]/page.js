@@ -7,12 +7,13 @@ import { generateImageURLs } from "@/helpers/generateImageURLs";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import { getCommercialData } from "@/actions/fetchCommercialActions";
 import BookShowingForm from "@/components/BookShowingForm";
-import MortgageCalculator from "@/components/reso/MortgageCalculator";
+// import MortgageCalculator from "@/components/reso/MortgageCalculator";
 
 const Map = dynamic(() => import("@/components/reso/Map"), { ssr: false });
 
 import AdditionalListing from "@/components/reso/AdditionalListing";
 import PropertyPage from "@/components/reso/propertyPage";
+// import { Button } from "@nextui-org/react";
 
 const INITIAL_OFFSET = 0;
 const INITIAL_LIMIT = 10;
@@ -53,7 +54,15 @@ const page = async ({ params }) => {
 
   return (
     <>
-      <div className="container-fluid pt-md-3 pt-0">
+      <button className="fixed w-full text-white text-lg sm:text-xl bottom-2 sm:bottom-5 sm:hidden p-6 z-[999]">
+        <Link
+          href="#contact"
+          className="bg-primary-green rounded-md shadow-2xl px-[50px] sm:px-[100px] py-2 sm:py-5 text-white shadow-md"
+        >
+          Book a showing
+        </Link>
+      </button>
+      <div className="container-fluid pt-md-3 pt-0 ">
         <div className="container-fluid pt-3 pt-md-5">
           <nav
             style={{
@@ -92,9 +101,6 @@ const page = async ({ params }) => {
                 <div className="z-20 relative mt-24">
                   <h3 className="main-title fs-2 aff2">Map View</h3>
                   <Map main_data={main_data} />
-                </div>
-                <div className="mt-24">
-                  <MortgageCalculator price={main_data?.ListPrice} />
                 </div>
               </div>
 
