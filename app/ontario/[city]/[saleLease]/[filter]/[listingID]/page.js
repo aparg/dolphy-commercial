@@ -26,6 +26,7 @@ const fetchData = async (listingID) => {
     "$query",
     `?$select=MLS='${listingID}'`
   );
+  console.log(urlToFetchMLSDetail);
 
   const resMLSDetail = await fetch(urlToFetchMLSDetail, options);
   const data = await resMLSDetail.json();

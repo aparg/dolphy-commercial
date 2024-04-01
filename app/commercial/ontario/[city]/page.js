@@ -34,7 +34,7 @@ const page = async ({ params }) => {
               <Link href="/">Dolphy</Link>
             </li>
             <li className="breadcrumb-item ">
-              <Link href="/commercial/ontario">ON</Link>
+              <Link href="/ontario">ON</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               {formattedSlug}

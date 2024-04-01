@@ -29,7 +29,7 @@ const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
             Explore New {listingType ? `${listingType}` : ``} Listings in {city}
           </h3>
           <a
-            href={`/commercial/ontario/${formattedCity}`}
+            href={`/ontario/${formattedCity}`}
             className="btn btn-outline-primary float-end btn-explore px-2 sm:px-2 py-0 sm:py-2 h-6 sm:h-11"
           >
             <span className="hidden sm:inline">Explore </span>All

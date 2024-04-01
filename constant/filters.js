@@ -1,6 +1,7 @@
 export const saleLease = {
   sale: { name: "For Sale", value: "Sale" },
   lease: { name: "For Lease", value: "Lease" },
+  all: { name: "All", value: undefined },
 };
 
 export const listingType = {
@@ -10,6 +11,7 @@ export const listingType = {
   industrial: { name: "Industrial", value: ".I." },
   investment: { name: "Investment", value: ".U." },
   land: { name: "Land", value: ".L." },
+  all: { name: "All", value: undefined },
 };
 
 const firstDateOfMonth = () => {

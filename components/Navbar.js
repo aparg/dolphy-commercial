@@ -182,7 +182,7 @@ const Navbar = (props) => {
                ${!isHomePage && "text-black"}`}
             >
               {" "}
-              Compare Listings{" "}
+              Your Comparisons{" "}
             </Link>
             <Link
               href="#"

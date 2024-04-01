@@ -32,7 +32,7 @@ const ResoCard = ({ curElem, city }) => {
     <>
       <div className="col">
         <Link
-          href={`/commercial/ontario/${city}/${curElem.MLS}`}
+          href={`/ontario/${city}/all/all/${curElem.MLS}`}
           className="text-decoration-none text-dark"
         >
           <div className="afte-proj">

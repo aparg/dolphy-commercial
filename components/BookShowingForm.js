@@ -5,6 +5,7 @@ import ContactFormSubmit from "./ContactFormSubmit";
 import { Checkbox, Input } from "@nextui-org/react";
 import Link from "next/link";
 import React from "react";
+import BookingDate from "./BookingDate";
 
 export default function BookShowingForm(props) {
   const [submitbtn, setSubmitbtn] = useState("Book a showing");
@@ -113,6 +114,8 @@ export default function BookShowingForm(props) {
             </div>
           </div>
 
+          <div></div>
+
           {/* <div className="row me-0">
             <div className="mb-3">
               <Checkbox
@@ -141,6 +144,7 @@ export default function BookShowingForm(props) {
             id="subbtn"
           />
         </form>
+        <BookingDate />
       </div>
     </div>
   );

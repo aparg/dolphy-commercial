@@ -91,7 +91,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
   return (
     <section className="h-[26rem]" ref={ref}>
       <Link
-        href={`/commercial/ontario/${city}/${streetAndMLS}`}
+        href={`/ontario/${curElem.Municipality}/all/all/${streetAndMLS}`}
         className="text-black"
       >
         <div className="lg:px-0 h-full w-full">

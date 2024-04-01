@@ -87,7 +87,7 @@ export async function generateMetadata({ params }, parent) {
   return {
     ...parent,
     alternates: {
-      canonical: `https://dolphy-commercial-two.vercel.app/commercial/ontario/ontario`,
+      canonical: `https://dolphy-commercial-two.vercel.app/ontario/ontario`,
     },
     openGraph: {
       images: "/logo/logo-black.svg",
