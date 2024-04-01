@@ -6,17 +6,17 @@ import { usePathname } from "next/navigation";
 import SearchBar from "@/components/reso/SearchBar";
 import { Image } from "react-bootstrap";
 import Dropdown from "./Dropdown";
-import {
-  useComparingProperties,
-  useComparisionFlag,
-} from "./context/ComparisonFlagContext";
+// import {
+//   useComparingProperties,
+//   useComparisionFlag,
+// } from "./context/ComparisonFlagContext";
 
 const Navbar = (props) => {
   const [isSticky, setIsSticky] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [comparisionData, setComparisionData] = useState([]);
   const pathname = usePathname();
-  const { comparisonFlag } = useComparisionFlag();
+  // const { comparisonFlag } = useComparisionFlag();
 
   if (pathname.startsWith("/admin")) {
     return <></>;
@@ -43,12 +43,12 @@ const Navbar = (props) => {
     };
   }, []);
 
-  useEffect(() => {
-    const comparingProperties = JSON.parse(
-      localStorage.getItem("comparingProperties")
-    );
-    comparingProperties?.length > 0 && setComparisionData(comparingProperties);
-  }, [comparisonFlag]);
+  // useEffect(() => {
+  //   const comparingProperties = JSON.parse(
+  //     localStorage.getItem("comparingProperties")
+  //   );
+  //   comparingProperties?.length > 0 && setComparisionData(comparingProperties);
+  // }, [comparisonFlag]);
   return (
     <header
       className={`container-fluid lg:pb-0 relative z-50 bg-white ${
@@ -169,7 +169,7 @@ const Navbar = (props) => {
               text={isSticky || !isHomePage ? "black" : "white"}
             /> */}
             <Link
-              href={`/compare/${comparisionData.join("-")}`}
+              href={`/compare`}
               title=""
               className={`text-base font-medium transition-all duration-200 ${
                 isHomePage &&

@@ -12,7 +12,7 @@ import { Button, Image } from "react-bootstrap";
 import { Tooltip } from "@nextui-org/react";
 import prependToLocalStorageArray from "@/helpers/handleLocalStorageArray";
 import { generateImageURLs } from "@/helpers/generateImageURLs";
-import { useComparisionFlag } from "../context/ComparisonFlagContext";
+// import { useComparisionFlag } from "../context/ComparisonFlagContext";
 import CompareButton from "../CompareButton";
 import BookShowingForm from "../BookShowingForm";
 

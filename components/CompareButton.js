@@ -11,7 +11,7 @@ import {
 
 const CompareButton = ({ main_data, width, callback = undefined }) => {
   const [addedToComparisionList, setAddedToComparisionList] = useState(false);
-  const { comparisonFlag, setComparisonFlag } = useComparisionFlag();
+  // const { comparisonFlag, setComparisonFlag } = useComparisionFlag();
   useEffect(() => {
     console.log(main_data.MLS, "main_data.MLS");
     if (
@@ -37,7 +37,7 @@ const CompareButton = ({ main_data, width, callback = undefined }) => {
           className={`inline w-${width} h-${width} rounded-full bg-red-500/30 hover:bg-red-500 text-white text-4xl flex justify-center items-center p-0 border-0`}
           onClick={() => {
             removeFromLocalStorageArray("comparingProperties", main_data.MLS);
-            setComparisonFlag(!comparisonFlag);
+            // setComparisonFlag(!comparisonFlag);
             setAddedToComparisionList(false);
             callback && callback();
           }}
@@ -53,7 +53,7 @@ const CompareButton = ({ main_data, width, callback = undefined }) => {
           className={`inline w-${width} h-${width} rounded-full bg-primary-green/30 hover:bg-primary-green text-white text-4xl flex justify-center items-center p-0 border-0`}
           onClick={() => {
             prependToLocalStorageArray("comparingProperties", main_data.MLS, 3);
-            setComparisonFlag(!comparisonFlag);
+            // setComparisonFlag(!comparisonFlag);
             setAddedToComparisionList(true);
             callback && callback();
           }}

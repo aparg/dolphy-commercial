@@ -1,40 +1,40 @@
-import { commercial } from "@/api/routes";
+"use client";
+import { fetchDataFromMLS } from "@/actions/fetchCommercialActions";
+// import { commercial } from "@/api/routes";
 import CompareButton from "@/components/CompareButton";
 import { generateImageURLs } from "@/helpers/generateImageURLs";
-import { removeFromLocalStorageArray } from "@/helpers/handleLocalStorageArray";
+// import { removeFromLocalStorageArray } from "@/helpers/handleLocalStorageArray";
 import Link from "next/link";
 // import Comparison from "@/components/Comparison";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 
-const fetchData = async (listingID) => {
-  const options = {
-    method: "GET",
-  };
-  const urlToFetchMLSDetail = commercial.properties.replace(
-    "$query",
-    `?$select=MLS='${listingID}'`
-  );
-  const resMLSDetail = await fetch(urlToFetchMLSDetail, options);
-  const data = await resMLSDetail.json();
-  return data.results[0];
-};
+const page = () => {
+  const [MLSArray, setMLSArray] = useState([]);
+  const [dataArray, setDataArray] = useState([]);
+  useEffect(() => {
+    // const MLSArray = params.mlslist.split("-");
 
-const page = async ({ params }) => {
-  // useEffect(() => {
-  const MLSArray = params.mlslist.split("-");
-  // const MLSArray = JSON.parse(localStorage.getItem("comparingProperties"));
-  const dataPromises = MLSArray.map((item) => {
-    return fetchData(item);
-  });
-  let dataArray = await Promise.all(dataPromises);
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const MLSArray = JSON.parse(localStorage.getItem("comparingProperties"));
+    setMLSArray(MLSArray);
+    const dataPromises = MLSArray.map((item) => {
+      return fetchDataFromMLS(item);
+    });
+    let dataArray = await Promise.all(dataPromises);
+    setDataArray(dataArray);
+  };
+
   const getMax = (property) =>
     Math.max(...dataArray.map((data) => parseFloat(data[property])));
   const getMin = (property) =>
     Math.min(...dataArray.map((data) => parseFloat(data[property])));
   const minListPrice = getMin("ListPrice");
   const maxArea = getMax("TotalArea");
-  const images = dataArray.map(async (data) => {
+  const images = dataArray.map((data) => {
     return (
       <td className="mx-2 p-2 border-b" key={data.MLS}>
         <div className="h-42 w-64">
@@ -168,11 +168,11 @@ const page = async ({ params }) => {
                 >
                   {data.MLS}
                 </Link>
-                <span onClick={() => removeData(data.MLS)}>
+                <span>
                   <CompareButton
                     main_data={data}
                     width={5}
-                    // callback={() => removeData(data.MLS)}
+                    callback={() => fetchData()}
                   />
                 </span>
               </div>

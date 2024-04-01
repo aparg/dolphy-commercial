@@ -65,3 +65,16 @@ export const getFilteredRetsData = async (queryParams) => {
     throw new Error(`An error happened: ${error}`);
   }
 };
+
+export const fetchDataFromMLS = async (listingID) => {
+  const options = {
+    method: "GET",
+  };
+  const urlToFetchMLSDetail = commercial.properties.replace(
+    "$query",
+    `?$select=MLS='${listingID}'`
+  );
+  const resMLSDetail = await fetch(urlToFetchMLSDetail, options);
+  const data = await resMLSDetail.json();
+  return data.results[0];
+};

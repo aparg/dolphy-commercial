@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import NextTopLoader from "nextjs-toploader";
 import { Public_Sans, Figtree } from "next/font/google";
 import { Providers } from "./providers";
-import { ComparisionFlagProvider } from "@/components/context/ComparisonFlagContext";
+// import { ComparisionFlagProvider } from "@/components/context/ComparisonFlagContext";
 
 const public_sans = Public_Sans({ subsets: ["latin"] });
 const figtree = Figtree({ subsets: ["latin"] });
@@ -69,11 +69,11 @@ export default async function RootLayout({ children }) {
           shadow="0 0 10px #00A1FF,0 0 5px #00A1FF"
         />
         <Providers>
-          <ComparisionFlagProvider>
-            <Navbar></Navbar>
-            {children}
-            <Footer cities={cities}></Footer>
-          </ComparisionFlagProvider>
+          {/* <ComparisionFlagProvider> */}
+          <Navbar></Navbar>
+          {children}
+          <Footer cities={cities}></Footer>
+          {/* </ComparisionFlagProvider> */}
         </Providers>
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

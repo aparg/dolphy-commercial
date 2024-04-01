@@ -1,5 +1,51 @@
 "use client";
-const BookingDate = async () => {
+import React from "react";
+import { useRef, useState, useEffect } from "react";
+import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+const BookingDate = () => {
+  // const [scrollPosition, setScrollPosition] = useState(0);
+  // const [maxScroll, setMaxScroll] = useState(0);
+  const cardRef = useRef(null);
+  // const containerRef = useRef(null);
+  // useEffect(() => {
+  //   const containerWidth = containerRef.current.offsetWidth;
+  //   const cardsWidth = cardRef.current.scrollWidth;
+  //   const maxScrollValue = cardsWidth - containerWidth;
+  //   setMaxScroll(maxScrollValue);
+  // }, []);
+
+  // const slideLeft = () => {
+  //   const newPosition = Math.min(scrollPosition + 100, 0);
+  //   console.log(newPosition);
+  //   setScrollPosition(newPosition);
+  // };
+
+  // const slideRight = () => {
+  //   const newPosition = Math.max(scrollPosition - 100, -maxScroll);
+  //   console.log(newPosition);
+  //   setScrollPosition(newPosition);
+  // };
+
+  //give me a slide right and left code for cardref and containerref also set max values
+  const containerRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const slideRight = () => {
+    const containerWidth = containerRef.current.offsetWidth;
+    const cardsWidth = cardRef.current.scrollWidth;
+    const maxScroll = cardsWidth - containerWidth;
+    const newPosition = Math.min(scrollPosition - 20, -maxScroll);
+    setScrollPosition(newPosition);
+  };
+  const slideLeft = () => {
+    const containerWidth = containerRef.current.offsetWidth;
+    const cardsWidth = cardRef.current.scrollWidth;
+    const maxScroll = cardsWidth - containerWidth;
+    // console.log(maxScroll);
+    // console.log(scrollPosition - 20);
+    const newPosition = Math.min(scrollPosition + 20, 0);
+    console.log(newPosition);
+    setScrollPosition(newPosition);
+  };
   function getDaysInMonth(year, month) {
     // Get the number of days in a month
     return new Date(year, month + 1, 0).getDate();
@@ -37,14 +83,37 @@ const BookingDate = async () => {
 
   return (
     <>
-      <div className="overflow-x-scroll flex flex-row">
-        {daysArray.map((data) => (
-          <div className="flex flex-col justify-center px-10 py-2 border-gray-500 border-2 items-center mr-1 rounded-md hover:border-cyan-400 cursor-pointer">
-            <span className="font-thin">{data.dayName}</span>
-            <span className="font-bold">{data.day}</span>
-            <span className="font-thinner">{data.month}</span>
-          </div>
-        ))}
+      <div
+        className="scroll-container relative overflow-x-scroll"
+        ref={containerRef}
+      >
+        <button
+          className="scroll-left position-absolute start-0"
+          title="scroll left"
+          onClick={slideLeft}
+        >
+          <SlArrowLeft size={16} />
+        </button>
+        <button
+          className="scroll-right position-absolute end-0"
+          title="scroll left"
+          onClick={slideRight}
+        >
+          <SlArrowRight size={16} />
+        </button>
+        <div
+          className="flex"
+          style={{ transform: `translateX(${scrollPosition}px)` }}
+          ref={cardRef}
+        >
+          {daysArray.map((data) => (
+            <div className="flex flex-col justify-center px-10 py-2 border-gray-500 border-2 items-center mr-1 rounded-md hover:border-cyan-400 cursor-pointer">
+              <span className="font-thin">{data.dayName}</span>
+              <span className="font-bold">{data.day}</span>
+              <span className="font-thinner">{data.month}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
