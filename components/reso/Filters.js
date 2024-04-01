@@ -106,7 +106,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         className={`filters d-flex gap-2 gap-md-3 flex 
          ${navbar ? "filter__scrolled mt-4 pb-4 container-fluid" : ""} `}
       >
-        <div className={`sales-lease__filter ${isMobileView && "hidden"}`}>
+        <div className={`sales-lease__filter`}>
           <IndividualFilterButton
             options={saleLeaseOptions}
             name="saleLease"
@@ -115,11 +115,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           />
         </div>
 
-        <div
-          className={`price-range__filter ${
-            isMobileView && "hidden"
-          } rounded-pill`}
-        >
+        <div className={`price-range__filter`}>
           <PriceRangeFilter
             name="priceRange"
             value={filterState.priceRange}

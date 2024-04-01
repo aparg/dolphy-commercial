@@ -1190,7 +1190,7 @@ label {
 .fff {
   background-color: rgb(255, 255, 255);
   border-radius: 0.25rem;
-  border: 1px solid;
+  /* border: 1px solid; */
   border-color: #dce0e0;
   padding: 1rem 1rem;
 }
@@ -2065,8 +2065,13 @@ button:focus:not(:focus-visible) {
 .scroll-left {
   margin-left: 24px;
 }
+.btn-outline-primary {
+  color: rgb(0, 0, 0) !important;
+  border-color: black !important;
+}
 .btn-outline-primary:hover {
   color: white !important;
+  background-color: black !important;
 }
 
 .active-pills {

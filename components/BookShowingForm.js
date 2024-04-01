@@ -73,7 +73,7 @@ export default function BookShowingForm(props) {
               </div>
             </div>
           </div>
-          <div className="row me-0 row-cols-1">
+          <div className="row me-0 row-cols-1 g-0">
             <div className="col">
               <div className="mb-3">
                 <input
@@ -89,7 +89,7 @@ export default function BookShowingForm(props) {
               </div>
             </div>
           </div>
-          <div className="row me-0">
+          <div className="row me-0 g-0">
             <div className="mb-3">
               <textarea
                 id="message"

@@ -83,7 +83,7 @@ const FilteredCommercialList = ({
           : ``}
       </h3>
       <p
-        className="fw-light"
+        className="fw-light mb-2"
         style={isMobileView ? { fontSize: "0.9rem" } : {}}
       >
         {/* Streamline your {filterState.type}{" "}
@@ -94,14 +94,13 @@ const FilteredCommercialList = ({
         {filterState.type ? `${filterState.type}s` : "Commercial Real Estate"}{" "}
         in {city || "Ontario"} and select the best ones.
       </p>
-
       <div className="filter-container flex">
         <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
       </div>
       <div
         className={`${
-          isMobileView ? "pt-1" : "pt-3"
-        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-y-3 g-md-4`}
+          isMobileView ? "pt-3" : "pt-5"
+        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-y-0 g-md-3`}
       >
         {!loading ? (
           <SalesList

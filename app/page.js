@@ -48,8 +48,8 @@ export default async function Home() {
             id="hero"
           >
             <div>
-              <h1 className="text-[1.6rem] sm:text-[4rem] main-titlee pb-0 mb-0 mt-2 mt-md-0 relative text-center">
-                <span className="d-block mb-5">Find Your Next </span>{" "}
+              <h1 className="text-[1.3rem] sm:text-[3rem] font-extrabold pb-0 mb-0 mt-2 mt-md-0 relative text-center">
+                <span className="d-block mb-2 text-white">Find Your Next </span>{" "}
                 <span className="text-white">Commercial Property </span>
               </h1>
               {/* <p className="text-center mt-0 pt-3 text-white text-xl font-semibold text-shadow">
@@ -97,7 +97,7 @@ export default async function Home() {
             </div>
           ) : null} */}
           {/* <div className="mt-80 mt-4 sm:mt-24"> */}
-          <div className="container-fluid mt-4 sm:mt-24">
+          <div className="mt-4 sm:mt-24">
             <SuggestedCity defaultCitiesData={defaultCitiesData} />
           </div>
           <div className="container-fluid mt-4 sm:mt-24">

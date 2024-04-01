@@ -89,7 +89,7 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
       }-${curElem.MLS}`
     : curElem.MLS;
   return (
-    <section className="h-[28rem]" ref={ref}>
+    <section className="h-[26rem]" ref={ref}>
       <Link
         href={`/commercial/ontario/${city}/${streetAndMLS}`}
         className="text-black"
@@ -98,15 +98,19 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
           {/* <div className="grid grid-cols-1 gap-6  mt-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:px-0"> */}
           <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl p-0 hover:shadow-lg hover:-translate-y-1 relative">
             <div className="h-72 overflow-hidden relative">
-              <img
-                className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110"
-                src={imgSrc}
-                alt="property image"
-                onError={handleImageError}
-              />
+              <div className="h-72 relative">
+                <img
+                  className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110"
+                  src={imgSrc}
+                  alt="property image"
+                  onError={handleImageError}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div>
+              </div>
+
               <div className="absolute top-3 left-2 flex flex-row">
                 <div
-                  className="text-white text-sm p-1 rounded-md mx-1"
+                  className="text-white text-[0.8rem] p-1 px-2 rounded-md mx-1"
                   style={{
                     background: "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
                   }}
@@ -114,9 +118,9 @@ const CityResoCard = React.forwardRef(({ curElem, city }, ref) => {
                   {curElem.TypeOwn1Out}{" "}
                 </div>
               </div>
-              <div className="absolute top-2 right-2 w-6 h-6">
+              {/* <div className="absolute top-2 right-2 w-6 h-6">
                 <CompareButton main_data={curElem} width={6} />
-              </div>
+              </div> */}
               <div className="absolute bottom-3 left-2 z-10">
                 <div className="text-black text-xs p-1 px-2 rounded-md mx-1 bg-white">
                   <TimeAgo modificationTimestamp={curElem.TimestampSql} />
