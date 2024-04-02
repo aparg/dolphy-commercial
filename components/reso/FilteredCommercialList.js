@@ -16,6 +16,9 @@ import ResoCard from "./ResoCard";
 import { ImSpinner } from "react-icons/im";
 import { useInView } from "react-intersection-observer";
 import CityResoCard from "./CityResoCard";
+import HotListings from "../HotListings";
+import { prependToLocalStorageArray } from "@/helpers/handleLocalStorageArray";
+import { plural } from "@/constant/plural";
 
 const FilteredCommercialList = ({
   INITIAL_LIMIT,
@@ -38,7 +41,6 @@ const FilteredCommercialList = ({
   const [loading, setLoading] = useState(true);
 
   const fetchFilteredData = async (payload) => {
-    console.log(payload);
     const queryParams = {
       city: city ? capitalizeFirstLetter(city) : undefined,
       limit: INITIAL_LIMIT,
@@ -58,6 +60,14 @@ const FilteredCommercialList = ({
       minTimestampSql: filterState.minTimestampSql,
       ...payload,
     };
+    prependToLocalStorageArray("recentSearch", {
+      city: queryParams.city && capitalizeFirstLetter(queryParams.city),
+      saleLeaseSearch:
+        queryParams.saleLease && capitalizeFirstLetter(queryParams.saleLease),
+      searchType: Object.keys(listingType).find(
+        (key) => listingType[key]?.value === queryParams.houseType
+      ),
+    });
     console.log(queryParams);
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
@@ -71,13 +81,15 @@ const FilteredCommercialList = ({
 
   useEffect(() => {
     fetchFilteredData();
+    //save in local storage about the filter recently used
   }, []);
 
   return (
     <div className="container-fluid">
       <h3 className={`main-title fs-2 ${isMobileView ? "pt-3" : "pt-4"}`}>
-        Find {filterState.type ? filterState.type : "Commercial Real Estate"}{" "}
-        {filterState.saleLease || "For Sale"} in {city || "Ontario"}{" "}
+        Find {filterState.type ? filterState.type : "Commercial Real Estate"}
+        {plural[filterState.type]} {filterState.saleLease || "For Sale"} in{" "}
+        {capitalizeFirstLetter(city) || "Ontario"}{" "}
         {filterState.priceRange.max
           ? `under $${filterState.priceRange.max}`
           : ``}
@@ -91,12 +103,20 @@ const FilteredCommercialList = ({
         by price, or listing type. Explore the latest MLS® listings for
       up-to-date information. */}
         Explore top{" "}
-        {filterState.type ? `${filterState.type}s` : "Commercial Real Estate"}{" "}
-        in {city || "Ontario"} and select the best ones.
+        {filterState.type
+          ? `${filterState.type} ${plural[filterState.type]}`
+          : "Commercial Real Estate"}{" "}
+        in {capitalizeFirstLetter(city) || "Ontario"} and select the best ones.
       </p>
       <div className="filter-container flex">
         <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
       </div>
+      <HotListings
+        INITIAL_LIMIT={30}
+        saleLeaseValue={saleLeaseValue}
+        city={city}
+        type={type}
+      />
       <div
         className={`${
           isMobileView ? "pt-3" : "pt-5"

@@ -35,9 +35,24 @@ export default async function Home() {
     BRAMPTONCITY
   );
   const defaultCitiesData = [
-    { city: CITY, data: torontoData },
-    { city: CAMBRIDGECITY, data: cambridgeData },
-    { city: BRAMPTONCITY, data: bramptonData },
+    {
+      city: CITY,
+      data: torontoData,
+      type: undefined,
+      saleLeaseSearch: undefined,
+    },
+    {
+      city: CAMBRIDGECITY,
+      data: cambridgeData,
+      type: undefined,
+      saleLeaseSearch: undefined,
+    },
+    {
+      city: BRAMPTONCITY,
+      data: bramptonData,
+      type: undefined,
+      saleLeaseSearch: undefined,
+    },
   ];
   return (
     <>

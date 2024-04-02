@@ -5,31 +5,71 @@ import CityResoCard from "@/components/reso/CityResoCard";
 
 //ICONS
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import { plural } from "@/constant/plural";
+import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
+import { saleLease } from "@/constant";
 
-const AdditionalListing = ({ city, newSalesData, listingType = null }) => {
+const AdditionalListing = ({
+  city,
+  newSalesData,
+  listingType = null,
+  saleLeaseValue = null,
+}) => {
   const scrollRef = useRef(null); //used to hold scroll value
   const cardRef = useRef(null); //used to hold card width value
   const formattedCity = city.toLowerCase();
+  // const slideLeft = () => {
+  //   const dynamicWidthOfCard = cardRef.current.offsetWidth;
+  //   // @ts-ignore
+  //   scrollRef.current.scrollLeft = slider.scrollLeft - dynamicWidthOfCard;
+  // };
+  // const slideRight = () => {
+  //   const dynamicWidthOfCard = cardRef.current.offsetWidth;
+  //   // @ts-ignore
+  //   scrollRef.current.scrollLeft = slider.scrollLeft + dynamicWidthOfCard;
+  // };
+
   const slideLeft = () => {
-    const dynamicWidthOfCard = cardRef.current.offsetWidth;
-    // @ts-ignore
-    scrollRef.current.scrollLeft = slider.scrollLeft - dynamicWidthOfCard;
+    const scrollContainer = scrollRef.current;
+    const cardWidth = cardRef.current.offsetWidth;
+    const scrollAmount = cardWidth * 3; // Adjust the scroll amount as needed
+    scrollContainer.scrollLeft -= scrollAmount;
   };
+
   const slideRight = () => {
-    const dynamicWidthOfCard = cardRef.current.offsetWidth;
-    // @ts-ignore
-    scrollRef.current.scrollLeft = slider.scrollLeft + dynamicWidthOfCard;
+    const scrollContainer = scrollRef.current;
+    const cardWidth = cardRef.current.offsetWidth;
+    const scrollAmount = cardWidth * 3; // Adjust the scroll amount as needed
+    scrollContainer.scrollLeft += scrollAmount;
   };
 
   return (
     <div className="position-relative">
       <div className="d-flex justify-content-between pt-5 explore-container my-0 sm:my-4">
         <div className="w-full flex flex-row justify-between">
-          <h3 className="main-title fs-1 fs-sm-2 ">
-            Explore New {listingType ? `${listingType}` : ``} Listings in {city}
-          </h3>
+          {!listingType ? (
+            <h3 className="main-title fs-1 fs-sm-2 ">
+              Explore New {listingType ? `${listingType}` : ``} Listings in{" "}
+              {city}
+            </h3>
+          ) : (
+            <h3 className="main-title fs-1 fs-sm-2 ">
+              Continue searching for {capitalizeFirstLetter(listingType)}
+              {`${plural[capitalizeFirstLetter(listingType)]}`} in {city}{" "}
+              {console.log(saleLeaseValue)}
+              {saleLeaseValue &&
+                `${
+                  Object.values(saleLease).find((data) => {
+                    console.log(data.value, saleLeaseValue);
+                    return data.value == saleLeaseValue;
+                  })?.name
+                }`}
+            </h3>
+          )}
           <a
-            href={`/ontario/${formattedCity}`}
+            href={`/ontario/${formattedCity}${
+              listingType && `/${listingType}`
+            }`}
             className="btn btn-outline-primary float-end btn-explore px-2 sm:px-2 py-0 sm:py-2 h-6 sm:h-11"
           >
             <span className="hidden sm:inline">Explore </span>All

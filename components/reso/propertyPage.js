@@ -88,11 +88,11 @@ const PropertyPage = ({ main_data }) => {
   }, []);
 
   return (
-    <div className="col-12 col">
-      <div className="screenshot">
+    <div className="col-12 col row gy-3 g-sm-0">
+      <div className="screenshot col-12">
         <div className="row row-cols-1 row-cols-sm-2">
           <div className="col-sm-12">
-            <div className="d-flex justify-content-between align-items-md-center flex-column gap-2 flex-md-row">
+            <div className="d-flex justify-content-between align-items-md-center flex-column gap-4 gap-md-2 flex-md-row">
               <h1 className="vmain-title mb-0 mt-4 mt-md-2">
                 <div className="uppercase bannerSection">
                   <div className="listingStatus"></div>
@@ -226,7 +226,7 @@ const PropertyPage = ({ main_data }) => {
           </div> */}
         </div>
       </div>
-      <div className="mt-4 sm:mt-24">
+      <div className="mt-24 col-12 ">
         <h2 className="fw-bold fs-4 pb-3">
           <Image
             alt="walking  "

@@ -1,7 +1,21 @@
 const prependToLocalStorageArray = (key, value, number = 3) => {
   // Retrieve the array from local storage or initialize an empty array
   let storedArray = JSON.parse(localStorage.getItem(key)) || [];
-
+  //if value is object, check if the object already exists in the array, if so return
+  console.log(value);
+  console.log(storedArray);
+  if (
+    typeof value === "object" &&
+    storedArray.find(
+      (item) =>
+        item.name === value.name &&
+        item.searchType === value.searchType &&
+        item.saleLeaseSearch === value.saleLeaseSearch
+    )
+  ) {
+    console.log("object already exists in array");
+    return;
+  }
   // Prepend the new value to the array
   if (!storedArray.includes(value)) storedArray.unshift(value);
   storedArray = storedArray.slice(0, number);

@@ -23,7 +23,6 @@ const Map = ({ main_data }) => {
       listDetail;
     const fullAddressForMap = `${Street}, ${StreetName} ${StreetAbbreviation}, ${Area}, ${Province}, Canada`;
     const url = latLong;
-
     const options = {
       method: "POST",
       headers: {
@@ -35,9 +34,10 @@ const Map = ({ main_data }) => {
         locationToSearch: fullAddressForMap,
       }),
     };
-
+    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
+    console.log(data);
     return data;
   }
 
@@ -45,6 +45,9 @@ const Map = ({ main_data }) => {
     if (userIP) {
       const commonFunctionCall = async () => {
         const latLngValue = await getLatLongForMap(main_data);
+        console.log(latLngValue.result.lat);
+        console.log(latLngValue.result.lon);
+
         setState({
           lat: latLngValue.result.lat,
           lon: latLngValue.result.lon,

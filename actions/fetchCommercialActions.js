@@ -35,8 +35,8 @@ export const getFilteredRetsData = async (queryParams) => {
   try {
     //all the necessary queries possible
     let selectQuery = `${
-      queryParams.city ? `Municipality=${queryParams.city},` : ""
-    }${queryParams.saleLease ? `SaleLease=${queryParams.saleLease}` : ""}`;
+      queryParams.city ? `Municipality=${queryParams.city}` : ""
+    }${queryParams.saleLease ? `,SaleLease=${queryParams.saleLease}` : ""}`;
     const skipQuery = `${queryParams.offset}`;
     const limitQuery = `${queryParams.limit}`;
     const timestampQuery = `${queryParams.minTimestampSql || ""}`;
@@ -52,12 +52,15 @@ export const getFilteredRetsData = async (queryParams) => {
 
     const url = commercial.properties.replace(
       "$query",
-      `?$select=${selectQuery}&$timestampFilter='${timestampQuery}'&$skip=${skipQuery}&$limit=${limitQuery}&$range=${rangeQuery}`
+      `?$select=${selectQuery}${
+        timestampQuery && `&$timestampFilter='${timestampQuery}'`
+      }&$skip=${skipQuery}&$limit=${limitQuery}&$range=${rangeQuery}`
     );
     const options = {
       method: "GET",
       cache: "no-store",
     };
+    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data?.results;

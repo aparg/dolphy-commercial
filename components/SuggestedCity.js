@@ -1,7 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import AdditionalListing from "./reso/AdditionalListing";
-import { getCommercialData } from "@/actions/fetchCommercialActions";
+import {
+  getCommercialData,
+  getFilteredRetsData,
+} from "@/actions/fetchCommercialActions";
+import { listingType, saleLease } from "@/constant";
+import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 const INITIAL_OFFSET = 0;
 const INITIAL_LIMIT = 20;
 const SuggestedCity = ({ defaultCitiesData }) => {
@@ -9,7 +14,8 @@ const SuggestedCity = ({ defaultCitiesData }) => {
   const [defaultData, setDefaultData] = useState(defaultCitiesData);
   useEffect(() => {
     // Retrieve values from local storage on component mount
-    let storedCityValues = JSON.parse(localStorage.getItem("searchedCities"));
+    let storedCityValues = JSON.parse(localStorage.getItem("recentSearch"));
+
     if (!storedCityValues) {
       setCitiesData(defaultCitiesData);
       return;
@@ -22,6 +28,7 @@ const SuggestedCity = ({ defaultCitiesData }) => {
         ...defaultData.slice(0, 3 - storedCityValues.length),
       ];
     }
+    console.log(storedCityValues);
     //Make sure only three values remain in array
     storedCityValues.length > 3 && storedCityValues.slice(0, 3);
     // Retrieve object with city and data
@@ -29,7 +36,11 @@ const SuggestedCity = ({ defaultCitiesData }) => {
       // fetchDataForCity is a function that fetches data for a given city
       const dataPromises = storedCityValues.map((cityData, idx) => {
         if (!cityData?.data) {
-          const data = fetchDataForCity(cityData);
+          const data = fetchDataForCity(
+            cityData.city,
+            cityData.searchType,
+            cityData.saleLeaseSearch
+          );
           if (data) return data;
           else return defaultData[3 - storedCityValues.length];
         }
@@ -37,23 +48,57 @@ const SuggestedCity = ({ defaultCitiesData }) => {
       });
 
       const citiesData = await Promise.all(dataPromises);
+      console.log(citiesData);
+
       //check if there is no property listings for given city and populate with other city data
       const populatedData = await citiesData.map((cityData, idx) => {
         if (cityData.data.length < 1) {
-          return defaultData[4 - storedCityValues.length];
+          // return defaultData[4 - storedCityValues.length];
+          //return an element from defaultData whose city property doesnt match any of the element's city property in citiesData array
+
+          const found = defaultData.find((element) => {
+            for (cityData of citiesData) {
+              if (element.city == cityData.city) return false;
+            }
+            return true;
+          });
+          return found;
         }
+
         return cityData;
       });
       setCitiesData(populatedData);
     };
 
     fetchCitiesData();
+    console.log(citiesData);
   }, []);
 
-  const fetchDataForCity = async (city) => {
+  const fetchDataForCity = async (city, searchType, saleLeaseSearch) => {
     // Perform API request for city data
-    const data = await getCommercialData(INITIAL_OFFSET, INITIAL_LIMIT, city);
-    return { city, data };
+    const queryParams = {
+      city: city ? capitalizeFirstLetter(city) : undefined,
+      limit: INITIAL_LIMIT,
+      houseType:
+        Object.values(listingType).find((type) => type.name === searchType)
+          ?.value || undefined,
+      offset: 0,
+      hasBasement: undefined,
+      maxListPrice: 0,
+      minListPrice: 0,
+      sepEntrance: undefined,
+      washroom: undefined,
+      saleLease:
+        Object.values(saleLease).filter(
+          (state) => state.name === saleLeaseSearch
+        )[0]?.value || undefined,
+      minTimestampSql: undefined,
+    };
+    console.log(queryParams);
+    // const data = await getCommercialData(INITIAL_OFFSET, INITIAL_LIMIT, city);
+    const data = await getFilteredRetsData(queryParams);
+    console.log(data);
+    return { city, data, type: searchType, saleLease: saleLeaseSearch };
   };
 
   return (
@@ -64,8 +109,10 @@ const SuggestedCity = ({ defaultCitiesData }) => {
             <section className="additonal__listing">
               {cityData.data && (
                 <AdditionalListing
-                  city={cityData.city}
+                  city={cityData.city && capitalizeFirstLetter(cityData.city)}
                   newSalesData={cityData.data}
+                  listingType={cityData.type}
+                  saleLeaseValue={cityData.saleLease}
                 />
               )}
             </section>

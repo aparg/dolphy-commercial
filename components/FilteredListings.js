@@ -18,7 +18,7 @@ const plural = {
   Land: "s",
   Business: "es",
 };
-const HotListings = ({
+const FilteredListings = ({
   INITIAL_LIMIT,
   city = undefined,
   type = undefined,
@@ -87,10 +87,10 @@ const HotListings = ({
   useEffect(() => {
     fetchFilteredData();
   }, []);
-  if (salesData.length > 0)
+  if (salesData)
     return (
       <div
-        className="position-relative rounded-xl px-2 sm:px-6 mt-4"
+        className="position-relative rounded-xl px-6"
         style={{
           background: "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
         }}
@@ -98,7 +98,8 @@ const HotListings = ({
         <div className="d-flex justify-content-between pt-5 explore-container my-0 sm:my-4">
           <div className="w-full flex flex-row justify-between">
             <h3 className="main-title fs-2 fs-sm-2 text-white">
-              Hot Listings Today!
+              Continue Search for {type}
+              {plural[type]} in {city}
             </h3>
           </div>
         </div>
@@ -131,7 +132,6 @@ const HotListings = ({
                 key={index}
                 curElem={curElem}
                 ref={cardRef}
-                small={true}
               />
             );
             // }
@@ -142,4 +142,4 @@ const HotListings = ({
     );
 };
 
-export default HotListings;
+export default FilteredListings;

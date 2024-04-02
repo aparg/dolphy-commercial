@@ -1033,6 +1033,10 @@ label {
   height: 410px;
 }
 
+#date-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .grid-item2,
 .grid-item3,
 .grid-item4,

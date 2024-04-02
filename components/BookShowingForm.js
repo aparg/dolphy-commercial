@@ -31,7 +31,7 @@ export default function BookShowingForm(props) {
     ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
   };
   return (
-    <div className="fixed-title pe-0 top-30 sticky" id="contact">
+    <div className="fixed-title pe-0 top-30 sticky mt-24" id="contact">
       <div className="p-6 pb-0 shadow-2xl rounded-mine bordt bg-white border-[#e8e9ea]">
         <h5 className="fw-bold text-center linem fs-4  mb-0">Book a showing</h5>
         <p className="text-center pt-2 cardd-subtitle_bg-black">
@@ -74,6 +74,7 @@ export default function BookShowingForm(props) {
               </div>
             </div>
           </div>
+          <BookingDate />
           <div className="row me-0 row-cols-1 g-0">
             <div className="col">
               <div className="mb-3">
@@ -144,7 +145,6 @@ export default function BookShowingForm(props) {
             id="subbtn"
           />
         </form>
-        <BookingDate />
       </div>
     </div>
   );

@@ -94,18 +94,18 @@ const SearchBar = () => {
 
   const prependToLocalStorageArray = (newValue) => {
     // Retrieve the array from local storage or initialize an empty array
-    let storedArray = JSON.parse(localStorage.getItem("searchedCities")) || [];
+    let storedArray = JSON.parse(localStorage.getItem("recentSearch")) || [];
 
     // Prepend the new value to the array
     if (!storedArray.includes(newValue)) storedArray.unshift(newValue);
     storedArray = storedArray.slice(0, 3);
     // Store the updated array back to local storage
-    localStorage.setItem("searchedCities", JSON.stringify(storedArray));
+    localStorage.setItem("recentSearch", JSON.stringify(storedArray));
   };
 
   // Render Each Option
   const renderSuggestion = (suggestion) => (
-    <div onClick={() => prependToLocalStorageArray(suggestion.city)}>
+    <div onClick={() => prependToLocalStorageArray({ city: suggestion.city })}>
       <Link
         href={`/${suggestion.province.toLowerCase()}/${suggestion.city.toLowerCase()}`}
         className="ha-link"
@@ -149,7 +149,7 @@ const SearchBar = () => {
 
         // If there is a suggestion, navigate to its link
         if (firstSuggestion) {
-          prependToLocalStorageArray(firstSuggestion.city);
+          prependToLocalStorageArray({ city: firstSuggestion.city });
           router.push(
             `/${firstSuggestion.province.toLowerCase()}/${firstSuggestion.city.toLowerCase()}`
           );

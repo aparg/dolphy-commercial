@@ -27,7 +27,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
   const houseTypeOptions = Object.values(listingType).map((item) => item.name);
   //options for house type
   const numberOfDaysOptions = Object.values(numberOfDays).map(
-    (item) => item.name
+    (item) => item.userFilter && item.name
   );
 
   //dynamic price range generator based on sale or lease options
@@ -226,14 +226,17 @@ const TimeFilterButton = ({ name, handleFilterChange }) => {
         selectionMode="single"
       >
         {Object.values(numberOfDays).map((option) => {
-          return (
-            <DropdownItem
-              key={option.name}
-              onClick={() => handleTime(option.name, option.value)}
-            >
-              {option.name}
-            </DropdownItem>
-          );
+          if (option.userFilter) {
+            return (
+              <DropdownItem
+                key={option.name}
+                onClick={() => handleTime(option.name, option.value)}
+              >
+                {option.name}
+              </DropdownItem>
+            );
+          }
+          return;
         })}
       </DropdownMenu>
     </Dropdown>

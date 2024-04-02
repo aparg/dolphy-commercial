@@ -37,13 +37,11 @@ const page = () => {
   const images = dataArray.map((data) => {
     return (
       <td className="mx-2 p-2 border-b" key={data.MLS}>
-        <div className="h-42 w-64">
-          <Image
-            src={generateImageURLs(data.MLS)[0]}
-            className="object-cover block rounded-md"
-            alt="propertyImage"
-          ></Image>
-        </div>
+        <Image
+          src={generateImageURLs(data.MLS)[0]}
+          className="object-cover block rounded-md w-64 h-64"
+          alt="propertyImage"
+        ></Image>
       </td>
     );
   });

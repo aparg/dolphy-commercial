@@ -20,7 +20,6 @@ const firstDateOfMonth = () => {
   currentDateUTC.setUTCDate(1);
 
   var startDateOfMonthUTC = currentDateUTC.toISOString().split("T")[0];
-
   return startDateOfMonthUTC;
 };
 
@@ -73,9 +72,28 @@ const getLastDateOfLastWeek = () => {
   return formattedDate;
 };
 
+const todayDate = () => {
+  const currentDate = new Date(Date.now());
+  const formattedData = currentDate.toISOString().slice(0, 10);
+  return formattedData;
+};
+
 export const numberOfDays = {
-  thisWeek: { name: "This Week", value: firstDateOfWeek() },
-  lastWeek: { name: "Last Week", value: getLastDateOfLastWeek() },
-  thisMonth: { name: "This Month", value: firstDateOfMonth() },
-  lastSixMonths: { name: "Last Six Months", value: firstDateofLastSixMonths() },
+  thisWeek: { name: "This Week", value: firstDateOfWeek(), userFilter: true },
+  lastWeek: {
+    name: "Last Week",
+    value: getLastDateOfLastWeek(),
+    userFilter: true,
+  },
+  thisMonth: {
+    name: "This Month",
+    value: firstDateOfMonth(),
+    userFilter: true,
+  },
+  lastSixMonths: {
+    name: "Last Six Months",
+    value: firstDateofLastSixMonths(),
+    userFilter: true,
+  },
+  Today: { name: "Today", value: todayDate(), userFilter: false },
 };
