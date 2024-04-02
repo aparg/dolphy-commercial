@@ -68,7 +68,13 @@ const AdditionalListing = ({
           )}
           <a
             href={`/ontario/${formattedCity}${
-              listingType && `/${listingType}`
+              listingType ? `/${listingType}` : ""
+            }${
+              saleLeaseValue
+                ? `/${Object.keys(saleLease).find(
+                    (key) => saleLease[key].value == saleLeaseValue
+                  )}`
+                : ``
             }`}
             className="btn btn-outline-primary float-end btn-explore px-2 sm:px-2 py-0 sm:py-2 h-6 sm:h-11"
           >
