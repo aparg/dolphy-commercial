@@ -29,6 +29,13 @@ const AdditionalListing = ({
   //   scrollRef.current.scrollLeft = slider.scrollLeft + dynamicWidthOfCard;
   // };
 
+  //business is returned as Sale of business so we need to modify it to Business
+  const modifyType = (type) => {
+    console.log(type);
+    if (type == "Sale Of Business") return "business";
+    return type;
+  };
+
   const slideLeft = () => {
     const scrollContainer = scrollRef.current;
     const cardWidth = cardRef.current.offsetWidth;
@@ -54,9 +61,12 @@ const AdditionalListing = ({
             </h3>
           ) : (
             <h3 className="main-title fs-1 fs-sm-2 ">
-              Continue searching for {capitalizeFirstLetter(listingType)}
-              {`${plural[capitalizeFirstLetter(listingType)]}`} in {city}{" "}
-              {console.log(saleLeaseValue)}
+              Continue searching for{" "}
+              {capitalizeFirstLetter(modifyType(listingType))}
+              {`${
+                plural[capitalizeFirstLetter(modifyType(listingType))] || ""
+              }`}{" "}
+              in {city} {console.log(saleLeaseValue)}
               {saleLeaseValue &&
                 `${
                   Object.values(saleLease).find((data) => {

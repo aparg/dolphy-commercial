@@ -4,6 +4,7 @@ import SalesList from "@/components/reso/SalesList";
 import { getCommercialData } from "@/actions/fetchCommercialActions";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import FilteredCommercialList from "@/components/reso/FilteredCommercialList";
+import HotListings from "@/components/HotListings";
 
 const page = async ({ params }) => {
   const city = params.city;
@@ -11,6 +12,7 @@ const page = async ({ params }) => {
   // const saleLeaseValue = params.saleLease;
   return (
     <div className="">
+      <HotListings INITIAL_LIMIT={20} />
       <FilteredCommercialList
         {...{
           city,

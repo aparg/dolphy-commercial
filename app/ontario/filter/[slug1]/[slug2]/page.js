@@ -5,6 +5,7 @@ import { getCommercialData } from "@/actions/fetchCommercialActions";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import FilteredCommercialList from "@/components/reso/FilteredCommercialList";
 import { plural } from "@/constant/plural";
+import HotListings from "@/components/HotListings";
 
 const page = async ({ params }) => {
   let saleLeaseValue = undefined;
@@ -26,6 +27,7 @@ const page = async ({ params }) => {
   if (isValidSlug)
     return (
       <div className="">
+        <HotListings INITIAL_LIMIT={10} type={type} />
         <FilteredCommercialList
           {...{
             INITIAL_LIMIT,

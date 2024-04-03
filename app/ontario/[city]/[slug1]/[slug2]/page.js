@@ -33,6 +33,16 @@ const page = async ({ params }) => {
   if (isValidSlug)
     return (
       <div className="container-fluid">
+        <HotListings
+          INITIAL_LIMIT={10}
+          city={city}
+          type={type}
+          saleLeaseValue={saleLeaseValue}
+        />
+        <h3 className="text-center">
+          {type} {saleLease[saleLeaseValue]?.name} in {city}
+        </h3>
+        <hr />
         <FilteredCommercialList
           {...{
             city,

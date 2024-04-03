@@ -19,20 +19,19 @@ const page = async ({ params }) => {
   const isValidSlug = saleLeaseValue || type;
   const city = params.city;
   const INITIAL_LIMIT = 30;
-  const formattedSlug = capitalizeFirstLetter(city);
-  const commercialListData = await getCommercialData(
-    0,
-    INITIAL_LIMIT,
-    formattedSlug
-  );
   if (isValidSlug)
     return (
       <div className="container-fluid">
+        <HotListings
+          city={city}
+          INITIAL_LIMIT={10}
+          type={type}
+          saleLeaseValue={saleLeaseValue}
+        />
         <FilteredCommercialList
           {...{
             city,
             INITIAL_LIMIT,
-            commercialListData,
             type,
             saleLeaseValue,
           }}
