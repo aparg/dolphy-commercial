@@ -54,10 +54,10 @@ const page = async ({ params }) => {
 
   return (
     <>
-      <button className="fixed w-full text-white text-lg sm:text-xl bottom-2 sm:bottom-5 sm:hidden p-6 z-[999]">
+      <button className="fixed w-full text-white text-2xl sm:text-xl bottom-2 sm:bottom-5 sm:hidden p-6 z-[999]">
         <Link
           href="#contact"
-          className="bg-primary-green rounded-md shadow-2xl px-[50px] sm:px-[100px] py-2 sm:py-5 text-white shadow-md"
+          className="bg-primary-green rounded-md shadow-2xl px-[50px] sm:px-[100px] py-3 sm:py-5 text-white shadow-md"
         >
           Book a showing
         </Link>
@@ -113,7 +113,7 @@ const page = async ({ params }) => {
         </section>
 
         {formattedSlug && (
-          <section className="additonal__listing w-full mx-auto mt-24">
+          <section className="additonal__listing w-full mx-auto my-52">
             <AdditionalListing
               city={formattedSlug}
               newSalesData={newSalesData}

@@ -102,8 +102,8 @@ const PropertyPage = ({ main_data }) => {
                     ACTIVE
                   </span>
                 </div>
-                <div className="flex items-center">
-                  <span className="mr-1">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="me-2">
                     {main_data.Street} {main_data.StreetName}{" "}
                     {main_data.StreetAbbreviation}
                   </span>
@@ -127,7 +127,7 @@ const PropertyPage = ({ main_data }) => {
                 ></Image> */}
               </div>
             </div>
-            <div className="d-flex align-items-center justify-content-start mb-0">
+            <div className="d-flex align-items-start md:align-items-center justify-content-start mb-0 flex-col md:flex-row gap-y-2 mt-1 md:gap-x-2">
               {/* <h3 className="fw-bold me-2">
                 <img alt="" className="w-6 mr-2" src="/icons/bedrooms.svg" alt="bed" className="w-5" />
               </h3>
@@ -137,23 +137,32 @@ const PropertyPage = ({ main_data }) => {
               </h3>
               <span>{main_data.Washrooms}</span> */}
               {/* <h3 className="fw-bold mx-2">.</h3> */}
-              <h3 className="fw-bold mr-2 mt-4">
-                <img src="/ruler.svg" alt="area" className="w-5" />
-              </h3>
-              <span>
-                {parseInt(main_data.TotalArea).toFixed(0)}
-                {main_data.TotalAreaCode}
-              </span>
-              <h3 className="fw-bold mx-2">.</h3>
+              <div className="flex">
+                <span className="d-inline d-md-none me-2">|</span>
+                <p className="card-subtitle mb-0 fw-mine text-limit">
+                  MLS - #{main_data.MLS}
+                </p>
+              </div>
+              <div className="flex align-center gap-4 md:gap-3">
+                <div className="flex">
+                  <span className="me-2 font-bold">|</span>
+                  <h3 className="fw-bold mr-2">
+                    <img src="/ruler.svg" alt="area" className="w-5" />
+                  </h3>
+                  <span>
+                    {parseInt(main_data.TotalArea).toFixed(0)}
+                    {main_data.TotalAreaCode}
+                  </span>
+                </div>
+              </div>
               <span className="shadow-none bg-none">
+                <span className="me-2">|</span>
                 {main_data.TypeOwn1Out}
               </span>
-              <h3 className="fw-bold mx-2 d-md-inline">.</h3>
               <span className="shadow-none bg-none">
+                <span className="me-2">|</span>
                 {main_data.Municipality}, Ontario, {main_data.PostalCode}
               </span>
-              <h3 className="fw-bold mx-2 d-none d-md-inline">.</h3>
-
               {/* <span className="text-limit fw-bold d-none d-md-inline">
                 <Link
                   activeSubClassName=" "
@@ -171,82 +180,80 @@ const PropertyPage = ({ main_data }) => {
                 <a> {props.post.house_detail.city.name}</a>
               </Link>
             </span>*/}
-            <p className="card-subtitle mb-0 fw-mine text-limit">
-              MLS - #{main_data.MLS}
-            </p>
           </div>
         </div>
         <div className="py-3 py-md-3">
           <div className="border-top"></div>
         </div>
-        <div className="pb-3 pb-md-5 mt-20">
-          <h2 className="text-3xl sm:text-4xl font-extrabold leading-10">
+        <div className="pb-3 pb-md-5 mt-5 md:mt-20">
+          <h2 className="text-xl sm:text-4xl font-extrabold leading-10 mb-2 md:mb-5">
             <span className="aff2">About this commercial property</span>
           </h2>
-          <div className="flex flex-col">
-            <div className="flex flex-row text-xl py-2">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/property.svg" />
               Property Type: {main_data.PropertyType}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/property1.svg" />
               Primary Property Type: {main_data.TypeOwn1Out}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/property2.svg" />
               Used For: {main_data.Use}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/building.svg" />
               Building Size: {main_data.OfficeAptArea}
               {main_data.OfficeAptAreaCode}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/community.svg" />
               Community: {main_data.Community}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/people.svg" />
               Occupancy: {main_data.Occupancy}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/time.svg" />
               Approx. Age: {main_data.ApproxAge}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/property2.svg" />
               Zone: {main_data.Zoning}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/garage.svg" />
               Garage Type: {main_data.GarageType}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/air-condition.svg" />
               Air Conditioning: {main_data.AirConditioning}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax3.svg" />
               Taxes: ${main_data.Taxes}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax4.svg" />
               Tax Type: {main_data.TypeTaxes || "N/A"}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax1.svg" />
               Tax Year: {main_data.TaxYear}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax2.svg" />
               Commercial Condo Fees:{" "}
               {(main_data.CommercialCondoFees &&
                 `$${main_data.CommercialCondoFees}`) ||
                 "N/A"}
             </div>
-            <div className="flex flex-row text-xl py-2">
-              {main_data.RemarksForClients}
-            </div>
+          </div>
+
+          <div className="flex flex-row text-md py-3 pt-12">
+            {main_data.RemarksForClients}
           </div>
           {/* <div className="text-start my-3 text-inside">
             <div

@@ -130,7 +130,7 @@ const Navbar = (props) => {
 
           <div className="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
             <Dropdown
-              name="Business For Sale"
+              name="Business for sale"
               options={[
                 {
                   name: "Office for Sale",
@@ -182,9 +182,9 @@ const Navbar = (props) => {
                ${!isHomePage && "text-black"}`}
             >
               {" "}
-              Your Comparisons{" "}
+              Your comparisons{" "}
             </Link>
-            <Link
+            {/* <Link
               href="#"
               title=""
               className={`text-base font-medium transition-all duration-200 ${
@@ -199,7 +199,7 @@ const Navbar = (props) => {
             >
               {" "}
               Cities{" "}
-            </Link>
+            </Link> */}
 
             <Link
               href="#"

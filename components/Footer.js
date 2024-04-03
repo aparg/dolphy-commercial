@@ -312,8 +312,8 @@ const Footer = ({ cities }) => {
             </div>
           </div>
 
-          <div className="pt-12 mt-12  border-t border-gray-200 sm:mt-16 lg:mt-20">
-            <p className="text-sm font-normal text-gray-900">
+          <div className="pt-12 mt-12  border-t border-gray-200 sm:mt-16 lg:mt-20 mb-20">
+            <p className="text-sm font-normal text-gray-900 text-center">
               © Copyright 2023, All Rights Reserved by Dolphy
             </p>
           </div>

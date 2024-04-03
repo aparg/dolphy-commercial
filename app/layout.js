@@ -5,11 +5,55 @@ import "react-quill/dist/quill.snow.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NextTopLoader from "nextjs-toploader";
-import { Public_Sans, Figtree } from "next/font/google";
+import { Figtree } from "next/font/google";
 import { Providers } from "./providers";
-// import { ComparisionFlagProvider } from "@/components/context/ComparisonFlagContext";
+import localFont from "next/font/local";
 
-const public_sans = Public_Sans({ subsets: ["latin"] });
+const satoshi = localFont({
+  src: [
+    {
+      path: "./Satoshi-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./Satoshi-Italic.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "./Satoshi-Medium.otf",
+      weight: "500", // Adjust weight to 500 for medium (or as specified in the font file)
+      style: "normal",
+    },
+    {
+      path: "./Satoshi-MediumItalic.otf",
+      weight: "500", // Adjust weight to 500 for medium (or as specified in the font file)
+      style: "italic",
+    },
+    {
+      path: "./Satoshi-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./Satoshi-BoldItalic.otf",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "./Satoshi-Black.otf",
+      weight: "900", // Adjust weight to 900 for black (or as specified in the font file)
+      style: "normal",
+    },
+    {
+      path: "./Satoshi-BlackItalic.otf",
+      weight: "900", // Adjust weight to 900 for black (or as specified in the font file)
+      style: "italic",
+    },
+  ],
+});
+
 const figtree = Figtree({ subsets: ["latin"] });
 
 // export const metadata = {
@@ -56,7 +100,7 @@ export default async function RootLayout({ children }) {
   let cities = await getCities();
   return (
     <html lang="en">
-      <body className={figtree.className} style={{ overflowX: "hidden" }}>
+      <body className={satoshi.className} style={{ overflowX: "hidden" }}>
         <NextTopLoader
           color="#FFFFFF"
           initialPosition={0.08}
