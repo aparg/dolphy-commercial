@@ -134,23 +134,23 @@ const Navbar = (props) => {
               options={[
                 {
                   name: "Office for Sale",
-                  link: "/office/ontario",
+                  link: "/ontario/filter/office",
                 },
                 {
                   name: "Retail for Sale",
-                  link: "/retail/ontario",
+                  link: "/ontario/filter/retail",
                 },
                 {
                   name: "Industry for sale",
-                  link: "/industrial/ontario",
+                  link: "/ontario/filter/industrial",
                 },
                 {
                   name: "Investment for sale",
-                  link: "/investment/ontario",
+                  link: "/ontario/filter/investment",
                 },
                 {
                   name: "Land for sale",
-                  link: "/land/ontario",
+                  link: "/ontario/filter/land",
                 },
               ]}
               text={isSticky || !isHomePage ? "black" : "white"}
@@ -262,11 +262,11 @@ const Navbar = (props) => {
                 options={[
                   {
                     name: "Office for Sale",
-                    link: "/ontario/toronto/sale/office",
+                    link: "/ontario/filter//toronto/sale/office",
                   },
                   {
                     name: "Retail for Sale",
-                    link: "/ontario/toronto/sale/retail",
+                    link: "/ontario/filter//toronto/sale/retail",
                   },
                 ]}
                 text={isSticky || isHomePage ? "black" : "white"}

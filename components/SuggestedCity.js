@@ -55,12 +55,16 @@ const SuggestedCity = ({ defaultCitiesData }) => {
         if (cityData.data.length < 1) {
           // return defaultData[4 - storedCityValues.length];
           //return an element from defaultData whose city property doesnt match any of the element's city property in citiesData array
-
+          const alreadyStored = [];
           const found = defaultData.find((element) => {
             for (cityData of citiesData) {
               if (element.city == cityData.city) return false;
             }
-            return true;
+            if (!alreadyStored.includes(element)) {
+              alreadyStored.push(element);
+              return true;
+            }
+            return false;
           });
           return found;
         }

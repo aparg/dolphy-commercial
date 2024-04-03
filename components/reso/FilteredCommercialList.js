@@ -60,14 +60,18 @@ const FilteredCommercialList = ({
       minTimestampSql: filterState.minTimestampSql,
       ...payload,
     };
-    prependToLocalStorageArray("recentSearch", {
-      city: queryParams.city && capitalizeFirstLetter(queryParams.city),
-      saleLeaseSearch:
-        queryParams.saleLease && capitalizeFirstLetter(queryParams.saleLease),
-      searchType: Object.keys(listingType).find(
-        (key) => listingType[key]?.value === queryParams.houseType
-      ),
-    });
+    try {
+      prependToLocalStorageArray("recentSearch", {
+        city: queryParams.city && capitalizeFirstLetter(queryParams.city),
+        saleLeaseSearch:
+          queryParams.saleLease && capitalizeFirstLetter(queryParams.saleLease),
+        searchType: Object.keys(listingType).find(
+          (key) => listingType[key]?.value === queryParams.houseType
+        ),
+      });
+    } catch (err) {
+      localStorage.removeItem("recentSearch");
+    }
     console.log(queryParams);
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
@@ -104,7 +108,7 @@ const FilteredCommercialList = ({
       up-to-date information. */}
         Explore top{" "}
         {filterState.type
-          ? `${filterState.type} ${plural[filterState.type]}`
+          ? `${filterState.type}${plural[filterState.type]}`
           : "Commercial Real Estate"}{" "}
         in {capitalizeFirstLetter(city) || "Ontario"} and select the best ones.
       </p>

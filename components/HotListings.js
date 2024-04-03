@@ -36,7 +36,7 @@ const HotListings = ({
 
   const scrollRef = useRef(null); //used to hold scroll value
   const cardRef = useRef(null); //used to hold card width value
-  const formattedCity = city.toLowerCase();
+  const formattedCity = city ? city.toLowerCase() : undefined;
   const slideLeft = () => {
     const dynamicWidthOfCard = cardRef.current.offsetWidth;
     // @ts-ignore

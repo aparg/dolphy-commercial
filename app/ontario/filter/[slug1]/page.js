@@ -4,38 +4,26 @@ import SalesList from "@/components/reso/SalesList";
 import { getCommercialData } from "@/actions/fetchCommercialActions";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import FilteredCommercialList from "@/components/reso/FilteredCommercialList";
-import HotListings from "@/components/HotListings";
 import { plural } from "@/constant/plural";
 
 const page = async ({ params }) => {
-  let saleLeaseValue;
-  let type;
+  let saleLeaseValue = undefined;
+  let type = undefined;
+  console.log("here");
   if (Object.keys(saleLease).includes(params.slug1)) {
-    console.log(params.slug1);
     saleLeaseValue = params.slug1;
-  } else if (Object.keys(saleLease).includes(params.slug2)) {
-    saleLeaseValue = params.slug2;
   }
   if (Object.keys(listingType).includes(params.slug1)) {
     type = capitalizeFirstLetter(params.slug1);
-  } else if (Object.keys(listingType).includes(params.slug2)) {
-    type = capitalizeFirstLetter(params.slug2);
   }
   const isValidSlug = saleLeaseValue || type;
-  const city = params.city;
   const INITIAL_LIMIT = 30;
-  const formattedSlug = capitalizeFirstLetter(city);
-  const commercialListData = await getCommercialData(
-    0,
-    INITIAL_LIMIT,
-    formattedSlug
-  );
-  if (isValidSlug)
+  const commercialListData = await getCommercialData(0, INITIAL_LIMIT);
+  if (isValidSlug) {
     return (
-      <div className="container-fluid">
+      <div className="">
         <FilteredCommercialList
           {...{
-            city,
             INITIAL_LIMIT,
             commercialListData,
             type,
@@ -44,34 +32,31 @@ const page = async ({ params }) => {
         />
       </div>
     );
+  }
 };
 
 export default page;
 
 export async function generateMetadata({ params }, parent) {
-  let saleLeaseValue;
-  let type;
+  let saleLeaseValue = undefined;
+  let type = undefined;
   if (Object.keys(saleLease).includes(params.slug1)) {
     saleLeaseValue = params.slug1;
-  } else if (Object.keys(saleLease).includes(params.slug2)) {
-    saleLeaseValue = params.slug2;
   }
   if (Object.keys(listingType).includes(params.slug1)) {
     type = capitalizeFirstLetter(params.slug1);
-  } else if (Object.keys(listingType).includes(params.slug2)) {
-    type = capitalizeFirstLetter(params.slug2);
   }
   return {
     ...parent,
     alternates: {
-      canonical: `https://dolphy-commercial-two.vercel.app/ontario/${type}/${saleLeaseValue}/${type}`,
+      canonical: `https://dolphy-commercial-two.vercel.app/ontario/filter/${params.slug1}/${params.slug2}`,
     },
     openGraph: {
       images: "/logo/logo-black.svg",
     },
-    title: `Find ${type} Real Estate ${saleLease[saleLeaseValue]?.name} in ${params.city}`,
-    description: `Explore top ${type}${
-      plural[capitalizeFirstLetter(type)]
-    } in ${params.city} and select the best ones`,
+    title: `Looking for ${type + plural[type]} in ontario? `,
+    description: `Find ${
+      type ? type + plural[type] : "Commercial Real Estate"
+    } ${saleLease || "For Sale"} in Ontario`,
   };
 }

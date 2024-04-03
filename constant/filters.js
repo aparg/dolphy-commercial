@@ -11,7 +11,6 @@ export const listingType = {
   industrial: { name: "Industrial", value: ".I." },
   investment: { name: "Investment", value: ".U." },
   land: { name: "Land", value: ".L." },
-  all: { name: "All", value: undefined },
 };
 
 const firstDateOfMonth = () => {

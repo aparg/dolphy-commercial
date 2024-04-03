@@ -5,7 +5,7 @@ import { commercial } from "@/api/routes";
 export const getCommercialData = async (offset, limit, city, listingType) => {
   try {
     //all the necessary queries possible
-    let selectQuery = `Municipality=${city},SaleLease='Sale'`;
+    let selectQuery = `Municipality=${city || ""},SaleLease='Sale'`;
     const skipQuery = `${offset}`;
     const limitQuery = `${limit}`;
 
@@ -23,6 +23,7 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
       cache: "no-store",
     };
 
+    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data?.results;
@@ -36,7 +37,11 @@ export const getFilteredRetsData = async (queryParams) => {
     //all the necessary queries possible
     let selectQuery = `${
       queryParams.city ? `Municipality=${queryParams.city}` : ""
-    }${queryParams.saleLease ? `,SaleLease=${queryParams.saleLease}` : ""}`;
+    }${
+      queryParams.saleLease
+        ? `${queryParams.city && ","}SaleLease=${queryParams.saleLease}`
+        : ""
+    }`;
     const skipQuery = `${queryParams.offset}`;
     const limitQuery = `${queryParams.limit}`;
     const timestampQuery = `${queryParams.minTimestampSql || ""}`;

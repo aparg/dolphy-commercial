@@ -7,10 +7,7 @@ const prependToLocalStorageArray = (key, value, number = 3) => {
   if (
     typeof value === "object" &&
     storedArray.find(
-      (item) =>
-        item.name === value.name &&
-        item.searchType === value.searchType &&
-        item.saleLeaseSearch === value.saleLeaseSearch
+      (item) => item.name === value.name && item.searchType === value.searchType
     )
   ) {
     console.log("object already exists in array");
