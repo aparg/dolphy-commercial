@@ -73,7 +73,7 @@ export default async function Home() {
               </p> */}
 
               <div className="pb-1 pt-3">
-                <div className="pb-1 ww w-100 d-flex justify-content-center">
+                <div className="pb-1 ww d-flex justify-content-center">
                   <SearchBar />
                 </div>
               </div>

@@ -90,7 +90,7 @@ const CityResoCard = React.forwardRef(
         }-${curElem.MLS}`
       : curElem.MLS;
     return (
-      <section className={small ? "h-[20rem]" : "h-[26rem]"} ref={ref}>
+      <section className="" ref={ref}>
         <Link
           href={`/ontario/${curElem.Municipality}/listings/${streetAndMLS}`}
           className="text-black"
@@ -158,7 +158,11 @@ const CityResoCard = React.forwardRef(
                     <span> /mo</span>
                   )}
 
-                  <span className="shadow-lg p-1 ms-1 text-black text-xs card-data">
+                  <span
+                    className={`shadow-lg p-1 ms-1 text-black text-xs card-data ${
+                      small && "hidden"
+                    }`}
+                  >
                     {curElem.TotalArea} Sqft
                   </span>
                 </h2>

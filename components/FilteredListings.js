@@ -74,11 +74,8 @@ const FilteredListings = ({
       minTimestampSql: numberOfDays.Today.value,
       ...payload,
     };
-    console.log(numberOfDays.Today.value);
     setLoading(true);
-    console.log(queryParams);
     const filteredSalesData = await getFilteredRetsData(queryParams);
-    console.log(filteredSalesData);
     setSalesData([...filteredSalesData]);
     setLoading(false);
     setOffset(INITIAL_LIMIT);

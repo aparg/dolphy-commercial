@@ -23,7 +23,6 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
       cache: "no-store",
     };
 
-    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data?.results;
@@ -39,7 +38,7 @@ export const getFilteredRetsData = async (queryParams) => {
       queryParams.city ? `Municipality=${queryParams.city}` : ""
     }${
       queryParams.saleLease
-        ? `${queryParams.city && ","}SaleLease=${queryParams.saleLease}`
+        ? `${queryParams.city ? "," : ""}SaleLease=${queryParams.saleLease}`
         : ""
     }`;
     const skipQuery = `${queryParams.offset}`;
@@ -57,7 +56,7 @@ export const getFilteredRetsData = async (queryParams) => {
 
     const url = commercial.properties.replace(
       "$query",
-      `?$select=${selectQuery}${
+      `?$select=${selectQuery || ""}${
         timestampQuery && `&$timestampFilter='${timestampQuery}'`
       }&$skip=${skipQuery}&$limit=${limitQuery}&$range=${rangeQuery}`
     );
@@ -65,7 +64,6 @@ export const getFilteredRetsData = async (queryParams) => {
       method: "GET",
       cache: "no-store",
     };
-    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data?.results;

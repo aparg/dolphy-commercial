@@ -62,7 +62,9 @@ const FilteredCommercialList = ({
     };
     try {
       prependToLocalStorageArray("recentSearch", {
-        city: queryParams.city && capitalizeFirstLetter(queryParams.city),
+        city: queryParams.city
+          ? capitalizeFirstLetter(queryParams.city)
+          : undefined,
         saleLeaseSearch:
           queryParams.saleLease && capitalizeFirstLetter(queryParams.saleLease),
         searchType: Object.keys(listingType).find(
@@ -72,7 +74,6 @@ const FilteredCommercialList = ({
     } catch (err) {
       localStorage.removeItem("recentSearch");
     }
-    console.log(queryParams);
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
     setSalesData([...filteredSalesData]);
@@ -124,7 +125,7 @@ const FilteredCommercialList = ({
       <div
         className={`${
           isMobileView ? "pt-3" : "pt-5"
-        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-y-0 g-md-3`}
+        } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-4 g-md-3`}
       >
         {!loading ? (
           <SalesList

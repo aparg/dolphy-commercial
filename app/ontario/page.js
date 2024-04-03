@@ -11,7 +11,6 @@ const page = async ({ params }) => {
 
   return (
     <div className="">
-      <HotListings INITIAL_LIMIT={30} />
       <FilteredCommercialList
         {...{
           INITIAL_LIMIT,

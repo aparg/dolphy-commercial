@@ -11,7 +11,6 @@ const page = async ({ params }) => {
   let saleLeaseValue = undefined;
   let type = undefined;
   if (Object.keys(saleLease).includes(params.slug1)) {
-    console.log(params.slug1);
     saleLeaseValue = params.slug1;
   } else if (Object.keys(saleLease).includes(params.slug2)) {
     saleLeaseValue = params.slug2;
@@ -27,7 +26,6 @@ const page = async ({ params }) => {
   if (isValidSlug)
     return (
       <div className="">
-        <HotListings INITIAL_LIMIT={10} type={type} />
         <FilteredCommercialList
           {...{
             INITIAL_LIMIT,

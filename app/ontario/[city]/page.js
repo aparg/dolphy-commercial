@@ -12,7 +12,6 @@ const page = async ({ params }) => {
   // const saleLeaseValue = params.saleLease;
   return (
     <div className="">
-      <HotListings INITIAL_LIMIT={20} />
       <FilteredCommercialList
         {...{
           city,

@@ -1,7 +1,7 @@
 export const saleLease = {
   sale: { name: "For Sale", value: "Sale" },
   lease: { name: "For Lease", value: "Lease" },
-  all: { name: "All", value: undefined },
+  // all: { name: "All", value: undefined },
 };
 
 export const listingType = {
@@ -77,6 +77,24 @@ const todayDate = () => {
   return formattedData;
 };
 
+function get24HoursAgoTime() {
+  // Get current date and time
+  const currentDate = new Date();
+
+  // Subtract 24 hours (24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
+  const twentyFourHoursAgo = new Date(
+    currentDate.getTime() - 24 * 60 * 60 * 1000
+  );
+
+  // Format the date in the desired format: YYYY-MM-DD HH:mm:ss.s
+  const formattedTime = twentyFourHoursAgo
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", " ");
+
+  return formattedTime;
+}
+
 export const numberOfDays = {
   thisWeek: { name: "This Week", value: firstDateOfWeek(), userFilter: true },
   lastWeek: {
@@ -94,5 +112,9 @@ export const numberOfDays = {
     value: firstDateofLastSixMonths(),
     userFilter: true,
   },
-  Today: { name: "Today", value: todayDate(), userFilter: false },
+  twentyFourHrsAgo: {
+    name: "Today",
+    value: get24HoursAgoTime(),
+    userFilter: false,
+  },
 };

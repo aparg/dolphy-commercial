@@ -1347,7 +1347,6 @@ label {
 .vmain-title {
   font-weight: 800;
   color: #000000;
-  font-size: 3rem;
 }
 
 .fw-mine2 {
@@ -2120,7 +2119,7 @@ button:focus:not(:focus-visible) {
 }
 @media screen and (max-width: 800px) {
   .ww .react-autosuggest__input {
-    width: 100% !important;
+    width: 15rem !important;
   }
   .ww {
     display: block !important;
@@ -2136,9 +2135,9 @@ button:focus:not(:focus-visible) {
     margin-bottom: 15px;
   }
 
-  .main-title {
-    font-size: 1rem !important;
-  }
+  /* .main-title {
+    font-size: 2rem !important;
+  } */
 
   .sub-title {
     font-size: 1.1rem !important;

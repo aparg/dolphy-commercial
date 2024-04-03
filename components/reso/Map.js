@@ -12,7 +12,6 @@ const Map = ({ main_data }) => {
 
   const [isMounted, setIsMounted] = useState(false);
 
-  console.log(userIP);
   const [state, setState] = useState({
     lat: null,
     lon: null,
@@ -34,10 +33,8 @@ const Map = ({ main_data }) => {
         locationToSearch: fullAddressForMap,
       }),
     };
-    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
-    console.log(data);
     return data;
   }
 
@@ -45,8 +42,6 @@ const Map = ({ main_data }) => {
     if (userIP) {
       const commonFunctionCall = async () => {
         const latLngValue = await getLatLongForMap(main_data);
-        console.log(latLngValue.result.lat);
-        console.log(latLngValue.result.lon);
 
         setState({
           lat: latLngValue.result.lat,

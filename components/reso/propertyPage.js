@@ -92,8 +92,8 @@ const PropertyPage = ({ main_data }) => {
       <div className="screenshot col-12">
         <div className="row row-cols-1 row-cols-sm-2">
           <div className="col-sm-12">
-            <div className="d-flex justify-content-between align-items-md-center flex-column gap-4 gap-md-2 flex-md-row">
-              <h1 className="vmain-title mb-0 mt-4 mt-md-2">
+            <div className="d-flex justify-content-between align-items-md-center flex-row gap-y-0 gap-md-2 ">
+              <h1 className="vmain-title mb-0 mt-4 mt-md-2 text-2xl sm:text-4xl">
                 <div className="uppercase bannerSection">
                   <div className="listingStatus"></div>
                   FOR {main_data.SaleLease} -{" "}
@@ -102,8 +102,13 @@ const PropertyPage = ({ main_data }) => {
                     ACTIVE
                   </span>
                 </div>
-                {main_data.Street} {main_data.StreetName}{" "}
-                {main_data.StreetAbbreviation}
+                <div className="flex items-center">
+                  <span className="mr-1">
+                    {main_data.Street} {main_data.StreetName}{" "}
+                    {main_data.StreetAbbreviation}
+                  </span>
+                  <CompareButton main_data={main_data} width={8} />
+                </div>
                 {/* {main_data.Municipality}, {main_data.Province},{" "}
                 {main_data.PostalCode} */}
                 {/* <p className="shadow-lg d-inline text-sm px-2 rounded-mine p-1 ms-1">
@@ -111,14 +116,15 @@ const PropertyPage = ({ main_data }) => {
                 </p> */}
               </h1>
               <div className="flex flex-col items-center">
-                <h3 className="main-title fs-3 pt-8">{price}</h3>
+                <h3 className="main-title fs-4 pt-4 md:pt-8 fs-md-2 text-xl sm:text-3xl">
+                  {price}
+                </h3>
                 {/* <Image
                   src="/add-btn.svg"
                   onClick={() => prependToLocalStorageArray(main_data.MLS)}
                   className="w-10 self-center"
                   alt="Compare"
                 ></Image> */}
-                <CompareButton main_data={main_data} width={8} />
               </div>
             </div>
             <div className="d-flex align-items-center justify-content-start mb-0">
@@ -131,7 +137,7 @@ const PropertyPage = ({ main_data }) => {
               </h3>
               <span>{main_data.Washrooms}</span> */}
               {/* <h3 className="fw-bold mx-2">.</h3> */}
-              <h3 className="fw-bold mr-2">
+              <h3 className="fw-bold mr-2 mt-4">
                 <img src="/ruler.svg" alt="area" className="w-5" />
               </h3>
               <span>
@@ -142,9 +148,9 @@ const PropertyPage = ({ main_data }) => {
               <span className="shadow-none bg-none">
                 {main_data.TypeOwn1Out}
               </span>
-              <h3 className="fw-bold mx-2 d-none d-md-inline">.</h3>
+              <h3 className="fw-bold mx-2 d-md-inline">.</h3>
               <span className="shadow-none bg-none">
-                {main_data.Municipality}
+                {main_data.Municipality}, Ontario, {main_data.PostalCode}
               </span>
               <h3 className="fw-bold mx-2 d-none d-md-inline">.</h3>
 
@@ -174,8 +180,8 @@ const PropertyPage = ({ main_data }) => {
           <div className="border-top"></div>
         </div>
         <div className="pb-3 pb-md-5 mt-20">
-          <h2 className="text-4xl font-extrabold leading-10">
-            <span className="aff2">About this property</span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold leading-10">
+            <span className="aff2">About this commercial property</span>
           </h2>
           <div className="flex flex-col">
             <div className="flex flex-row text-xl py-2">
@@ -188,7 +194,7 @@ const PropertyPage = ({ main_data }) => {
             </div>
             <div className="flex flex-row text-xl py-2">
               <Image alt="" className="w-6 mr-2" src="/property2.svg" />
-              Primary Sub-Type: {main_data.Use}
+              Used For: {main_data.Use}
             </div>
             <div className="flex flex-row text-xl py-2">
               <Image alt="" className="w-6 mr-2" src="/building.svg" />
@@ -208,12 +214,38 @@ const PropertyPage = ({ main_data }) => {
               Approx. Age: {main_data.ApproxAge}
             </div>
             <div className="flex flex-row text-xl py-2">
+              <Image alt="" className="w-6 mr-2" src="/property2.svg" />
+              Zone: {main_data.Zoning}
+            </div>
+            <div className="flex flex-row text-xl py-2">
               <Image alt="" className="w-6 mr-2" src="/garage.svg" />
               Garage Type: {main_data.GarageType}
             </div>
             <div className="flex flex-row text-xl py-2">
               <Image alt="" className="w-6 mr-2" src="/air-condition.svg" />
               Air Conditioning: {main_data.AirConditioning}
+            </div>
+            <div className="flex flex-row text-xl py-2">
+              <Image alt="" className="w-6 mr-2" src="/icons/tax3.svg" />
+              Taxes: ${main_data.Taxes}
+            </div>
+            <div className="flex flex-row text-xl py-2">
+              <Image alt="" className="w-6 mr-2" src="/icons/tax4.svg" />
+              Tax Type: {main_data.TypeTaxes || "N/A"}
+            </div>
+            <div className="flex flex-row text-xl py-2">
+              <Image alt="" className="w-6 mr-2" src="/icons/tax1.svg" />
+              Tax Year: {main_data.TaxYear}
+            </div>
+            <div className="flex flex-row text-xl py-2">
+              <Image alt="" className="w-6 mr-2" src="/icons/tax2.svg" />
+              Commercial Condo Fees:{" "}
+              {(main_data.CommercialCondoFees &&
+                `$${main_data.CommercialCondoFees}`) ||
+                "N/A"}
+            </div>
+            <div className="flex flex-row text-xl py-2">
+              {main_data.RemarksForClients}
             </div>
           </div>
           {/* <div className="text-start my-3 text-inside">
@@ -226,11 +258,19 @@ const PropertyPage = ({ main_data }) => {
           </div> */}
         </div>
       </div>
+
+      {main_data?.Extras && (
+        <div className="mt-24 col-12 ">
+          <h2 className="fw-bold pb-3 text-lg sm:text-2xl">Extras</h2>
+          <div className="flex flex-row text-xl py-2">{main_data.Extras}</div>
+        </div>
+      )}
+
       <div className="mt-24 col-12 ">
-        <h2 className="fw-bold fs-4 pb-3">
+        <h2 className="fw-bold pb-3 text-lg sm:text-2xl">
           <Image
             alt="walking  "
-            className="w-10 inline mr-2"
+            className="w-8 am:w-10 inline mr-2"
             src="/walking.svg"
           />
           Walk Score for {main_data.Street} {main_data.StreetName}{" "}
@@ -238,14 +278,14 @@ const PropertyPage = ({ main_data }) => {
         </h2>
 
         <div className="">
-          <div className="p-1">
-            <div className="walkscore-container mt-2 p-1 rounded-mine">
+          <div className="">
+            <div className="walkscore-container mt-2 rounded-mine">
               <script type="text/javascript"></script>
               <div id="ws-walkscore-tile" className="ham2 w-full">
                 <iframe
                   height="500px"
                   title="Walk Score"
-                  className="ham"
+                  className="ham p-0"
                   width="100%"
                   src={`https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName},${main_data.Municipality}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`}
                 ></iframe>

@@ -28,7 +28,6 @@ const SuggestedCity = ({ defaultCitiesData }) => {
         ...defaultData.slice(0, 3 - storedCityValues.length),
       ];
     }
-    console.log(storedCityValues);
     //Make sure only three values remain in array
     storedCityValues.length > 3 && storedCityValues.slice(0, 3);
     // Retrieve object with city and data
@@ -48,7 +47,6 @@ const SuggestedCity = ({ defaultCitiesData }) => {
       });
 
       const citiesData = await Promise.all(dataPromises);
-      console.log(citiesData);
 
       //check if there is no property listings for given city and populate with other city data
       const populatedData = await citiesData.map((cityData, idx) => {
@@ -75,7 +73,6 @@ const SuggestedCity = ({ defaultCitiesData }) => {
     };
 
     fetchCitiesData();
-    console.log(citiesData);
   }, []);
 
   const fetchDataForCity = async (city, searchType, saleLeaseSearch) => {
@@ -98,10 +95,8 @@ const SuggestedCity = ({ defaultCitiesData }) => {
         )[0]?.value || undefined,
       minTimestampSql: undefined,
     };
-    console.log(queryParams);
     // const data = await getCommercialData(INITIAL_OFFSET, INITIAL_LIMIT, city);
     const data = await getFilteredRetsData(queryParams);
-    console.log(data);
     return { city, data, type: searchType, saleLease: saleLeaseSearch };
   };
 

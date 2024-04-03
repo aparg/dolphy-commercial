@@ -157,8 +157,8 @@ const SearchBar = () => {
       }
     },
     //additional
-    highlightFirstSuggestion: true,
-    alwaysRenderSuggestions: true,
+    // highlightFirstSuggestion: true,
+    // alwaysRenderSuggestions: true,
   };
 
   return (

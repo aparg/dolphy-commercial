@@ -252,26 +252,55 @@ const Navbar = (props) => {
         </nav>
 
         <nav
-          className={`pt-4 bg-white border border-gray-200 rounded-md shadow-md ${
+          className={`py-4 bg-white border border-gray-200 rounded-md shadow-md ${
             hidden && "hidden"
           } lg:hidden`}
         >
           <div className="flow-root">
             <div className="flex flex-col px-6 -my-2 space-y-1">
               <Dropdown
+                name="Business For Sale"
                 options={[
                   {
                     name: "Office for Sale",
-                    link: "/ontario/filter//toronto/sale/office",
+                    link: "/ontario/filter/office",
                   },
                   {
                     name: "Retail for Sale",
-                    link: "/ontario/filter//toronto/sale/retail",
+                    link: "/ontario/filter/retail",
+                  },
+                  {
+                    name: "Industry for sale",
+                    link: "/ontario/filter/industrial",
+                  },
+                  {
+                    name: "Investment for sale",
+                    link: "/ontario/filter/investment",
+                  },
+                  {
+                    name: "Land for sale",
+                    link: "/ontario/filter/land",
                   },
                 ]}
-                text={isSticky || isHomePage ? "black" : "white"}
+                text={isSticky || !isHomePage ? "black" : "white"}
               />
 
+              <Link
+                href={`/compare`}
+                title=""
+                className={`text-base font-medium transition-all duration-200 ${
+                  isHomePage &&
+                  !isSticky &&
+                  "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
+                } ${
+                  (isSticky || !isHomePage) &&
+                  "text-black hover:text-primary-green"
+                }
+               ${!isHomePage && "text-black"}`}
+              >
+                {" "}
+                Your Comparisons{" "}
+              </Link>
               <Link
                 href="#"
                 title=""

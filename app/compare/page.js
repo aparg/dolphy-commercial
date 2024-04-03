@@ -152,90 +152,92 @@ const page = () => {
   //   });
   // };
   return (
-    <div className="container-fluid">
+    <div className="container-fluid w-full">
       <h3 className="main-title fs-2">Your Comparisions</h3>
-      <table className="table-auto w-full">
-        <thead>
-          <th className="p-2 border-b"></th>
-          {dataArray.map((data) => (
-            <th className="p-2 border-b" key={data.MLS}>
-              <div className="flex items-center">
-                <Link
-                  href={`/commercial/ontario/${data.Municipality}/${data.MLS}`}
-                  className="mr-2"
-                >
-                  {data.MLS}
-                </Link>
-                <span>
-                  <CompareButton
-                    main_data={data}
-                    width={5}
-                    callback={() => fetchData()}
-                  />
-                </span>
-              </div>
-            </th>
-          ))}
-        </thead>
-        <tbody>
-          <tr>
+      <div className="w-full overflow-x-scroll">
+        <table className="table-auto w-full">
+          <thead>
             <th className="p-2 border-b"></th>
-            {images}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">City</th>
-            {city}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Street</th>
-            {street}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">List Price</th>
-            {listPrice}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Total Area</th>
-            {totalArea}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Property Type</th>
-            {propertyType}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Primary Property Type</th>
-            {primaryPropertyType}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Primary Property Sub-type</th>
-            {primaryPropertySubtype}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Building Size</th>
-            {buildingSize}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Community</th>
-            {community}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Occupancy</th>
-            {occupancy}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Approx. Age</th>
-            {approxAge}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Garage</th>
-            {garageType}
-          </tr>
-          <tr className="">
-            <th className="p-2 border-b">Air Conditioning</th>
-            {airConditioning}
-          </tr>
-        </tbody>
-      </table>
+            {dataArray.map((data) => (
+              <th className="p-2 border-b" key={data.MLS}>
+                <div className="flex items-center">
+                  <Link
+                    href={`/commercial/ontario/${data.Municipality}/${data.MLS}`}
+                    className="mr-2"
+                  >
+                    {data.MLS}
+                  </Link>
+                  <span>
+                    <CompareButton
+                      main_data={data}
+                      width={5}
+                      callback={() => fetchData()}
+                    />
+                  </span>
+                </div>
+              </th>
+            ))}
+          </thead>
+          <tbody>
+            <tr>
+              <th className="p-2 border-b"></th>
+              {images}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">City</th>
+              {city}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Street</th>
+              {street}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">List Price</th>
+              {listPrice}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Total Area</th>
+              {totalArea}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Property Type</th>
+              {propertyType}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Primary Property Type</th>
+              {primaryPropertyType}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Primary Property Sub-type</th>
+              {primaryPropertySubtype}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Building Size</th>
+              {buildingSize}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Community</th>
+              {community}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Occupancy</th>
+              {occupancy}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Approx. Age</th>
+              {approxAge}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Garage</th>
+              {garageType}
+            </tr>
+            <tr className="">
+              <th className="p-2 border-b">Air Conditioning</th>
+              {airConditioning}
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

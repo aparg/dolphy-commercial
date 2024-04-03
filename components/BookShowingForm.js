@@ -13,7 +13,6 @@ export default function BookShowingForm(props) {
     name: "",
     phone: "",
     email: "",
-    // realtor: "No",
     message: props.defaultmessage,
     proj_name: props.proj_name,
     city: props.city,
@@ -27,7 +26,6 @@ export default function BookShowingForm(props) {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(credentials);
     ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
   };
   return (
@@ -74,7 +72,7 @@ export default function BookShowingForm(props) {
               </div>
             </div>
           </div>
-          <BookingDate />
+          <BookingDate handleChange={handleChange} />
           <div className="row me-0 row-cols-1 g-0">
             <div className="col">
               <div className="mb-3">

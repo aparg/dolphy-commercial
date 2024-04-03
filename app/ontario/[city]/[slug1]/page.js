@@ -5,12 +5,12 @@ import { getCommercialData } from "@/actions/fetchCommercialActions";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import FilteredCommercialList from "@/components/reso/FilteredCommercialList";
 import HotListings from "@/components/HotListings";
+import { Image } from "react-bootstrap";
 
 const page = async ({ params }) => {
   let saleLeaseValue = undefined;
   let type = undefined;
   if (Object.keys(saleLease).includes(params.slug1)) {
-    console.log(params.slug1);
     saleLeaseValue = params.slug1;
   }
   if (Object.keys(listingType).includes(params.slug1)) {
@@ -22,12 +22,6 @@ const page = async ({ params }) => {
   if (isValidSlug)
     return (
       <div className="container-fluid">
-        <HotListings
-          city={city}
-          INITIAL_LIMIT={10}
-          type={type}
-          saleLeaseValue={saleLeaseValue}
-        />
         <FilteredCommercialList
           {...{
             city,
@@ -38,4 +32,7 @@ const page = async ({ params }) => {
         />
       </div>
     );
+  return <></>;
 };
+
+export default page;

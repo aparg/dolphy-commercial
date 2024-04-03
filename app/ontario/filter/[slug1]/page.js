@@ -5,11 +5,11 @@ import { getCommercialData } from "@/actions/fetchCommercialActions";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import FilteredCommercialList from "@/components/reso/FilteredCommercialList";
 import { plural } from "@/constant/plural";
+import HotListings from "@/components/HotListings";
 
 const page = async ({ params }) => {
   let saleLeaseValue = undefined;
   let type = undefined;
-  console.log("here");
   if (Object.keys(saleLease).includes(params.slug1)) {
     saleLeaseValue = params.slug1;
   }

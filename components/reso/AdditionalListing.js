@@ -17,7 +17,7 @@ const AdditionalListing = ({
 }) => {
   const scrollRef = useRef(null); //used to hold scroll value
   const cardRef = useRef(null); //used to hold card width value
-  const formattedCity = city.toLowerCase();
+  const formattedCity = city?.toLowerCase();
   // const slideLeft = () => {
   //   const dynamicWidthOfCard = cardRef.current.offsetWidth;
   //   // @ts-ignore
@@ -31,7 +31,6 @@ const AdditionalListing = ({
 
   //business is returned as Sale of business so we need to modify it to Business
   const modifyType = (type) => {
-    console.log(type);
     if (type == "Sale Of Business") return "business";
     return type;
   };
@@ -61,24 +60,23 @@ const AdditionalListing = ({
             </h3>
           ) : (
             <h3 className="main-title fs-1 fs-sm-2 ">
-              Continue searching for{" "}
+              Continue searching{" "}
               {capitalizeFirstLetter(modifyType(listingType))}
               {`${
                 plural[capitalizeFirstLetter(modifyType(listingType))] || ""
               }`}{" "}
-              in {city} {console.log(saleLeaseValue)}
               {saleLeaseValue &&
                 `${
                   Object.values(saleLease).find((data) => {
-                    console.log(data.value, saleLeaseValue);
                     return data.value == saleLeaseValue;
                   })?.name
-                }`}
+                } `}
+              in {city || "Ontario"}
             </h3>
           )}
           <a
-            href={`/ontario/${formattedCity}${
-              listingType ? `/${listingType}` : ""
+            href={`/ontario${formattedCity && `/${formattedCity}`}${
+              listingType ? `/${listingType.toLowerCase()}` : ""
             }${
               saleLeaseValue
                 ? `/${Object.keys(saleLease).find(
