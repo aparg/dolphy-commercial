@@ -25,6 +25,7 @@ const Dropdown = ({ name, options, text = "white" }) => {
           <a
             href={option.link}
             className="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:rounded-md"
+            key={option.name}
           >
             {option.name}
           </a>

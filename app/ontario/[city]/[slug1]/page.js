@@ -21,16 +21,14 @@ const page = async ({ params }) => {
   const INITIAL_LIMIT = 30;
   if (isValidSlug)
     return (
-      <div className="container-fluid">
-        <FilteredCommercialList
-          {...{
-            city,
-            INITIAL_LIMIT,
-            type,
-            saleLeaseValue,
-          }}
-        />
-      </div>
+      <FilteredCommercialList
+        {...{
+          city,
+          INITIAL_LIMIT,
+          type,
+          saleLeaseValue,
+        }}
+      />
     );
   return <></>;
 };

@@ -94,7 +94,7 @@ const page = async ({ params }) => {
             <div
               className={`mx-auto row justify-between gap-0 w-full md:max-w-[80%]`}
             >
-              <div className="col-md-8">
+              <div className="col-12 col-md-8">
                 <PropertyPage {...{ main_data }} />
                 <div className="z-20 relative mt-24">
                   <h3 className="main-title fs-2 aff2">Map View</h3>

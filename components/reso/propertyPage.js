@@ -90,9 +90,9 @@ const PropertyPage = ({ main_data }) => {
   return (
     <div className="col-12 col row gy-3 g-sm-0">
       <div className="screenshot col-12">
-        <div className="row row-cols-1 row-cols-sm-2">
-          <div className="col-sm-12">
-            <div className="d-flex justify-content-between align-items-md-center flex-row gap-y-0 gap-md-2 ">
+        <div className="row row-cols-1 row-cols-sm-1">
+          <div className="col-12 px-0">
+            <div className="d-flex w-full justify-content-between align-items-md-center flex-row gap-y-0 gap-md-2 ">
               <h1 className="vmain-title mb-0 mt-4 mt-md-2 text-2xl sm:text-4xl">
                 <div className="uppercase bannerSection">
                   <div className="listingStatus"></div>
@@ -103,7 +103,7 @@ const PropertyPage = ({ main_data }) => {
                   </span>
                 </div>
                 <div className="flex items-center">
-                  <span className="mr-1">
+                  <span className="mr-4">
                     {main_data.Street} {main_data.StreetName}{" "}
                     {main_data.StreetAbbreviation}
                   </span>
@@ -127,7 +127,7 @@ const PropertyPage = ({ main_data }) => {
                 ></Image> */}
               </div>
             </div>
-            <div className="d-flex align-items-center justify-content-start mb-0">
+            <div className="flex flex-col justify-start sm:flex-row mb-0 ">
               {/* <h3 className="fw-bold me-2">
                 <img alt="" className="w-6 mr-2" src="/icons/bedrooms.svg" alt="bed" className="w-5" />
               </h3>
@@ -183,68 +183,68 @@ const PropertyPage = ({ main_data }) => {
           <h2 className="text-3xl sm:text-4xl font-extrabold leading-10">
             <span className="aff2">About this commercial property</span>
           </h2>
-          <div className="flex flex-col">
-            <div className="flex flex-row text-xl py-2">
+          <div className="flex flex-col text-lg sm:text-xl">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/property.svg" />
               Property Type: {main_data.PropertyType}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/property1.svg" />
               Primary Property Type: {main_data.TypeOwn1Out}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/property2.svg" />
               Used For: {main_data.Use}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/building.svg" />
               Building Size: {main_data.OfficeAptArea}
               {main_data.OfficeAptAreaCode}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/community.svg" />
               Community: {main_data.Community}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/people.svg" />
               Occupancy: {main_data.Occupancy}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/time.svg" />
               Approx. Age: {main_data.ApproxAge}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/property2.svg" />
               Zone: {main_data.Zoning}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/garage.svg" />
               Garage Type: {main_data.GarageType}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/air-condition.svg" />
               Air Conditioning: {main_data.AirConditioning}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax3.svg" />
               Taxes: ${main_data.Taxes}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax4.svg" />
               Tax Type: {main_data.TypeTaxes || "N/A"}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax1.svg" />
               Tax Year: {main_data.TaxYear}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax2.svg" />
               Commercial Condo Fees:{" "}
               {(main_data.CommercialCondoFees &&
                 `$${main_data.CommercialCondoFees}`) ||
                 "N/A"}
             </div>
-            <div className="flex flex-row text-xl py-2">
+            <div className="flex flex-row py-2 text-sm sm:text-md">
               {main_data.RemarksForClients}
             </div>
           </div>
@@ -261,8 +261,8 @@ const PropertyPage = ({ main_data }) => {
 
       {main_data?.Extras && (
         <div className="mt-24 col-12 ">
-          <h2 className="fw-bold pb-3 text-lg sm:text-2xl">Extras</h2>
-          <div className="flex flex-row text-xl py-2">{main_data.Extras}</div>
+          <h2 className="fw-bold pb-3 text-lg sm:text-xl">Extras</h2>
+          <div className="flex flex-row text-lg py-1">{main_data.Extras}</div>
         </div>
       )}
 

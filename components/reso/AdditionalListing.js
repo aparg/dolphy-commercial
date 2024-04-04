@@ -8,6 +8,7 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { plural } from "@/constant/plural";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import { saleLease } from "@/constant";
+import { generateURL } from "@/helpers/generateURL";
 
 const AdditionalListing = ({
   city,
@@ -75,15 +76,23 @@ const AdditionalListing = ({
             </h3>
           )}
           <a
-            href={`/ontario${formattedCity && `/${formattedCity}`}${
-              listingType ? `/${listingType.toLowerCase()}` : ""
-            }${
-              saleLeaseValue
-                ? `/${Object.keys(saleLease).find(
-                    (key) => saleLease[key].value == saleLeaseValue
-                  )}`
-                : ``
-            }`}
+            // href={`/ontario${formattedCity ? `/${formattedCity}` : ""}${
+            //   listingType && formattedCity
+            //     ? `/${listingType.toLowerCase()}`
+            //     : ""
+            // }${!formattedCity && listingType ? `/filter/${listingType}` : ""}
+            // ${
+            //   saleLeaseValue
+            //     ? `/${Object.keys(saleLease).find(
+            //         (key) => saleLease[key].value == saleLeaseValue
+            //       )}`
+            //     : ``
+            // }`}
+            href={generateURL({
+              cityVal: city,
+              houseTypeVal: listingType,
+              saleLeaseVal: saleLeaseValue,
+            })}
             className="btn btn-outline-primary float-end btn-explore px-2 sm:px-2 py-0 sm:py-2 h-6 sm:h-11"
           >
             <span className="hidden sm:inline">Explore </span>All
