@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import SearchBar from "@/components/reso/SearchBar";
 import { Image } from "react-bootstrap";
 import Dropdown from "./Dropdown";
+import { generateURL } from "@/helpers/generateURL";
 // import {
 //   useComparingProperties,
 //   useComparisionFlag,
@@ -134,23 +135,23 @@ const Navbar = (props) => {
               options={[
                 {
                   name: "Office for Sale",
-                  link: "/ontario/filter/office",
+                  link: generateURL({ houseTypeVal: "office" }),
                 },
                 {
                   name: "Retail for Sale",
-                  link: "/ontario/filter/retail",
+                  link: generateURL({ houseTypeVal: "retail" }),
                 },
                 {
                   name: "Industry for sale",
-                  link: "/ontario/filter/industrial",
+                  link: generateURL({ houseTypeVal: "industrial" }),
                 },
                 {
                   name: "Investment for sale",
-                  link: "/ontario/filter/investment",
+                  link: generateURL({ houseTypeVal: "investment" }),
                 },
                 {
                   name: "Land for sale",
-                  link: "/ontario/filter/land",
+                  link: generateURL({ houseTypeVal: "land" }),
                 },
               ]}
               text={isSticky || !isHomePage ? "black" : "white"}
@@ -264,23 +265,23 @@ const Navbar = (props) => {
                 options={[
                   {
                     name: "Office for Sale",
-                    link: "/ontario/filter/office",
+                    link: generateURL({ houseTypeVal: "office" }),
                   },
                   {
                     name: "Retail for Sale",
-                    link: "/ontario/filter/retail",
+                    link: generateURL({ houseTypeVal: "retail" }),
                   },
                   {
                     name: "Industry for sale",
-                    link: "/ontario/filter/industrial",
+                    link: generateURL({ houseTypeVal: "industrial" }),
                   },
                   {
                     name: "Investment for sale",
-                    link: "/ontario/filter/investment",
+                    link: generateURL({ houseTypeVal: "investment" }),
                   },
                   {
                     name: "Land for sale",
-                    link: "/ontario/filter/land",
+                    link: generateURL({ houseTypeVal: "land" }),
                   },
                 ]}
                 text={"black"}

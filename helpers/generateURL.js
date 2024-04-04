@@ -4,6 +4,7 @@ export const generateURL = ({
   cityVal = null,
   houseTypeVal = null,
   saleLeaseVal = null,
+  listingIDVal = null,
 } = {}) => {
   const city = cityVal?.toLowerCase() || null;
   const houseType = houseTypeVal?.toLowerCase() || null;
@@ -13,6 +14,7 @@ export const generateURL = ({
       .find((key) => saleLease[key].value == saleLeaseVal)
       ?.toLowerCase() ||
     null;
+  if (listingIDVal && city) return `/ontario/${city}/listings/${listingIDVal}`;
   if (city) {
     if (houseType) {
       if (saleLeaseType) {

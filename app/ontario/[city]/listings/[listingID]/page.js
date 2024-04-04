@@ -13,6 +13,7 @@ const Map = dynamic(() => import("@/components/reso/Map"), { ssr: false });
 
 import AdditionalListing from "@/components/reso/AdditionalListing";
 import PropertyPage from "@/components/reso/propertyPage";
+import { generateURL } from "@/helpers/generateURL";
 // import { Button } from "@nextui-org/react";
 
 const INITIAL_OFFSET = 0;
@@ -79,7 +80,9 @@ const page = async ({ params }) => {
                 <Link href="/ontario">ON</Link>
               </li>
               <li className="breadcrumb-item ">
-                <Link href={`/ontario/${city}/`}>{main_data.Municipality}</Link>
+                <Link href={generateURL({ cityVal: city })}>
+                  {main_data.Municipality}
+                </Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 {address}

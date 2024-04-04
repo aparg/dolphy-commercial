@@ -7,6 +7,7 @@ import { commercial } from "@/api/routes";
 import { Image } from "react-bootstrap";
 import { listingType, saleLease } from "@/constant";
 import CompareButton from "../CompareButton";
+import { generateURL } from "@/helpers/generateURL";
 
 const CityResoCard = React.forwardRef(
   ({ curElem, small = false, city }, ref) => {
@@ -92,7 +93,10 @@ const CityResoCard = React.forwardRef(
     return (
       <section className="" ref={ref}>
         <Link
-          href={`/ontario/${curElem.Municipality}/listings/${streetAndMLS}`}
+          href={generateURL({
+            cityVal: curElem.Municipality,
+            listingIDVal: streetAndMLS,
+          })}
           className="text-black"
         >
           <div className="lg:px-0 h-full w-full">

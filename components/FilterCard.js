@@ -1,3 +1,4 @@
+import { generateURL } from "@/helpers/generateURL";
 import Link from "next/link";
 import React from "react";
 const cardLinks = [
@@ -12,7 +13,7 @@ const FilterCard = () => {
   return (
     <div className="bg-white flex flex-row rounded-lg justify-around h-full w-full p-2 flex-wrap">
       <Link
-        href="/office/ontario"
+        href={generateURL({ houseTypeVal: "office" })}
         className="text-black rounded-md flex justify-center p-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
@@ -27,7 +28,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/retail/ontario"
+        href={generateURL({ houseTypeVal: "retail" })}
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
@@ -42,7 +43,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/industrial/ontario"
+        href={generateURL({ houseTypeVal: "industrial" })}
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
@@ -57,7 +58,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/investment/ontario"
+        href={generateURL({ houseTypeVal: "investment" })}
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
@@ -72,7 +73,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/land/ontario"
+        href={generateURL({ houseTypeVal: "land" })}
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100 "
       >
         <div className="w-10">
@@ -87,7 +88,7 @@ const FilterCard = () => {
         </b>
       </Link>
       <Link
-        href="/business/ontario"
+        href={generateURL({ houseTypeVal: "business" })}
         className="text-black decoration-black rounded-md flex justify-center py-2 px-2 hover:bg-slate-100"
       >
         <div className="w-10">
