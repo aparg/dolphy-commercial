@@ -13,7 +13,6 @@ const fetchData = async (listingID) => {
     method: "GET",
     mode: "no-cors",
   };
-  console.log(listingID);
   const urlToFetchMLSDetail = commercial.properties.replace(
     "$query",
     `?$select=MLS='${listingID}'`
@@ -41,7 +40,6 @@ const page = () => {
   };
 
   useEffect(() => {
-    console.log(MLSArray);
     const main_data = MLSArray.map(async (mls) => {
       return fetchData(mls);
     });

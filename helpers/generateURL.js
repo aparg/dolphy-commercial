@@ -6,7 +6,6 @@ export const generateURL = ({
   saleLeaseVal = null,
 } = {}) => {
   const city = cityVal?.toLowerCase() || null;
-  console.log(houseTypeVal);
   const houseType = houseTypeVal?.toLowerCase() || null;
   const saleLeaseType =
     Object.keys(saleLease).find((key) => key == saleLeaseVal) ||
@@ -14,13 +13,12 @@ export const generateURL = ({
       .find((key) => saleLease[key].value == saleLeaseVal)
       ?.toLowerCase() ||
     null;
-  console.log(houseType);
   if (city) {
     if (houseType) {
       if (saleLeaseType) {
         return `/ontario/${city}/${houseType}/${saleLeaseType}`;
       }
-      return `/ontairo/${city}/${houseType}`;
+      return `/ontario/${city}/${houseType}`;
     }
     if (saleLeaseType) {
       return `/ontario/${city}/${saleLeaseType}`;

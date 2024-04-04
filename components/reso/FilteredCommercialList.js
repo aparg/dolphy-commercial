@@ -19,6 +19,7 @@ import CityResoCard from "./CityResoCard";
 import HotListings from "../HotListings";
 import { prependToLocalStorageArray } from "@/helpers/handleLocalStorageArray";
 import { plural } from "@/constant/plural";
+import is from "date-fns/esm/locale/is/index.js";
 
 const FilteredCommercialList = ({
   INITIAL_LIMIT,
@@ -84,8 +85,59 @@ const FilteredCommercialList = ({
     // });
   };
 
+  const { hotSales, remainingSales } = useMemo(() => {
+    // Get today's date in YYYY-MM-DD format
+    // const today = new Date().toISOString().split("T")[0];
+
+    // // Separate sales data for today and remaining days
+    // const hotSales = [];
+    // const remainingSales = [];
+
+    // salesData.forEach((data) => {
+    //   // Extract the date part from timestampSql
+    //   const datePart = data.TimestampSql.split(" ")[0];
+    //   console.log(datePart);
+
+    //   // Check if the datePart matches today's date and only push 5 data to hot sales array
+    //   if (datePart === today && hotSales.length < 5) {
+    //     hotSales.push(data);
+    //   } else {
+    //     remainingSales.push(data);
+    //   }
+    // });
+
+    // return { hotSales, remainingSales };
+
+    // Get the current date and time
+    const currentDate = new Date();
+
+    // Calculate the date and time 24 hours ago
+    const twentyFourHoursAgo = new Date(
+      currentDate.getTime() - 24 * 60 * 60 * 1000
+    );
+
+    // Function to check if the data is from 24 hours ago
+    const is24HoursAgo = (timestampSql) => {
+      const timestampDate = new Date(timestampSql);
+      return timestampDate > twentyFourHoursAgo && timestampDate <= currentDate;
+    };
+
+    // Separate sales data for 24 hours ago and remaining days
+    const hotSales = [];
+    const remainingSales = [];
+
+    salesData.forEach((data) => {
+      if (is24HoursAgo(data.TimestampSql) && hotSales.length < 5) {
+        hotSales.push(data);
+      } else {
+        remainingSales.push(data);
+      }
+    });
+    return { hotSales, remainingSales };
+  }, [salesData]);
   useEffect(() => {
     fetchFilteredData();
+
     //save in local storage about the filter recently used
   }, []);
 
@@ -117,10 +169,11 @@ const FilteredCommercialList = ({
         <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
       </div>
       <HotListings
-        INITIAL_LIMIT={30}
-        saleLeaseValue={saleLeaseValue}
-        city={city}
-        type={type}
+        // INITIAL_LIMIT={10}
+        // saleLeaseValue={saleLeaseValue}
+        // city={city}
+        // type={type}
+        salesData={hotSales}
       />
       <div
         className={`${
@@ -130,7 +183,7 @@ const FilteredCommercialList = ({
         {!loading ? (
           <SalesList
             {...{
-              salesData,
+              salesData: remainingSales,
               city,
               INITIAL_LIMIT,
               setSalesData,

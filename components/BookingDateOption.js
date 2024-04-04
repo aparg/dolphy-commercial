@@ -6,7 +6,7 @@ const BookingDateOption = React.forwardRef(
     return (
       <button
         className={`flex flex-col justify-center px-8 py-0 border-2 items-center mr-1 rounded-md hover:border-cyan-400 cursor-pointer ${
-          selected ? `border-cyan-400` : `border-gray-500`
+          selected ? `bg-cyan-400 text-white` : `border-gray-500 text-black`
         }`}
         ref={ref}
         value={`${
@@ -20,8 +20,7 @@ const BookingDateOption = React.forwardRef(
         id="date"
       >
         <span className="font-thin">{data.dayName}</span>
-        <span className="font-bold">{data.day}</span>
-        <span className="font-thinner">{data.month}</span>
+        <span className="font-bold">{`${data.day} ${data.month}`}</span>
       </button>
     );
   }

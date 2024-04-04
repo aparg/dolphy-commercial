@@ -251,6 +251,7 @@ const Navbar = (props) => {
           </Link>
         </nav>
 
+        {/* Mobile version */}
         <nav
           className={`py-4 bg-white border border-gray-200 rounded-md shadow-md ${
             hidden && "hidden"
@@ -282,7 +283,7 @@ const Navbar = (props) => {
                     link: "/ontario/filter/land",
                   },
                 ]}
-                text={isSticky || !isHomePage ? "black" : "white"}
+                text={"black"}
               />
 
               <Link
@@ -301,14 +302,14 @@ const Navbar = (props) => {
                 {" "}
                 Your Comparisons{" "}
               </Link>
-              <Link
+              {/* <Link
                 href="#"
                 title=""
                 className={`inline-flex py-2 text-base font-medium transition-all duration-200 text-black `}
               >
                 {" "}
                 Cities{" "}
-              </Link>
+              </Link> */}
 
               <Link
                 href="#"

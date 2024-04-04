@@ -92,7 +92,7 @@ const page = async ({ params }) => {
         <section className="padding-top flex items-center w-full text-sm">
           <div className="padding-top flex items-center w-full">
             <div
-              className={`mx-auto row justify-between gap-0 w-full md:max-w-[80%]`}
+              className={`mx-auto row justify-between gx-2 w-full md:max-w-[80%]`}
             >
               <div className="col-12 col-md-8">
                 <PropertyPage {...{ main_data }} />

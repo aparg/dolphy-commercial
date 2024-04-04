@@ -33,6 +33,7 @@ const AdditionalListing = ({
   //business is returned as Sale of business so we need to modify it to Business
   const modifyType = (type) => {
     if (type == "Sale Of Business") return "business";
+    if (type == "Commercial/Retail") return "retail";
     return type;
   };
 
@@ -90,7 +91,7 @@ const AdditionalListing = ({
             // }`}
             href={generateURL({
               cityVal: city,
-              houseTypeVal: listingType,
+              houseTypeVal: modifyType(listingType),
               saleLeaseVal: saleLeaseValue,
             })}
             className="btn btn-outline-primary float-end btn-explore px-2 sm:px-2 py-0 sm:py-2 h-6 sm:h-11"

@@ -19,76 +19,22 @@ const plural = {
   Land: "s",
   Business: "es",
 };
-const HotListings = ({
-  INITIAL_LIMIT,
-  city = undefined,
-  usedType = undefined,
-  saleLeaseValue = undefined,
-}) => {
+const HotListings = ({ salesData }) => {
   const scrollRef = useRef(null); //used to hold scroll value
   const cardRef = useRef(null); //used to hold card width value
-  const formattedCity = city ? city.toLowerCase() : undefined;
-  const [salesData, setSalesData] = useState([]);
-  const [offset, setOffset] = useState(0);
+  // const formattedCity = city ? city.toLowerCase() : undefined;
+  // const [salesData, setSalesData] = useState([]);
+  // const [offset, setOffset] = useState(0);
   const { isMobileView } = useDeviceView();
-  const [loading, setLoading] = useState(true);
-
-  const fetchFilteredData = async (payload) => {
-    const queryParams = {
-      city: city ? capitalizeFirstLetter(city) : undefined,
-      limit: INITIAL_LIMIT,
-      houseType:
-        Object.values(listingType).find((type) => type.name === usedType)
-          ?.value || undefined,
-      offset: 0,
-      hasBasement: undefined,
-      maxListPrice: 0,
-      minListPrice: 0,
-      sepEntrance: undefined,
-      washroom: undefined,
-      saleLease:
-        Object.values(saleLease).filter(
-          (state) => state.name === saleLeaseValue
-        )[0]?.value || undefined,
-      minTimestampSql: numberOfDays.twentyFourHrsAgo.value,
-      ...payload,
-    };
-    setLoading(true);
-    const filteredSalesData = await getFilteredRetsData(queryParams);
-    setSalesData([...filteredSalesData]);
-    setLoading(false);
-    setOffset(INITIAL_LIMIT);
-  };
-
   const scrollAmt = () => {
     if (isMobileView) {
       return 1;
     }
     return 3;
   };
-  const slideLeft = (e) => {
-    e.preventDefault();
-    const scrollContainer = scrollRef.current;
-    const cardWidth = cardRef.current.offsetWidth;
-    const scrollAmount = cardWidth * scrollAmt(); // Adjust the scroll amount as needed
-    scrollContainer.scrollLeft -= scrollAmount;
-  };
-
-  const slideRight = (e) => {
-    e.preventDefault();
-    const scrollContainer = scrollRef.current;
-    const cardWidth = cardRef.current.offsetWidth;
-    const scrollAmount = cardWidth * scrollAmt(); // Adjust the scroll amount as needed
-    scrollContainer.scrollLeft += scrollAmount;
-  };
-  function getDaysInMonth(year, month) {
-    // Get the number of days in a month
-    return new Date(year, month + 1, 0).getDate();
-  }
-
-  useEffect(() => {
-    fetchFilteredData();
-  }, []);
+  // useEffect(() => {
+  //   fetchFilteredData();
+  // }, []);
 
   return salesData?.length > 0 ? (
     <div
@@ -112,7 +58,7 @@ const HotListings = ({
           </h3>
         </div>
       </div> */}
-      <div className="absolute left-0 z-10 w-full h-full flex justify-between items-center">
+      {/* <div className="absolute left-0 w-full h-full flex justify-between items-center">
         <button
           className="w-8 h-8 absolute top-40 left-0 border-gray-200 border-2 rounded-full flex justify-center items-center bg-white z-10"
           title="scroll left"
@@ -127,10 +73,10 @@ const HotListings = ({
         >
           <SlArrowRight size={16} />
         </button>
-      </div>
-      <div className="overflow-hidden flex items-center">
+      </div> */}
+      <div className="overflow-hidden">
         <div
-          className="row row-cols-lg-5 row-cols-md-3 row-cols-1 gx-4 my-4"
+          className="py-2 row row-cols-lg-5 row-cols-md-3 row-cols-1 gx-4 my-4"
           id="slider"
           ref={scrollRef}
         >
@@ -138,7 +84,7 @@ const HotListings = ({
             // if (curElem.PhotoCount > 0) {
             return (
               <CityResoCard
-                city={formattedCity}
+                // city={formattedCity}
                 key={index}
                 curElem={curElem}
                 ref={cardRef}
