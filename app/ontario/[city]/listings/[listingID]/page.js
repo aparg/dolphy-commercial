@@ -92,9 +92,9 @@ const page = async ({ params }) => {
         <section className="padding-top flex items-center w-full text-sm">
           <div className="padding-top flex items-center w-full">
             <div
-              className={`mx-auto row justify-between gap-0 w-full md:max-w-[80%]`}
+              className={`mx-auto row justify-between gap-x-2 w-full md:max-w-[80%]`}
             >
-              <div className="col-md-8">
+              <div className="col-md-7">
                 <PropertyPage {...{ main_data }} />
                 <div className="z-20 relative mt-24">
                   <h3 className="main-title fs-2 aff2">Map View</h3>
@@ -113,7 +113,7 @@ const page = async ({ params }) => {
         </section>
 
         {formattedSlug && (
-          <section className="additonal__listing w-full mx-auto my-52">
+          <section className="additonal__listing w-full mx-auto mt-24 sm:mt-52">
             <AdditionalListing
               city={formattedSlug}
               newSalesData={newSalesData}
