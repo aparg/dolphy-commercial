@@ -163,7 +163,7 @@ const CityResoCard = React.forwardRef(
                       small && "hidden"
                     }`}
                   >
-                    {curElem.TotalArea} Sqft
+                    {Math.floor(curElem.TotalArea)} ft<sup>2</sup>
                   </span>
                 </h2>
                 {/* <div className="d-flex align-items-center">

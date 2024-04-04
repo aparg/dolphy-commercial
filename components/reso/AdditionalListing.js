@@ -52,15 +52,15 @@ const AdditionalListing = ({
 
   return (
     <div className="position-relative">
-      <div className="d-flex justify-content-between pt-5 explore-container my-0 sm:my-4">
+      <div className="d-flex justify-content-between pt-5 explore-container my-0 sm:my-4 align-center">
         <div className="w-full flex flex-row justify-between">
           {!listingType ? (
-            <h3 className="main-title fs-1 fs-sm-2 ">
+            <h3 className="main-title fs-2 fs-sm-2">
               Explore New {listingType ? `${listingType}` : ``} Listings in{" "}
               {city}
             </h3>
           ) : (
-            <h3 className="main-title fs-1 fs-sm-2 ">
+            <h3 className="main-title fs-2 fs-sm-2 ">
               Continue searching{" "}
               {capitalizeFirstLetter(modifyType(listingType))}
               {`${
