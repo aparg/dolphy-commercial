@@ -86,28 +86,6 @@ const FilteredCommercialList = ({
   };
 
   const { hotSales, remainingSales } = useMemo(() => {
-    // Get today's date in YYYY-MM-DD format
-    // const today = new Date().toISOString().split("T")[0];
-
-    // // Separate sales data for today and remaining days
-    // const hotSales = [];
-    // const remainingSales = [];
-
-    // salesData.forEach((data) => {
-    //   // Extract the date part from timestampSql
-    //   const datePart = data.TimestampSql.split(" ")[0];
-    //   console.log(datePart);
-
-    //   // Check if the datePart matches today's date and only push 5 data to hot sales array
-    //   if (datePart === today && hotSales.length < 5) {
-    //     hotSales.push(data);
-    //   } else {
-    //     remainingSales.push(data);
-    //   }
-    // });
-
-    // return { hotSales, remainingSales };
-
     // Get the current date and time
     const currentDate = new Date();
 
@@ -146,7 +124,7 @@ const FilteredCommercialList = ({
       <h3 className={`main-title fs-2 ${isMobileView ? "pt-3" : "pt-4"}`}>
         Find {filterState.type ? filterState.type : "Commercial Real Estate"}
         {plural[filterState.type]} {filterState.saleLease || "For Sale"} in{" "}
-        {capitalizeFirstLetter(city) || "Ontario"}{" "}
+        {decodeURIComponent(capitalizeFirstLetter(city)) || "Ontario"}{" "}
         {filterState.priceRange.max
           ? `under $${filterState.priceRange.max}`
           : ``}
@@ -163,7 +141,8 @@ const FilteredCommercialList = ({
         {filterState.type
           ? `${filterState.type}${plural[filterState.type]}`
           : "Commercial Real Estate"}{" "}
-        in {capitalizeFirstLetter(city) || "Ontario"} and select the best ones.
+        in {decodeURIComponent(capitalizeFirstLetter(city)) || "Ontario"} and
+        select the best ones.
       </p>
       <div className="filter-container flex">
         <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
