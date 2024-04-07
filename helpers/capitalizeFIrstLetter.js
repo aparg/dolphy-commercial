@@ -1,5 +1,6 @@
 export function capitalizeFirstLetter(str) {
   if (str == undefined) return str;
+  //noticed that the route values could have space in their names (eg. kawartha%20lakes), to capitalize both  the words, this small section is added
   if (str.includes("%20")) {
     const words = str.split("%20");
     const capitalizedWords = words.map((word) => capitalizer(word));

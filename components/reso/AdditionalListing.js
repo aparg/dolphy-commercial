@@ -73,7 +73,7 @@ const AdditionalListing = ({
                     return data.value == saleLeaseValue;
                   })?.name
                 } `}
-              in {decodeURIComponent(city) || "Ontario"}
+              in {(city && decodeURIComponent(city)) || "Ontario"}
             </h3>
           )}
           <a
