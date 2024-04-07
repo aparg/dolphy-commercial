@@ -1294,6 +1294,7 @@ label {
     display: flex;
     gap: 10px;
     max-width: 100%; /* Allow the container to take full available width */
+    flex-wrap: wrap;
     overflow-y: scroll;
     scroll-behavior: smooth;
   }
@@ -2084,7 +2085,7 @@ button:focus:not(:focus-visible) {
 
 .filter__scrolled {
   position: fixed;
-  top: -1px;
+  top: 45px;
   left: 0;
   width: 100%;
   background-color: #fff;
