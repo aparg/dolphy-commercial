@@ -96,7 +96,7 @@ const PropertyPage = ({ main_data }) => {
               <h1 className="vmain-title mb-0 mt-4 mt-md-2 text-2xl sm:text-4xl">
                 <div className="uppercase bannerSection">
                   <div className="listingStatus"></div>
-                  FOR {main_data.SaleLease} -{" "}
+                  FOR {main_data.SaleLease} -{' '}
                   {/* tailwind style classname for bottom dashed border gray*/}
                   <span className="border-gray-500 border-dotted border-b">
                     ACTIVE
@@ -104,7 +104,7 @@ const PropertyPage = ({ main_data }) => {
                 </div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="me-2">
-                    {main_data.Street} {main_data.StreetName}{" "}
+                    {main_data.Street} {main_data.StreetName}{' '}
                     {main_data.StreetAbbreviation}
                   </span>
                   <CompareButton main_data={main_data} width={8} />
@@ -237,7 +237,7 @@ const PropertyPage = ({ main_data }) => {
             </div>
             <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax4.svg" />
-              Tax Type: {main_data.TypeTaxes || "N/A"}
+              Tax Type: {main_data.TypeTaxes || 'N/A'}
             </div>
             <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax1.svg" />
@@ -245,10 +245,10 @@ const PropertyPage = ({ main_data }) => {
             </div>
             <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax2.svg" />
-              Commercial Condo Fees:{" "}
+              Commercial Condo Fees:{' '}
               {(main_data.CommercialCondoFees &&
                 `$${main_data.CommercialCondoFees}`) ||
-                "N/A"}
+                'N/A'}
             </div>
           </div>
 
@@ -273,7 +273,7 @@ const PropertyPage = ({ main_data }) => {
         </div>
       )}
 
-      <div className="mt-24 col-12 ">
+      {/* <div className="mt-24 col-12 ">
         <h2 className="fw-bold pb-3 text-lg sm:text-2xl">
           <Image
             alt="walking  "
@@ -304,7 +304,7 @@ const PropertyPage = ({ main_data }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* <div className="py-3 py-md-5 my-5">
         <h2 className="fs-2 fw-bold">
           <span className="aff2">Mortgage Calculator</span>
@@ -363,7 +363,7 @@ const PropertyPage = ({ main_data }) => {
         </div>
       </div> */}
     </div>
-  );
+  )
 };
 
 export default PropertyPage;
