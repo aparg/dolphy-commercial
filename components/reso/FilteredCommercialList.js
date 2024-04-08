@@ -124,7 +124,7 @@ const FilteredCommercialList = ({
       <h3 className={`main-title fs-2 ${isMobileView ? "pt-3" : "pt-4"}`}>
         Find {filterState.type ? filterState.type : "Commercial Real Estate"}
         {plural[filterState.type]} {filterState.saleLease || "For Sale"} in{" "}
-        {decodeURIComponent(capitalizeFirstLetter(city)) || "Ontario"}{" "}
+        {(city && decodeURIComponent(capitalizeFirstLetter(city))) || "Ontario"}{" "}
         {filterState.priceRange.max
           ? `under $${filterState.priceRange.max}`
           : ``}
