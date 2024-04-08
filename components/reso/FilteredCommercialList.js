@@ -141,8 +141,9 @@ const FilteredCommercialList = ({
         {filterState.type
           ? `${filterState.type}${plural[filterState.type]}`
           : "Commercial Real Estate"}{" "}
-        in {decodeURIComponent(capitalizeFirstLetter(city)) || "Ontario"} and
-        select the best ones.
+        in{" "}
+        {(city && decodeURIComponent(capitalizeFirstLetter(city))) || "Ontario"}{" "}
+        and select the best ones.
       </p>
       <div className="filter-container flex">
         <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
