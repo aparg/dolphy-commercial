@@ -56,23 +56,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
       }
     }
     setFilterState({ ...newFilterState })
-    const payload = {
-      saleLease: Object.values(saleLease).find(
-        (saleLeaseObj) => saleLeaseObj.name === newFilterState.saleLease
-      )?.value,
-      minListPrice: Number(newFilterState.priceRange?.min ?? 0),
-      maxListPrice: Number(newFilterState.priceRange?.max ?? 0),
-      houseType: Object.values(listingType).find(
-        (type) => type.name === newFilterState.type
-      )?.value,
-      hasBasement: newFilterState.hasBasement,
-      sepEntrance: newFilterState.sepEntrance,
-      washroom: newFilterState.washroom,
-      minTimestampSql: Object.values(numberOfDays).find((obj) => {
-        return obj.value == newFilterState.minTimestampSql
-      })?.value,
-    }
-    fetchFilteredData(payload)
+    fetchFilteredData(newFilterState)
   }
 
   useEffect(() => {
