@@ -1,11 +1,11 @@
-"use client";
-import React, { useState, useMemo, useEffect } from "react";
+'use client'
+import React, { useState, useMemo, useEffect } from 'react'
 
-import SalesList from "@/components/reso/SalesList";
-import Filters from "@/components/reso/Filters";
+import SalesList from '@/components/reso/SalesList'
+import Filters from '@/components/reso/Filters'
 
 //HELPERS
-import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
+import { capitalizeFirstLetter } from '@/helpers/capitalizeFIrstLetter'
 import { isLocalStorageAvailable } from '@/helpers/checkLocalStorageAvailable'
 
 //CONSTANT
@@ -118,7 +118,6 @@ const FilteredCommercialList = ({
     }
   }, [])
 
-  console.log(filterState)
   return (
     <>
       {!loading ? (
@@ -145,45 +144,31 @@ const FilteredCommercialList = ({
             {filterState.type
               ? `${filterState.type}${plural[filterState.type]}`
               : 'Commercial Real Estate'}{' '}
-            in {decodeURIComponent(capitalizeFirstLetter(city)) || 'Ontario'}{' '}
+            in{' '}
+            {(city && decodeURIComponent(capitalizeFirstLetter(city))) ||
+              'Ontario'}{' '}
             and select the best ones.
           </p>
           <div className="filter-container flex">
             <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
           </div>
-          <HotListings
-            // INITIAL_LIMIT={10}
-            // saleLeaseValue={saleLeaseValue}
-            // city={city}
-            // type={type}
-            salesData={hotSales}
-          />
+          <HotListings salesData={hotSales} />
           <div
             className={`${
               isMobileView ? 'pt-3' : 'pt-5'
             } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-4 g-md-3`}
           >
-            {!loading ? (
-              <SalesList
-                {...{
-                  salesData: remainingSales,
-                  city,
-                  INITIAL_LIMIT,
-                  setSalesData,
-                  offset,
-                  setOffset,
-                  filterState,
-                }}
-              />
-            ) : (
-              <div className="w-full flex justify-center">
-                <ImSpinner size={24} />
-              </div>
-            )}
-            {/* <div ref={ref} className="flex w-screen items-center justify-center">
-          {" "}
-          {isLoading && <ImSpinner size={24} />}
-        </div> */}
+            <SalesList
+              {...{
+                salesData: remainingSales,
+                city,
+                INITIAL_LIMIT,
+                setSalesData,
+                offset,
+                setOffset,
+                filterState,
+              }}
+            />
           </div>
         </div>
       ) : (
@@ -195,4 +180,4 @@ const FilteredCommercialList = ({
   )
 }
 
-export default FilteredCommercialList;
+export default FilteredCommercialList
