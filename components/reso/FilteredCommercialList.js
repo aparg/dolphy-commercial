@@ -35,7 +35,6 @@ const FilteredCommercialList = ({
   const [loading, setLoading] = useState(true)
 
   const fetchFilteredData = async (payload) => {
-    console.log(payload)
     const queryParams = {
       city: city ? capitalizeFirstLetter(city) : undefined,
       limit: INITIAL_LIMIT,
