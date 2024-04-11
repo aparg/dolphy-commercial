@@ -18,17 +18,7 @@ const AdditionalListing = ({
 }) => {
   const scrollRef = useRef(null); //used to hold scroll value
   const cardRef = useRef(null); //used to hold card width value
-  const formattedCity = city?.toLowerCase();
-  // const slideLeft = () => {
-  //   const dynamicWidthOfCard = cardRef.current.offsetWidth;
-  //   // @ts-ignore
-  //   scrollRef.current.scrollLeft = slider.scrollLeft - dynamicWidthOfCard;
-  // };
-  // const slideRight = () => {
-  //   const dynamicWidthOfCard = cardRef.current.offsetWidth;
-  //   // @ts-ignore
-  //   scrollRef.current.scrollLeft = slider.scrollLeft + dynamicWidthOfCard;
-  // };
+  const formattedCity = city?.toLowerCase()
 
   //business is returned as Sale of business so we need to modify it to Business
   const modifyType = (type) => {

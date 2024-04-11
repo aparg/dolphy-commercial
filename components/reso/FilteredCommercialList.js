@@ -32,7 +32,6 @@ const FilteredCommercialList = ({
   const [salesData, setSalesData] = useState([])
   const [offset, setOffset] = useState(0)
   const { isMobileView } = useDeviceView()
-  const [loading, setLoading] = useState(true)
 
   const fetchFilteredData = async (payload) => {
     const queryParams = {
@@ -51,11 +50,8 @@ const FilteredCommercialList = ({
         )[0].value || undefined,
       minTimestampSql: payload.minTimestampSql,
     }
-
-    setLoading(true)
     const filteredSalesData = await getFilteredRetsData(queryParams)
     setSalesData([...filteredSalesData])
-    setLoading(false)
     setOffset(INITIAL_LIMIT)
   }
 
@@ -120,7 +116,7 @@ const FilteredCommercialList = ({
 
   return (
     <>
-      {!loading ? (
+      {filterState && (
         <div className="container-fluid">
           <h3 className={`main-title fs-2 ${isMobileView ? 'pt-3' : 'pt-4'}`}>
             Find{' '}
@@ -136,10 +132,6 @@ const FilteredCommercialList = ({
             className="fw-light mb-2"
             style={isMobileView ? { fontSize: '0.9rem' } : {}}
           >
-            {/* Streamline your {filterState.type}{" "}
-        {city ? capitalizeFirstLetter(city) : ""} commercial real estate search
-        by price, or listing type. Explore the latest MLS® listings for
-      up-to-date information. */}
             Explore top{' '}
             {filterState.type
               ? `${filterState.type}${plural[filterState.type]}`
@@ -152,6 +144,7 @@ const FilteredCommercialList = ({
           <div className="filter-container flex">
             <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
           </div>
+
           <HotListings salesData={hotSales} />
           <div
             className={`${
@@ -170,10 +163,6 @@ const FilteredCommercialList = ({
               }}
             />
           </div>
-        </div>
-      ) : (
-        <div className="w-full flex justify-center">
-          <ImSpinner size={24} />
         </div>
       )}
     </>
