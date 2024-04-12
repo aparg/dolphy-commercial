@@ -102,9 +102,9 @@ const SuggestedCity = ({ defaultCitiesData }) => {
 
   return (
     <>
-      {citiesData.map((cityData) => {
+      {citiesData.map((cityData, idx) => {
         return (
-          <div className="container-fluid mt-24" key={cityData.city}>
+          <div className="container-fluid mt-24" key={idx}>
             <section className="additonal__listing">
               {cityData.data && (
                 <AdditionalListing

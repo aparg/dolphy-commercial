@@ -39,17 +39,17 @@ const HotListings = ({ salesData }) => {
   return salesData?.length > 0 ? (
     <div
       className={`position-relative rounded-xl px-2 z-10 ${
-        isMobileView ? 'mt-3' : 'mt-4'
+        isMobileView ? "mt-3" : "mt-4"
       }`}
       style={{
         background:
-          'linear-gradient(90deg, rgb(255,203,171) 0px, rgb(249,194,189))',
+          "linear-gradient(90deg, rgb(255,203,171) 0px, rgb(249,194,189))",
       }}
     >
       <div className="w-full flex flex-row justify-between">
         <h3
           className={`main-title fs-2 fs-sm-2 ${
-            isMobileView ? 'pt-3' : 'pt-4'
+            isMobileView ? "pt-3" : "pt-4"
           }`}
         >
           Listed Today!
@@ -79,7 +79,7 @@ const HotListings = ({ salesData }) => {
                 ref={cardRef}
                 small={true}
               />
-            )
+            );
             // }
             // return null
           })}
@@ -88,7 +88,7 @@ const HotListings = ({ salesData }) => {
     </div>
   ) : (
     <></>
-  )
+  );
 };
 
 export default HotListings;

@@ -154,7 +154,7 @@ const CityResoCard = React.forwardRef(
                 {/* </a> */}
                 {/* <div className="flex justify-between items-center"></div> */}
                 {/* <p className="text-2xl font-extrabold text-red-500">{price}</p> */}
-                <h2 className="price text-primary-green fw-bold mb-1 fs-3 fw-bold d-flex align-items-center justify-content-start">
+                <h2 className="price fw-bold mb-1 fs-3 fw-bold d-flex align-items-center justify-content-start">
                   {price}
                   {""}
 

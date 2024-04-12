@@ -13,21 +13,26 @@ import {
 
 //CONSTANT
 import { saleLease, listingType, numberOfDays } from "@/constant";
-import useDeviceView from '@/helpers/useDeviceView'
+import useDeviceView from "@/helpers/useDeviceView";
 
-const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
-  const [navbar, setNavbar] = useState(false)
+const Filters = ({
+  filterState,
+  setFilterState,
+  fetchFilteredData,
+  embedded,
+}) => {
+  const [navbar, setNavbar] = useState(false);
 
-  const { isMobileView } = useDeviceView()
+  const { isMobileView } = useDeviceView();
 
   //options for lease or sale
-  const saleLeaseOptions = Object.values(saleLease).map((item) => item.name)
+  const saleLeaseOptions = Object.values(saleLease).map((item) => item.name);
   //options for house type
-  const houseTypeOptions = Object.values(listingType).map((item) => item.name)
+  const houseTypeOptions = Object.values(listingType).map((item) => item.name);
   //options for house type
   const numberOfDaysOptions = Object.values(numberOfDays).map(
     (item) => item.userFilter && item.name
-  )
+  );
 
   //dynamic price range generator based on sale or lease options
   const minMaxPrice = useMemo(() => {
@@ -36,58 +41,60 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
       return {
         min: 1500,
         max: 8000,
-      }
+      };
     } else {
       return {
         min: 400000,
         max: 3000000,
-      }
+      };
     }
-  }, [filterState])
+  }, [filterState]);
 
   const handleFilterChange = (name, value) => {
-    const newFilterState = { ...filterState }
-    newFilterState[name] = value
-    if (name === 'saleLease') {
+    const newFilterState = { ...filterState };
+    newFilterState[name] = value;
+    if (name === "saleLease") {
       //reset the price filter
-      newFilterState['priceRange'] = {
+      newFilterState["priceRange"] = {
         min: 0,
         max: 0,
-      }
+      };
     }
-    setFilterState({ ...newFilterState })
-    fetchFilteredData(newFilterState)
-  }
+    setFilterState({ ...newFilterState });
+    fetchFilteredData(newFilterState);
+  };
 
   useEffect(() => {
     if (window) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY >= 60) {
-          setNavbar(true)
+      window.addEventListener("scroll", () => {
+        if (embedded) {
+          setNavbar(false);
+        } else if (window.scrollY >= 60) {
+          setNavbar(true);
         } else {
-          setNavbar(false)
+          setNavbar(false);
         }
-      })
+      });
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener("DOMContentLoaded", function () {
       // Code to ensure that the Slider component receives focus when clicked directly
       document
-        .querySelector('.price-range__slider')
-        .addEventListener('click', function (event) {
-          const slider = event.target.closest('.max-w-md.slider')
+        .querySelector(".price-range__slider")
+        .addEventListener("click", function (event) {
+          const slider = event.target.closest(".max-w-md.slider");
           if (slider) {
-            slider.focus()
+            slider.focus();
           }
-        })
-    })
-  }, [])
+        });
+    });
+  }, []);
 
   return (
     <>
       <div
         className={`filters d-flex gap-2 gap-md-3 flex 
-         ${navbar ? 'filter__scrolled mt-4 pb-2 container-fluid' : ''} `}
+         ${navbar ? "filter__scrolled mt-4 pb-2 container-fluid" : ""} `}
       >
         <IndividualFilterButton
           options={saleLeaseOptions}
@@ -131,21 +138,21 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         </div>
       ) : null}
     </>
-  )
-}
+  );
+};
 
 const IndividualFilter = ({ options, name, value, handleFilterChange }) => {
-  const [selectedKeys, setSelectedKeys] = useState([value])
+  const [selectedKeys, setSelectedKeys] = useState([value]);
 
   const handleKeyChange = (newKey) => {
-    setSelectedKeys(newKey)
-    handleFilterChange(name, getSelectedValue(newKey))
-  }
+    setSelectedKeys(newKey);
+    handleFilterChange(name, getSelectedValue(newKey));
+  };
 
   const getSelectedValue = useCallback(
-    (key) => Array.from(key).join(', ').replaceAll('_', ' '),
+    (key) => Array.from(key).join(", ").replaceAll("_", " "),
     [selectedKeys]
-  )
+  );
 
   return (
     <div>
@@ -168,20 +175,20 @@ const IndividualFilter = ({ options, name, value, handleFilterChange }) => {
           onSelectionChange={handleKeyChange}
         >
           {options.map((option) => {
-            return <DropdownItem key={option}>{option}</DropdownItem>
+            return <DropdownItem key={option}>{option}</DropdownItem>;
           })}
         </DropdownMenu>
       </Dropdown>
     </div>
-  )
-}
+  );
+};
 
 const TimeFilterButton = ({ name, handleFilterChange }) => {
-  const [selectedKeys, setSelectedKeys] = useState()
+  const [selectedKeys, setSelectedKeys] = useState();
   const handleTime = (optionName, optionValue) => {
-    setSelectedKeys(optionName)
-    handleFilterChange(name, optionValue)
-  }
+    setSelectedKeys(optionName);
+    handleFilterChange(name, optionValue);
+  };
 
   return (
     <Dropdown>
@@ -191,14 +198,14 @@ const TimeFilterButton = ({ name, handleFilterChange }) => {
           className="capitalize bg-color roundedPill h-[34px] border-2"
           size="md"
         >
-          {selectedKeys || 'Number Of Days'}
+          {selectedKeys || "Number Of Days"}
           <i className="bi bi-chevron-down"></i>
         </Button>
       </DropdownTrigger>
       <DropdownMenu
         aria-label="price filter"
         itemClasses={{
-          base: ['data-[hover=true]:bg-default-0'],
+          base: ["data-[hover=true]:bg-default-0"],
         }}
         disallowEmptySelection
         selectionMode="single"
@@ -212,54 +219,54 @@ const TimeFilterButton = ({ name, handleFilterChange }) => {
               >
                 {option.name}
               </DropdownItem>
-            )
+            );
           }
-          return
+          return;
         })}
       </DropdownMenu>
     </Dropdown>
-  )
-}
+  );
+};
 
 const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
   const [price, setPrice] = useState({
     min: 0,
     max: 0,
-  })
+  });
 
   const handlePriceChange = (inputName, value) => {
     const newPrice = {
       ...price,
       [inputName]: Number(value),
-    }
+    };
 
-    setPrice(newPrice)
-    handleFilterChange(name, newPrice)
-  }
+    setPrice(newPrice);
+    handleFilterChange(name, newPrice);
+  };
 
   const valueToDisplay = useMemo(() => {
     if (price.min && !price.max) {
-      return `Over $${price.min}`
+      return `Over $${price.min}`;
     } else if (price.min && price.max) {
-      return `$${price.min} - $${price.max}`
+      return `$${price.min} - $${price.max}`;
     } else {
-      return 'Price'
+      return "Price";
     }
-  }, [price])
+  }, [price]);
 
   const handleRangeChange = ([min, max]) => {
-    const newPrice = { min, max }
-    setPrice(newPrice)
-    handleFilterChange(name, newPrice)
-  }
+    const newPrice = { min, max };
+    setPrice(newPrice);
+    handleFilterChange(name, newPrice);
+  };
 
   useEffect(() => {
     const newPrice = {
       min: value?.min ?? 0,
       max: value?.max ?? 0,
-    }
-    setPrice(newPrice)
-  }, [value])
+    };
+    setPrice(newPrice);
+  }, [value]);
 
   return (
     <Dropdown>
@@ -276,7 +283,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
       <DropdownMenu
         aria-label="price filter"
         itemClasses={{
-          base: ['data-[hover=true]:bg-default-0'],
+          base: ["data-[hover=true]:bg-default-0"],
         }}
       >
         <DropdownSection aria-label="price filter" showDivider>
@@ -294,7 +301,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
                 value={value?.min}
                 min={0}
                 onFocus={(event) => event.target && event.target.select()}
-                onValueChange={(value) => handlePriceChange('min', value)}
+                onValueChange={(value) => handlePriceChange("min", value)}
                 startContent={
                   <div className="pointer-events-none flex items-center">
                     <span className="text-default-400 text-small">$</span>
@@ -311,7 +318,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
                 value={value?.max}
                 min={value?.min}
                 onFocus={(event) => event.target.select()}
-                onValueChange={(value) => handlePriceChange('max', value)}
+                onValueChange={(value) => handlePriceChange("max", value)}
                 startContent={
                   <div className="pointer-events-none flex items-center">
                     <span className="text-default-400 text-small">$</span>
@@ -328,10 +335,10 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
                 maxValue={minMaxPrice.max}
                 onChangeEnd={handleRangeChange}
                 defaultValue={[minMaxPrice.min, minMaxPrice.max]}
-                formatOptions={{ style: 'currency', currency: 'USD' }}
+                formatOptions={{ style: "currency", currency: "USD" }}
                 className="max-w-md"
                 classNames={{
-                  filler: 'bg-primary-green',
+                  filler: "bg-primary-green",
                 }}
                 renderThumb={(props) => (
                   <div
@@ -347,8 +354,8 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
         </DropdownSection>
       </DropdownMenu>
     </Dropdown>
-  )
-}
+  );
+};
 
 const PriceRangeFilterBottom = ({
   name,
@@ -359,52 +366,52 @@ const PriceRangeFilterBottom = ({
   const [price, setPrice] = useState({
     min: 0,
     max: 0,
-  })
+  });
 
   const [defaultPrice, setDefaultPrice] = useState({
     min: minMaxPrice.min,
     max: minMaxPrice.max,
-  })
+  });
 
-  const [unMount, setUnMount] = useState(false)
+  const [unMount, setUnMount] = useState(false);
 
   const convertIntoCurrency = useCallback(
     (price) => {
-      return Number(price).toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
+      return Number(price).toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
         maximumFractionDigits: 0,
-      })
+      });
     },
     [price]
-  )
+  );
 
   const handleRangeChange = ([min, max]) => {
-    const newPrice = { min, max }
-    setPrice(newPrice)
-    handleFilterChange(name, newPrice)
-  }
+    const newPrice = { min, max };
+    setPrice(newPrice);
+    handleFilterChange(name, newPrice);
+  };
 
   useEffect(() => {
     const newPrice = {
       min: value?.min > 0 ? value?.min : minMaxPrice.min,
       max: value?.max > 0 ? value?.max : minMaxPrice.max,
-    }
+    };
 
     const newDefaultPrice = {
       min: minMaxPrice.min,
       max: minMaxPrice.max,
-    }
-    setDefaultPrice(newDefaultPrice)
-    setPrice(newPrice)
+    };
+    setDefaultPrice(newDefaultPrice);
+    setPrice(newPrice);
 
     if (value.min === 0 && value.max === 0) {
-      setUnMount(true)
+      setUnMount(true);
       setTimeout(() => {
-        setUnMount(false)
-      }, 10)
+        setUnMount(false);
+      }, 10);
     }
-  }, [value, minMaxPrice])
+  }, [value, minMaxPrice]);
 
   return (
     <>
@@ -420,12 +427,12 @@ const PriceRangeFilterBottom = ({
             // value={[price.min, price.max]}
             onChangeEnd={handleRangeChange}
             defaultValue={[defaultPrice.min, defaultPrice.max]}
-            formatOptions={{ style: 'currency', currency: 'USD' }}
+            formatOptions={{ style: "currency", currency: "USD" }}
             classNames={{
-              base: 'max-w-md slider gap-3',
-              track: 'bg-light border border-secondary',
-              filler: 'bg-primary-green bg-gradient-to-r',
-              value: 'fw-bold fs-6',
+              base: "max-w-md slider gap-3",
+              track: "bg-light border border-secondary",
+              filler: "bg-primary-green bg-gradient-to-r",
+              value: "fw-bold fs-6",
             }}
             renderThumb={(props) => (
               <div
@@ -433,15 +440,15 @@ const PriceRangeFilterBottom = ({
                 className="p-1 top-50 bg-light border border-secondary rounded-circle shadow cursor-grab"
               >
                 <span className="bg-primary-green shadow rounded-circle w-5 h-5 d-block" />
-                {!props['data-pressed'] && (
+                {!props["data-pressed"] && (
                   <>
                     {props.index === 0 ? (
                       <span
                         style={{
-                          position: 'absolute',
+                          position: "absolute",
                           top: -32,
                           left: -10,
-                          fontSize: '11px',
+                          fontSize: "11px",
                         }}
                         className="custom-range-thumb p-1 border-md"
                       >
@@ -451,10 +458,10 @@ const PriceRangeFilterBottom = ({
                     {props.index === 1 ? (
                       <span
                         style={{
-                          position: 'absolute',
+                          position: "absolute",
                           top: -32,
                           left: -30,
-                          fontSize: '11px',
+                          fontSize: "11px",
                         }}
                         className="custom-range-thumb p-1 border-md"
                       >
@@ -467,15 +474,15 @@ const PriceRangeFilterBottom = ({
             )}
             tooltipProps={{
               offset: 10,
-              placement: 'bottom',
+              placement: "bottom",
               classNames: {
                 base: [
                   // arrow color
-                  'custom-range-thumb',
+                  "custom-range-thumb",
                 ],
                 content: [
-                  'py-2 shadow-xl',
-                  'text-white custom-range-thumb rounded-circle',
+                  "py-2 shadow-xl",
+                  "text-white custom-range-thumb rounded-circle",
                 ],
               },
             }}
@@ -483,8 +490,8 @@ const PriceRangeFilterBottom = ({
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
 const IndividualFilterButton = ({
   options,
@@ -492,16 +499,16 @@ const IndividualFilterButton = ({
   value,
   handleFilterChange,
 }) => {
-  const [activeFilter, setActiveFilter] = useState(value)
+  const [activeFilter, setActiveFilter] = useState(value);
   const isActive = (key) => {
-    const foundSalesLease = options.find((option) => option === key)
-    return foundSalesLease === activeFilter
-  }
+    const foundSalesLease = options.find((option) => option === key);
+    return foundSalesLease === activeFilter;
+  };
 
   const handleClick = (name, option) => {
-    setActiveFilter(option)
-    handleFilterChange(name, option)
-  }
+    setActiveFilter(option);
+    handleFilterChange(name, option);
+  };
 
   return (
     <>
@@ -511,16 +518,16 @@ const IndividualFilterButton = ({
             key={index}
             className={`px-3 py-1 cursor-pointer text-nowrap text-small h-[34px] d-flex justify-content-center align-items-center rounded-pill border-2 ${
               isActive(option)
-                ? 'bg-primary-green text-white border-primary-green'
-                : ''
+                ? "bg-primary-green text-white border-primary-green"
+                : ""
             }`}
             onClick={() => handleClick(name, option)}
           >
             {option}
           </div>
-        )
+        );
       })}
     </>
-  )
-}
-export default Filters
+  );
+};
+export default Filters;
