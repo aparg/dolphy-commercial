@@ -101,12 +101,13 @@ const FilteredCommercialList = ({
 
   useEffect(() => {
     const storedState = localStorage.getItem("filterStateCommercial");
-    if (storedState) {
+    //we dont want to display stored data id the URL defines the filter state else previous filterstate is used
+    if (storedState && !(saleLeaseValue || type)) {
       const newFilterState = JSON.parse(storedState);
       setFilterState(newFilterState);
       fetchFilteredData(newFilterState);
     } else {
-      setFilterState({
+      const newFilterState = {
         saleLease: saleLeaseValue ? saleLease[saleLeaseValue].name : "For Sale",
         priceRange: {
           min: 0,
@@ -114,7 +115,9 @@ const FilteredCommercialList = ({
         },
         type: type ? capitalizeFirstLetter(type) : type,
         minTimestampSql: undefined,
-      });
+      };
+      setFilterState(newFilterState);
+      fetchFilteredData(newFilterState);
     }
   }, []);
 
