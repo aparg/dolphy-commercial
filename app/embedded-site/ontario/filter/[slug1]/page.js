@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { listingType, saleLease } from "@/constant";
 import SalesList from "@/components/reso/SalesList";
 import { getCommercialData } from "@/actions/fetchCommercialActions";
@@ -6,6 +6,7 @@ import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import FilteredCommercialList from "@/components/reso/FilteredCommercialList";
 import { plural } from "@/constant/plural";
 import HotListings from "@/components/HotListings";
+import { isLocalStorageAvailable } from "@/helpers/checkLocalStorageAvailable";
 
 const page = async ({ params }) => {
   let saleLeaseValue = undefined;
@@ -19,6 +20,7 @@ const page = async ({ params }) => {
   const isValidSlug = saleLeaseValue || type;
   const INITIAL_LIMIT = 30;
   const commercialListData = await getCommercialData(0, INITIAL_LIMIT);
+
   if (isValidSlug) {
     return (
       <div className="">
