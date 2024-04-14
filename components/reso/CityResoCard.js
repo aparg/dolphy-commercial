@@ -8,10 +8,12 @@ import { Image } from "react-bootstrap";
 import { listingType, saleLease } from "@/constant";
 import CompareButton from "../CompareButton";
 import { generateURL } from "@/helpers/generateURL";
+import { usePathname } from "next/navigation";
 
 const CityResoCard = React.forwardRef(
-  ({ curElem, small = false, city }, ref) => {
+  ({ curElem, small = false, city, embeddedSite }, ref) => {
     // const [address, setAddress] = useState("");
+    const pathname = usePathname();
     const price = Number(curElem.ListPrice).toLocaleString("en-US", {
       style: "currency",
       currency: "USD",
@@ -30,61 +32,6 @@ const CityResoCard = React.forwardRef(
       e.target.onerror = null;
       e.target.src = `/noimage.webp`;
     };
-
-    // const listingID = curElem.MLS;
-
-    // const options = {
-    //   method: "GET",
-    // };
-    // const urlToFetchMLSDetail = commercial.properties.replace(
-    //   "$query",
-    //   `?$select=MLS='${listingID}'`
-    // );
-    // useEffect(() => {
-    //   fetchPropertyData();
-    // }, []);
-
-    // const fetchPropertyData = async () => {
-    //   const resMLSDetail = await fetch(urlToFetchMLSDetail, options);
-    //   const data = await resMLSDetail.json();
-    //   const main_data = data.results[0];
-    //   const address = `${main_data?.Street} ${main_data.StreetName} ${main_data.StreetAbbreviation}`;
-    //   setAddress(address);
-    // };
-    // return (
-    //   <>
-    //     <div className="col additional_sales-card" ref={ref}>
-    //       <Link
-    //         href={`/ontario/${city}/${curElem.MLS}`}
-    //         className="text-decoration-none text-dark"
-    //       >
-    //         <div className="afte-proj">
-    //           <div className="img-text ">
-    //             <p className="m-0 text-small">
-    //               <TimeAgo modificationTimestamp={curElem.TimestampSql} />
-    //             </p>
-    //           </div>
-
-    //           <img
-    //             src={imgSrc}
-    //             className="imghei img-responsive imghei-small"
-    //             alt={curElem.MLS}
-    //             onError={handleImageError}
-    //           />
-
-    //           <div className="card-textt card text-small">
-    //             <p className="mb-0 card-price card-price-small">{price}</p>
-
-    //             <p className="mb-0 text-s"> MLS® #{curElem.MLS}</p>
-    //             <p className="mb-0 text-s">{curElem.UnparsedAddress}</p>
-
-    //             <p className="mb-0 text-s"> Listed by {curElem.ListBrokerage}</p>
-    //           </div>
-    //         </div>
-    //       </Link>
-    //     </div>
-    //   </>
-    // )
     const streetAndMLS = curElem.StreetName
       ? `${curElem.Street}-${curElem.StreetName?.replace(" ", "-")}-${
           curElem.StreetAbbreviation
@@ -96,6 +43,7 @@ const CityResoCard = React.forwardRef(
           href={generateURL({
             cityVal: curElem.Municipality,
             listingIDVal: streetAndMLS,
+            embeddedSite: pathname.includes("embedded-site"),
           })}
           className="text-black"
         >

@@ -9,6 +9,7 @@ import { plural } from "@/constant/plural";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import { saleLease } from "@/constant";
 import { generateURL } from "@/helpers/generateURL";
+import { usePathname } from "next/navigation";
 
 const AdditionalListing = ({
   city,
@@ -16,9 +17,10 @@ const AdditionalListing = ({
   listingType = null,
   saleLeaseValue = null,
 }) => {
+  const pathname = usePathname();
   const scrollRef = useRef(null); //used to hold scroll value
   const cardRef = useRef(null); //used to hold card width value
-  const formattedCity = city?.toLowerCase()
+  const formattedCity = city?.toLowerCase();
 
   //business is returned as Sale of business so we need to modify it to Business
   const modifyType = (type) => {
@@ -83,6 +85,7 @@ const AdditionalListing = ({
               cityVal: city,
               houseTypeVal: modifyType(listingType),
               saleLeaseVal: saleLeaseValue,
+              embeddedSite: pathname.includes("embedded-site"),
             })}
             className="btn btn-outline-primary float-end btn-explore px-2 sm:px-2 py-0 sm:py-2 h-6 sm:h-11"
           >
@@ -112,7 +115,6 @@ const AdditionalListing = ({
         ref={scrollRef}
       >
         {newSalesData?.map((curElem, index) => {
-          // if (curElem.PhotoCount > 0) {
           return (
             <CityResoCard
               city={formattedCity}

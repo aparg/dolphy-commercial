@@ -10,6 +10,7 @@ import { getFilteredRetsData } from "@/actions/fetchCommercialActions";
 import useDeviceView from "@/helpers/useDeviceView";
 import CityResoCard from "./reso/CityResoCard";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import { usePathname } from "next/navigation";
 
 const plural = {
   Retail: " Businesses",

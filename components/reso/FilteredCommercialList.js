@@ -33,6 +33,7 @@ const FilteredCommercialList = ({
   const [salesData, setSalesData] = useState([]);
   const [offset, setOffset] = useState(0);
   const { isMobileView } = useDeviceView();
+  const [loading, setLoading] = useState(false);
 
   const fetchFilteredData = async (payload) => {
     const queryParams = {
@@ -51,7 +52,9 @@ const FilteredCommercialList = ({
         )[0].value || undefined,
       minTimestampSql: payload.minTimestampSql,
     };
+    setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
+    setLoading(false);
     setSalesData([...filteredSalesData]);
     setOffset(INITIAL_LIMIT);
   };
@@ -153,25 +156,32 @@ const FilteredCommercialList = ({
               {...{ filterState, setFilterState, fetchFilteredData, embedded }}
             />
           </div>
-
-          <HotListings salesData={hotSales} />
-          <div
-            className={`${
-              isMobileView ? "pt-3" : "pt-5"
-            } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-4 g-md-3`}
-          >
-            <SalesList
-              {...{
-                salesData: remainingSales,
-                city,
-                INITIAL_LIMIT,
-                setSalesData,
-                offset,
-                setOffset,
-                filterState,
-              }}
-            />
-          </div>
+          {!loading ? (
+            <>
+              <HotListings salesData={hotSales} />
+              <div
+                className={`${
+                  isMobileView ? "pt-3" : "pt-5"
+                } row row-cols-1 row-cols-md-3 row-cols-xs-1 row-cols-sm-1 row-cols-lg-4 row-cols-xl-5 g-4 g-md-3`}
+              >
+                <SalesList
+                  {...{
+                    salesData: remainingSales,
+                    city,
+                    INITIAL_LIMIT,
+                    setSalesData,
+                    offset,
+                    setOffset,
+                    filterState,
+                  }}
+                />
+              </div>
+            </>
+          ) : (
+            <div className="flex justify-center my-5">
+              <ImSpinner size={24} />
+            </div>
+          )}
         </div>
       )}
     </>

@@ -5,6 +5,7 @@ export const generateURL = ({
   houseTypeVal = null,
   saleLeaseVal = null,
   listingIDVal = null,
+  embeddedSite = false,
 } = {}) => {
   const city = cityVal?.toLowerCase() || null;
   const houseType = houseTypeVal?.toLowerCase() || null;
@@ -14,28 +15,43 @@ export const generateURL = ({
       .find((key) => saleLease[key].value == saleLeaseVal)
       ?.toLowerCase() ||
     null;
-  if (listingIDVal && city) return `/ontario/${city}/listings/${listingIDVal}`;
+  if (listingIDVal && city)
+    return `${
+      embeddedSite ? "/embedded-site" : ""
+    }/ontario/${city}/listings/${listingIDVal}`;
   if (city) {
     if (houseType) {
       if (saleLeaseType) {
-        return `/ontario/${city}/${houseType}/${saleLeaseType}`;
+        return `${
+          embeddedSite ? "/embedded-site" : ""
+        }/ontario/${city}/${houseType}/${saleLeaseType}`;
       }
-      return `/ontario/${city}/${houseType}`;
+      return `${
+        embeddedSite ? "/embedded-site" : ""
+      }/ontario/${city}/${houseType}`;
     }
     if (saleLeaseType) {
-      return `/ontario/${city}/${saleLeaseType}`;
+      return `${
+        embeddedSite ? "/embedded-site" : ""
+      }/ontario/${city}/${saleLeaseType}`;
     }
-    return `/ontario/${city}`;
+    return `${embeddedSite ? "/embedded-site" : ""}/ontario/${city}`;
   }
   if (houseType) {
     if (saleLeaseType) {
-      return `/ontario/filter/${houseType}/${saleLeaseType}`;
+      return `${
+        embeddedSite ? "/embedded-site" : ""
+      }/ontario/filter/${houseType}/${saleLeaseType}`;
     }
-    return `/ontario/filter/${houseType}`;
+    return `${
+      embeddedSite ? "/embedded-site" : ""
+    }/ontario/filter/${houseType}`;
   }
   if (saleLeaseType) {
-    return `/ontario/filter/${saleLeaseType}`;
+    return `${
+      embeddedSite ? "/embedded-site" : ""
+    }/ontario/filter/${saleLeaseType}`;
   }
 
-  return `/ontario`;
+  return `${embeddedSite ? "/embedded-site" : ""}/ontario`;
 };

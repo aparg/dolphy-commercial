@@ -2,13 +2,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../(site)/globals.css";
 import "../(site)/icons.css";
 import "react-quill/dist/quill.snow.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import NextTopLoader from "nextjs-toploader";
 import { Figtree } from "next/font/google";
 import { Providers } from "../(site)/providers";
 import localFont from "next/font/local";
-
+import React from "react";
 const satoshi = localFont({
   src: [
     {

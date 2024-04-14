@@ -3,11 +3,7 @@ import React from "react";
 import BottomContactForm from "@/components/BottomContactForm";
 
 import SearchBar from "@/components/reso/SearchBar";
-
-import AdditionalListing from "@/components/reso/AdditionalListing";
 import { getCommercialData } from "@/actions/fetchCommercialActions";
-import FilterCard from "@/components/FilterCard";
-import TextOverImageCard from "@/components/TextOverImageCard";
 import PopularCities from "@/components/PopularCities";
 import RealEstateNews from "@/components/RealEstateNews";
 import SuggestedCity from "@/components/SuggestedCity";
