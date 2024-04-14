@@ -37,7 +37,7 @@
 // app/my-page/route.js
 import { NextResponse } from "next/server";
 // List of authorized domains
-const authorizedDomains = ["localhost:4000"];
+const authorizedDomains = ["127.0.0.1:5500", "localhost:4000"];
 
 export async function GET(request) {
   // Retrieve the referrer URL or origin domain
@@ -48,8 +48,7 @@ export async function GET(request) {
 
   // Check if the referrer URL or origin domain is authorized
   let isAuthorized = false;
-  console.log(referrerUrl);
-  console.log(originDomain);
+
   for (const domain of authorizedDomains) {
     if (referrerUrl?.includes(domain) || originDomain?.includes(domain)) {
       isAuthorized = true;
@@ -58,17 +57,17 @@ export async function GET(request) {
   }
 
   // If the referrer or origin is not authorized, reject the request
-  // if (currentPath.includes("/embedded-site")) {
-  //   if (!isAuthorized) {
-  //     return NextResponse.json(
-  //       { error: "Unauthorized access" },
-  //       { status: 403 }
-  //     );
-  //   }
+  if (currentPath.includes("/embedded-site")) {
+    if (!isAuthorized) {
+      return NextResponse.json(
+        { error: "Unauthorized access" },
+        { status: 403 }
+      );
+    }
 
-  // If the referrer or origin is authorized, return the page content
-  return NextResponse.redirect(
-    new URL("/embedded-site/ontario", request.nextUrl)
-  );
-  // }
+    // If the referrer or origin is authorized, return the page content
+    return NextResponse.redirect(
+      new URL("/embedded-site/ontario", request.nextUrl)
+    );
+  }
 }

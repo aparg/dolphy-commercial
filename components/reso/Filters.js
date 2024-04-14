@@ -67,13 +67,8 @@ const Filters = ({
   useEffect(() => {
     if (window) {
       window.addEventListener("scroll", () => {
-        if (embedded) {
-          setNavbar(false);
-        } else if (window.scrollY >= 60) {
-          setNavbar(true);
-        } else {
-          setNavbar(false);
-        }
+        console.log("TRIGGERED");
+        setNavbar(false);
       });
     }
 
@@ -93,8 +88,9 @@ const Filters = ({
   return (
     <>
       <div
-        className={`filters d-flex gap-2 gap-md-3 flex 
-         ${navbar ? "filter__scrolled mt-4 pb-2 container-fluid" : ""} `}
+        className={`filters d-flex gap-2 gap-md-3 flex bg-white ${
+          navbar ? `filter__scrolled mt-4 pb-2 container-fluid` : `top-[0px]`
+        }`}
       >
         <IndividualFilterButton
           options={saleLeaseOptions}
