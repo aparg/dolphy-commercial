@@ -67,7 +67,6 @@ const Filters = ({
   useEffect(() => {
     if (window) {
       window.addEventListener("scroll", () => {
-        console.log("TRIGGERED");
         setNavbar(false);
       });
     }

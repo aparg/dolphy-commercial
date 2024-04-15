@@ -8,62 +8,11 @@ const BookingDate = ({ handleChange }) => {
   // const [scrollPosition, setScrollPosition] = useState(0);
   // const [maxScroll, setMaxScroll] = useState(0);
   const cardRef = useRef(null);
-  // const containerRef = useRef(null);
-  // useEffect(() => {
-  //   const containerWidth = containerRef.current.offsetWidth;
-  //   const cardsWidth = cardRef.current.scrollWidth;
-  //   const maxScrollValue = cardsWidth - containerWidth;
-  //   setMaxScroll(maxScrollValue);
-  // }, []);
 
-  // const slideLeft = () => {
-  //   const newPosition = Math.min(scrollPosition + 100, 0);
-  //   console.log(newPosition);
-  //   setScrollPosition(newPosition);
-  // };
-
-  // const slideRight = () => {
-  //   const newPosition = Math.max(scrollPosition - 100, -maxScroll);
-  //   console.log(newPosition);
-  //   setScrollPosition(newPosition);
-  // };
-
-  //give me a slide right and left code for cardref and containerref also set max values
+  //slide right and left code for cardref and containerref
   const containerRef = useRef(null);
   const scrollRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
-  // const slideRight = (e) => {
-  //   e.preventDefault();
-  //   const containerWidth = containerRef.current.offsetWidth;
-  //   const cardsWidth = cardRef.current.scrollWidth;
-  //   const maxScroll = cardsWidth - containerWidth;
-  //   const newPosition = Math.max(scrollPosition - 20, -maxScroll);
-  //   setScrollPosition(newPosition);
-  // };
-  // const slideLeft = (e) => {
-  //   e.preventDefault();
-  //   const containerWidth = containerRef.current.offsetWidth;
-  //   const cardsWidth = cardRef.current.scrollWidth;
-  //   const maxScroll = cardsWidth - containerWidth;
-  //   // console.log(maxScroll);
-  //   // console.log(scrollPosition - 20);
-  //   const newPosition = Math.min(scrollPosition + 20, 0);
-  //   console.log(newPosition);
-  //   setScrollPosition(newPosition);
-  // };
-
-  // const slideLeft = (e) => {
-  //   e.preventDefault();
-  //   const dynamicWidthOfCard = cardRef.current.offsetWidth;
-  //   // @ts-ignore
-  //   scrollRef.current.scrollLeft = slider.scrollLeft - dynamicWidthOfCard;
-  // };
-  // const slideRight = (e) => {
-  //   e.preventDefault();
-  //   const dynamicWidthOfCard = cardRef.current.offsetWidth;
-  //   // @ts-ignore
-  //   scrollRef.current.scrollLeft = slider.scrollLeft + dynamicWidthOfCard;
-  // };
 
   const slideLeft = (e) => {
     e.preventDefault();

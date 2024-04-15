@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContactFormSubmit from "./ContactFormSubmit";
-import { Checkbox, Input } from "@nextui-org/react";
-import Link from "next/link";
 import React from "react";
 import BookingDate from "./BookingDate";
+import { fetchHostEmail } from "@/actions/fetchHostEmail";
+import { usePathname } from "next/navigation";
 
 export default function BookShowingForm(props) {
+  const pathname = usePathname();
   const [submitbtn, setSubmitbtn] = useState("Book a showing");
   const [credentials, setCredentials] = useState({
     name: "",
@@ -16,7 +17,8 @@ export default function BookShowingForm(props) {
     message: props.defaultmessage,
     proj_name: props.proj_name,
     city: props.city,
-    hostname: new URL(document.referrer).hostname,
+    realtor: "",
+    domainEmail: "",
   });
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -29,7 +31,20 @@ export default function BookShowingForm(props) {
     e.preventDefault();
     ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
   };
-  console.log(new URL(document.referrer).hostname);
+
+  const getEmail = async () => {
+    const hostname = new URL(document.referrer).hostname;
+    const email = await fetchHostEmail(hostname);
+    setCredentials({
+      ...credentials,
+      domainEmail: email,
+    });
+  };
+  useEffect(() => {
+    if (pathname.includes("/embedded-site")) {
+      getEmail();
+    }
+  }, []);
   return (
     <div className="fixed-title pe-0 top-30 sticky mt-24 sm:mt-0" id="contact">
       <div className="p-6 pb-0 shadow-2xl rounded-mine bordt bg-white border-[#e8e9ea]">
