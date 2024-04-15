@@ -1,11 +1,9 @@
 import React from "react";
 import { listingType, saleLease } from "@/constant";
-import SalesList from "@/components/reso/SalesList";
 import { getCommercialData } from "@/actions/fetchCommercialActions";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import FilteredCommercialList from "@/components/reso/FilteredCommercialList";
 import { plural } from "@/constant/plural";
-import HotListings from "@/components/HotListings";
 
 const page = async ({ params }) => {
   let saleLeaseValue = undefined;
