@@ -54,6 +54,7 @@ const FilteredCommercialList = ({
     };
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
+    console.log(filteredSalesData);
     setLoading(false);
     setSalesData([...filteredSalesData]);
     setOffset(INITIAL_LIMIT);

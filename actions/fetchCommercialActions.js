@@ -60,6 +60,7 @@ export const getFilteredRetsData = async (queryParams) => {
         timestampQuery && `&$timestampFilter='${timestampQuery}'`
       }&$skip=${skipQuery}&$limit=${limitQuery}&$range=${rangeQuery}`
     );
+    console.log(url);
     const options = {
       method: "GET",
       cache: "no-store",
