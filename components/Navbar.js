@@ -52,7 +52,7 @@ const Navbar = (props) => {
   // }, [comparisonFlag]);
   return (
     <header
-      className={`container-fluid lg:pb-0 relative z-[999] bg-white ${
+      className={`container-fluid lg:pb-0 relative z-50 bg-white ${
         isSticky ? "bg-white sticky top-0 shadow-lg" : "md:bg-transparent "
       }`}
     >
@@ -155,8 +155,6 @@ const Navbar = (props) => {
                 },
               ]}
               text={isSticky || !isHomePage ? "black" : "white"}
-              isSticky={isSticky}
-              isHomePage={isHomePage}
             />
             {/* <Dropdown
               name="Compare"

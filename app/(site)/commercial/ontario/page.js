@@ -26,6 +26,29 @@ const page = async () => {
   return (
     <>
       <div className="container-fluid">
+        {/* <div className="input-group input-group-search me-2 me-md-0">
+          <SearchBar />
+
+          <button
+            className="input-group-text btn bg-light2 bg-lh mybtn d-block py-search"
+            type="button"
+            aria-label="Search Button"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg"
+              viewBox="0 0 30 30"
+              xmlns="http://www.w3.org/2000/svg"
+              height="25"
+              width="25"
+            >
+              <path
+                d="M20.756 18.876l6.155 6.154-1.88 1.881-6.155-6.155A9.269 9.269 0 0 1 13.3 22.61a9.31 9.31 0 1 1 9.31-9.31c0 2.091-.69 4.021-1.854 5.576zM13.3 19.95a6.65 6.65 0 1 0 0-13.3 6.65 6.65 0 0 0 0 13.3z"
+                fill="#000000"
+              ></path>
+            </svg>
+          </button>
+        </div> */}
         <h1 className="main-title d-flex text-capitalize pt-4">
           Commercial properties for Sale in {province} | Real Estate Updated
           Daily Listings
@@ -43,7 +66,7 @@ const page = async () => {
               return (
                 <CityResoCard
                   city={curElem?.Municipality.toLowerCase()}
-                  key={index}
+                  key={curElem?.MLS}
                   curElem={curElem}
                 />
               );
@@ -52,6 +75,8 @@ const page = async () => {
           })}
         </div>
       </div>
+
+      <div></div>
     </>
   );
 };
