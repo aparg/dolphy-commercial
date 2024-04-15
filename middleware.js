@@ -5,11 +5,7 @@ export const config = {
 };
 
 // List of authorized domains
-const authorizedDomains = [
-  "localhost:4000",
-  "localhost:3000",
-  "127.0.0.1:5500",
-];
+const authorizedDomains = ["main--effortless-sopapillas-c336b4.netlify.app"];
 
 export async function middleware(request) {
   // Retrieve the referrer URL or origin domain
