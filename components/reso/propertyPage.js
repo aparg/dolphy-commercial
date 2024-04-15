@@ -15,10 +15,13 @@ import { generateImageURLs } from "@/helpers/generateImageURLs";
 // import { useComparisionFlag } from "../context/ComparisonFlagContext";
 import CompareButton from "../CompareButton";
 import BookShowingForm from "../BookShowingForm";
+import { usePathname } from "next/navigation";
+import { isLocalStorageAvailable } from "@/helpers/checkLocalStorageAvailable";
 
 const PropertyPage = ({ main_data }) => {
   const [navbar, setNavbar] = useState(false);
   const { isMobileView } = useDeviceView();
+  const pathname = usePathname();
   const getCommunityFeatures = () => {
     const {
       PropertyFeatures1,
@@ -85,6 +88,12 @@ const PropertyPage = ({ main_data }) => {
         }
       });
     }
+    if (pathname.includes("embedded-site")) {
+      if (isLocalStorageAvailable) {
+        console.log("storing");
+        localStorage.setItem("email", "xyz@gmail.com");
+      }
+    }
   }, []);
 
   return (
@@ -96,7 +105,7 @@ const PropertyPage = ({ main_data }) => {
               <h1 className="vmain-title mb-0 mt-4 mt-md-2 text-2xl sm:text-4xl">
                 <div className="uppercase bannerSection">
                   <div className="listingStatus"></div>
-                  FOR {main_data.SaleLease} -{' '}
+                  FOR {main_data.SaleLease} -{" "}
                   {/* tailwind style classname for bottom dashed border gray*/}
                   <span className="border-gray-500 border-dotted border-b">
                     ACTIVE
@@ -104,7 +113,7 @@ const PropertyPage = ({ main_data }) => {
                 </div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="me-2">
-                    {main_data.Street} {main_data.StreetName}{' '}
+                    {main_data.Street} {main_data.StreetName}{" "}
                     {main_data.StreetAbbreviation}
                   </span>
                   <CompareButton main_data={main_data} width={8} />
@@ -237,7 +246,7 @@ const PropertyPage = ({ main_data }) => {
             </div>
             <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax4.svg" />
-              Tax Type: {main_data.TypeTaxes || 'N/A'}
+              Tax Type: {main_data.TypeTaxes || "N/A"}
             </div>
             <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax1.svg" />
@@ -245,10 +254,10 @@ const PropertyPage = ({ main_data }) => {
             </div>
             <div className="flex flex-row text-md md:text-md py-2 md:py-2">
               <Image alt="" className="w-6 mr-2" src="/icons/tax2.svg" />
-              Commercial Condo Fees:{' '}
+              Commercial Condo Fees:{" "}
               {(main_data.CommercialCondoFees &&
                 `$${main_data.CommercialCondoFees}`) ||
-                'N/A'}
+                "N/A"}
             </div>
           </div>
 
@@ -363,7 +372,7 @@ const PropertyPage = ({ main_data }) => {
         </div>
       </div> */}
     </div>
-  )
+  );
 };
 
 export default PropertyPage;

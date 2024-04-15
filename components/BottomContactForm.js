@@ -12,6 +12,7 @@ export default function BottomContactForm(props) {
     realtor: "No",
     message: props.defaultmessage,
   });
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setCredentials((prevState) => ({

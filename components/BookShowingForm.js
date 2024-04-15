@@ -16,6 +16,7 @@ export default function BookShowingForm(props) {
     message: props.defaultmessage,
     proj_name: props.proj_name,
     city: props.city,
+    hostname: new URL(document.referrer).hostname,
   });
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -28,6 +29,7 @@ export default function BookShowingForm(props) {
     e.preventDefault();
     ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
   };
+  console.log(new URL(document.referrer).hostname);
   return (
     <div className="fixed-title pe-0 top-30 sticky mt-24 sm:mt-0" id="contact">
       <div className="p-6 pb-0 shadow-2xl rounded-mine bordt bg-white border-[#e8e9ea]">
