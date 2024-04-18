@@ -54,7 +54,6 @@ const FilteredCommercialList = ({
     };
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);
-    console.log(filteredSalesData);
     setLoading(false);
     setSalesData([...filteredSalesData]);
     setOffset(INITIAL_LIMIT);
@@ -140,7 +139,7 @@ const FilteredCommercialList = ({
               : ``}
           </h3>
           <p
-            className="fw-light mb-2"
+            className="fw-light"
             style={isMobileView ? { fontSize: "0.9rem" } : {}}
           >
             Explore top{" "}

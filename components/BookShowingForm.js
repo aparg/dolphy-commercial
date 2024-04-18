@@ -6,10 +6,13 @@ import React from "react";
 import BookingDate from "./BookingDate";
 import { fetchHostEmail } from "@/actions/fetchHostEmail";
 import { usePathname } from "next/navigation";
+// import { Checkbox } from "@nextui-org/react";
+import Checkbox from "./Checkbox";
+import Link from "next/link";
 
 export default function BookShowingForm(props) {
   const pathname = usePathname();
-  const [submitbtn, setSubmitbtn] = useState("Book a showing");
+  const [submitbtn, setSubmitbtn] = useState("Contact Agent");
   const [credentials, setCredentials] = useState({
     name: "",
     phone: "",
@@ -48,7 +51,9 @@ export default function BookShowingForm(props) {
   return (
     <div className="fixed-title pe-0 top-30 sticky mt-24 sm:mt-0" id="contact">
       <div className="p-6 pb-0 shadow-2xl rounded-mine bordt bg-white border-[#e8e9ea]">
-        <h5 className="fw-bold text-center linem fs-4  mb-0">Book a showing</h5>
+        <h5 className="fw-bold text-center linem fs-4 mb-0 font-bold">
+          Go see this home
+        </h5>
         <p className="text-center pt-2 cardd-subtitle_bg-black">
           with a {credentials.city}{" "}
           <span className="fw-bold pr-1">Buyer's</span>
@@ -62,103 +67,125 @@ export default function BookShowingForm(props) {
           onSubmit={(e) => handleFormSubmit(e)}
           id="contactForm"
         >
-          <div className="row me-0 row-cols-2 g-1 me-0">
-            <div className="col mb-3">
+          <div className="me-0 row-cols-12 g-1 me-0">
+            <div className="relative mb-3">
               <input
                 type="text"
-                placeholder="Name"
+                placeholder=""
                 name="name"
                 id="name"
                 value={credentials.name}
                 onChange={(e) => handleChange(e)}
-                className="fields fff"
+                className="fields fff w-full px-4 pt-5 pb-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 peer placeholder:translate-y-1/2 placeholder:scale-100"
               />
+              <label
+                htmlFor="name"
+                className="absolute left-0 px-4 text-gray-500 transition-all duration-300 peer-focus:-translate-y-[0.75] peer-focus:scale-30 peer-placeholder-shown:translate-y-1/2 peer-placeholder-shown:scale-100"
+              >
+                Name
+              </label>
             </div>
-            <div className="col">
-              <div className="mb-3">
-                <input
-                  type="text"
-                  name="phone"
-                  id="phone"
-                  placeholder="Phone"
-                  value={credentials.phone}
-                  onChange={(e) => handleChange(e)}
-                  required={true}
-                  className="fields fff"
-                />
-              </div>
-            </div>
-          </div>
-          <BookingDate handleChange={handleChange} />
-          <div className="row me-0 row-cols-1 g-0">
-            <div className="col">
-              <div className="mb-3">
-                <input
-                  type="email"
-                  aria-describedby="emailHelp"
-                  placeholder="Your email"
-                  name="email"
-                  id="email"
-                  value={credentials.email}
-                  onChange={(e) => handleChange(e)}
-                  className="fields fff"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="row me-0 g-0">
-            <div className="mb-3">
-              <textarea
-                id="message"
-                name="message"
-                className="fields fff"
-                rows="2"
-                cols="50"
-                value={credentials.message}
+            <div className="relative mb-3">
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                placeholder=""
+                value={credentials.phone}
                 onChange={(e) => handleChange(e)}
-              ></textarea>
+                required={true}
+                className="fields fff w-full px-4 pt-5 pb-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 peer placeholder:translate-y-1/2 placeholder:scale-100"
+              />
+              <label
+                htmlFor="phone"
+                className="absolute left-0 px-4 text-gray-500 transition-all duration-300 peer-focus:-translate-y-[0.75] peer-focus:scale-30 peer-placeholder-shown:translate-y-1/2 peer-placeholder-shown:scale-100"
+              >
+                Phone
+              </label>
             </div>
-          </div>
-          <div className="row me-0">
-            <div className="mb-2">
-              <p className="showing-info">
-                We'll call you within the next business hour to match you with
-                an agent from the Houseful™ agent network. By submitting this
-                information, I acknowledge I have read and agree to the{" "}
-                <a href="#">Terms of use,</a> including its Privacy section.
-              </p>
+            {/* <BookingDate handleChange={handleChange} /> */}
+            <div className="row me-0 row-cols-1 g-0">
+              <div className="col">
+                <div className="relative mb-3">
+                  <input
+                    type="email"
+                    aria-describedby="emailHelp"
+                    placeholder=""
+                    name="email"
+                    id="email"
+                    value={credentials.email}
+                    onChange={(e) => handleChange(e)}
+                    className="fields fff w-full px-4 pt-5 pb-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 peer placeholder:translate-y-1/2 placeholder:scale-100"
+                  />
+                  <label
+                    htmlFor="email"
+                    className="absolute left-0 px-4 text-gray-500 transition-all duration-300 peer-focus:-translate-y-[0.75] peer-focus:scale-30 peer-placeholder-shown:translate-y-1/2 peer-placeholder-shown:scale-100"
+                  >
+                    Your Email
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="row me-0 g-0">
+              <div className="mb-3">
+                <textarea
+                  id="message"
+                  name="message"
+                  className="fields fff"
+                  rows="2"
+                  cols="50"
+                  value={credentials.message}
+                  onChange={(e) => handleChange(e)}
+                ></textarea>
+              </div>
+            </div>
+            <div className="row me-0">
+              <div className="mb-2">
+                <p className="showing-info leading-snug">
+                  We'll call you within the next business hour to match you with
+                  an agent from the Houseful™ agent network. By submitting this
+                  information, I acknowledge I have read and agree to the{" "}
+                  <a href="#">Terms of use,</a> including its Privacy section.
+                </p>
+              </div>
             </div>
           </div>
 
           <div></div>
 
-          {/* <div className="row me-0">
-            <div className="mb-3">
+          <div className="row me-0">
+            <div className="mb-3 flex items-start">
               <Checkbox
                 defaultSelected
-                color="default"
-                size="md"
+                color="success"
+                size="lg"
                 radius="sm"
-                className="d-flex align-items-baseline"
-              >
-                <p className="showing-info showing-info__cb">
-                  I would like to receive marketing and promotional messages by
-                  telephone, text message, and email from Houseful, including
-                  information and updates about properties of interest and the
-                  services and features of Houseful and our selected partners. I
-                  may withdraw my consent at any time. Message and data rates
-                  may apply. Consent is not required to receive real estate
-                  services.
-                </p>
-              </Checkbox>
+                className="d-flex"
+                style={{ alignItems: "flex-start !important" }}
+              ></Checkbox>
+              <p className="showing-info showing-info__cb leading-tight">
+                I would like to receive marketing and promotional messages by
+                telephone, text message, and email from Houseful, including
+                information and updates about properties of interest and the
+                services and features of Houseful and our selected partners. I
+                may withdraw my consent at any time. Message and data rates may
+                apply. Consent is not required to receive real estate services.
+              </p>
             </div>
-          </div> */}
+          </div>
           <input
             type="submit"
             value={submitbtn}
-            className="btn bg-dark text-white btn-md w-100 mb-3"
+            className="btn bg-primary-green text-white btn-md w-100 mb-3 rounded-pill"
             id="subbtn"
           />
+          <div className="border-b border-gray-300 my-4 w-full"></div>
+          <div className="pb-4 pt-2 flex flex-col justify-center items-center">
+            <span className="text-md block">Not a good time?</span>
+            <Link href={"#"} className="text-red-700 font-bold text-lg block">
+              Schedule a call
+            </Link>
+          </div>
         </form>
       </div>
     </div>

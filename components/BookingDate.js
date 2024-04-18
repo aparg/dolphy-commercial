@@ -92,7 +92,7 @@ const BookingDate = ({ handleChange }) => {
             <SlArrowLeft size={8} />
           </button>
           <button
-            className="w-6 h-6 absolute top-8 right-0 border-gray-200 border-2 rounded-full flex justify-center items-center bg-white z-10 "
+            className="w-6 h-6 absolute top-8 right-0 border-gray-200 border-2 rounded-full flex justify-center items-center bg-white z-10 flex justify-center"
             title="scroll right"
             onClick={slideRight}
           >
