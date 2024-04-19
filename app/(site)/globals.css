@@ -2352,3 +2352,11 @@ div.dynamic {
     opacity: 1; /* Increase opacity on hover or click for mobile devices */
   }
 }
+
+.fixed-breadcrumbs {
+  position: sticky;
+  top: -1px;
+  padding: 8px 8px 1px;
+  z-index: 50;
+  background-color: #fff;
+}

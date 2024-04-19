@@ -12,16 +12,12 @@ import { generateURL } from "@/helpers/generateURL";
 //   useComparisionFlag,
 // } from "./context/ComparisonFlagContext";
 
-const Navbar = (props) => {
-  const [isSticky, setIsSticky] = useState(false);
+const Navbar = (sticky = false) => {
+  const [isSticky, setIsSticky] = useState(sticky || false);
   const [hidden, setHidden] = useState(true);
   const [comparisionData, setComparisionData] = useState([]);
   const pathname = usePathname();
   // const { comparisonFlag } = useComparisionFlag();
-
-  if (pathname.startsWith("/admin")) {
-    return <></>;
-  }
 
   const isHomePage = useMemo(() => {
     return pathname === "/";
@@ -37,7 +33,10 @@ const Navbar = (props) => {
     };
     // Add event listener to scroll event
     window.addEventListener("scroll", handleScroll);
-
+    if (pathname.includes("/listings")) {
+      console.log("LISTING PAGE");
+      setIsSticky(false);
+    }
     // Clean up event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -53,7 +52,7 @@ const Navbar = (props) => {
   return (
     <header
       className={`container-fluid lg:pb-0 relative z-50 bg-white ${
-        isSticky ? "bg-white sticky top-0 shadow-lg" : "md:bg-transparent "
+        isSticky ? "bg-white sticky top-0 shadow-lg" : "md:bg-transparent"
       }`}
     >
       <div className={`${isSticky && "sticky"}`}>

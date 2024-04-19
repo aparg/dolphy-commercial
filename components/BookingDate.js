@@ -3,8 +3,8 @@ import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import BookingDateOption from "./BookingDateOption";
-import { set } from "date-fns";
-const BookingDate = ({ handleChange }) => {
+import TimingList from "./TimingList";
+const BookingDate = ({ bannerImage }) => {
   // const [scrollPosition, setScrollPosition] = useState(0);
   // const [maxScroll, setMaxScroll] = useState(0);
   const cardRef = useRef(null);
@@ -13,7 +13,11 @@ const BookingDate = ({ handleChange }) => {
   const containerRef = useRef(null);
   const scrollRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
-
+  const [timing, setTiming] = useState({
+    type: "",
+    date: "",
+    time: "",
+  });
   const slideLeft = (e) => {
     e.preventDefault();
     const scrollContainer = scrollRef.current;
@@ -56,7 +60,13 @@ const BookingDate = ({ handleChange }) => {
         selected: false,
       }); // Month is 0-indexed, so we add 1 to get the correct month
     }
-    daysArray.unshift({ day: "Any", month: "", dayName: "", selected: false });
+    daysArray.unshift({
+      day: "Any",
+      month: "",
+      dayName: "",
+      selected: false,
+      time: "",
+    });
     return daysArray;
   }
   const year = new Date().getFullYear();
@@ -75,113 +85,99 @@ const BookingDate = ({ handleChange }) => {
     handleChange(e);
   };
 
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setTiming((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+
+  const submitData = () => {};
+
   return (
-    <>
-      <div
-        className="relative"
-        // className="scroll-container relative my-2 w-full overflow-x-scroll"
-        // id="date-scroll"
-        // ref={containerRef}
-      >
-        <div className="z-10 w-full h-full flex justify-between items-center">
-          <button
-            className="w-6 h-6 absolute top-8 left-0 border-gray-200 border-2 rounded-full flex justify-center items-center bg-white z-10"
-            title="scroll left"
-            onClick={slideLeft}
-          >
-            <SlArrowLeft size={8} />
-          </button>
-          <button
-            className="w-6 h-6 absolute top-8 right-0 border-gray-200 border-2 rounded-full flex justify-center items-center bg-white z-10 flex justify-center"
-            title="scroll right"
-            onClick={slideRight}
-          >
-            <SlArrowRight size={8} />
-          </button>
+    <div className="relative w-full rounded-md bg-gray-200 flex items-center mt-24">
+      <div className="flex overflow-hidden">
+        <div className="w-1/2">
+          <img
+            src={bannerImage}
+            alt="property-img"
+            className="object-cover w-full h-full"
+          />
         </div>
-        <div
-          className="flex z-0 scroll-container relative my-2 w-full overflow-x-scroll"
-          style={{ transform: `translateX(${scrollPosition}px) z-0` }}
-          id="slider"
-          ref={scrollRef}
-        >
-          {/* <button
-            className="flex flex-col justify-center px-10 py-2 border-gray-500 border-2 items-center mr-1 rounded-md hover:border-cyan-400 cursor-pointer"
-            ref={cardRef}
-            id="date"
-            value="any"
-            onClick={handleChange}
-          >
-            <span className="font-thin"></span>
-            <span className="font-bold">Any</span>
-            <span className="font-thinner"></span>
-          </button> */}
-          {daysArray.map((data) => (
-            <BookingDateOption
-              ref={cardRef}
-              data={data}
-              key={data.day}
-              handleChange={(e) => selectOption(e, data)}
-              selected={data.selected}
-              year={year}
-            />
-          ))}
+        <div className="w-1/2 mx-2 p-4 flex flex-col justify-center">
+          {/**Schedule a viewing form */}
+          <h1 className="font-bold text-3xl my-2 text-center">
+            Schedule a viewing
+          </h1>
+          <div className="flex justify-center">
+            <span className="tour-type rounded-pill bg-lime-200 px-1 py-1">
+              <button
+                className="rounded-pill py-1 px-4 focus:bg-lime-100 focus:border-black"
+                onClick={(e) => handleChange(e)}
+              >
+                In person
+              </button>
+              <button
+                className="rounded-pill py-1 px-4 focus:bg-lime-100 focus:border-black"
+                onClick={(e) => handleChange(e)}
+              >
+                Video Tour
+              </button>
+            </span>
+          </div>
+          <div className="relative my-2">
+            <div className="w-full flex absolute z-[999] translate-y-[-50%] top-[50%] items-center justify-between">
+              <button
+                className="w-6 h-6 left-0 border-gray-200 border-2 rounded-full flex justify-center items-center bg-white z-10"
+                title="scroll left"
+                onClick={slideLeft}
+              >
+                <SlArrowLeft size={8} />
+              </button>
+              <button
+                className="w-6 h-6 right-0 border-gray-200 border-2 rounded-full flex justify-center items-center bg-white z-10 flex justify-center"
+                title="scroll right"
+                onClick={slideRight}
+              >
+                <SlArrowRight size={8} />
+              </button>
+            </div>
+            <div className="flex flex-col items-center">
+              <div
+                className="flex z-0 scroll-container relative w-full overflow-x-scroll p-2"
+                style={{ transform: `translateX(${scrollPosition}px) z-0` }}
+                id="slider"
+                ref={scrollRef}
+              >
+                {daysArray.map((data) => (
+                  <BookingDateOption
+                    ref={cardRef}
+                    data={data}
+                    key={data.day}
+                    handleChange={(e) => selectOption(e, data)}
+                    selected={data.selected}
+                    year={year}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          <TimingList handleChange={handleChange} />
+          <div className="text-md text-center my-2 text-gray-700">
+            No obligation or purchase necessary, cancel at any time
+          </div>
+          <input
+            type="submit"
+            value="Schedule Tour"
+            className="btn bg-primary-green text-white btn-md w-100 mb-3 rounded-pill"
+            id="subbtn"
+            onClick={submitData}
+          />
         </div>
       </div>
-    </>
+    </div>
   );
-
-  // return (
-  //   <div className="position-relative">
-  //     <div className="d-flex justify-content-between pt-5 explore-container my-0 sm:my-4">
-  //       <div className="btns d-flex justify-space-between">
-  //         <button
-  //           className="scroll-left position-absolute start-0 w-6 h-6"
-  //           title="scroll left"
-  //           onClick={slideLeft}
-  //         >
-  //           <SlArrowLeft size={16} />
-  //         </button>
-  //         <button
-  //           className="scroll-right position-absolute end-0 w-6 h-6"
-  //           title="scroll right"
-  //           onClick={slideRight}
-  //         >
-  //           <SlArrowRight size={16} />
-  //         </button>
-  //       </div>
-  //       <div
-  //         className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-4"
-  //         id="slider"
-  //         ref={scrollRef}
-  //       >
-  //         {/* <div
-  //           className="flex flex-col justify-center px-10 py-2 border-gray-500 border-2 items-center mr-1 rounded-md hover:border-cyan-400 cursor-pointer"
-  //           ref={cardRef}
-  //         >
-  //           <span className="font-thin"></span>
-  //           <span className="font-bold">Any</span>
-  //           <span className="font-thinner"></span>
-  //         </div> */}
-  //         {daysArray?.map((data) => {
-  //           // if (curElem.PhotoCount > 0) {
-  //           return (
-  //             <div
-  //               className="flex flex-col justify-center px-10 py-2 border-gray-500 border-2 items-center mr-1 rounded-md hover:border-cyan-400 cursor-pointer"
-  //               ref={cardRef}
-  //             >
-  //               <span className="font-thin">{data.dayName}</span>
-  //               <span className="font-bold">{data.day}</span>
-  //               <span className="font-thinner">{data.month}</span>
-  //             </div>
-  //           );
-  //           // }
-  //           // return null
-  //         })}
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default BookingDate;

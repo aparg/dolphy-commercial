@@ -14,6 +14,8 @@ const Map = dynamic(() => import("@/components/reso/Map"), { ssr: false });
 import AdditionalListing from "@/components/reso/AdditionalListing";
 import PropertyPage from "@/components/reso/propertyPage";
 import { generateURL } from "@/helpers/generateURL";
+import BookingDateOption from "@/components/BookingDateOption";
+import BookingDate from "@/components/BookingDate";
 // import { Button } from "@nextui-org/react";
 
 const INITIAL_OFFSET = 0;
@@ -65,40 +67,43 @@ const page = async ({ params }) => {
       </button>
       <div className="container-fluid pt-md-3 pt-0 ">
         <div className="container-fluid pt-3 pt-md-5">
-          <nav
-            style={{
-              "--bs-breadcrumb-divider":
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E\")",
-            }}
-            aria-label="breadcrumb"
-          >
-            <ol className="breadcrumb  ps-2">
-              <li className="breadcrumb-item ">
-                <Link href="/">Dolphy</Link>
-              </li>
-              <li className="breadcrumb-item ">
-                <Link href="/ontario">ON</Link>
-              </li>
-              <li className="breadcrumb-item ">
-                <Link href={generateURL({ cityVal: city })}>
-                  {main_data.Municipality}
-                </Link>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                {address}
-              </li>
-            </ol>
-          </nav>
+          <div className="fixed-breadcrumbs">
+            <nav
+              style={{
+                "--bs-breadcrumb-divider":
+                  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E\")",
+              }}
+              aria-label="breadcrumb"
+            >
+              <ol className="breadcrumb  ps-2">
+                <li className="breadcrumb-item ">
+                  <Link href="/">Dolphy</Link>
+                </li>
+                <li className="breadcrumb-item ">
+                  <Link href="/ontario">ON</Link>
+                </li>
+                <li className="breadcrumb-item ">
+                  <Link href={generateURL({ cityVal: city })}>
+                    {main_data.Municipality}
+                  </Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  {address}
+                </li>
+              </ol>
+            </nav>
+          </div>
           <Gallery data={imageURLs} />
         </div>
 
         <section className="padding-top flex items-center w-full text-sm">
           <div className="padding-top flex items-center w-full">
             <div
-              className={`mx-auto row justify-between gap-x-2 w-full md:max-w-[80%]`}
+              className={`mx-auto row justify-between gap-x-1 w-full md:max-w-[90%]`}
             >
               <div className="col-md-7">
                 <PropertyPage {...{ main_data }} />
+                <BookingDate bannerImage={imageURLs[0]} />
                 <div className="z-20 relative mt-24">
                   <h3 className="main-title fs-2 aff2">Map View</h3>
                   <Map main_data={main_data} />
