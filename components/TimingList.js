@@ -20,7 +20,7 @@ const TimingList = ({ handleChange }) => {
     <div className="w-full flex justify-between">
       {timings.map((timing) => (
         <button
-          className={`flex flex-col text-black justify-center px-5 py-2 border-black border-2 items-center mr-1 rounded-md cursor-pointer focus:bg-lime-200`}
+          className={`flex flex-col text-black justify-center sm:px-5 px-2 sm:py-2 py-1 border-black border-2 items-center mr-1 rounded-md cursor-pointer focus:bg-lime-200`}
           onClick={(e) => handleChange(e)}
           id="date"
           value={timing.time}

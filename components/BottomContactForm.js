@@ -22,7 +22,6 @@ export default function BottomContactForm(props) {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(credentials);
     ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
   };
   return (

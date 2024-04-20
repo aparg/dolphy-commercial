@@ -9,10 +9,13 @@ import { listingType, saleLease } from "@/constant";
 import CompareButton from "../CompareButton";
 import { generateURL } from "@/helpers/generateURL";
 import { usePathname } from "next/navigation";
+import useDeviceView from "@/helpers/useDeviceView";
+import MobileCityResoCard from "../MobileCityResoCard";
 
 const CityResoCard = React.forwardRef(
   ({ curElem, small = false, city, embeddedSite }, ref) => {
     // const [address, setAddress] = useState("");
+    const { isMobileView } = useDeviceView();
     const pathname = usePathname();
     const price = Number(curElem.ListPrice).toLocaleString("en-US", {
       style: "currency",
@@ -37,7 +40,17 @@ const CityResoCard = React.forwardRef(
           curElem.StreetAbbreviation
         }-${curElem.MLS}`
       : curElem.MLS;
-    return (
+    return isMobileView ? (
+      <MobileCityResoCard
+        ref={ref}
+        streetAndMLS={streetAndMLS}
+        small={small}
+        handleImageError={handleImageError}
+        imgSrc={imgSrc}
+        curElem={curElem}
+        price={price}
+      />
+    ) : (
       <section className="" ref={ref}>
         <Link
           href={generateURL({
@@ -48,16 +61,17 @@ const CityResoCard = React.forwardRef(
           className="text-black"
         >
           <div className="lg:px-0 h-full w-full">
-            {/* <div className="grid grid-cols-1 gap-6  mt-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:px-0"> */}
-            <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl p-0 hover:shadow-lg hover:-translate-y-1 relative">
+            <div
+              className={`flex sm:flex-col flex-row overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl p-0 hover:shadow-lg hover:-translate-y-1 relative`}
+            >
               <div
                 className={`${
-                  small ? "h-44" : "h-72"
+                  small ? "h-44" : "sm:h-72 h-24"
                 } overflow-hidden relative`}
               >
                 <div className="h-72 relative">
                   <img
-                    className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110"
+                    className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
                     src={imgSrc}
                     alt="property image"
                     onError={handleImageError}
@@ -75,9 +89,6 @@ const CityResoCard = React.forwardRef(
                     {curElem.TypeOwn1Out}{" "}
                   </div>
                 </div>
-                {/* <div className="absolute top-2 right-2 w-6 h-6">
-                <CompareButton main_data={curElem} width={6} />
-              </div> */}
                 <div className="absolute bottom-3 left-2 z-10">
                   <div className="text-black text-xs p-1 px-2 rounded-md mx-1 bg-white">
                     <TimeAgo modificationTimestamp={curElem.TimestampSql} />
@@ -85,24 +96,7 @@ const CityResoCard = React.forwardRef(
                 </div>
               </div>
               <div className="flex-1 sm:px-3 py-2 px-2">
-                {/* <div
-                  className="absolute duration-1000 rotate-180 transitiona-all opacity-50 -inset-px rounded-sm blur-lg filter group-hover:opacity-70 group-hover:-inset-1 group-hover:duration-200"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, #44ff9a -0.55%, #44b0ff 22.86%, #8b44ff 48.36%, #ff6644 73.33%, #ebff70 99.34%)",
-                  }}
-                ></div>
-
-                <a
-                  href="#"
-                  title=""
-                  className="relative inline-flex items-center justify-center py-1 text-xs font-bold text-black transition-all duration-200 bg-white border border-transparent px-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 font-pj hover:bg-opacity-70 rounded-sm"
-                  role="button"
-                > */}
-                {/* </a> */}
-                {/* <div className="flex justify-between items-center"></div> */}
-                {/* <p className="text-2xl font-extrabold text-red-500">{price}</p> */}
-                <h2 className="price fw-bold mb-1 fs-3 fw-bold d-flex align-items-center justify-content-start">
+                <h2 className="price fw-bold mb-1 fs-2 fw-bold d-flex align-items-center justify-content-start">
                   {price}
                   {""}
 
@@ -118,55 +112,11 @@ const CityResoCard = React.forwardRef(
                     {Math.floor(curElem.TotalArea)} ft<sup>2</sup>
                   </span>
                 </h2>
-                {/* <div className="d-flex align-items-center">
-                <span>{curElem.Category}</span>
-                <h3 className="fw-bold mx-2 mb-0 lh-0">.</h3>
-              </div> */}
-                {/* <div className="text-black text-sm font-bold">
-                {curElem.Category}
-              </div> */}
                 <p className="mb-0 fs-mine text-limit fw-normall pb-0">
                   {" "}
                   MLS® #{curElem.MLS}
                 </p>
                 <div className="flex flex-row justify-between">
-                  {/* <div className="flex">
-                  <Image
-                    alt="bedrooms"
-                    className="w-4 aspect-square"
-                    src="/bedrooms.svg"
-                  ></Image>
-                  <p className="font-bold text-gray-900">
-                    <span className="pl-1 text-xs">2</span>
-                  </p>
-                </div>
-                <div className="flex">
-                  <Image
-                    alt="bathrooms"
-                    className="w-4 aspect-square"
-                    src="/bathrooms.svg"
-                  ></Image>
-                  <p className="font-bold text-gray-900">
-                    <span className="pl-1 text-xs">2</span>
-                  </p>
-                </div> */}
-                  {/* <div className="flex">
-                  <Image
-                    alt="square rulers"
-                    className="w-4 aspect-square"
-                    src="/ruler.svg"
-                  ></Image>
-                  <p className="font-bold text-gray-900">
-                    <span className="pl-1 text-xs">2</span>
-                  </p>
-                </div>
-                <div className="flex">
-                  <Image alt="family" className="w-5" src="/family.svg"></Image>
-                  <p className="font-bold text-gray-900">
-                    <span className="pl-1 text-xs">Single family</span>
-                  </p>
-                </div>
-              </div> */}
                   <div className="text-black truncate text-ellipsis">
                     <div className="text-dark bva">
                       {curElem.StreetName ? (
@@ -183,26 +133,8 @@ const CityResoCard = React.forwardRef(
                 <div className="text-black font-medium truncate text-ellipsis text-xs">
                   Listed by {curElem.ListBrokerage}
                 </div>
-                {/* <div className="text-black text-xs px-0 py-1 rounded-md mx-0 font-bold">
-                <TimeAgo modificationTimestamp={curElem.TimestampSql} />
-              </div> */}
               </div>
-
-              {/* <div className="absolute w-1/6 h-2/6 top-2 left-2">
-              {highlight[0]}
             </div>
-            <div className="absolute w-1/6 h-2/6 top-2 left-2">
-              {highlight[1]} */}
-              {/* </div> */}
-            </div>
-            {/* <h4 className="fs-5 mt-1 text-dark d-flex align-items-center">
-            <p className="fw-bold mb-0 lh-0">
-              {" "}
-              <span className="fs-2 bg-none">.</span>
-              {curElem.Municipality}
-            </p>
-          </h4> */}
-            {/* </div> */}
           </div>
         </Link>
       </section>

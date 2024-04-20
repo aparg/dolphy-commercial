@@ -24,7 +24,6 @@ export async function middleware(request) {
         break;
       }
     }
-    // console.log(referrerUrl?.startsWith(domain));
 
     // // If the referrer or origin is not authorized, reject the request
     if (!isAuthorized) {

@@ -96,16 +96,16 @@ const BookingDate = ({ bannerImage }) => {
   const submitData = () => {};
 
   return (
-    <div className="relative w-full rounded-md bg-gray-200 flex items-center mt-24">
-      <div className="flex overflow-hidden">
-        <div className="w-1/2">
+    <div className="relative w-full rounded-md bg-gray-100 flex items-center mt-24">
+      <div className="flex sm:flex-row flex-col overflow-hidden">
+        <div className="w-full sm:w-1/2">
           <img
             src={bannerImage}
             alt="property-img"
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="w-1/2 mx-2 p-4 flex flex-col justify-center">
+        <div className="w-full sm:w-1/2 sm:mx-2 p-4 flex flex-col justify-center">
           {/**Schedule a viewing form */}
           <h1 className="font-bold text-3xl my-2 text-center">
             Schedule a viewing
