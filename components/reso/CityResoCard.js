@@ -76,7 +76,7 @@ const CityResoCard = React.forwardRef(
                     alt="property image"
                     onError={handleImageError}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div>
+                  {/* <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
                 </div>
 
                 <div className="absolute top-3 left-2 flex flex-row">
