@@ -33,11 +33,11 @@ const MobileCityResoCard = React.forwardRef(
                   />
                   {/* <div className="absolute inset-0  rounded-md bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
                 </div>
-                <div className="text-sm">
-                  <TimeAgo modificationTimestamp={curElem.TimestampSql} />
-                </div>
               </div>
               <div className="mx-2 w-full mx-2 text-ellipsis overflow-hidden">
+                <div className="text-xs">{`For ${
+                  curElem.saleLease || "Sale"
+                }`}</div>
                 <div className="flex w-full justify-between">
                   <h2 className="price fw-bold mb-1 fs-6 fw-bold d-flex align-items-center justify-content-start">
                     {price}
@@ -51,13 +51,14 @@ const MobileCityResoCard = React.forwardRef(
                       {Math.floor(curElem.TotalArea)} ft<sup>2</sup>
                     </span>
                   </h2>
-                  <div className="text-xs">{`For ${
-                    curElem.saleLease || "Sale"
-                  }`}</div>
+
+                  <div className="text-xs">
+                    <TimeAgo modificationTimestamp={curElem.TimestampSql} />
+                  </div>
                 </div>
                 <div className="flex flex-row justify-between">
                   <div className="text-black truncate text-ellipsis">
-                    <div className="text-dark bva text-ellipsis">
+                    <div className="text-dark bva text-ellipsis text-sm">
                       {curElem.StreetName ? (
                         `${curElem.Street} ${curElem.StreetName}${" "}
                     ${curElem.StreetAbbreviation} ${
@@ -70,7 +71,7 @@ const MobileCityResoCard = React.forwardRef(
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <div className="text-black text-md rounded-md">
+                  <div className="text-black text-sm rounded-md">
                     {curElem.TypeOwn1Out}{" "}
                   </div>
                 </div>

@@ -1294,7 +1294,7 @@ label {
     display: flex;
     gap: 10px;
     max-width: 100%; /* Allow the container to take full available width */
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     overflow-y: scroll;
     scroll-behavior: smooth;
   }

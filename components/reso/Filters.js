@@ -87,7 +87,7 @@ const Filters = ({
   return (
     <>
       <div
-        className={`filters d-flex gap-2 gap-md-3 flex bg-white ${
+        className={`filters d-flex gap-2 gap-md-3 my-2 flex bg-white ${
           navbar ? `filter__scrolled mt-4 pb-2 container-fluid` : `top-[0px]`
         }`}
       >
@@ -186,40 +186,42 @@ const TimeFilterButton = ({ name, handleFilterChange }) => {
   };
 
   return (
-    <Dropdown>
-      <DropdownTrigger disableAnimation={true}>
-        <Button
-          variant="faded"
-          className="capitalize bg-color roundedPill h-[34px] border-2"
-          size="md"
+    <div>
+      <Dropdown>
+        <DropdownTrigger disableAnimation={true}>
+          <Button
+            variant="faded"
+            className="capitalize bg-color roundedPill h-[34px] border-2"
+            size="md"
+          >
+            {selectedKeys ? selectedKeys : "Number Of Days"}
+            <i className="bi bi-chevron-down"></i>
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu
+          aria-label="price filter"
+          itemClasses={{
+            base: ["data-[hover=true]:bg-default-0"],
+          }}
+          disallowEmptySelection
+          selectionMode="single"
         >
-          {selectedKeys || "Number Of Days"}
-          <i className="bi bi-chevron-down"></i>
-        </Button>
-      </DropdownTrigger>
-      <DropdownMenu
-        aria-label="price filter"
-        itemClasses={{
-          base: ["data-[hover=true]:bg-default-0"],
-        }}
-        disallowEmptySelection
-        selectionMode="single"
-      >
-        {Object.values(numberOfDays).map((option) => {
-          if (option.userFilter) {
-            return (
-              <DropdownItem
-                key={option.name}
-                onClick={() => handleTime(option.name, option.value)}
-              >
-                {option.name}
-              </DropdownItem>
-            );
-          }
-          return;
-        })}
-      </DropdownMenu>
-    </Dropdown>
+          {Object.values(numberOfDays).map((option) => {
+            if (option.userFilter) {
+              return (
+                <DropdownItem
+                  key={option.name}
+                  onClick={() => handleTime(option.name, option.value)}
+                >
+                  {option.name}
+                </DropdownItem>
+              );
+            }
+            return;
+          })}
+        </DropdownMenu>
+      </Dropdown>
+    </div>
   );
 };
 
@@ -286,7 +288,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
             <p className="fw-bold mb-2">
               Filter price based on min and max price
             </p>
-            <div className="d-flex flex-wrap gap-3">
+            <div className="d-flex gap-3">
               <Input
                 type="number"
                 label="Min Price"

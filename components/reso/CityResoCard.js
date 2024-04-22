@@ -78,20 +78,21 @@ const CityResoCard = React.forwardRef(
                   />
                   {/* <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
                 </div>
+                <div className="absolute top-3 left-2">
+                  <div className="flex flex-row items-center">
+                    <div
+                      className="text-white text-[0.8rem] p-1 px-2 rounded-md mx-1"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
+                      }}
+                    >
+                      {curElem.TypeOwn1Out}{" "}
+                    </div>
 
-                <div className="absolute top-3 left-2 flex flex-row">
-                  <div
-                    className="text-white text-[0.8rem] p-1 px-2 rounded-md mx-1"
-                    style={{
-                      background: "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
-                    }}
-                  >
-                    {curElem.TypeOwn1Out}{" "}
-                  </div>
-                </div>
-                <div className="absolute bottom-3 left-2 z-10">
-                  <div className="text-black text-xs p-1 px-2 rounded-md mx-1 bg-white">
-                    <TimeAgo modificationTimestamp={curElem.TimestampSql} />
+                    <div className="flex items-center text-black text-xs p-1 px-2 rounded-md mx-1 bg-white">
+                      <TimeAgo modificationTimestamp={curElem.TimestampSql} />
+                    </div>
                   </div>
                 </div>
               </div>
