@@ -8,7 +8,7 @@ const MobileCityResoCard = React.forwardRef(
   ({ curElem, streetAndMLS, small, handleImageError, imgSrc, price }, ref) => {
     const pathname = usePathname();
     return (
-      <section className="" ref={ref}>
+      <section className="mb-2" ref={ref}>
         <Link
           href={generateURL({
             cityVal: curElem.Municipality,
