@@ -74,40 +74,7 @@ export default async function Home() {
                 </div>
               </div>
             </div>
-            {/* <div className="mt-5 md:mb-10 sm:mb-0 absolute bottom-[-30%] sm:bottom-[-10%] lg:bottom-[-15%] lg:w-[850px] rounded-lg w-screen shadow-md border-t-8 bg-primary-green border-primary-green w-5/6">
-              <FilterCard />
-            </div> */}
           </div>
-          {/* {torontoData?.length > 0 ? (
-            <div className="pt-5 pb-2 ">
-              <section className="additonal__listing">
-                <AdditionalListing city={CITY} newSalesData={torontoData} />
-              </section>
-            </div>
-          ) : null}
-
-          {cambridgeData.length > 0 ? (
-            <div className="">
-              <section className="additonal__listing">
-                <AdditionalListing
-                  city={CAMBRIDGECITY}
-                  newSalesData={cambridgeData}
-                />
-              </section>
-            </div>
-          ) : null}
-
-          {bramptonData.length > 0 ? (
-            <div className="pt-2 pb-2 ">
-              <section className="additonal__listing">
-                <AdditionalListing
-                  city={BRAMPTONCITY}
-                  newSalesData={bramptonData}
-                />
-              </section>
-            </div>
-          ) : null} */}
-          {/* <div className="mt-80 mt-4 sm:mt-24"> */}
           <div className="mt-4 sm:mt-24">
             <SuggestedCity defaultCitiesData={defaultCitiesData} />
           </div>
@@ -120,23 +87,6 @@ export default async function Home() {
         </div>
         <div className="">
           <div className="py-md-5"></div>
-          {/* <div className="py-5">
-            <h3 className="fs-2 text-mine fw-bold text-center mb-0">
-              We bring you home from credible builders
-            </h3>
-            <div className="d-flex flex-column align-items-center justify-content-center">
-              <img
-                src="/bottom-line.svg"
-                alt="bottom design line"
-                className="img-fluid underline-svg"
-              />
-              <img
-                src="/builders.png"
-                alt="builders in dolphy"
-                className="img-fluid mt-3 w-100 w-md-75"
-              />
-            </div>
-          </div> */}
           <div className="py-5 my-5" id="mycontact">
             <div className="container-fluid">
               <div className="row justify-content-center">

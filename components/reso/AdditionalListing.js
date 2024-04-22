@@ -110,7 +110,7 @@ const AdditionalListing = ({
         </button>
       </div>
       <div
-        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-4"
+        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-4 pb-4"
         id="slider"
         ref={scrollRef}
       >
@@ -123,8 +123,6 @@ const AdditionalListing = ({
               ref={cardRef}
             />
           );
-          // }
-          // return null
         })}
       </div>
     </div>
