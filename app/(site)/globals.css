@@ -2126,6 +2126,8 @@ button:focus:not(:focus-visible) {
   }
   .scroll-left,
   .scroll-right {
+    /* width: 25px;
+    height: 25px; */
     visibility: hidden;
   }
   .filter-container {

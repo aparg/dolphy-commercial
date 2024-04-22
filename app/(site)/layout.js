@@ -56,35 +56,6 @@ const satoshi = localFont({
 
 const figtree = Figtree({ subsets: ["latin"] });
 
-// export const metadata = {
-//   alternates: {
-//     canonical: `https://dolphy.ca/`,
-//   },
-//   title: "Dolphy - Commercial Real Estate for Sale in Ontario",
-//   description:
-//     "Find the latest Commercial Real Estate for sale in Ontario with the Ontario's most user-friendly portal. Search real estate to buy in Ontario.",
-//   icons: {
-//     icon: "/favicon.ico",
-//     shortcut: "/favicon-16x16.png",
-//     apple: "/apple-touch-icon.png",
-//   },
-//   viewport: {
-//     width: "device-width",
-//     initialScale: 1,
-//     maximumScale: 1,
-//   },
-//   robots: {
-//     index: true,
-//     follow: true,
-//     googleBot: {
-//       index: true,
-//       follow: true,
-//       noimageindex: true,
-//     },
-//   },
-//   category: "real estate",
-// };
-
 async function getCities() {
   const res = await fetch("https://api.dolphy.ca/api/all-city", {
     next: { revalidate: 10 },

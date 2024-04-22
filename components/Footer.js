@@ -33,8 +33,8 @@ const Footer = ({ cities }) => {
             </div>
           </div>
           <div className="container-fluid">
-            <div className="grid grid-cols-2 gap-x-4 md:gap-x-10 mt-12 sm:grid-cols-3 lg:grid-cols-4 sm:mt-16 lg:mt-20 gap-y-6 justify-content-center justify-content-md-start">
-              <div className="col-span-2 sm:col-span-1 lg:pl-12">
+            <div className="grid grid-cols-1 gap-x-4 md:gap-x-10 mt-12 sm:grid-cols-3 lg:grid-cols-4 sm:mt-16 lg:mt-20 gap-y-6 justify-content-center justify-content-md-start">
+              <div className="col-span-2 sm:col-span-1 lg:pl-12 justify-center">
                 <p className="text-md font-bold tracking-widest text-black-600 uppercase">
                   Company
                 </p>
