@@ -31,7 +31,7 @@ const MobileCityResoCard = React.forwardRef(
                     alt="property image"
                     onError={handleImageError}
                   />
-                  <div className="absolute inset-0  rounded-md bg-gradient-to-b from-black to-transparent opacity-50"></div>
+                  {/* <div className="absolute inset-0  rounded-md bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
                 </div>
                 <div className="text-sm">
                   <TimeAgo modificationTimestamp={curElem.TimestampSql} />
