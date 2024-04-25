@@ -3,7 +3,7 @@ import "../(site)/globals.css";
 import "../(site)/icons.css";
 import "react-quill/dist/quill.snow.css";
 import NextTopLoader from "nextjs-toploader";
-import { Figtree } from "next/font/google";
+// import { Figtree } from "next/font/google";
 import { Providers } from "../(site)/providers";
 import localFont from "next/font/local";
 import React from "react";
@@ -52,7 +52,7 @@ const satoshi = localFont({
   ],
 });
 
-const figtree = Figtree({ subsets: ["latin"] });
+// const figtree = Figtree({ subsets: ["latin"] });
 
 async function getCities() {
   const res = await fetch("https://api.dolphy.ca/api/all-city", {

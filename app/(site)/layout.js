@@ -5,7 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NextTopLoader from "nextjs-toploader";
-import { Figtree } from "next/font/google";
+// import { Figtree } from "next/font/google";
 import { Providers } from "./providers";
 import localFont from "next/font/local";
 
@@ -54,7 +54,7 @@ const satoshi = localFont({
   ],
 });
 
-const figtree = Figtree({ subsets: ["latin"] });
+// const figtree = Figtree({ subsets: ["latin"] });
 
 async function getCities() {
   const res = await fetch("https://api.dolphy.ca/api/all-city", {

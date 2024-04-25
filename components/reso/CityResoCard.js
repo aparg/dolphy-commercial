@@ -78,7 +78,7 @@ const CityResoCard = React.forwardRef(
                   />
                   {/* <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
                 </div>
-                <div className="absolute top-3 left-2">
+                <div className="absolute bottom-3 left-2">
                   <div className="flex flex-row items-center">
                     <div
                       className="text-white text-[0.8rem] p-1 px-2 rounded-md mx-1"
