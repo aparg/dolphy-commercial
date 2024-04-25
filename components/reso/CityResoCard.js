@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import TimeAgo from "../TimeAgo";
 
 import { commercial } from "@/api/routes";
-import Image from "next/image";
+// import Image from "next/image";
 import { listingType, saleLease } from "@/constant";
 import CompareButton from "../CompareButton";
 import { generateURL } from "@/helpers/generateURL";
@@ -16,7 +16,7 @@ import { set } from "date-fns";
 const CityResoCard = React.forwardRef(
   ({ curElem, small = false, city, embeddedSite }, ref) => {
     // const [address, setAddress] = useState("");
-    const [showFallbackImage, setShowFallbackImage] = useState(false);
+    // const [showFallbackImage, setShowFallbackImage] = useState(false);
     const { isMobileView } = useDeviceView();
     const pathname = usePathname();
     const price = Number(curElem.ListPrice).toLocaleString("en-US", {
@@ -34,9 +34,9 @@ const CityResoCard = React.forwardRef(
     });
 
     const handleImageError = (e) => {
-      // e.target.onerror = null;
-      // e.target.src = `/noimage.webp`;
-      setShowFallbackImage(true);
+      e.target.onerror = null;
+      e.target.src = `/noimage.webp`;
+      // setShowFallbackImage(true);
     };
     const streetAndMLS = curElem.StreetName
       ? `${curElem.Street}-${curElem.StreetName?.replace(" ", "-")}-${
@@ -52,7 +52,7 @@ const CityResoCard = React.forwardRef(
         imgSrc={imgSrc}
         curElem={curElem}
         price={price}
-        showFallbackImage={showFallbackImage}
+        // showFallbackImage={showFallbackImage}
       />
     ) : (
       <section className="" ref={ref}>
@@ -74,7 +74,13 @@ const CityResoCard = React.forwardRef(
                 } overflow-hidden relative`}
               >
                 <div className="h-full relative">
-                  {showFallbackImage ? (
+                  <img
+                    className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
+                    src={imgSrc}
+                    alt="property image"
+                    onError={handleImageError}
+                  />
+                  {/* {showFallbackImage ? (
                     <Image
                       fill={true}
                       className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
@@ -92,7 +98,7 @@ const CityResoCard = React.forwardRef(
                       sizes="30vw"
                       loading="lazy"
                     />
-                  )}
+                  )} */}
                   {/* <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
                 </div>
                 <div className="absolute bottom-3 left-2">

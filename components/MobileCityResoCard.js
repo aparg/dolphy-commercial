@@ -4,7 +4,7 @@ import { generateURL } from "@/helpers/generateURL";
 import { usePathname } from "next/navigation";
 import TimeAgo from "./TimeAgo";
 import { saleLease } from "@/constant";
-import Image from "next/image";
+// import Image from "next/image";
 const MobileCityResoCard = React.forwardRef(
   (
     {
@@ -14,7 +14,7 @@ const MobileCityResoCard = React.forwardRef(
       handleImageError,
       imgSrc,
       price,
-      showFallbackImage,
+      // showFallbackImage,
     },
     ref
   ) => {
@@ -37,7 +37,13 @@ const MobileCityResoCard = React.forwardRef(
                 className={`flex flex-col items-center h-30 min-w-24 max-w-24 mx-1 overflow-hidden relative`}
               >
                 <div className="relative h-24 w-full">
-                  {showFallbackImage ? (
+                  <img
+                    className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
+                    src={imgSrc}
+                    alt="property image"
+                    onError={handleImageError}
+                  />
+                  {/* {showFallbackImage ? (
                     <Image
                       fill={true}
                       className="object-cover rounded-md w-full h-full transition-all duration-200 transform group-hover:scale-110 "
@@ -55,7 +61,7 @@ const MobileCityResoCard = React.forwardRef(
                       loading="lazy"
                       sizes="30vw"
                     />
-                  )}
+                  )} */}
                   {/* <div className="absolute inset-0  rounded-md bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
                 </div>
               </div>
