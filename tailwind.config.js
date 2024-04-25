@@ -18,6 +18,7 @@ const config = {
       },
       colors: {
         "primary-green": "#217955",
+        "light-lime": "#e1f6b2",
       },
     },
   },

@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import BookingDateOption from "./BookingDateOption";
 import TimingList from "./TimingList";
+import BookingType from "./BookingType";
 const BookingDate = ({ bannerImage }) => {
   // const [scrollPosition, setScrollPosition] = useState(0);
   // const [maxScroll, setMaxScroll] = useState(0);
@@ -22,7 +23,7 @@ const BookingDate = ({ bannerImage }) => {
     e.preventDefault();
     const scrollContainer = scrollRef.current;
     const cardWidth = cardRef.current.offsetWidth;
-    const scrollAmount = cardWidth * 3; // Adjust the scroll amount as needed
+    const scrollAmount = 300; // Adjust the scroll amount as needed
     scrollContainer.scrollLeft -= scrollAmount;
   };
 
@@ -30,7 +31,7 @@ const BookingDate = ({ bannerImage }) => {
     e.preventDefault();
     const scrollContainer = scrollRef.current;
     const cardWidth = cardRef.current.offsetWidth;
-    const scrollAmount = cardWidth * 3; // Adjust the scroll amount as needed
+    const scrollAmount = 300; // Adjust the scroll amount as needed
     scrollContainer.scrollLeft += scrollAmount;
   };
   function getDaysInMonth(year, month) {
@@ -73,7 +74,6 @@ const BookingDate = ({ bannerImage }) => {
   const month = new Date().getMonth();
   const [daysArray, setDaysArray] = useState(getDaysArrayInMonth(year, month));
   const selectOption = (e, data) => {
-    e.preventDefault();
     const updatedDaysArray = daysArray.map((day) => {
       if (day.day === data.day) {
         return { ...day, selected: true };
@@ -86,17 +86,19 @@ const BookingDate = ({ bannerImage }) => {
   };
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
+    const { id, value } = e.currentTarget;
     setTiming((prevState) => ({
       ...prevState,
       [id]: value,
     }));
   };
 
-  const submitData = () => {};
+  const submitData = () => {
+    console.log(timing);
+  };
 
   return (
-    <div className="relative w-full rounded-md bg-gray-100 flex items-center mt-4 sm:mt-24">
+    <div className="relative z-0 w-full rounded-md bg-gray-100 flex items-center mt-24">
       <div className="flex sm:flex-row flex-col overflow-hidden">
         <div className="w-full sm:w-1/2">
           <img
@@ -105,75 +107,66 @@ const BookingDate = ({ bannerImage }) => {
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="w-full sm:w-1/2 sm:mx-2 p-4 flex flex-col justify-center">
+        <div className="w-full sm:w-1/2 sm:mx-2 p-4 flex flex-col justify-center items-center">
           {/**Schedule a viewing form */}
           <h1 className="font-bold text-3xl my-2 text-center">
             Schedule a viewing
           </h1>
           <div className="flex justify-center">
-            <span className="tour-type rounded-pill bg-lime-200 px-1 py-1">
-              <button
-                className="rounded-pill py-1 px-4 focus:bg-lime-100 focus:border-black"
-                onClick={(e) => handleChange(e)}
-              >
-                In person
-              </button>
-              <button
-                className="rounded-pill py-1 px-4 focus:bg-lime-100 focus:border-black"
-                onClick={(e) => handleChange(e)}
-              >
-                Video Tour
-              </button>
+            <span className="tour-type rounded-pill bg-light-lime px-1 py-1">
+              <BookingType handleChange={handleChange} />
             </span>
           </div>
-          <div className="relative my-2">
-            <div className="w-full flex absolute z-[999] translate-y-[-50%] top-[50%] items-center justify-between">
+          <div className="max-w-[300px]">
+            <div className="relative my-2">
               <button
-                className="w-6 h-6 left-0 border-gray-200 border-2 rounded-full flex justify-center items-center bg-white z-10"
+                className="absolute w-6 h-6 left-0 border-gray-200 border-2 rounded-full z-[999] translate-y-[-50%] left-[-10px] sm:left-[-20px] top-[50%] flex justify-center items-center bg-white z-10"
                 title="scroll left"
                 onClick={slideLeft}
               >
                 <SlArrowLeft size={8} />
               </button>
               <button
-                className="w-6 h-6 right-0 border-gray-200 border-2 rounded-full flex justify-center items-center bg-white z-10 flex justify-center"
+                className="absolute w-6 h-6 right-0 border-gray-200 border-2 rounded-full z-[999] translate-y-[-50%] right-[-10px] sm:right-[-20px] top-[50%] flex justify-center items-center bg-white z-10 flex justify-center"
                 title="scroll right"
                 onClick={slideRight}
               >
                 <SlArrowRight size={8} />
               </button>
-            </div>
-            <div className="flex flex-col items-center">
-              <div
-                className="flex z-0 scroll-container relative w-full overflow-x-scroll p-2"
-                style={{ transform: `translateX(${scrollPosition}px) z-0` }}
-                id="slider"
-                ref={scrollRef}
-              >
-                {daysArray.map((data) => (
-                  <BookingDateOption
-                    ref={cardRef}
-                    data={data}
-                    key={data.day}
-                    handleChange={(e) => selectOption(e, data)}
-                    selected={data.selected}
-                    year={year}
-                  />
-                ))}
+              <div className="flex flex-col items-center">
+                <div
+                  className="flex z-0 scroll-container relative w-full overflow-x-scroll"
+                  style={{ transform: `translateX(${scrollPosition}px) z-0` }}
+                  id="slider"
+                  ref={scrollRef}
+                >
+                  {daysArray.map((data) => (
+                    <BookingDateOption
+                      ref={cardRef}
+                      data={data}
+                      key={data.day}
+                      handleChange={(e) => {
+                        selectOption(e, data);
+                      }}
+                      selected={data.selected}
+                      year={year}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
+            <TimingList handleChange={handleChange} />
+            <div className="text-md text-center my-2 text-gray-700">
+              No obligation or purchase necessary, cancel at any time
+            </div>
+            <input
+              type="submit"
+              value="Schedule Tour"
+              className="btn bg-primary-green text-white btn-md w-100 mb-3 rounded-pill"
+              id="subbtn"
+              onClick={submitData}
+            />
           </div>
-          <TimingList handleChange={handleChange} />
-          <div className="text-md text-center my-2 text-gray-700">
-            No obligation or purchase necessary, cancel at any time
-          </div>
-          <input
-            type="submit"
-            value="Schedule Tour"
-            className="btn bg-primary-green text-white btn-md w-100 mb-3 rounded-pill"
-            id="subbtn"
-            onClick={submitData}
-          />
         </div>
       </div>
     </div>

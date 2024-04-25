@@ -20,7 +20,6 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
 
     const options = {
       method: "GET",
-      cache: "no-store",
       next: { revalidate: 10 },
     };
 
@@ -63,7 +62,6 @@ export const getFilteredRetsData = async (queryParams) => {
     );
     const options = {
       method: "GET",
-      cache: "no-store",
       next: { revalidate: 10 },
     };
     const res = await fetch(url, options);

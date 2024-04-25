@@ -100,17 +100,6 @@ const Filters = ({
           handleFilterChange={handleFilterChange}
         />
 
-        {!isMobileView ? (
-          <div className="price-range__filter">
-            <PriceRangeFilter
-              name="priceRange"
-              value={filterState.priceRange}
-              handleFilterChange={handleFilterChange}
-              minMaxPrice={minMaxPrice}
-            />
-          </div>
-        ) : null}
-
         <IndividualFilterButton
           options={houseTypeOptions}
           name="type"
@@ -124,6 +113,16 @@ const Filters = ({
           handleFilterChange={handleFilterChange}
         />
       </div>
+      {!isMobileView ? (
+        <div className="ml-2 price-range__filter h-[34px] pb-14 px-10">
+          <PriceRangeFilter
+            name="priceRange"
+            value={filterState.priceRange}
+            handleFilterChange={handleFilterChange}
+            minMaxPrice={minMaxPrice}
+          />
+        </div>
+      ) : null}
       {isMobileView ? (
         <div className="container-fluid price-filter__bottom">
           <PriceRangeFilterBottom
@@ -268,91 +267,93 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
   }, [value]);
 
   return (
-    <Dropdown>
-      <DropdownTrigger disableAnimation={true}>
-        <Button
-          variant="faded"
-          className="capitalize bg-color roundedPill h-[34px] border-2"
-          size="md"
-        >
-          {valueToDisplay}
-          <i className="bi bi-chevron-down"></i>
-        </Button>
-      </DropdownTrigger>
-      <DropdownMenu
-        aria-label="price filter"
-        itemClasses={{
-          base: ["data-[hover=true]:bg-default-0"],
-        }}
-      >
-        <DropdownSection aria-label="price filter" showDivider>
-          <DropdownItem key="price" isReadOnly>
-            <p className="fw-bold mb-2">
-              Filter price based on min and max price
-            </p>
-            <div className="d-flex gap-3">
-              <Input
-                type="number"
-                label="Min Price"
-                className="w-45"
-                size="sm"
-                variant="underlined"
-                value={value?.min}
-                min={0}
-                onFocus={(event) => event.target && event.target.select()}
-                onValueChange={(value) => handlePriceChange("min", value)}
-                startContent={
-                  <div className="pointer-events-none flex items-center">
-                    <span className="text-default-400 text-small">$</span>
-                  </div>
-                }
-              />
-              <Input
-                type="number"
-                label="Max Price"
-                className="w-45"
-                size="sm"
-                disabled={price.min <= 0}
-                variant="underlined"
-                value={value?.max}
-                min={value?.min}
-                onFocus={(event) => event.target.select()}
-                onValueChange={(value) => handlePriceChange("max", value)}
-                startContent={
-                  <div className="pointer-events-none flex items-center">
-                    <span className="text-default-400 text-small">$</span>
-                  </div>
-                }
-              />
+    // <Dropdown>
+    //   <DropdownTrigger disableAnimation={true}>
+    //     <Button
+    //       variant="faded"
+    //       className="capitalize bg-color roundedPill h-[34px] border-2"
+    //       size="md"
+    //     >
+    //       {valueToDisplay}
+    //       <i className="bi bi-chevron-down"></i>
+    //     </Button>
+    //   </DropdownTrigger>
+    //   <DropdownMenu
+    //     aria-label="price filter"
+    //     itemClasses={{
+    //       base: ["data-[hover=true]:bg-default-0"],
+    //     }}
+    //   >
+    //     <DropdownSection aria-label="price filter" showDivider>
+    //       <DropdownItem key="price" isReadOnly>
+    //         <p className="fw-bold mb-2">
+    //           Filter price based on min and max price
+    //         </p>
+    <>
+      {/* <div className="d-flex gap-3">
+        <Input
+          type="number"
+          label="Min Price"
+          className="w-45"
+          size="sm"
+          variant="underlined"
+          value={value?.min}
+          min={0}
+          onFocus={(event) => event.target && event.target.select()}
+          onValueChange={(value) => handlePriceChange("min", value)}
+          startContent={
+            <div className="pointer-events-none flex items-center">
+              <span className="text-default-400 text-small">$</span>
             </div>
-            <p className="fw-bold mt-4 mb-4">Select min or max price range </p>
-            <div className="price-range__slider">
-              <Slider
-                label="Price Range"
-                step={50}
-                minValue={minMaxPrice.min}
-                maxValue={minMaxPrice.max}
-                onChangeEnd={handleRangeChange}
-                defaultValue={[minMaxPrice.min, minMaxPrice.max]}
-                formatOptions={{ style: "currency", currency: "USD" }}
-                className="max-w-md"
-                classNames={{
-                  filler: "bg-primary-green",
-                }}
-                renderThumb={(props) => (
-                  <div
-                    {...props}
-                    className="bg-primary-green group p-1 top-1/2 shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
-                  >
-                    <span className="transition-transform shadow-small rounded-full w-3 h-3 block group-data-[dragging=true]:scale-80"></span>
-                  </div>
-                )}
-              />
+          }
+        />
+        <Input
+          type="number"
+          label="Max Price"
+          className="w-45"
+          size="sm"
+          disabled={price.min <= 0}
+          variant="underlined"
+          value={value?.max}
+          min={value?.min}
+          onFocus={(event) => event.target.select()}
+          onValueChange={(value) => handlePriceChange("max", value)}
+          startContent={
+            <div className="pointer-events-none flex items-center">
+              <span className="text-default-400 text-small">$</span>
             </div>
-          </DropdownItem>
-        </DropdownSection>
-      </DropdownMenu>
-    </Dropdown>
+          }
+        />
+      </div> */}
+      {/* <p className="fw-bold mt-4 mb-4">Select min or max price range </p> */}
+      <div className="price-range__slider">
+        <Slider
+          label="Price Range: "
+          step={50}
+          minValue={minMaxPrice.min}
+          maxValue={minMaxPrice.max}
+          onChangeEnd={handleRangeChange}
+          defaultValue={[minMaxPrice.min, minMaxPrice.max]}
+          formatOptions={{ style: "currency", currency: "USD" }}
+          className="max-w-md"
+          classNames={{
+            filler: "bg-primary-green",
+          }}
+          renderThumb={(props) => (
+            <div
+              {...props}
+              className="bg-primary-green group p-1 top-1/2 shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
+            >
+              <span className="transition-transform shadow-small rounded-full w-3 h-3 block group-data-[dragging=true]:scale-80"></span>
+            </div>
+          )}
+        />
+      </div>
+    </>
+    //       </DropdownItem>
+    //     </DropdownSection>
+    //   </DropdownMenu>
+    // </Dropdown>
   );
 };
 

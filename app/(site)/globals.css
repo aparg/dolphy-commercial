@@ -2362,3 +2362,7 @@ div.dynamic {
   z-index: 50;
   background-color: #fff;
 } */
+
+.collapse {
+  visibility: visible !important;
+}
