@@ -129,7 +129,7 @@ const Filters = ({
             name="priceRange"
             value={filterState.priceRange}
             handleFilterChange={handleFilterChange}
-            minMaxPrice={minMaxPrice}
+            minMaxPrice={Math.trunc(minMaxPrice)}
           />
         </div>
       ) : null}
@@ -334,8 +334,13 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
           maxValue={minMaxPrice.max}
           onChangeEnd={handleRangeChange}
           defaultValue={[minMaxPrice.min, minMaxPrice.max]}
-          formatOptions={{ style: "currency", currency: "USD" }}
-          className="max-w-md"
+          formatOptions={{
+            style: "currency",
+            currency: "USD",
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }}
+          className="w-[300px]"
           classNames={{
             filler: "bg-primary-green",
           }}
