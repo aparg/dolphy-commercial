@@ -272,7 +272,7 @@ nav {
 
 .price {
   font-weight: 800 !important;
-  font-size: 12px;
+  font-size: 25px;
 }
 
 .bva {
@@ -1285,6 +1285,7 @@ label {
   .input-group-search {
     width: unset;
     width: 200px;
+    z-index: 10000;
   }
   .agent-img {
     max-height: 68px !important;
@@ -1764,7 +1765,7 @@ label {
   max-height: 400px;
   height: auto;
   overflow-y: auto;
-  z-index: 2;
+  z-index: 1000;
 }
 
 .react-autosuggest__suggestions-list {
@@ -1815,6 +1816,7 @@ label {
   max-height: 400px;
   height: auto;
   overflow-y: auto;
+  z-index: 10000;
 }
 
 .react-autosuggest__suggestions-list {

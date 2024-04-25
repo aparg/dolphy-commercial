@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { generateURL } from "@/helpers/generateURL";
 import { usePathname } from "next/navigation";
@@ -6,7 +6,18 @@ import TimeAgo from "./TimeAgo";
 import { saleLease } from "@/constant";
 import Image from "next/image";
 const MobileCityResoCard = React.forwardRef(
-  ({ curElem, streetAndMLS, small, handleImageError, imgSrc, price }, ref) => {
+  (
+    {
+      curElem,
+      streetAndMLS,
+      small,
+      handleImageError,
+      imgSrc,
+      price,
+      showFallbackImage,
+    },
+    ref
+  ) => {
     const pathname = usePathname();
     return (
       <section className="mb-2" ref={ref}>
@@ -26,13 +37,25 @@ const MobileCityResoCard = React.forwardRef(
                 className={`flex flex-col items-center h-30 min-w-24 max-w-24 mx-1 overflow-hidden relative`}
               >
                 <div className="relative h-24 w-full">
-                  <Image
-                    fill={true}
-                    className="object-cover rounded-md w-full h-full transition-all duration-200 transform group-hover:scale-110 "
-                    src={imgSrc}
-                    alt="property image"
-                    onError={handleImageError}
-                  />
+                  {showFallbackImage ? (
+                    <Image
+                      fill={true}
+                      className="object-cover rounded-md w-full h-full transition-all duration-200 transform group-hover:scale-110 "
+                      src={imgSrc}
+                      alt="property image"
+                      onError={handleImageError}
+                      sizes="30vw"
+                    />
+                  ) : (
+                    <Image
+                      fill={true}
+                      className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
+                      src={imgSrc}
+                      alt="property image"
+                      onError={handleImageError}
+                      sizes="30vw"
+                    />
+                  )}
                   {/* <div className="absolute inset-0  rounded-md bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
                 </div>
               </div>

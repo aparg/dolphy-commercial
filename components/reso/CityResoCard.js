@@ -52,6 +52,7 @@ const CityResoCard = React.forwardRef(
         imgSrc={imgSrc}
         curElem={curElem}
         price={price}
+        showFallbackImage={showFallbackImage}
       />
     ) : (
       <section className="" ref={ref}>
@@ -79,6 +80,7 @@ const CityResoCard = React.forwardRef(
                       className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
                       src="/noimage.webp" // Replace with the path to your fallback image
                       alt="Fallback Image"
+                      sizes="30vw"
                     />
                   ) : (
                     <Image
@@ -87,7 +89,7 @@ const CityResoCard = React.forwardRef(
                       src={imgSrc}
                       alt="property image"
                       onError={handleImageError}
-                      unoptimized
+                      sizes="30vw"
                     />
                   )}
                   {/* <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
@@ -111,7 +113,7 @@ const CityResoCard = React.forwardRef(
                 </div>
               </div>
               <div className="flex-1 sm:px-3 py-2 px-2">
-                <h2 className="price fw-bold mb-1 fs-2 fw-bold d-flex align-items-center justify-content-start">
+                <h2 className="price fw-bold mb-1 fw-bold d-flex align-items-center justify-content-start">
                   {price}
                   {""}
 
