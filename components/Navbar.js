@@ -15,6 +15,7 @@ import { generateURL } from "@/helpers/generateURL";
 const Navbar = (sticky = false) => {
   const [isSticky, setIsSticky] = useState(sticky || false);
   const [hidden, setHidden] = useState(true);
+  const [showNavbar, setShowNavbar] = useState(true);
   const [comparisionData, setComparisionData] = useState([]);
   const pathname = usePathname();
   // const { comparisonFlag } = useComparisionFlag();
@@ -30,6 +31,12 @@ const Navbar = (sticky = false) => {
     const handleScroll = () => {
       const offset = window.scrollY;
       setIsSticky(offset > 0);
+      if (offset > 0 && pathname.includes("/ontario")) {
+        setShowNavbar(false);
+      }
+      if (offset === 0) {
+        setShowNavbar(true);
+      }
     };
     // Add event listener to scroll event
     window.addEventListener("scroll", handleScroll);
@@ -51,8 +58,12 @@ const Navbar = (sticky = false) => {
   // }, [comparisonFlag]);
   return (
     <header
-      className={`container-fluid lg:pb-0 relative z-50 bg-white ${
-        isSticky ? "bg-white sticky top-0 shadow-lg" : "md:bg-transparent"
+      className={`container-fluid lg:pb-0 relative bg-white ${
+        showNavbar ? "" : "hidden"
+      } ${
+        isSticky
+          ? "bg-white sticky top-0 shadow-lg z-50"
+          : "z-[1000] md:bg-transparent"
       }`}
     >
       <div className={`${isSticky && "sticky"}`}>
