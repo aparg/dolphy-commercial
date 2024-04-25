@@ -11,10 +11,12 @@ import { generateURL } from "@/helpers/generateURL";
 import { usePathname } from "next/navigation";
 import useDeviceView from "@/helpers/useDeviceView";
 import MobileCityResoCard from "../MobileCityResoCard";
+import { set } from "date-fns";
 
 const CityResoCard = React.forwardRef(
   ({ curElem, small = false, city, embeddedSite }, ref) => {
     // const [address, setAddress] = useState("");
+    const [showFallbackImage, setShowFallbackImage] = useState(false);
     const { isMobileView } = useDeviceView();
     const pathname = usePathname();
     const price = Number(curElem.ListPrice).toLocaleString("en-US", {
@@ -32,8 +34,9 @@ const CityResoCard = React.forwardRef(
     });
 
     const handleImageError = (e) => {
-      e.target.onerror = null;
-      e.target.src = `/noimage.webp`;
+      // e.target.onerror = null;
+      // e.target.src = `/noimage.webp`;
+      setShowFallbackImage(true);
     };
     const streetAndMLS = curElem.StreetName
       ? `${curElem.Street}-${curElem.StreetName?.replace(" ", "-")}-${
@@ -70,13 +73,23 @@ const CityResoCard = React.forwardRef(
                 } overflow-hidden relative`}
               >
                 <div className="h-full relative">
-                  <Image
-                    fill={true}
-                    className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
-                    src={imgSrc}
-                    alt="property image"
-                    onError={handleImageError}
-                  />
+                  {showFallbackImage ? (
+                    <Image
+                      fill={true}
+                      className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
+                      src="/noimage.webp" // Replace with the path to your fallback image
+                      alt="Fallback Image"
+                    />
+                  ) : (
+                    <Image
+                      fill={true}
+                      className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
+                      src={imgSrc}
+                      alt="property image"
+                      onError={handleImageError}
+                      unoptimized
+                    />
+                  )}
                   {/* <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
                 </div>
                 <div className="absolute bottom-3 left-2">

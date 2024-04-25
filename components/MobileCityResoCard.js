@@ -4,6 +4,7 @@ import { generateURL } from "@/helpers/generateURL";
 import { usePathname } from "next/navigation";
 import TimeAgo from "./TimeAgo";
 import { saleLease } from "@/constant";
+import Image from "next/image";
 const MobileCityResoCard = React.forwardRef(
   ({ curElem, streetAndMLS, small, handleImageError, imgSrc, price }, ref) => {
     const pathname = usePathname();
@@ -25,7 +26,8 @@ const MobileCityResoCard = React.forwardRef(
                 className={`flex flex-col items-center h-30 min-w-24 max-w-24 mx-1 overflow-hidden relative`}
               >
                 <div className="relative h-24 w-full">
-                  <img
+                  <Image
+                    fill={true}
                     className="object-cover rounded-md w-full h-full transition-all duration-200 transform group-hover:scale-110 "
                     src={imgSrc}
                     alt="property image"
