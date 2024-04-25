@@ -41,9 +41,8 @@ const MobileCityResoCard = React.forwardRef(
                     <Image
                       fill={true}
                       className="object-cover rounded-md w-full h-full transition-all duration-200 transform group-hover:scale-110 "
-                      src={imgSrc}
+                      src="/noimage.webp"
                       alt="property image"
-                      onError={handleImageError}
                       sizes="30vw"
                     />
                   ) : (
@@ -53,6 +52,7 @@ const MobileCityResoCard = React.forwardRef(
                       src={imgSrc}
                       alt="property image"
                       onError={handleImageError}
+                      loading="lazy"
                       sizes="30vw"
                     />
                   )}
