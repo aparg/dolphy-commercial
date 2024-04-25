@@ -81,10 +81,10 @@ const CityResoCard = React.forwardRef(
                 <div className="absolute bottom-3 left-2">
                   <div className="flex flex-row items-center">
                     <div
-                      className="text-white text-[0.8rem] p-1 px-2 rounded-md mx-1"
+                      className="text-black text-[0.8rem] p-1 px-2 rounded-md mx-1"
                       style={{
-                        background:
-                          "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
+                        background: "white",
+                        // "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
                       }}
                     >
                       {curElem.TypeOwn1Out}{" "}

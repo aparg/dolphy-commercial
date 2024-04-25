@@ -21,6 +21,7 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
     const options = {
       method: "GET",
       cache: "no-store",
+      next: { revalidate: 10 },
     };
 
     const res = await fetch(url, options);
@@ -63,6 +64,7 @@ export const getFilteredRetsData = async (queryParams) => {
     const options = {
       method: "GET",
       cache: "no-store",
+      next: { revalidate: 10 },
     };
     const res = await fetch(url, options);
     const data = await res.json();
@@ -75,6 +77,7 @@ export const getFilteredRetsData = async (queryParams) => {
 export const fetchDataFromMLS = async (listingID) => {
   const options = {
     method: "GET",
+    // next: { revalidate: 10 },
   };
   const urlToFetchMLSDetail = commercial.properties.replace(
     "$query",
