@@ -129,7 +129,7 @@ const Filters = ({
             name="priceRange"
             value={filterState.priceRange}
             handleFilterChange={handleFilterChange}
-            minMaxPrice={Math.trunc(minMaxPrice)}
+            minMaxPrice={minMaxPrice}
           />
         </div>
       ) : null}

@@ -66,10 +66,10 @@ const CityResoCard = React.forwardRef(
             >
               <div
                 className={`${
-                  small ? "h-44" : "sm:h-72 h-24"
+                  small ? "h-44" : "sm:h-80 h-24"
                 } overflow-hidden relative`}
               >
-                <div className="h-72 relative">
+                <div className="h-full relative">
                   <img
                     className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
                     src={imgSrc}
