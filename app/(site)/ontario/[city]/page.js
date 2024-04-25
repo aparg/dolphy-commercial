@@ -13,7 +13,7 @@ const page = async ({ params }) => {
   // const saleLeaseValue = params.saleLease;
   return (
     <>
-      <div className="fixed-breadcrumbs">
+      {/* <div className="fixed-breadcrumbs">
         <div className="container-fluid">
           <nav
             style={{
@@ -35,7 +35,7 @@ const page = async ({ params }) => {
             </ol>
           </nav>
         </div>
-      </div>
+      </div> */}
       <div className="">
         <FilteredCommercialList
           {...{

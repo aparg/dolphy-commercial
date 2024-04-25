@@ -151,8 +151,6 @@ export default function BookShowingForm(props) {
             </div>
           </div>
 
-          <div></div>
-
           <div className="row me-0">
             <div className="mb-3 flex items-start">
               <Checkbox

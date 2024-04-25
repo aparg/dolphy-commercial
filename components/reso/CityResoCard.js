@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import TimeAgo from "../TimeAgo";
 
 import { commercial } from "@/api/routes";
-import { Image } from "react-bootstrap";
+import Image from "next/image";
 import { listingType, saleLease } from "@/constant";
 import CompareButton from "../CompareButton";
 import { generateURL } from "@/helpers/generateURL";
@@ -70,7 +70,8 @@ const CityResoCard = React.forwardRef(
                 } overflow-hidden relative`}
               >
                 <div className="h-full relative">
-                  <img
+                  <Image
+                    fill={true}
                     className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
                     src={imgSrc}
                     alt="property image"

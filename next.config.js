@@ -3,6 +3,17 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
-}
 
-module.exports = nextConfig
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "pricetrackernepal.com",
+        port: "",
+        pathname: "/commercialPhotos/**",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
