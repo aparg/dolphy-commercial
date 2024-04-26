@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import Image from 'next/image'
+import Image from "next/image";
 
 const LightGallery = dynamic(() => import("lightgallery/react"), {
   ssr: false,
@@ -31,14 +31,21 @@ const Gallery = ({ data }) => {
           <>
             {data.length > 0 ? (
               data.map((url, index) => (
-                <a href={`${url}`} key={index} className={`gallery-item ${index === 0 ? 'first-item' : ''} ${index >= 5 ? 'no-img__dis' : ''}`}>
-                  <Image
+                <a
+                  href={`${url}`}
+                  key={index}
+                  className={`gallery-item ${index === 0 ? "first-item" : ""} ${
+                    index >= 5 ? "no-img__dis" : ""
+                  }`}
+                >
+                  <img
                     loader={() => url}
                     src={url}
                     width={500}
                     height={index === 0 ? 520 : 220}
                     className="lg-container__card-image "
                     alt={`Image ${index + 1}`}
+                    onError={(e) => (e.target.src = "/noimage.webp")}
                   />
                 </a>
               ))

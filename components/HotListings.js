@@ -38,12 +38,12 @@ const HotListings = ({ salesData }) => {
 
   return salesData?.length > 0 ? (
     <div
-      className={`position-relative rounded-xl px-2 z-10 ${
+      className={`position-relative rounded-xl px-2 z-10 w-full z-10 ${
         isMobileView ? "mt-3" : "mt-4"
       }`}
       style={{
-        background:
-          "linear-gradient(90deg, rgb(255,203,171) 0px, rgb(249,194,189))",
+        backgroundColor: "#FEF7E7",
+        // "linear-gradient(90deg, rgb(255,203,171) 0px, rgb(249,194,189))",
       }}
     >
       <div className="w-full flex flex-row justify-between">
