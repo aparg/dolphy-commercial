@@ -180,11 +180,11 @@ const PropertyPage = ({ main_data }) => {
           <h1 className="vmain-title mb-0 mt-2 mt-md-1 text-2xl sm:text-4xl">
             <div className="uppercase bannerSection">
               <div className="listingStatus"></div>
-              FOR {main_data.SaleLease} -{" "}
+              FOR {main_data.SaleLease}
               {/* tailwind style classname for bottom dashed border gray*/}
-              <span className="border-gray-500 border-dotted border-b">
+              {/* <span className="border-gray-500 border-dotted border-b">
                 ACTIVE
-              </span>
+              </span> */}
             </div>
           </h1>
         </div>
