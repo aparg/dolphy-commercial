@@ -87,10 +87,10 @@ const Filters = ({
   return (
     <>
       <div
-        className={`filters d-flex gap-2 gap-md-3 my-2 flex bg-white ${
+        className={`filters d-flex gap-2 gap-md-3 my-2 flex flex-wrap bg-white overflow-visible${
           navbar
             ? `filter__scrolled mt-4 pb-2 container-fluid`
-            : `top-[0px] h-10 items-center`
+            : `top-[0px] items-center`
         }`}
       >
         <IndividualFilterButton

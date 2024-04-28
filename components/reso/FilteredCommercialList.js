@@ -151,7 +151,7 @@ const FilteredCommercialList = ({
               "Ontario"}{" "}
             and select the best ones.
           </p>
-          <div className="filter-container flex sticky top-0 z-[998] bg-white h-16 lg:h-20 items-center overflow-hidden">
+          <div className="filter-container flex sticky top-0 z-[998] bg-white items-center w-full flex-wrap overflow-visible">
             <Filters
               {...{ filterState, setFilterState, fetchFilteredData, embedded }}
             />
