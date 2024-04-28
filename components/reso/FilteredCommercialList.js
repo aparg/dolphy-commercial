@@ -134,9 +134,9 @@ const FilteredCommercialList = ({
             {plural[filterState.type]} {filterState.saleLease || "For Sale"} in{" "}
             {(city && decodeURIComponent(capitalizeFirstLetter(city))) ||
               "Ontario"}{" "}
-            {filterState.priceRange.max
+            {/* {filterState.priceRange.max
               ? `under $${filterState.priceRange.max}`
-              : ``}
+              : ``} */}
           </h3>
           <p
             className="fw-light"
