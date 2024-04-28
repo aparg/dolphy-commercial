@@ -193,7 +193,7 @@ const PropertyPage = ({ main_data }) => {
             <h2 className="font-extrabold pb-3 text-lg sm:text-4xl">
               Description
             </h2>
-            <p className="pty-description pt-4">
+            <p className="pty-description pt-4 ">
               {main_data.RemarksForClients}
             </p>
             <div

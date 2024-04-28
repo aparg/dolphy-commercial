@@ -105,7 +105,7 @@ const PropertyPage = ({ main_data }) => {
               <div className="flex items-center">
                 <div className="flex flex-col">
                   <div className="flex items-center">
-                    <h3 className="main-title fs-2">C{price}</h3>
+                    <h3 className="main-title fs-1">C{price}</h3>
                     <div>
                       {/* <div className="bg-[#ddd] rounded-md flex px-2 ml-3 sm:ml-8 items-center">
                         <div className="d-flex justify-content-center align-items-center gap-1 mx-1">
