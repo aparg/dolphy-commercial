@@ -26,7 +26,7 @@ const Collapse = () => {
           role="button"
           aria-expanded="false"
           aria-controls="collapseExample"
-          className="fw-bold"
+          className="fw-bold text-lg"
         >
           See More
         </a>

@@ -941,13 +941,13 @@ label {
 }
 
 .cardd-subtitle {
-  font-size: 0.95rem;
+  font-size: 1.125rem;
   font-weight: 400;
   color: #575757;
 }
 
 .cardd-subtitle_bg-black {
-  font-size: 0.9rem;
+  font-size: 1.125rem;
   font-weight: 400;
 }
 
@@ -1690,7 +1690,9 @@ label {
 .pty-description {
   text-align: justify;
   font-weight: 200;
-  font-size: 15px;
+  font-size: 1.125rem;
+  line-height: 1.17rem;
+  margin-bottom: 1rem;
 }
 
 .img-text {
