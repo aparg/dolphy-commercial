@@ -66,11 +66,11 @@ const MobileCityResoCard = React.forwardRef(
                 </div>
               </div>
               <div className="mx-2 w-full mx-2 text-ellipsis overflow-hidden">
-                <div className="text-xs">{`For ${
+                {/* <div className="text-xs">{`For ${
                   curElem.saleLease || "Sale"
-                }`}</div>
-                <div className="flex w-full justify-between">
-                  <h2 className="price fw-bold mb-1 fs-6 fw-bold d-flex align-items-center justify-content-start">
+                }`}</div> */}
+                <div className="flex flex-col w-full justify-between">
+                  <h2 className="price fw-bold mb-1 fs-5 fw-bold d-flex align-items-center justify-content-start">
                     {price}
                     {""}
                     {curElem.SaleLease === saleLease.lease.value && (
