@@ -33,7 +33,8 @@ export default function BookShowingForm(props) {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
+    // ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
+    sendEmail(credentials);
   };
 
   const getEmail = async () => {

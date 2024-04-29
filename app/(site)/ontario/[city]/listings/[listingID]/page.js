@@ -8,6 +8,7 @@ import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import { getCommercialData } from "@/actions/fetchCommercialActions";
 import BookShowingForm from "@/components/BookShowingForm";
 // import MortgageCalculator from "@/components/reso/MortgageCalculator";
+import { Resend } from "resend";
 
 const Map = dynamic(() => import("@/components/reso/Map"), { ssr: false });
 
@@ -44,6 +45,8 @@ const page = async ({ params }) => {
 
   const main_data = await fetchData(listingID); //always a single object inside the array
 
+  const resend = new Resend("re_EwHkJKn7_BqC3Jj57KVoFXeELa5b74Qhd");
+
   const newSalesData = await getCommercialData(
     INITIAL_OFFSET,
     INITIAL_LIMIT,
@@ -54,6 +57,17 @@ const page = async ({ params }) => {
   const imageURLs = generateImageURLs(listingID);
 
   const address = `${main_data?.Street} ${main_data?.StreetName} ${main_data?.StreetAbbreviation}`;
+
+  const sendEmail = async (content) => {
+    const { data, error } = await resend.emails.send({
+      from: "Acme <onboarding@resend.dev>",
+      to: ["apargtm@gmail.com"],
+      subject: "Hello world",
+      react: `<p>${content}</p>`,
+    });
+    if (error) console.log(error.message);
+    console.log(data, error);
+  };
 
   return (
     <>

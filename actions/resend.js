@@ -1,19 +1,15 @@
+"use server";
 import { Resend } from "resend";
-// const API_KEY = "re_8zzqZR8d_3XMweqyWMvgvfH18ihwSsLqi";
-const API_KEY = "re_6X8fF9J1_K2pz2sR7CK51PCac8xrpPqQU";
-const resend = new Resend(API_KEY);
+
+const resend = new Resend("re_EwHkJKn7_BqC3Jj57KVoFXeELa5b74Qhd");
 
 export const sendEmail = async (content) => {
-  console.log("Sending email...");
   const { data, error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
-    to: "apargtm@gmail.com",
-    subject: "Hello World",
+    from: "Acme <onboarding@resend.dev>",
+    to: ["apargtm@gmail.com"],
+    subject: "New Listing",
     html: `<p>${JSON.stringify(content)}</p>`,
   });
-  if (error) {
-    console.log("error sending email");
-  }
-  console.log("Email sent");
-  console.log(data);
+  if (error) console.log(error.message);
+  console.log(data, error);
 };
