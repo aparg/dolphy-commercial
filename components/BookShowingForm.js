@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 // import { Checkbox } from "@nextui-org/react";
 import Checkbox from "./Checkbox";
 import Link from "next/link";
+import { sendEmail } from "@/actions/resend";
 
 export default function BookShowingForm(props) {
   const pathname = usePathname();
@@ -37,6 +38,7 @@ export default function BookShowingForm(props) {
 
   const getEmail = async () => {
     const hostname = new URL(document.referrer).hostname;
+    //get email of the owner who embeds this site
     const email = await fetchHostEmail(hostname);
     setCredentials({
       ...credentials,
@@ -48,6 +50,7 @@ export default function BookShowingForm(props) {
       getEmail();
     }
   }, []);
+
   return (
     <div className="fixed-title pe-0 top-30 sticky mt-24 sm:mt-0" id="contact">
       <div className="p-6 pb-0 shadow-2xl rounded-mine bordt bg-white border-[#e8e9ea]">
