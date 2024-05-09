@@ -16,6 +16,8 @@ const page = async ({ params }) => {
   if (Object.keys(listingType).includes(params.slug1)) {
     type = capitalizeFirstLetter(params.slug1);
   }
+  console.log(params.slug1);
+  console.log(type);
   const isValidSlug = saleLeaseValue || type;
   const city = params.city;
   const INITIAL_LIMIT = 30;

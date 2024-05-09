@@ -70,7 +70,7 @@ export async function generateMetadata({ params }, parent) {
     },
     title: `Find ${type} Real Estate ${saleLease[saleLeaseValue]?.name} in ${params.city}`,
     description: `Explore top ${type}${
-      plural[capitalizeFirstLetter(type)]
+      plural[capitalizeFirstLetter(type)] || ""
     } in ${params.city} and select the best ones`,
   };
 }

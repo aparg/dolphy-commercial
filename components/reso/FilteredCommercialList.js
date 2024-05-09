@@ -2,7 +2,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 
 import SalesList from "@/components/reso/SalesList";
-import Filters from "@/components/reso/Filters";
+import Filters from "@/components/reso/Filters-old";
 
 //HELPERS
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
@@ -144,7 +144,7 @@ const FilteredCommercialList = ({
           >
             Explore top{" "}
             {filterState.type
-              ? `${filterState.type}${plural[filterState.type]}`
+              ? `${filterState.type}${plural[filterState.type] || ""}`
               : "Commercial Real Estate"}{" "}
             in{" "}
             {(city && decodeURIComponent(capitalizeFirstLetter(city))) ||
