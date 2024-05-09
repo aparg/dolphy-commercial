@@ -4,13 +4,29 @@ export const saleLease = {
   // all: { name: "All", value: undefined },
 };
 
+// export const listingType = {
+//   business: { name: "Business", value: ".B." },
+//   office: { name: "Office", value: ".1." },
+//   retail: { name: "Retail", value: ".Q." },
+//   industrial: { name: "Industrial", value: ".I." },
+//   investment: { name: "Investment", value: ".U." },
+//   land: { name: "Land", value: ".L." },
+// };
+
 export const listingType = {
-  business: { name: "Business", value: ".B." },
-  office: { name: "Office", value: ".1." },
-  retail: { name: "Retail", value: ".Q." },
-  industrial: { name: "Industrial", value: ".I." },
-  investment: { name: "Investment", value: ".U." },
-  land: { name: "Land", value: ".L." },
+  gasStation: { name: "Gas Station", value: "Gas Stations" },
+  convenienceStore: {
+    name: "Convenience Store",
+    value: "Convenience/Variety",
+  },
+  restaurant: {
+    name: "Restaurant",
+    value: "Restaurant",
+  },
+  motel: {
+    name: "Motel",
+    value: "Hotel/Motel/Inn",
+  },
 };
 
 const firstDateOfMonth = () => {

@@ -5,4 +5,8 @@ export const plural = {
   Land: "s",
   Business: "es",
   Investment: "s",
+  Motel: "s",
+  Restaurant: "s",
+  "Convenience Store": "s",
+  "Gas Station": "s",
 };

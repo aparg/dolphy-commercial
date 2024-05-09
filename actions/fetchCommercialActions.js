@@ -9,8 +9,12 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
     const skipQuery = `${offset}`;
     const limitQuery = `${limit}`;
 
+    // if (listingType) {
+    //   selectQuery += `,TypeOwnSrch=${listingType}`;
+    // }
+
     if (listingType) {
-      selectQuery += `,TypeOwnSrch=${listingType}`;
+      selectQuery += `,Use=${listingType}`;
     }
 
     const url = commercial.properties.replace(
@@ -22,7 +26,7 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
       method: "GET",
       next: { revalidate: 10 },
     };
-
+    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data?.results;
@@ -46,8 +50,11 @@ export const getFilteredRetsData = async (queryParams) => {
     const timestampQuery = `${queryParams.minTimestampSql || ""}`;
     let rangeQuery = `minListPrice=${queryParams.minListPrice}`;
 
+    // if (queryParams.houseType) {
+    //   selectQuery += `,TypeOwnSrch=${queryParams.houseType}`;
+    // }
     if (queryParams.houseType) {
-      selectQuery += `,TypeOwnSrch=${queryParams.houseType}`;
+      selectQuery += `,Use=${queryParams.houseType}`;
     }
 
     if (queryParams.maxListPrice > queryParams.minListPrice) {
@@ -64,6 +71,7 @@ export const getFilteredRetsData = async (queryParams) => {
       method: "GET",
       next: { revalidate: 10 },
     };
+    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data?.results;
