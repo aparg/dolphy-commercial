@@ -16,9 +16,9 @@ const page = async ({ params }) => {
     saleLeaseValue = params.slug2;
   }
   if (Object.keys(listingType).includes(params.slug1)) {
-    type = capitalizeFirstLetter(params.slug1);
+    type = capitalizeFirstLetter(decodeURIComponent(params.slug1));
   } else if (Object.keys(listingType).includes(params.slug2)) {
-    type = capitalizeFirstLetter(params.slug2);
+    type = capitalizeFirstLetter(decodeURIComponent(params.slug2));
   }
   const isValidSlug = saleLeaseValue || type;
   const city = params.city;

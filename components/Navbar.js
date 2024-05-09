@@ -41,7 +41,6 @@ const Navbar = (sticky = false) => {
     // Add event listener to scroll event
     window.addEventListener("scroll", handleScroll);
     if (pathname.includes("/listings")) {
-      console.log("LISTING PAGE");
       setIsSticky(false);
     }
     // Clean up event listener on component unmount
@@ -62,7 +61,7 @@ const Navbar = (sticky = false) => {
         showNavbar ? "" : "hidden"
       } ${
         isSticky
-          ? "bg-white sticky top-0 shadow-lg z-50"
+          ? "bg-white sticky top-0 shadow-lg z-[1000]"
           : "z-[1000] md:bg-transparent"
       }`}
     >
@@ -144,24 +143,20 @@ const Navbar = (sticky = false) => {
               name="Business for sale"
               options={[
                 {
-                  name: "Office for Sale",
-                  link: generateURL({ houseTypeVal: "office" }),
+                  name: "Restaurant for Sale",
+                  link: generateURL({ houseTypeVal: "restaurant" }),
                 },
                 {
-                  name: "Retail for Sale",
-                  link: generateURL({ houseTypeVal: "retail" }),
+                  name: "Convenience Store for sale",
+                  link: generateURL({ houseTypeVal: "convenience store" }),
                 },
                 {
-                  name: "Industry for sale",
-                  link: generateURL({ houseTypeVal: "industrial" }),
+                  name: "Gas Station for Sale",
+                  link: generateURL({ houseTypeVal: "gas station" }),
                 },
                 {
-                  name: "Investment for sale",
-                  link: generateURL({ houseTypeVal: "investment" }),
-                },
-                {
-                  name: "Land for sale",
-                  link: generateURL({ houseTypeVal: "land" }),
+                  name: "Motel for sale",
+                  link: generateURL({ houseTypeVal: "motel" }),
                 },
               ]}
               text={isSticky || !isHomePage ? "black" : "white"}
@@ -182,7 +177,7 @@ const Navbar = (sticky = false) => {
             <Link
               href={`/compare`}
               title=""
-              className={`text-base font-medium transition-all duration-200 ${
+              className={`text-base font-normal transition-all duration-200 ${
                 isHomePage &&
                 !isSticky &&
                 "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
@@ -198,7 +193,7 @@ const Navbar = (sticky = false) => {
             {/* <Link
               href="#"
               title=""
-              className={`text-base font-medium transition-all duration-200 ${
+              className={`text-base font-normal transition-all duration-200 ${
                 isHomePage &&
                 !isSticky &&
                 "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
@@ -215,7 +210,7 @@ const Navbar = (sticky = false) => {
             <Link
               href="#"
               title=""
-              className={`text-base font-medium transition-all duration-200 ${
+              className={`text-base font-normal transition-all duration-200 ${
                 isHomePage &&
                 !isSticky &&
                 "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
@@ -232,7 +227,7 @@ const Navbar = (sticky = false) => {
             <Link
               href="#"
               title=""
-              className={`text-base font-medium transition-all duration-200 ${
+              className={`text-base font-normal transition-all duration-200 ${
                 isHomePage &&
                 !isSticky &&
                 "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
@@ -274,24 +269,20 @@ const Navbar = (sticky = false) => {
                 name="Business For Sale"
                 options={[
                   {
-                    name: "Office for Sale",
-                    link: generateURL({ houseTypeVal: "office" }),
+                    name: "Restaurants for Sale",
+                    link: generateURL({ houseTypeVal: "restaurant" }),
                   },
                   {
-                    name: "Retail for Sale",
-                    link: generateURL({ houseTypeVal: "retail" }),
+                    name: "Convenience Stores for Sale",
+                    link: generateURL({ houseTypeVal: "convenience store" }),
                   },
                   {
-                    name: "Industry for sale",
-                    link: generateURL({ houseTypeVal: "industrial" }),
+                    name: "Gas Stations for Sale",
+                    link: generateURL({ houseTypeVal: "gas station" }),
                   },
                   {
-                    name: "Investment for sale",
-                    link: generateURL({ houseTypeVal: "investment" }),
-                  },
-                  {
-                    name: "Land for sale",
-                    link: generateURL({ houseTypeVal: "land" }),
+                    name: "Motels for sale",
+                    link: generateURL({ houseTypeVal: "motel" }),
                   },
                 ]}
                 text={"black"}
@@ -300,7 +291,7 @@ const Navbar = (sticky = false) => {
               <Link
                 href={`/compare`}
                 title=""
-                className={`text-base font-medium transition-all duration-200 ${
+                className={`text-base font-normal transition-all duration-200 ${
                   isHomePage &&
                   !isSticky &&
                   "lg:text-white hover:text-green-200 active:text-primary-green focus:text-primary-green"
@@ -316,7 +307,7 @@ const Navbar = (sticky = false) => {
               {/* <Link
                 href="#"
                 title=""
-                className={`inline-flex py-2 text-base font-medium transition-all duration-200 text-black `}
+                className={`inline-flex py-2 text-base font-normal transition-all duration-200 text-black `}
               >
                 {" "}
                 Cities{" "}
@@ -325,7 +316,7 @@ const Navbar = (sticky = false) => {
               <Link
                 href="#"
                 title=""
-                className={`inline-flex py-2 text-base font-medium transition-all duration-200 text-black `}
+                className={`inline-flex py-2 text-base font-normal transition-all duration-200 text-black `}
               >
                 {" "}
                 Resources{" "}
@@ -334,7 +325,7 @@ const Navbar = (sticky = false) => {
               <Link
                 href="#"
                 title=""
-                className={`inline-flex py-2 text-base font-medium transition-all duration-200 text-black `}
+                className={`inline-flex py-2 text-base font-normal transition-all duration-200 text-black `}
               >
                 {" "}
                 Contact{" "}

@@ -6,6 +6,11 @@ export function capitalizeFirstLetter(str) {
     const capitalizedWords = words.map((word) => capitalizer(word));
     return capitalizedWords.join("%20");
   }
+  if (str.includes(" ")) {
+    const words = str.split(" ");
+    const capitalizedWords = words.map((word) => capitalizer(word));
+    return capitalizedWords.join(" ");
+  }
   return capitalizer(str);
 }
 

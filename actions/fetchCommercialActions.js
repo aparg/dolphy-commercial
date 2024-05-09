@@ -26,7 +26,6 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
       method: "GET",
       next: { revalidate: 10 },
     };
-    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data?.results;
@@ -71,7 +70,6 @@ export const getFilteredRetsData = async (queryParams) => {
       method: "GET",
       next: { revalidate: 10 },
     };
-    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data?.results;

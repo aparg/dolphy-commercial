@@ -11,9 +11,10 @@ const page = async ({ params }) => {
   if (Object.keys(saleLease).includes(params.slug1)) {
     saleLeaseValue = params.slug1;
   }
-  if (Object.keys(listingType).includes(params.slug1)) {
-    type = capitalizeFirstLetter(params.slug1);
+  if (Object.keys(listingType).includes(decodeURIComponent(params.slug1))) {
+    type = capitalizeFirstLetter(decodeURIComponent(params.slug1));
   }
+  console.log(type);
   const isValidSlug = saleLeaseValue || type;
   const INITIAL_LIMIT = 30;
   const commercialListData = await getCommercialData(0, INITIAL_LIMIT);
@@ -41,8 +42,8 @@ export async function generateMetadata({ params }, parent) {
   if (Object.keys(saleLease).includes(params.slug1)) {
     saleLeaseValue = params.slug1;
   }
-  if (Object.keys(listingType).includes(params.slug1)) {
-    type = capitalizeFirstLetter(params.slug1);
+  if (Object.keys(listingType).includes(decodeURIComponent(params.slug1))) {
+    type = capitalizeFirstLetter(decodeURIComponent(params.slug1));
   }
   return {
     ...parent,

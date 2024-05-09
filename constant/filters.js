@@ -14,8 +14,8 @@ export const saleLease = {
 // };
 
 export const listingType = {
-  gasStation: { name: "Gas Station", value: "Gas Stations" },
-  convenienceStore: {
+  "gas station": { name: "Gas Station", value: "Gas Stations" },
+  "convenience store": {
     name: "Convenience Store",
     value: "Convenience/Variety",
   },

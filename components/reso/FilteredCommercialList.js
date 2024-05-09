@@ -2,7 +2,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 
 import SalesList from "@/components/reso/SalesList";
-import Filters from "@/components/reso/Filters-old";
+import Filters from "@/components/reso/Filters";
 
 //HELPERS
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
@@ -34,13 +34,14 @@ const FilteredCommercialList = ({
   const [offset, setOffset] = useState(0);
   const { isMobileView } = useDeviceView();
   const [loading, setLoading] = useState(false);
-
   const fetchFilteredData = async (payload) => {
+    console.log("filtered");
+    console.log(payload?.type.toLowerCase());
     const queryParams = {
       city: city ? capitalizeFirstLetter(city) : undefined,
       limit: INITIAL_LIMIT,
       houseType: Object.values(listingType).find(
-        (type) => type.name === payload?.type
+        (type) => type.name.toLowerCase() === payload?.type.toLowerCase()
       )?.value,
       offset: 0,
 

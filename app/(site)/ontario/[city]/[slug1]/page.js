@@ -10,14 +10,12 @@ import { Image } from "react-bootstrap";
 const page = async ({ params }) => {
   let saleLeaseValue = undefined;
   let type = undefined;
-  if (Object.keys(saleLease).includes(params.slug1)) {
+  if (Object.keys(saleLease).includes(decodeURIComponent(params.slug1))) {
     saleLeaseValue = params.slug1;
   }
-  if (Object.keys(listingType).includes(params.slug1)) {
-    type = capitalizeFirstLetter(params.slug1);
+  if (Object.keys(listingType).includes(decodeURIComponent(params.slug1))) {
+    type = capitalizeFirstLetter(decodeURIComponent(params.slug1));
   }
-  console.log(params.slug1);
-  console.log(type);
   const isValidSlug = saleLeaseValue || type;
   const city = params.city;
   const INITIAL_LIMIT = 30;

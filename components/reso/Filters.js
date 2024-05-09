@@ -22,7 +22,7 @@ const Filters = ({
   embedded,
 }) => {
   const [navbar, setNavbar] = useState(false);
-
+  console.log(filterState);
   const { isMobileView } = useDeviceView();
 
   //options for lease or sale
@@ -444,7 +444,8 @@ const IndividualFilterButton = ({
   value,
   handleFilterChange,
 }) => {
-  const [activeFilter, setActiveFilter] = useState(value);
+  console.log(value);
+  const [activeFilter, setActiveFilter] = useState(decodeURIComponent(value));
   const isActive = (key) => {
     const foundSalesLease = options.find((option) => option === key);
     return foundSalesLease === activeFilter;
@@ -458,6 +459,7 @@ const IndividualFilterButton = ({
   return (
     <>
       {options.map((option, index) => {
+        console.log(option);
         return (
           <div
             key={index}
