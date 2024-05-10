@@ -7,6 +7,7 @@ import { getCommercialData } from "@/actions/fetchCommercialActions";
 import PopularCities from "@/components/PopularCities";
 import RealEstateNews from "@/components/RealEstateNews";
 import SuggestedCity from "@/components/SuggestedCity";
+import PopularCategories from "@/components/PopularCategories";
 
 const INITIAL_OFFSET = 0;
 const INITIAL_LIMIT = 20;
@@ -79,7 +80,8 @@ export default async function Home() {
             <SuggestedCity defaultCitiesData={defaultCitiesData} />
           </div>
           <div className="container-fluid mt-4 sm:mt-24">
-            <PopularCities />
+            {/* <PopularCities /> */}
+            <PopularCategories />
           </div>
           <div className="container-fluid mt-4 sm:mt-24">
             <RealEstateNews />

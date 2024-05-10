@@ -15,6 +15,10 @@ export const saleLease = {
 
 export const listingType = {
   "gas station": { name: "Gas Station", value: "Gas Stations" },
+  motel: {
+    name: "Motel",
+    value: "Hotel/Motel/Inn",
+  },
   "convenience store": {
     name: "Convenience Store",
     value: "Convenience/Variety",
@@ -22,10 +26,6 @@ export const listingType = {
   restaurant: {
     name: "Restaurant",
     value: "Restaurant",
-  },
-  motel: {
-    name: "Motel",
-    value: "Hotel/Motel/Inn",
   },
 };
 
