@@ -148,7 +148,7 @@ const CityResoCard = React.forwardRef(
                     <div className="text-dark bva">
                       {curElem.StreetName ? (
                         `${curElem.Street} ${curElem.StreetName}${" "}
-                    ${curElem.StreetAbbreviation} ${
+                    ${curElem.StreetAbbreviation || ""} ${
                           curElem.Municipality
                         }, Ontario`
                       ) : (

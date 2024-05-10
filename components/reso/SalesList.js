@@ -14,7 +14,7 @@ import ResoCard from "@/components/reso/ResoCard";
 import { getFilteredRetsData } from "@/actions/fetchCommercialActions";
 
 //CONSTANT
-import { saleLease, listingType, numberOfDays } from "@/constant";
+import { saleLease, listingType, numberOfDays, areas } from "@/constant";
 import CityResoCard from "./CityResoCard";
 
 const SalesList = ({
@@ -45,6 +45,9 @@ const SalesList = ({
       )?.value,
       minTimestampSql: Object.values(numberOfDays).find((obj) => {
         return obj.value == filterState.minTimestampSql;
+      })?.value,
+      areas: Object.values(areas).find((obj) => {
+        return obj.name == filterState.areas;
       })?.value,
     };
     setIsLoading(true);

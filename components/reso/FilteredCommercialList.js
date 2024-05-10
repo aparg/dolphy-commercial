@@ -9,7 +9,7 @@ import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 import { isLocalStorageAvailable } from "@/helpers/checkLocalStorageAvailable";
 
 //CONSTANT
-import { saleLease, listingType } from "@/constant";
+import { saleLease, listingType, areas } from "@/constant";
 import { getFilteredRetsData } from "@/actions/fetchCommercialActions";
 
 import useDeviceView from "@/helpers/useDeviceView";
@@ -35,13 +35,11 @@ const FilteredCommercialList = ({
   const { isMobileView } = useDeviceView();
   const [loading, setLoading] = useState(false);
   const fetchFilteredData = async (payload) => {
-    console.log("filtered");
-    console.log(payload?.type.toLowerCase());
     const queryParams = {
       city: city ? capitalizeFirstLetter(city) : undefined,
       limit: INITIAL_LIMIT,
       houseType: Object.values(listingType).find(
-        (type) => type.name.toLowerCase() === payload?.type.toLowerCase()
+        (type) => type?.name?.toLowerCase() === payload?.type?.toLowerCase()
       )?.value,
       offset: 0,
 
@@ -52,6 +50,9 @@ const FilteredCommercialList = ({
           (state) => state.name === payload.saleLease
         )[0].value || undefined,
       minTimestampSql: payload.minTimestampSql,
+      areas:
+        Object.values(areas).filter((state) => state.name === payload.areas)[0]
+          ?.value || [],
     };
     setLoading(true);
     const filteredSalesData = await getFilteredRetsData(queryParams);

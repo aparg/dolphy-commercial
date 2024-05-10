@@ -48,6 +48,7 @@ export const getFilteredRetsData = async (queryParams) => {
     const limitQuery = `${queryParams.limit}`;
     const timestampQuery = `${queryParams.minTimestampSql || ""}`;
     let rangeQuery = `minListPrice=${queryParams.minListPrice}`;
+    let areaQuery = ``;
 
     // if (queryParams.houseType) {
     //   selectQuery += `,TypeOwnSrch=${queryParams.houseType}`;
@@ -60,16 +61,28 @@ export const getFilteredRetsData = async (queryParams) => {
       rangeQuery += `,maxListPrice=${queryParams.maxListPrice}`;
     }
 
+    if (queryParams.areas.length > 0) {
+      console.log(queryParams.areas);
+      queryParams.areas.forEach((val, idx) => {
+        if (idx > 0) {
+          areaQuery += `,Municipality=${val}`;
+        } else {
+          areaQuery += `Municipality=${val}`;
+        }
+      });
+    }
+
     const url = commercial.properties.replace(
       "$query",
       `?$select=${selectQuery || ""}${
         timestampQuery && `&$timestampFilter='${timestampQuery}'`
-      }&$skip=${skipQuery}&$limit=${limitQuery}&$range=${rangeQuery}`
+      }&$skip=${skipQuery}&$limit=${limitQuery}&$range=${rangeQuery}&$selectOr=${areaQuery}`
     );
     const options = {
       method: "GET",
       next: { revalidate: 10 },
     };
+    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data?.results;

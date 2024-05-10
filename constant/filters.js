@@ -29,6 +29,49 @@ export const listingType = {
   },
 };
 
+export const areas = {
+  GTA: {
+    name: "GTA",
+    value: [
+      // "Toronto",
+      "Mississauga",
+      "Brampton",
+      "Markham",
+      "Vaughan",
+      "Richmond Hill",
+      "Oakville",
+      "Burlington",
+      "Pickering",
+      "Oshawa",
+      "Whitby",
+      "Ajax",
+      "Caledon",
+      "Halton Hills",
+      "Milton",
+      "Newmarket",
+      "Aurora",
+      "King",
+      "Whitchurch-Stouffville",
+      "East Gwillimbury",
+      "Georgina",
+      "Bradford West Gwillimbury",
+      "Brock",
+      "Scugog",
+      "Uxbridge",
+      "Clarington",
+      "Mono",
+      "Adjala-Tosorontio",
+      "Essa",
+      "Innisfil",
+      "New Tecumseth",
+    ],
+  },
+  ontario: {
+    name: "Ontario",
+    value: [], //this value is empty array because the api doesn't need any queries for displaying all ontario listings
+  },
+};
+
 const firstDateOfMonth = () => {
   var currentDateUTC = new Date(Date.now());
 

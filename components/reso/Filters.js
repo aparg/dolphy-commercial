@@ -12,7 +12,7 @@ import {
 } from "@nextui-org/react";
 
 //CONSTANT
-import { saleLease, listingType, numberOfDays } from "@/constant";
+import { saleLease, listingType, numberOfDays, areas } from "@/constant";
 import useDeviceView from "@/helpers/useDeviceView";
 
 const Filters = ({
@@ -22,7 +22,6 @@ const Filters = ({
   embedded,
 }) => {
   const [navbar, setNavbar] = useState(false);
-  console.log(filterState);
   const { isMobileView } = useDeviceView();
 
   //options for lease or sale
@@ -30,6 +29,8 @@ const Filters = ({
   //options for house type
   const houseTypeOptions = Object.values(listingType).map((item) => item.name);
   //options for house type
+
+  const areaOptions = Object.values(areas).map((item) => item.name);
   const numberOfDaysOptions = Object.values(numberOfDays).map(
     (item) => item.userFilter && item.name
   );
@@ -44,8 +45,8 @@ const Filters = ({
       };
     } else {
       return {
-        min: 400000,
-        max: 3000000,
+        min: 40000,
+        max: 10000000,
       };
     }
   }, [filterState]);
@@ -104,6 +105,13 @@ const Filters = ({
           options={houseTypeOptions}
           name="type"
           value={filterState.type}
+          handleFilterChange={handleFilterChange}
+        />
+
+        <IndividualFilterButton
+          options={areaOptions}
+          name="areas"
+          value={filterState.areas}
           handleFilterChange={handleFilterChange}
         />
 
@@ -444,7 +452,6 @@ const IndividualFilterButton = ({
   value,
   handleFilterChange,
 }) => {
-  console.log(value);
   const [activeFilter, setActiveFilter] = useState(decodeURIComponent(value));
   const isActive = (key) => {
     const foundSalesLease = options.find((option) => option === key);
@@ -459,7 +466,6 @@ const IndividualFilterButton = ({
   return (
     <>
       {options.map((option, index) => {
-        console.log(option);
         return (
           <div
             key={index}

@@ -76,9 +76,9 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          <div className="mt-4 sm:mt-24">
+          {/* <div className="mt-4 sm:mt-24">
             <SuggestedCity defaultCitiesData={defaultCitiesData} />
-          </div>
+          </div> */}
           <div className="container-fluid mt-4 sm:mt-24">
             {/* <PopularCities /> */}
             <PopularCategories />

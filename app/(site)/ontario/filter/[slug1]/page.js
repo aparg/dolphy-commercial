@@ -14,7 +14,6 @@ const page = async ({ params }) => {
   if (Object.keys(listingType).includes(decodeURIComponent(params.slug1))) {
     type = capitalizeFirstLetter(decodeURIComponent(params.slug1));
   }
-  console.log(type);
   const isValidSlug = saleLeaseValue || type;
   const INITIAL_LIMIT = 30;
   const commercialListData = await getCommercialData(0, INITIAL_LIMIT);

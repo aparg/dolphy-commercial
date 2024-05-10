@@ -5,7 +5,7 @@ import React, { useState, useMemo, useEffect, useRef } from "react";
 import { capitalizeFirstLetter } from "@/helpers/capitalizeFIrstLetter";
 
 //CONSTANT
-import { saleLease, listingType, numberOfDays } from "@/constant";
+import { saleLease, listingType, numberOfDays, areas } from "@/constant";
 import { getFilteredRetsData } from "@/actions/fetchCommercialActions";
 import useDeviceView from "@/helpers/useDeviceView";
 import CityResoCard from "./reso/CityResoCard";
@@ -33,6 +33,7 @@ const FilteredListings = ({
     },
     type: type && capitalizeFirstLetter(type),
     minTimestampSql: undefined,
+    areas: "",
   });
 
   const scrollRef = useRef(null); //used to hold scroll value
@@ -73,6 +74,10 @@ const FilteredListings = ({
           (state) => state.name === filterState.saleLease
         )[0].value || undefined,
       minTimestampSql: numberOfDays.Today.value,
+      areas:
+        Object.values(areas).filter(
+          (state) => state.name === filterState.areas
+        )[0].value || [],
       ...payload,
     };
     setLoading(true);
