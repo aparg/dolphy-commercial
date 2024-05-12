@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation";
 import useDeviceView from "@/helpers/useDeviceView";
 import MobileCityResoCard from "../MobileCityResoCard";
 import { set } from "date-fns";
+import ColoredBadge from "../ColoredBadge";
 
 const CityResoCard = React.forwardRef(
   ({ curElem, small = false, city, embeddedSite }, ref) => {
@@ -159,6 +160,64 @@ const CityResoCard = React.forwardRef(
                 </div>
                 <div className="text-black font-medium truncate text-ellipsis text-xs">
                   Listed by {curElem.ListBrokerage}
+                </div>
+                <div className="inline-flex justify-center items-center my-2">
+                  {/* <ColoredBadge
+                    icon="./mailOutline.svg"
+                    text="Email"
+                    // color="#3a88ef"
+                    color="rgb(58, 136, 239)"
+                    // hoverColor="rgba(58, 136, 239, 0.2)"
+                    hoverColor="#3a88ef"
+                    opacity="0.08"
+                    hoverOpacity="0.2"
+                  /> */}
+                  <div
+                    className={`min-w-[50px] inline-flex item-center justify-center bg-[#3a88ef]/[0.2] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
+                  >
+                    <img
+                      className="pr-1 w-5"
+                      src="./mailOutline.svg"
+                      alt="Email"
+                    />
+                    Email
+                  </div>
+                  <div
+                    className={`min-w-[70px] inline-flex item-center justify-center bg-[#ffedea]/[0.5] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
+                  >
+                    <img className="pr-1 w-5" src="./phone.svg" alt="Phone" />
+                    Phone
+                  </div>
+                  <div
+                    className={`min-w-[70px] inline-flex item-center justify-center bg-[#43bb3f]/[0.2] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
+                  >
+                    <img
+                      className="pr-1 w-5"
+                      src="./whatsapp.svg"
+                      alt="whatsapp"
+                    />
+                    Whatsapp
+                  </div>
+                  {/* <ColoredBadge
+                    icon="./phone.svg"
+                    text="Phone"
+                    // color="rgba(255, 237, 234, 0.5)"
+                    color="#ffedea"
+                    opacity="0.5"
+                    hoverColor="#ffdad4"
+                    hoverOpacity="0.8"
+                    // hoverColor="rgba(255, 218, 212, 0.8)"
+                  />
+                  <ColoredBadge
+                    icon="./whatsapp.svg"
+                    text="Whatsapp"
+                    // color="rgba(67, 187, 63, 0.1)"
+                    color="#43bb3f"
+                    opacity="0.1"
+                    // hoverColor="rgba(67, 187, 63, 0.2)"
+                    hoverColor="#43bb3f"
+                    hoverOpacity="0.2"
+                  /> */}
                 </div>
               </div>
             </div>
