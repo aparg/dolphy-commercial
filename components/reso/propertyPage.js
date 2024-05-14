@@ -285,7 +285,7 @@ const PropertyPage = ({ main_data }) => {
                   Business Overview
                 </h2>
                 <div
-                  className={`row row-cols-2  row-cols-md-4 w-100 text-lg${
+                  className={`row row-cols-2  row-cols-md-4 w-100 ${
                     isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
