@@ -83,9 +83,9 @@ export default async function Home() {
           <div className="mt-4 sm:mt-24">
             <SuggestedCity defaultCitiesData={defaultCitiesData} />
           </div>
-          <div className="container-fluid mt-4 sm:mt-24">
+          {/* <div className="container-fluid mt-4 sm:mt-24">
             <RealEstateNews />
-          </div>
+          </div> */}
         </div>
         <div className="">
           <div className="py-md-5"></div>

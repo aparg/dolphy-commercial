@@ -947,7 +947,7 @@ label {
 }
 
 .cardd-subtitle_bg-black {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -956,7 +956,7 @@ label {
 }
 
 .bannerSection {
-  padding-bottom: 1rem;
+  /* padding-bottom: 1rem; */
   color: #676767;
   font-size: 0.875rem;
   font-weight: 400;

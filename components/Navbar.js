@@ -242,7 +242,7 @@ const Navbar = (sticky = false) => {
             </Link>
           </div>
 
-          <Link
+          {/* <Link
             href="tel:6476745958"
             title=""
             className={`items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold transition-all duration-200 border rounded-md lg:inline-flex hover:bg-primary-green hover:text-white ${
@@ -254,7 +254,7 @@ const Navbar = (sticky = false) => {
           >
             {" "}
             Call : 647 527 4970{" "}
-          </Link>
+          </Link> */}
         </nav>
 
         {/* Mobile version */}
@@ -333,7 +333,7 @@ const Navbar = (sticky = false) => {
             </div>
           </div>
 
-          <div className="px-6 mt-6">
+          {/* <div className="px-6 mt-6">
             <Link
               href="tel:6476745958"
               title=""
@@ -346,7 +346,7 @@ const Navbar = (sticky = false) => {
             >
               Call : 647 527 4970
             </Link>
-          </div>
+          </div> */}
         </nav>
       </div>
     </header>

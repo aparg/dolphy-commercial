@@ -93,7 +93,7 @@ const PropertyPage = ({ main_data }) => {
       <div className="screenshot col-12">
         <div
           className={`border-0  rounded-3 ${
-            isMobileView ? "sm:p-4 pt-3 mt-3" : "p-4 mt-5"
+            isMobileView ? "sm:p-4 pt-3 mt-3" : "mt-5"
           }`}
         >
           <div className="w-full">
@@ -104,82 +104,82 @@ const PropertyPage = ({ main_data }) => {
             >
               <div className="flex items-center">
                 <div className="flex flex-col">
-                  <div className="flex items-center">
-                    <h3 className="main-title fs-1">C{price}</h3>
-                    <div>
-                      {/* <div className="bg-[#ddd] rounded-md flex px-2 ml-3 sm:ml-8 items-center">
-                        <div className="d-flex justify-content-center align-items-center gap-1 mx-1">
+                  <div className="flex flex-col items-start">
+                    <h1 className="fs-6 mb-2 cardd-subtitle text-lg">
+                      {main_data.Street} {main_data.StreetName}{" "}
+                      {main_data.StreetAbbreviation}, {main_data.Municipality},{" "}
+                      {main_data.Province}, {main_data.PostalCode}
+                    </h1>
+                    <div className="flex flex-row items-center">
+                      <h3 className="main-title fs-1">C{price}</h3>
+                      {/* {main_data.SaleLease.toLowerCase() === "sale" && (
+                        <p className="cardd-subtitle ml-4">
+                          est. {formatCurrency(MortCalc(main_data.ListPrice))} /
+                          month
+                        </p>
+                      )} */}
+                    </div>
+                    {/* <div>
+                      <div className="rounded-md flex items-center">
+                        <div className="d-flex justify-content-center align-items-center gap-1 text-lg">
                           <img
                             src="/bedrooms.svg"
                             alt="bedrooms"
                             className="w-4"
                           />{" "}
-                          {main_data.Bedrooms}
+                          {main_data.Bedrooms} Bedroom
                         </div>
                         <span className="text-lg mx-1">|</span>
-                        <div className="d-flex justify-content-center align-items-center gap-1 mx-1">
+                        <div className="d-flex justify-content-center align-items-center gap-1 text-lg">
                           <img
                             src="/bathrooms.svg"
                             alt="washrooms"
                             className="w-4"
                           />{" "}
-                          {main_data.Washrooms}
+                          {main_data.Washrooms} Bathroom
                         </div>
                         {main_data.GarageSpaces && (
                           <>
                             <span className="text-lg">|</span>
-                            <div className="d-flex justify-content-center align-items-center gap-1 mx-1">
+                            <div className="d-flex justify-content-center align-items-center gap-1 text-lg ">
                               <img
                                 src="/garage.svg"
                                 alt="garages"
                                 className="w-3"
                               />{" "}
-                              {Math.trunc(main_data.GarageSpaces)}
+                              {Math.trunc(main_data.GarageSpaces)} Garage
                             </div>
                           </>
                         )}
-                      </div> */}
-                    </div>
-                    <span
-                      className="badge custom-badge text-dark ml-2 sm:ml-3"
-                      style={{ backgroundColor: "#ddd !important" }}
-                    >
+                      </div>
+                    </div> */}
+                    <span className="text-dark font-bold my-2 sm:my-0">
                       <TimeAgo modificationTimestamp={main_data.TimestampSql} />
                     </span>
                   </div>
-                  {/* {main_data.SaleLease.toLowerCase() === "sale" && (
-                    <p className="cardd-subtitle">
-                      est. {formatCurrency(MortCalc(main_data.ListPrice))} /
-                      month
-                    </p>
-                  )} */}
                 </div>
                 <div></div>
               </div>
-              <div className="flex flex-col font-medium my-2">
-                <h1 className="fs-4 mb-0">
-                  {main_data.Street} {main_data.StreetName}{" "}
-                  {main_data.StreetAbbreviation}
-                </h1>
-                {/* <CompareButton main_data={main_data} width={8} /> */}
-                <p className="cardd-subtitle">
+              {/* <CompareButton main_data={main_data} width={8} /> */}
+              {/* <div className="flex flex-col font-md mt-2 text-lg">
+                <p class className="">
                   {main_data.Municipality}, {main_data.Province},{" "}
                   {main_data.PostalCode}
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
-          <div className="d-flex align-items-center flex-wrap">
+          <div className="d-flex align-items-center flex-wrap mt-2">
             <div className="flex">
-              <p className="card-subtitle mb-0 fw-mine font-thin text-limit">
+              <p className="card-subtitle my-0 mb-0 fw-mine font-thin text-limit text-lg">
                 MLS - #{main_data.MLS}
               </p>
             </div>
             <div className="tet-s d-flex"></div>
           </div>
-          <h1 className="vmain-title mb-0 mt-2 mt-md-1 text-2xl sm:text-4xl">
-            <div className="uppercase bannerSection">
-              <div className="listingStatus"></div>
+          <h1 className="vmain-title">
+            <div className="uppercase bannerSection text-lg">
+              {/* <div className="listingStatus"></div> */}
               FOR {main_data.SaleLease}
               {/* tailwind style classname for bottom dashed border gray*/}
               {/* <span className="border-gray-500 border-dotted border-b">
@@ -188,14 +188,14 @@ const PropertyPage = ({ main_data }) => {
             </div>
           </h1>
         </div>
-        <div className="border-b border-[0.5px] border-gray-200 mt-2 sm:mt-0 sm:ml-4"></div>
+        {/* <div className="border-b border-[0.5px] border-gray-200 mt-2 sm:mt-0 sm:ml-4"></div> */}
         {/* Description */}
         <div className={`${isMobileView ? "pt-4 mt-8" : "mt-16 pt-4"}`}>
-          <div className="border border-0 rounded-3 ">
+          <div className="border border-0 rounded-3 bg-light p-4">
             <h2 className="font-extrabold pb-3 text-lg sm:text-4xl">
               Description
             </h2>
-            <p className="pty-description pt-4">
+            <p className="pty-description pt-4 text-lg">
               {main_data.RemarksForClients}
             </p>
             <div
@@ -278,29 +278,29 @@ const PropertyPage = ({ main_data }) => {
         <div
           className={`${isMobileView ? "pt-4 pb-4 mt-8" : "mt-16 pt-4 pb-4"}`}
         >
-          <div className="row row-cols-1 ">
+          <div className="row row-cols-1 bg-light p-4">
             <div className="col-12 px-0">
               <div className="container rounded-3 border-0">
                 <h2 className="font-extrabold pb-3 text-lg sm:text-4xl">
-                  Home Overview
+                  Business Overview
                 </h2>
                 <div
-                  className={`row row-cols-2  row-cols-md-4 w-100 ${
+                  className={`row row-cols-2  row-cols-md-4 w-100 text-lg${
                     isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
-                  <div className="col-7 col-md border-bottom py-2 py-md-3">
+                  {/* <div className="col-7 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">
                       Basement information
                     </p>
-                  </div>
-                  <div className="col-5 col-md border-bottom py-2 py-md-3">
+                  </div> */}
+                  {/* <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="fw-bold cardd-subtitle_bg-black">
                       {main_data?.Basement1
                         ? `${main_data?.Basement1}, ${main_data?.Basement2}`
                         : "None"}
                     </p>
-                  </div>
+                  </div> */}
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">Virtual tour</p>
                   </div>
@@ -311,13 +311,6 @@ const PropertyPage = ({ main_data }) => {
                       </a>
                     </p>
                   </div>
-                </div>
-
-                <div
-                  className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
-                  }`}
-                >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">Mls® #</p>
                   </div>
@@ -326,6 +319,13 @@ const PropertyPage = ({ main_data }) => {
                       {main_data.MLS}
                     </p>
                   </div>
+                </div>
+
+                <div
+                  className={`row row-cols-2  row-cols-md-4 w-100 ${
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
+                  }`}
+                >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">Building size</p>
                   </div>
@@ -334,13 +334,6 @@ const PropertyPage = ({ main_data }) => {
                       {main_data.ApproxSquareFootage}
                     </p>
                   </div>
-                </div>
-
-                <div
-                  className={`row row-cols-2  row-cols-md-4 w-100 ${
-                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
-                  }`}
-                >
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">Status</p>
                   </div>
@@ -349,14 +342,6 @@ const PropertyPage = ({ main_data }) => {
                       {main_data.Status === "A" ? "Active" : "In-Active"}
                     </p>
                   </div>
-                  <div className="col-7 col-md border-bottom py-2 py-md-3">
-                    <p className="cardd-subtitle_bg-black">Property sub type</p>
-                  </div>
-                  <div className="col-5 col-md border-bottom py-2 py-md-3">
-                    <p className="fw-bold cardd-subtitle_bg-black">
-                      {/* {main_data.PropertySubType} */}
-                    </p>
-                  </div>
                 </div>
 
                 <div
@@ -364,6 +349,14 @@ const PropertyPage = ({ main_data }) => {
                     isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
                   }`}
                 >
+                  {/* <div className="col-7 col-md border-bottom py-2 py-md-3">
+                    <p className="cardd-subtitle_bg-black">Property sub type</p>
+                  </div> */}
+                  {/* <div className="col-5 col-md border-bottom py-2 py-md-3">
+                    <p className="fw-bold cardd-subtitle_bg-black">
+                      {main_data.PropertySubType}
+                    </p>
+                  </div> */}
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">Taxes</p>
                   </div>
@@ -404,6 +397,12 @@ const PropertyPage = ({ main_data }) => {
                     </p>
                   </div>
                 </div>
+
+                <div
+                  className={`row row-cols-2  row-cols-md-4 w-100 ${
+                    isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
+                  }`}
+                ></div>
 
                 <div className="collapse" id="collapseExample">
                   {/* Interior */}

@@ -12,42 +12,42 @@ import localFont from "next/font/local";
 const satoshi = localFont({
   src: [
     {
-      path: "./Satoshi-Regular.otf",
+      path: "./ProximaNova-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "./Satoshi-Italic.otf",
+      path: "./ProximaNova-RegularItalic.otf",
       weight: "400",
       style: "italic",
     },
     {
-      path: "./Satoshi-Medium.otf",
+      path: "./ProximaNova-Regular.otf",
       weight: "500", // Adjust weight to 500 for medium (or as specified in the font file)
       style: "normal",
     },
     {
-      path: "./Satoshi-MediumItalic.otf",
+      path: "./ProximaNova-RegularItalic.otf",
       weight: "500", // Adjust weight to 500 for medium (or as specified in the font file)
       style: "italic",
     },
     {
-      path: "./Satoshi-Bold.otf",
+      path: "./ProximaNova-Bold.otf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "./Satoshi-BoldItalic.otf",
+      path: "./ProximaNova-BoldItalic.otf",
       weight: "700",
       style: "italic",
     },
     {
-      path: "./Satoshi-Black.otf",
+      path: "./ProximaNova-Extrabold.otf",
       weight: "900", // Adjust weight to 900 for black (or as specified in the font file)
       style: "normal",
     },
     {
-      path: "./Satoshi-BlackItalic.otf",
+      path: "./ProximaNova-ExtraboldItalic.otf",
       weight: "900", // Adjust weight to 900 for black (or as specified in the font file)
       style: "italic",
     },

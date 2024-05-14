@@ -21,9 +21,7 @@ const TextOverImageCard = ({ imageSrc, title, link }) => {
           className={`px-6 py-4 absolute bottom-0 z-10 text-white group-hover/card:transition group-hover/card:delay:300 group-hover/card:translate-y-[-0.300rem]`}
         >
           <b className="font-bold text-xl mb-2">{title}</b>
-          <p className="text-base font-semibold">
-            Commercial Properties For Sale
-          </p>
+          <p className="text-base font-semibold">View Listings now!</p>
         </div>
       </Link>
     </div>

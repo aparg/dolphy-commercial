@@ -16,45 +16,70 @@ const Map = ({ main_data }) => {
     lat: null,
     lon: null,
   });
-
+  const ACCESS_TOKEN =
+    "pk.eyJ1IjoiZG9scGh5bWFwYm94IiwiYSI6ImNscTYwcXR5YTBqcG4yam51NDFtbTZkbjcifQ.BXRuDHFFdtNdKyhduH3icA";
   async function getLatLongForMap(listDetail) {
     const { Street, StreetAbbreviation, StreetName, Area, Province } =
       listDetail;
-    const fullAddressForMap = `${Street}, ${StreetName} ${StreetAbbreviation}, ${Area}, ${Province}, Canada`;
-    const url = latLong;
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "cors",
-      body: JSON.stringify({
-        id: userIP,
-        locationToSearch: fullAddressForMap,
-      }),
-    };
-    const res = await fetch(url, options);
+    const fullAddressForMap = encodeURIComponent(
+      `${StreetName} ${StreetAbbreviation}, ${Area}, ${Province}, Canada`
+    );
+    console.log(fullAddressForMap);
+    // const url = latLong;
+    const url = `https://api.mapbox.com/search/geocode/v6/forward?country=canada&place=${fullAddressForMap}&access_token=${ACCESS_TOKEN}`;
+    // const options = {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   mode: "cors",
+    //   body: JSON.stringify({
+    //     id: userIP,
+    //     locationToSearch: fullAddressForMap,
+    //   }),
+    // };
+    // const res = await fetch(url, options);
+    console.log(url);
+    const res = await fetch(url);
     const data = await res.json();
     return data;
   }
 
   useEffect(() => {
-    if (userIP) {
-      const commonFunctionCall = async () => {
-        const latLngValue = await getLatLongForMap(main_data);
+    // if (userIP) {
+    const commonFunctionCall = async () => {
+      // const latLngValue = await getLatLongForMap(main_data);
 
-        setState({
-          lat: latLngValue.result.lat,
-          lon: latLngValue.result.lon,
-        });
-      };
-      commonFunctionCall();
-      setIsMounted(true);
-    }
-  }, [userIP]);
+      // setState({
+      //   lat: latLngValue.result.lat,
+      //   lon: latLngValue.result.lon,
+      // });
+      const result = await getLatLongForMap(main_data);
+      for (const feature of result?.features) {
+        console.log(feature);
+        if (
+          feature?.geometry?.coordinates[0] != undefined &&
+          feature?.geometry?.coordinates[1] != undefined
+        ) {
+          console.log({
+            lat: feature.geometry.coordinates[1],
+            lon: feature.geometry.coordinates[0],
+          });
+          setState({
+            lat: feature.geometry.coordinates[1],
+            lon: feature.geometry.coordinates[0],
+          });
+          break;
+        }
+      }
+    };
+    commonFunctionCall();
+    setIsMounted(true);
+  }, []);
 
   return (
     <>
+      {/* {console.log(state)} */}
       {state.lat && isMounted ? (
         <MapContainer
           center={[state.lat, state.lon]}

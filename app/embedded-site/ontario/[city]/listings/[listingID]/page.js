@@ -9,7 +9,7 @@ import { getCommercialData } from "@/actions/fetchCommercialActions";
 import BookShowingForm from "@/components/BookShowingForm";
 // import MortgageCalculator from "@/components/reso/MortgageCalculator";
 
-const Map = dynamic(() => import("@/components/reso/Map"), { ssr: false });
+const Map = dynamic(() => import("@/components/reso/Map-old"), { ssr: false });
 
 import AdditionalListing from "@/components/reso/AdditionalListing";
 import PropertyPage from "@/components/reso/propertyPage";

@@ -13,6 +13,7 @@ import useDeviceView from "@/helpers/useDeviceView";
 import MobileCityResoCard from "../MobileCityResoCard";
 import { set } from "date-fns";
 import ColoredBadge from "../ColoredBadge";
+import { Image } from "react-bootstrap";
 
 const CityResoCard = React.forwardRef(
   ({ curElem, small = false, city, embeddedSite }, ref) => {
@@ -76,7 +77,7 @@ const CityResoCard = React.forwardRef(
               >
                 <div className="h-full relative">
                   <img
-                    className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-md"
+                    className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-t-md"
                     src={imgSrc}
                     alt="property image"
                     onError={handleImageError}
@@ -140,11 +141,11 @@ const CityResoCard = React.forwardRef(
                     {Math.floor(curElem.TotalArea)} ft<sup>2</sup>
                   </span>
                 </h2>
-                <p className="mb-0 fs-mine text-limit fw-normall pb-0">
+                <p className="mb-0 fs-mine text-limit text-sm pb-0">
                   {" "}
                   MLS® #{curElem.MLS}
                 </p>
-                <div className="flex flex-row justify-between">
+                <div className="flex flex-row justify-between py-1">
                   <div className="text-black truncate text-ellipsis">
                     <div className="text-dark bva">
                       {curElem.StreetName ? (
@@ -158,7 +159,7 @@ const CityResoCard = React.forwardRef(
                     </div>
                   </div>
                 </div>
-                <div className="text-black font-medium truncate text-ellipsis text-xs">
+                <div className="text-black font-normal truncate text-ellipsis text-xs  py-1">
                   Listed by {curElem.ListBrokerage}
                 </div>
                 <div className="inline-flex justify-center items-center my-2">
@@ -173,9 +174,9 @@ const CityResoCard = React.forwardRef(
                     hoverOpacity="0.2"
                   /> */}
                   <div
-                    className={`min-w-[50px] inline-flex item-center justify-center bg-[#3a88ef]/[0.2] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
+                    className={`min-w-[50px] inline-flex item-center justify-center bg-[#3a88ef]/[0.08] hover:bg-[#3a88ef]/[0.2] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
                   >
-                    <img
+                    <Image
                       className="pr-1 w-5"
                       src="./mailOutline.svg"
                       alt="Email"
@@ -183,15 +184,15 @@ const CityResoCard = React.forwardRef(
                     Email
                   </div>
                   <div
-                    className={`min-w-[70px] inline-flex item-center justify-center bg-[#ffedea]/[0.5] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
+                    className={`min-w-[70px] inline-flex item-center justify-center bg-[#ffedea]/[0.5] hover:bg-[#ffdad4]/[0.8] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
                   >
-                    <img className="pr-1 w-5" src="./phone.svg" alt="Phone" />
+                    <Image className="pr-1 w-5" src="./phone.svg" alt="Phone" />
                     Phone
                   </div>
                   <div
-                    className={`min-w-[70px] inline-flex item-center justify-center bg-[#43bb3f]/[0.2] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
+                    className={`min-w-[70px] inline-flex item-center justify-center bg-[#43bb3f]/[0.1] hover:bg-[#43bb3f]/[0.2] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
                   >
-                    <img
+                    <Image
                       className="pr-1 w-5"
                       src="./whatsapp.svg"
                       alt="whatsapp"

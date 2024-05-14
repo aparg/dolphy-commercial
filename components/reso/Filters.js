@@ -95,6 +95,12 @@ const Filters = ({
         }`}
       >
         <IndividualFilterButton
+          options={areaOptions}
+          name="areas"
+          value={filterState.areas}
+          handleFilterChange={handleFilterChange}
+        />
+        <IndividualFilterButton
           options={saleLeaseOptions}
           name="saleLease"
           value={filterState.saleLease}
@@ -105,13 +111,6 @@ const Filters = ({
           options={houseTypeOptions}
           name="type"
           value={filterState.type}
-          handleFilterChange={handleFilterChange}
-        />
-
-        <IndividualFilterButton
-          options={areaOptions}
-          name="areas"
-          value={filterState.areas}
           handleFilterChange={handleFilterChange}
         />
 

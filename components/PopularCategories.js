@@ -4,25 +4,25 @@ const cardsData = [
   {
     id: 1,
     imageSrc: "/convenience-store.jpg",
-    title: "Convenience Stores",
+    title: "Convenience Stores for sale",
     link: "/ontario/toronto/convenience store",
   },
   {
     id: 2,
     imageSrc: "/motel.jpg",
-    title: "Motels",
+    title: "Motels for sale",
     link: "/ontario/toronto/motel",
   },
   {
     id: 3,
     imageSrc: "/restaurant.jpg",
-    title: "Restaurants",
+    title: "Restaurants for sale",
     link: "/ontario/toronto/restaurant",
   },
   {
     id: 4,
     imageSrc: "/gas-station.jpg",
-    title: "Gas Stations",
+    title: "Gas Stations for sale",
     link: "/ontario/toronto/gas station",
   },
   // Add more cards as needed
