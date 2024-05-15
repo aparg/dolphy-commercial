@@ -3,11 +3,15 @@ import React from "react";
 import BottomContactForm from "@/components/BottomContactForm";
 
 import SearchBar from "@/components/reso/SearchBar";
-import { getCommercialData } from "@/actions/fetchCommercialActions";
+import {
+  getCommercialData,
+  getFilteredRetsData,
+} from "@/actions/fetchCommercialActions";
 import PopularCities from "@/components/PopularCities";
 import RealEstateNews from "@/components/RealEstateNews";
 import SuggestedCity from "@/components/SuggestedCity";
 import PopularCategories from "@/components/PopularCategories";
+import RecentListings from "@/components/RecentListings";
 
 const INITIAL_OFFSET = 0;
 const INITIAL_LIMIT = 20;
@@ -31,6 +35,7 @@ export default async function Home() {
     INITIAL_LIMIT,
     BRAMPTONCITY
   );
+  const recentData = await getFilteredRetsData({ limit: 8 });
   const defaultCitiesData = [
     {
       city: CITY,
@@ -82,6 +87,9 @@ export default async function Home() {
           </div>
           <div className="mt-4 sm:mt-24">
             <SuggestedCity defaultCitiesData={defaultCitiesData} />
+          </div>
+          <div className="mt-4 sm:mt-24">
+            <RecentListings data={recentData} />
           </div>
           {/* <div className="container-fluid mt-4 sm:mt-24">
             <RealEstateNews />

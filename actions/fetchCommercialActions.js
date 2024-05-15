@@ -47,7 +47,8 @@ export const getFilteredRetsData = async (queryParams) => {
     const skipQuery = `${queryParams.offset}`;
     const limitQuery = `${queryParams.limit}`;
     const timestampQuery = `${queryParams.minTimestampSql || ""}`;
-    let rangeQuery = `minListPrice=${queryParams.minListPrice}`;
+    let rangeQuery =
+      queryParams.minListPrice && `minListPrice=${queryParams.minListPrice}`;
     let areaQuery = ``;
 
     // if (queryParams.houseType) {
@@ -61,7 +62,7 @@ export const getFilteredRetsData = async (queryParams) => {
       rangeQuery += `,maxListPrice=${queryParams.maxListPrice}`;
     }
 
-    if (queryParams.areas.length > 0) {
+    if (queryParams.areas?.length > 0) {
       queryParams.areas.forEach((val, idx) => {
         if (idx > 0) {
           areaQuery += `,Municipality=${val}`;

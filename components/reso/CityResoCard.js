@@ -178,7 +178,7 @@ const CityResoCard = React.forwardRef(
                   >
                     <Image
                       className="pr-1 w-5"
-                      src="./mailOutline.svg"
+                      src="/mailOutline.svg"
                       alt="Email"
                     />
                     Email
@@ -186,7 +186,7 @@ const CityResoCard = React.forwardRef(
                   <div
                     className={`min-w-[70px] inline-flex item-center justify-center bg-[#ffedea]/[0.5] hover:bg-[#ffdad4]/[0.8] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
                   >
-                    <Image className="pr-1 w-5" src="./phone.svg" alt="Phone" />
+                    <Image className="pr-1 w-5" src="/phone.svg" alt="Phone" />
                     Phone
                   </div>
                   <div
@@ -194,7 +194,7 @@ const CityResoCard = React.forwardRef(
                   >
                     <Image
                       className="pr-1 w-5"
-                      src="./whatsapp.svg"
+                      src="/whatsapp.svg"
                       alt="whatsapp"
                     />
                     Whatsapp
