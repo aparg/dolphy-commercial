@@ -290,14 +290,14 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
         }}
         className="w-[300px]"
         classNames={{
-          filler: "bg-primary-green",
+          filler: "bg-[#94ad5c]",
         }}
         renderThumb={(props) => (
           <div
             {...props}
-            className="bg-primary-green group p-1 top-1/2 shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
+            className="bg-white group p-1 top-1/2 shadow-medium rounded-full border-2 border-[#94ad5c] cursor-grab data-[dragging=true]:cursor-grabbing"
           >
-            <span className="transition-transform shadow-small rounded-full w-3 h-3 block group-data-[dragging=true]:scale-80"></span>
+            <span className="transition-transform rounded-full w-3 h-3 block group-data-[dragging=true]:scale-80"></span>
           </div>
         )}
       />
@@ -468,9 +468,9 @@ const IndividualFilterButton = ({
         return (
           <div
             key={index}
-            className={`px-3 py-1 cursor-pointer text-nowrap text-small h-[34px] d-flex justify-content-center align-items-center rounded-pill border-2 ${
+            className={`px-3 py-1 cursor-pointer text-nowrap text-sm font-medium h-[34px] d-flex justify-content-center align-items-center rounded-pill border-2 ${
               isActive(option)
-                ? "bg-primary-green text-white border-primary-green"
+                ? "bg-[#94ad5c] border-0 font-extrabold text-white"
                 : ""
             }`}
             onClick={() => handleClick(name, option)}

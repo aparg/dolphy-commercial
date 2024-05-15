@@ -130,11 +130,18 @@ const FilteredCommercialList = ({
     <>
       {filterState && (
         <div className="container-fluid">
-          <h3 className={`main-title fs-2 ${isMobileView ? "pt-3" : "pt-4"}`}>
+          <h3
+            className={`font-medium font-sans mb-0 fs-2 ${
+              isMobileView ? "pt-3" : "pt-4"
+            }`}
+          >
             Find{" "}
             {filterState.type ? filterState.type : "Commercial Real Estate"}
             {plural[filterState.type]} {filterState.saleLease || "For Sale"} in{" "}
-            {(city && decodeURIComponent(capitalizeFirstLetter(city))) ||
+            {Object.values(areas).filter(
+              (areaVal) => areaVal.name === filterState.areas
+            )[0]?.name ||
+              decodeURIComponent(capitalizeFirstLetter(city)) ||
               "Ontario"}{" "}
             {/* {filterState.priceRange.max
               ? `under $${filterState.priceRange.max}`
@@ -153,7 +160,7 @@ const FilteredCommercialList = ({
               "Ontario"}{" "}
             and select the best ones.
           </p>
-          <div className="filter-container flex sticky top-0 z-[998] bg-white items-center w-full flex-wrap overflow-visible">
+          <div className="flex sticky top-0 z-[998] bg-white items-center w-full flex-wrap overflow-visible">
             <Filters
               {...{ filterState, setFilterState, fetchFilteredData, embedded }}
             />

@@ -37,8 +37,8 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
 export const getFilteredRetsData = async (queryParams) => {
   try {
     //all the necessary queries possible
-    let useCityFilter = queryParams.city && queryParams.areas?.length == 0;
-    //we dont need to use city filter if we need to scan an area(with multiple cities)
+    let useCityFilter = queryParams.city && !queryParams.areas;
+    //we dont need to use city filter if we need to scan an area(with multiple cities), we will use the select or filter instead
     let selectQuery = `${
       useCityFilter ? `Municipality=${queryParams.city}` : ""
     }${
