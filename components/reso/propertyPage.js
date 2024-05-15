@@ -474,16 +474,6 @@ const PropertyPage = ({ main_data }) => {
                           : "No"}
                       </p>
                     </div>
-                    <div className="col-7 col-md border-bottom py-2 py-md-3">
-                      <p className="cardd-subtitle_bg-black">
-                        Laundry information
-                      </p>
-                    </div>
-                    <div className="col-5 col-md border-bottom py-2 py-md-3">
-                      <p className="fw-bold cardd-subtitle_bg-black">
-                        {main_data.LaundryLevel}
-                      </p>
-                    </div>
                   </div>
 
                   {/* Exterior */}

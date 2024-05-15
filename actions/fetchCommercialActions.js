@@ -37,11 +37,13 @@ export const getCommercialData = async (offset, limit, city, listingType) => {
 export const getFilteredRetsData = async (queryParams) => {
   try {
     //all the necessary queries possible
+    let useCityFilter = queryParams.city && queryParams.areas?.length == 0;
+    //we dont need to use city filter if we need to scan an area(with multiple cities)
     let selectQuery = `${
-      queryParams.city ? `Municipality=${queryParams.city}` : ""
+      useCityFilter ? `Municipality=${queryParams.city}` : ""
     }${
       queryParams.saleLease
-        ? `${queryParams.city ? "," : ""}SaleLease=${queryParams.saleLease}`
+        ? `${useCityFilter ? "," : ""}SaleLease=${queryParams.saleLease}`
         : ""
     }`;
     const skipQuery = `${queryParams.offset}`;
@@ -63,6 +65,7 @@ export const getFilteredRetsData = async (queryParams) => {
     }
 
     if (queryParams.areas?.length > 0) {
+      // selectQuery = "";
       queryParams.areas.forEach((val, idx) => {
         if (idx > 0) {
           areaQuery += `,Municipality=${val}`;
