@@ -83,7 +83,7 @@ const Map = ({ main_data }) => {
       {state.lat && isMounted ? (
         <MapContainer
           center={[state.lat, state.lon]}
-          zoom={14}
+          zoom={16}
           style={{
             height: "400px",
             width: "100%",

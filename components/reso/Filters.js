@@ -375,7 +375,6 @@ const PriceRangeFilterBottom = ({
       min: minMaxPrice.min,
       max: minMaxPrice.max,
     };
-    console.log(newDefaultPrice);
     setDefaultPrice(newDefaultPrice);
     setPrice(newPrice);
 

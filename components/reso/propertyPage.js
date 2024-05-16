@@ -71,8 +71,15 @@ const PropertyPage = ({ main_data }) => {
     }
   };
 
-  const dashedStreetName = `${main_data.Street}-${main_data.StreetName}-${main_data.StreetAbbreviation}`;
+  const dashedStreetName = [
+    main_data.Street,
+    main_data.StreetName,
+    main_data.StreetAbbreviation,
+  ]
+    .filter((value) => value !== null && value !== undefined)
+    .join("-");
 
+  console.log(dashedStreetName);
   const price = formatCurrency(main_data?.ListPrice);
   const TaxAnnualAmount = formatCurrency(main_data?.Taxes);
   const AssociationFee = formatCurrency(main_data?.AddlMonthlyFees);

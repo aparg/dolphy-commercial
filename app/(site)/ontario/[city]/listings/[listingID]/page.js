@@ -56,8 +56,14 @@ const page = async ({ params }) => {
 
   const imageURLs = generateImageURLs(listingID);
 
-  const address = `${main_data?.Street} ${main_data?.StreetName} ${main_data?.StreetAbbreviation}`;
-
+  // const address = `${main_data?.Street} ${main_data?.StreetName} ${main_data?.StreetAbbreviation}`;
+  const address = [
+    main_data?.Street,
+    main_data?.StreetName,
+    main_data?.StreetAbbreviation,
+  ]
+    .filter(Boolean)
+    .join(" ");
   const sendEmail = async (content) => {
     const { data, error } = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",

@@ -40,11 +40,34 @@ const CityResoCard = React.forwardRef(
       e.target.src = `/noimage.webp`;
       // setShowFallbackImage(true);
     };
-    const streetAndMLS = curElem.StreetName
-      ? `${curElem.Street}-${curElem.StreetName?.replace(" ", "-")}-${
-          curElem.StreetAbbreviation
-        }-${curElem.MLS}`
-      : curElem.MLS;
+    // console.log(curElem.StreetName?.trim() + "asdkl");
+    // const streetAndMLS = curElem.StreetName
+    //   ? `${curElem.Street}-${curElem.StreetName?.trim().replaceAll(" ", "-")}-${
+    //       curElem.StreetAbbreviation
+    //     }-${curElem.MLS}`
+    //   : curElem.MLS;
+    const streetAndMLS = (() => {
+      const parts = [];
+
+      if (curElem.Street) {
+        parts.push(curElem.Street);
+      }
+
+      if (curElem.StreetName) {
+        const streetName = curElem.StreetName.trim().replace(/ /g, "-");
+        parts.push(streetName);
+      }
+
+      if (curElem.StreetAbbreviation) {
+        parts.push(curElem.StreetAbbreviation);
+      }
+
+      if (curElem.MLS) {
+        parts.push(curElem.MLS);
+      }
+
+      return parts.filter(Boolean).join("-");
+    })();
     return isMobileView ? (
       <MobileCityResoCard
         ref={ref}
