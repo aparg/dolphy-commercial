@@ -38,6 +38,7 @@ const Filters = ({
   //dynamic price range generator based on sale or lease options
   const minMaxPrice = useMemo(() => {
     if (filterState.saleLease.includes(Object.values(saleLease)[1].name)) {
+      console.log(true);
       //i.e for lease, display different min and max value
       return {
         min: 1500,
@@ -49,7 +50,7 @@ const Filters = ({
         max: 10000000,
       };
     }
-  }, [filterState]);
+  }, [filterState.saleLease]);
 
   const handleFilterChange = (name, value) => {
     const newFilterState = { ...filterState };
@@ -88,10 +89,8 @@ const Filters = ({
   return (
     <>
       <div
-        className={`filters d-flex gap-2 gap-md-3 my-2 flex flex-wrap bg-white overflow-visible${
-          navbar
-            ? `filter__scrolled mt-4 pb-2 container-fluid`
-            : `top-[0px] items-center`
+        className={`filters d-flex gap-2 gap-md-3 my-2 flex bg-white overflow-hidden sm:flex-row flex-col ${
+          navbar ? `filter__scrolled mt-4 pb-2 container-fluid` : `top-[0px]`
         }`}
       >
         <IndividualFilterButton
@@ -120,14 +119,35 @@ const Filters = ({
           handleFilterChange={handleFilterChange}
         />
       </div>
+      {console.log(filterState.priceRange)}
       {!isMobileView ? (
         <div className="ml-2 price-range__filter h-[34px] pb-14 px-10">
-          <PriceRangeFilter
-            name="priceRange"
-            value={filterState.priceRange}
-            handleFilterChange={handleFilterChange}
-            minMaxPrice={minMaxPrice}
-          />
+          <div
+            className={filterState.saleLease == "For Sale" ? "block" : "hidden"}
+          >
+            <PriceRangeFilter
+              name="priceRange"
+              value={filterState.priceRange}
+              handleFilterChange={handleFilterChange}
+              minMaxPrice={{
+                min: 40000,
+                max: 10000000,
+              }}
+            />
+          </div>
+
+          <div
+            className={
+              filterState.saleLease == "For Lease" ? "block" : "hidden"
+            }
+          >
+            <PriceRangeFilter
+              name="priceRange"
+              value={filterState.priceRange}
+              handleFilterChange={handleFilterChange}
+              minMaxPrice={{ min: 1500, max: 8000 }}
+            />
+          </div>
         </div>
       ) : null}
       {isMobileView ? (
@@ -238,6 +258,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
     min: 0,
     max: 0,
   });
+  console.log(minMaxPrice);
 
   const handlePriceChange = (inputName, value) => {
     const newPrice = {
@@ -277,7 +298,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
     <div className="price-range__slider">
       <Slider
         label="Price Range: "
-        step={50}
+        // step={50}
         minValue={minMaxPrice.min}
         maxValue={minMaxPrice.max}
         onChangeEnd={handleRangeChange}
@@ -354,6 +375,7 @@ const PriceRangeFilterBottom = ({
       min: minMaxPrice.min,
       max: minMaxPrice.max,
     };
+    console.log(newDefaultPrice);
     setDefaultPrice(newDefaultPrice);
     setPrice(newPrice);
 
@@ -463,12 +485,12 @@ const IndividualFilterButton = ({
   };
 
   return (
-    <>
+    <div className="inline-flex mr-4 flex-wrap gap-y-2">
       {options.map((option, index) => {
         return (
           <div
             key={index}
-            className={`px-3 py-1 cursor-pointer text-nowrap text-sm font-medium h-[34px] d-flex justify-content-center align-items-center rounded-pill border-2 ${
+            className={`mx-[2px] px-3 py-1 cursor-pointer text-nowrap text-sm font-medium h-[34px] d-flex justify-content-center align-items-center rounded-pill border-2 ${
               isActive(option)
                 ? "bg-[#94ad5c] border-0 font-extrabold text-white"
                 : ""
@@ -479,7 +501,7 @@ const IndividualFilterButton = ({
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 export default Filters;

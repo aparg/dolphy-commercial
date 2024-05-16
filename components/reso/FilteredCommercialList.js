@@ -156,7 +156,10 @@ const FilteredCommercialList = ({
               ? `${filterState.type}${plural[filterState.type] || ""}`
               : "Commercial Real Estate"}{" "}
             in{" "}
-            {(city && decodeURIComponent(capitalizeFirstLetter(city))) ||
+            {Object.values(areas).filter(
+              (areaVal) => areaVal.name === filterState.areas
+            )[0]?.name ||
+              decodeURIComponent(capitalizeFirstLetter(city)) ||
               "Ontario"}{" "}
             and select the best ones.
           </p>
