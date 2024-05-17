@@ -42,6 +42,14 @@ const AdditionalListing = ({
     const scrollAmount = cardWidth * 3; // Adjust the scroll amount as needed
     scrollContainer.scrollLeft += scrollAmount;
   };
+  console.log(
+    generateURL({
+      cityVal: city,
+      houseTypeVal: modifyType(listingType),
+      saleLeaseVal: saleLeaseValue,
+      embeddedSite: pathname.includes("embedded-site"),
+    })
+  );
 
   return (
     <div className="position-relative">

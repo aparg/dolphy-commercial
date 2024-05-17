@@ -472,7 +472,10 @@ const IndividualFilterButton = ({
   value,
   handleFilterChange,
 }) => {
-  const [activeFilter, setActiveFilter] = useState(decodeURIComponent(value));
+  const [activeFilter, setActiveFilter] = useState(
+    decodeURIComponent(value) || ""
+  );
+  console.log(activeFilter);
   const isActive = (key) => {
     const foundSalesLease = options.find((option) => option === key);
     return foundSalesLease === activeFilter;

@@ -52,9 +52,10 @@ const FilteredCommercialList = ({
       minTimestampSql: payload.minTimestampSql,
       areas:
         Object.values(areas).filter((state) => state.name === payload.areas)[0]
-          ?.value || [],
+          ?.value || undefined,
     };
     setLoading(true);
+    console.log(queryParams);
     const filteredSalesData = await getFilteredRetsData(queryParams);
     setLoading(false);
     setSalesData([...filteredSalesData]);
@@ -91,11 +92,12 @@ const FilteredCommercialList = ({
   }, [salesData]);
 
   useEffect(() => {
+    console.log(filterState);
     // store data in session storage whenever it changes
     if (isLocalStorageAvailable() && filterState) {
       localStorage.setItem(
         "filterStateCommercial",
-        JSON.stringify(filterState)
+        JSON.stringify({ ...filterState, areas: undefined })
       );
       localStorage.setItem(
         "selectedCityCommercial",
