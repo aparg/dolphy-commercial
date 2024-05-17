@@ -502,4 +502,5 @@ const IndividualFilterButton = ({
     </div>
   );
 };
+
 export default Filters;

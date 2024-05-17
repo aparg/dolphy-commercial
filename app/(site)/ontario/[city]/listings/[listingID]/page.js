@@ -17,6 +17,7 @@ import PropertyPage from "@/components/reso/propertyPage";
 import { generateURL } from "@/helpers/generateURL";
 import BookingDateOption from "@/components/BookingDateOption";
 import BookingDate from "@/components/BookingDate";
+import { Image } from "react-bootstrap";
 // import { Button } from "@nextui-org/react";
 
 const INITIAL_OFFSET = 0;
@@ -85,13 +86,31 @@ const page = async ({ params }) => {
           Book a showing
         </Link>
       </button> */}
-      <div className="fixed w-100 bottom-0 sm:bottom-5 sm:hidden px-3 pb-4 pt-2 z-[999] bg-white border-top">
-        <Link
+      <div className="fixed w-100 bottom-0 flex justify-between items-center sm:bottom-5 sm:hidden px-3 py-4 z-[999] bg-white border-top shadow-lg">
+        {/* <Link
           href="#contact"
           className="btn btn-md w-full bg-primary-green shadow-2xl text-white shadow-md rounded-pill"
         >
           Book a showing
-        </Link>
+        </Link> */}
+        <div
+          className={`min-w-[50px] inline-flex items-center justify-center bg-[#3a88ef]/[0.08] hover:bg-[#3a88ef]/[0.2] rounded-md leading-7 py-[6px] px-[15px] text-md mx-1`}
+        >
+          <Image className="pr-1 w-5" src="/mailOutline.svg" alt="Email" />
+          Email
+        </div>
+        <div
+          className={`min-w-[70px] inline-flex items-center justify-center bg-[#ffedea]/[0.5] hover:bg-[#ffdad4]/[0.8] rounded-md leading-7 py-[6px] px-[15px] text-md mx-1`}
+        >
+          <Image className="pr-1 w-5" src="/phone.svg" alt="Phone" />
+          Phone
+        </div>
+        <div
+          className={`min-w-[70px] inline-flex items-center justify-center bg-[#43bb3f]/[0.1] hover:bg-[#43bb3f]/[0.2] rounded-md leading-7 py-[6px] px-[15px] text-md mx-1`}
+        >
+          <Image className="pr-1 w-5" src="/whatsapp.svg" alt="whatsapp" />
+          Whatsapp
+        </div>
       </div>
       <div className="container-fluid pt-md-3 pt-0 ">
         <div className="container-fluid pt-3 pt-md-5">
