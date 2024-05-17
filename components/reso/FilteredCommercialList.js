@@ -55,7 +55,6 @@ const FilteredCommercialList = ({
           ?.value || undefined,
     };
     setLoading(true);
-    console.log(queryParams);
     const filteredSalesData = await getFilteredRetsData(queryParams);
     setLoading(false);
     setSalesData([...filteredSalesData]);
@@ -92,7 +91,6 @@ const FilteredCommercialList = ({
   }, [salesData]);
 
   useEffect(() => {
-    console.log(filterState);
     // store data in session storage whenever it changes
     if (isLocalStorageAvailable() && filterState) {
       localStorage.setItem(
@@ -140,7 +138,6 @@ const FilteredCommercialList = ({
             Find{" "}
             {filterState.type ? filterState.type : "Commercial Real Estate"}
             {plural[filterState.type]} {filterState.saleLease || "For Sale"} in{" "}
-            {console.log(decodeURIComponent(capitalizeFirstLetter(city)))}
             {Object.values(areas).filter(
               (areaVal) => areaVal.name === filterState.areas
             )[0]?.name ||

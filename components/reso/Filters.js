@@ -38,7 +38,6 @@ const Filters = ({
   //dynamic price range generator based on sale or lease options
   const minMaxPrice = useMemo(() => {
     if (filterState.saleLease.includes(Object.values(saleLease)[1].name)) {
-      console.log(true);
       //i.e for lease, display different min and max value
       return {
         min: 1500,
@@ -119,7 +118,6 @@ const Filters = ({
           handleFilterChange={handleFilterChange}
         />
       </div>
-      {console.log(filterState.priceRange)}
       {!isMobileView ? (
         <div className="ml-2 price-range__filter h-[34px] pb-14 px-10">
           <div
@@ -258,7 +256,6 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
     min: 0,
     max: 0,
   });
-  console.log(minMaxPrice);
 
   const handlePriceChange = (inputName, value) => {
     const newPrice = {
@@ -475,7 +472,6 @@ const IndividualFilterButton = ({
   const [activeFilter, setActiveFilter] = useState(
     decodeURIComponent(value) || ""
   );
-  console.log(activeFilter);
   const isActive = (key) => {
     const foundSalesLease = options.find((option) => option === key);
     return foundSalesLease === activeFilter;
