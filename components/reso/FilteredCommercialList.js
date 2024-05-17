@@ -138,10 +138,12 @@ const FilteredCommercialList = ({
             Find{" "}
             {filterState.type ? filterState.type : "Commercial Real Estate"}
             {plural[filterState.type]} {filterState.saleLease || "For Sale"} in{" "}
+            {console.log(decodeURIComponent(capitalizeFirstLetter(city)))}
             {Object.values(areas).filter(
               (areaVal) => areaVal.name === filterState.areas
             )[0]?.name ||
-              decodeURIComponent(capitalizeFirstLetter(city)) ||
+              (capitalizeFirstLetter(city) &&
+                decodeURIComponent(capitalizeFirstLetter(city))) ||
               "Ontario"}{" "}
             {/* {filterState.priceRange.max
               ? `under $${filterState.priceRange.max}`
@@ -159,7 +161,8 @@ const FilteredCommercialList = ({
             {Object.values(areas).filter(
               (areaVal) => areaVal.name === filterState.areas
             )[0]?.name ||
-              decodeURIComponent(capitalizeFirstLetter(city)) ||
+              (capitalizeFirstLetter(city) &&
+                decodeURIComponent(capitalizeFirstLetter(city))) ||
               "Ontario"}{" "}
             and select the best ones.
           </p>
