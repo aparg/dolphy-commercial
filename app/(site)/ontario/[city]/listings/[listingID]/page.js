@@ -77,7 +77,7 @@ const page = async ({ params }) => {
   };
 
   return (
-    <>
+    <div className="mx-40">
       {/* <button className="fixed w-full text-white text-2xl sm:text-xl bottom-2 sm:bottom-5 sm:hidden p-6 z-[999]">
         <Link
           href="#contact"
@@ -86,7 +86,7 @@ const page = async ({ params }) => {
           Book a showing
         </Link>
       </button> */}
-      <div className="fixed w-100 bottom-0 flex justify-between items-center sm:bottom-5 sm:hidden px-3 py-4 z-[999] bg-white border-top shadow-lg">
+      <div className="fixed w-100 bottom-0 flex justify-between items-center sm:bottom-5 sm:hidden px-3 py-4 z-[999] bg-white border-top shadow-lg ">
         {/* <Link
           href="#contact"
           className="btn btn-md w-full bg-primary-green shadow-2xl text-white shadow-md rounded-pill"
@@ -112,8 +112,8 @@ const page = async ({ params }) => {
           Whatsapp
         </div>
       </div>
-      <div className="container-fluid pt-md-3 pt-0 ">
-        <div className="container-fluid pt-3 pt-md-5">
+      <div className="pt-md-3 pt-0 ">
+        <div className="pt-3 pt-md-5">
           <div className="fixed-breadcrumbs">
             <nav
               style={{
@@ -145,9 +145,7 @@ const page = async ({ params }) => {
 
         <section className="padding-top flex items-center w-full text-sm">
           <div className="padding-top flex items-center w-full">
-            <div
-              className={`mx-auto row justify-between gap-x-1 w-full md:max-w-[90%]`}
-            >
+            <div className={`mx-auto row justify-between gap-x-1 w-full`}>
               <div className="col-md-7">
                 <PropertyPage {...{ main_data }} />
                 <BookingDate bannerImage={imageURLs[0]} />
@@ -179,7 +177,7 @@ const page = async ({ params }) => {
           </section>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

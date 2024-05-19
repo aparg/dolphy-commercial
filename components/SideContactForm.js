@@ -2,30 +2,30 @@
 
 import { useState } from "react";
 import ContactFormSubmit from "./ContactFormSubmit";
-import React from 'react'
+import React from "react";
 
 export default function SideContactForm(props) {
-  const [submitbtn, setSubmitbtn] = useState('Book a showing')
+  const [submitbtn, setSubmitbtn] = useState("Book a showing");
   const [credentials, setCredentials] = useState({
-    name: '',
-    phone: '',
-    email: '',
+    name: "",
+    phone: "",
+    email: "",
     message: props.defaultmessage,
     proj_name: props.proj_name,
     city: props.city,
-  })
+  });
   const handleChange = (e) => {
-    const { id, value } = e.target
+    const { id, value } = e.target;
     setCredentials((prevState) => ({
       ...prevState,
       [id]: value,
-    }))
-  }
+    }));
+  };
   const handleFormSubmit = (e) => {
-    e.preventDefault()
-    console.log(credentials)
-    ContactFormSubmit(credentials, setSubmitbtn, setCredentials)
-  }
+    e.preventDefault();
+    console.log(credentials);
+    ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
+  };
   return (
     <form
       method="POST"
@@ -118,5 +118,5 @@ export default function SideContactForm(props) {
         id="subbtn"
       />
     </form>
-  )
+  );
 }

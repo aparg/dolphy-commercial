@@ -4,16 +4,15 @@ import { useEffect, useState } from "react";
 import ContactFormSubmit from "./ContactFormSubmit";
 import React from "react";
 import BookingDate from "./BookingDate";
-import { fetchHostEmail } from "@/actions/fetchHostEmail";
+// import { fetchHostEmail } from "@/actions/fetchHostEmail";
 import { usePathname } from "next/navigation";
 // import { Checkbox } from "@nextui-org/react";
 import Checkbox from "./Checkbox";
 import Link from "next/link";
-import { sendEmail } from "@/actions/resend";
 
 export default function BookShowingForm(props) {
   const pathname = usePathname();
-  const [submitbtn, setSubmitbtn] = useState("Contact Agent");
+  const [submitbtn, setSubmitbtn] = useState("Book now");
   const [credentials, setCredentials] = useState({
     name: "",
     phone: "",
@@ -33,13 +32,11 @@ export default function BookShowingForm(props) {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
-    sendEmail(credentials);
+    ContactFormSubmit(credentials, setSubmitbtn, setCredentials);
   };
 
   const getEmail = async () => {
     const hostname = new URL(document.referrer).hostname;
-    //get email of the owner who embeds this site
     const email = await fetchHostEmail(hostname);
     setCredentials({
       ...credentials,
@@ -51,23 +48,26 @@ export default function BookShowingForm(props) {
       getEmail();
     }
   }, []);
-
   return (
-    <div className="fixed-title pe-0 top-30 sticky mt-24 sm:mt-0" id="contact">
-      <div className="p-6 pb-0 shadow-2xl rounded-mine bordt bg-white border-[#e8e9ea]">
-        <h5 className="fw-bold text-center linem fs-4 mb-0 font-bold">
-          Schedule a viewing
+    <div
+      className="fixed-title pe-0 top-30 sticky pl-4 mt-24 sm:mt-0"
+      id="contact"
+    >
+      <div className="p-6 pb-0 box-shadow-custom rounded-mine bordt bg-white border-[#e8e9ea] flex-col items-center">
+        <h5 className="font-extrabold text-center linem fs-3 mb-0 font-bold">
+          Book a Showing!
         </h5>
-        <p className="text-center pt-2 cardd-subtitle_bg-black">
-          with a {credentials.city}{" "}
+        <p className="text-center pt-0 cardd-subtitle_bg-black text-[1.1rem]">
+          {/* with a {credentials.city}{" "}
           <span className="fw-bold pr-1">Buyer's</span>
-          agent
+          agent */}
+          Check out this home
         </p>
 
-        <div className="my-4"></div>
+        {/* <div className="my-4"></div> */}
         <form
           method="POST"
-          className="mb-3"
+          className="mb-3 mt-10 flex flex-col items-center"
           onSubmit={(e) => handleFormSubmit(e)}
           id="contactForm"
         >
@@ -108,7 +108,7 @@ export default function BookShowingForm(props) {
               </label>
             </div>
             {/* <BookingDate handleChange={handleChange} /> */}
-            <div className="row me-0 row-cols-1 g-0">
+            {/* <div className="row me-0 row-cols-1 g-0">
               <div className="col">
                 <div className="relative mb-3">
                   <input
@@ -129,13 +129,13 @@ export default function BookShowingForm(props) {
                   </label>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="row me-0 g-0">
               <div className="mb-3">
                 <textarea
                   id="message"
                   name="message"
-                  className="fields fff"
+                  className="fields fff text-gray-500"
                   rows="2"
                   cols="50"
                   value={credentials.message}
@@ -143,34 +143,36 @@ export default function BookShowingForm(props) {
                 ></textarea>
               </div>
             </div>
-            <div className="row me-0">
+            {/* <div className="row me-0">
               <div className="mb-2">
                 <p className="showing-info leading-snug">
                   We'll call you within the next business hour to match you with
-                  an agent from the Dolphy™ agent network. By submitting this
-                  information, I acknowledge I have read and agree to the Terms
-                  of use, including its Privacy section.
+                  an agent from the Houseful™ agent network. By submitting this
+                  information, I acknowledge I have read and agree to the{" "}
+                  <a href="#">Terms of use,</a> including its Privacy section.
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
+
+          <div></div>
 
           <div className="row me-0">
             <div className="mb-3 flex items-start">
-              <Checkbox
+              {/* <Checkbox
                 defaultSelected
                 color="success"
                 size="lg"
                 radius="sm"
                 className="d-flex"
                 style={{ alignItems: "flex-start !important" }}
-              ></Checkbox>
-              <p className="showing-info showing-info__cb leading-tight">
+              ></Checkbox> */}
+              <p className="showing-info showing-info__cb leading-tight text-center">
                 I would like to receive marketing and promotional messages by
-                telephone, text message, and email from Dolphy, including
+                telephone, text message, and email from Houseful, including
                 information and updates about properties of interest and the
-                services and features of Dolphy and our selected partners. I may
-                withdraw my consent at any time. Message and data rates may
+                services and features of Houseful and our selected partners. I
+                may withdraw my consent at any time. Message and data rates may
                 apply. Consent is not required to receive real estate services.
               </p>
             </div>
@@ -178,7 +180,7 @@ export default function BookShowingForm(props) {
           <input
             type="submit"
             value={submitbtn}
-            className="btn bg-primary-green text-white btn-md w-100 mb-3 rounded-pill"
+            className="btn bg-primary-green text-white btn-md w-75 mb-3 rounded-pill text-lg fw-bold"
             id="subbtn"
           />
           <div className="border-b border-gray-300 my-4 w-full"></div>

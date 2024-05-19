@@ -112,13 +112,9 @@ const PropertyPage = ({ main_data }) => {
               <div className="flex items-center">
                 <div className="flex flex-col">
                   <div className="flex flex-col items-start">
-                    <h1 className="fs-6 mb-2 cardd-subtitle text-lg">
-                      {main_data.Street} {main_data.StreetName}{" "}
-                      {main_data.StreetAbbreviation}, {main_data.Municipality},{" "}
-                      {main_data.Province}, {main_data.PostalCode}
-                    </h1>
                     <div className="flex flex-row items-center">
                       <h3 className="main-title fs-1">C{price}</h3>
+
                       {/* {main_data.SaleLease.toLowerCase() === "sale" && (
                         <p className="cardd-subtitle ml-4">
                           est. {formatCurrency(MortCalc(main_data.ListPrice))} /
@@ -126,6 +122,11 @@ const PropertyPage = ({ main_data }) => {
                         </p>
                       )} */}
                     </div>
+                    <h1 className="fs-6 mb-2 cardd-subtitle text-lg">
+                      {main_data.Street} {main_data.StreetName}{" "}
+                      {main_data.StreetAbbreviation}, {main_data.Municipality},{" "}
+                      {main_data.Province}, {main_data.PostalCode}
+                    </h1>
                     {/* <div>
                       <div className="rounded-md flex items-center">
                         <div className="d-flex justify-content-center align-items-center gap-1 text-lg">

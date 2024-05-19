@@ -9,47 +9,69 @@ import NextTopLoader from "nextjs-toploader";
 import { Providers } from "./providers";
 import localFont from "next/font/local";
 
+// src: [
+//   {
+//     path: "./ProximaNova-Regular.otf",
+//     weight: "400",
+//     style: "normal",
+//   },
+//   {
+//     path: "./ProximaNova-RegularItalic.otf",
+//     weight: "400",
+//     style: "italic",
+//   },
+//   {
+//     path: "./ProximaNova-Regular.otf",
+//     weight: "500", // Adjust weight to 500 for medium (or as specified in the font file)
+//     style: "normal",
+//   },
+//   {
+//     path: "./ProximaNova-RegularItalic.otf",
+//     weight: "500", // Adjust weight to 500 for medium (or as specified in the font file)
+//     style: "italic",
+//   },
+//   {
+//     path: "./ProximaNova-Bold.otf",
+//     weight: "700",
+//     style: "normal",
+//   },
+//   {
+//     path: "./ProximaNova-BoldItalic.otf",
+//     weight: "700",
+//     style: "italic",
+//   },
+//   {
+//     path: "./ProximaNova-Extrabold.otf",
+//     weight: "900", // Adjust weight to 900 for black (or as specified in the font file)
+//     style: "normal",
+//   },
+//   {
+//     path: "./ProximaNova-ExtraboldItalic.otf",
+//     weight: "900", // Adjust weight to 900 for black (or as specified in the font file)
+//     style: "italic",
+//   },
+// ],
 const satoshi = localFont({
   src: [
     {
-      path: "./ProximaNova-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./ProximaNova-RegularItalic.otf",
+      path: "./RFlexRegularItalic.ttf",
       weight: "400",
       style: "italic",
     },
     {
-      path: "./ProximaNova-Regular.otf",
+      path: "./RFlexRegular.ttf",
       weight: "500", // Adjust weight to 500 for medium (or as specified in the font file)
       style: "normal",
     },
     {
-      path: "./ProximaNova-RegularItalic.otf",
+      path: "./RFlexRegularItalic.ttf",
       weight: "500", // Adjust weight to 500 for medium (or as specified in the font file)
       style: "italic",
     },
     {
-      path: "./ProximaNova-Bold.otf",
+      path: "./RFlexBold.ttf",
       weight: "700",
       style: "normal",
-    },
-    {
-      path: "./ProximaNova-BoldItalic.otf",
-      weight: "700",
-      style: "italic",
-    },
-    {
-      path: "./ProximaNova-Extrabold.otf",
-      weight: "900", // Adjust weight to 900 for black (or as specified in the font file)
-      style: "normal",
-    },
-    {
-      path: "./ProximaNova-ExtraboldItalic.otf",
-      weight: "900", // Adjust weight to 900 for black (or as specified in the font file)
-      style: "italic",
     },
   ],
 });

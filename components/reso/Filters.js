@@ -15,6 +15,22 @@ import {
 import { saleLease, listingType, numberOfDays, areas } from "@/constant";
 import useDeviceView from "@/helpers/useDeviceView";
 
+const bgColor = {
+  saleLease: "bg-[#3a88ef]/[1]",
+  areas: "bg-[#eb7e6c]/[1]",
+  time: "bg-[#43bb3f]/[1]",
+  type: "bg-[#94ad5c]/[1]",
+  minTimestampSql: "bg-[#94ad5c]/1",
+};
+
+const textColor = {
+  saleLease: "text-white",
+  areas: "text-white",
+  time: "text-black",
+  type: "text-white",
+  minTimestampSql: "text-black",
+};
+
 const Filters = ({
   filterState,
   setFilterState,
@@ -468,6 +484,8 @@ const IndividualFilterButton = ({
   name,
   value,
   handleFilterChange,
+  // color = "#94ad5c",
+  // opacity = "1",
 }) => {
   const [activeFilter, setActiveFilter] = useState(
     decodeURIComponent(value) || ""
@@ -490,7 +508,7 @@ const IndividualFilterButton = ({
             key={index}
             className={`mx-[2px] px-3 py-1 cursor-pointer text-nowrap text-sm font-medium h-[34px] d-flex justify-content-center align-items-center rounded-pill border-2 ${
               isActive(option)
-                ? "bg-[#94ad5c] border-0 font-extrabold text-white"
+                ? `${bgColor[name]} border-0 font-extrabold ${textColor[name]}`
                 : ""
             }`}
             onClick={() => handleClick(name, option)}

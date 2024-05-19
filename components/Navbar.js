@@ -24,6 +24,10 @@ const Navbar = (sticky = false) => {
     return pathname === "/";
   }, [pathname]);
 
+  const isPropertyPage = useMemo(() => {
+    return pathname.includes("listings");
+  }, [pathname]);
+
   const whiteLogoPath = "/logo/whitelogo.svg";
   const blackLogoPath = "/logo/blacklogo.svg";
 
@@ -49,6 +53,13 @@ const Navbar = (sticky = false) => {
     };
   }, []);
 
+  let margin = "";
+  useEffect(() => {
+    if (pathname.includes("listings")) {
+      margin = "mx-50";
+    }
+  }, []);
+
   // useEffect(() => {
   //   const comparingProperties = JSON.parse(
   //     localStorage.getItem("comparingProperties")
@@ -57,13 +68,11 @@ const Navbar = (sticky = false) => {
   // }, [comparisonFlag]);
   return (
     <header
-      className={`container-fluid lg:pb-0 relative bg-white ${
-        showNavbar ? "" : "hidden"
-      } ${
+      className={`lg:pb-0 relative bg-white ${showNavbar ? "" : "hidden"} ${
         isSticky
           ? "bg-white sticky top-0 shadow-lg z-[1000]"
           : "z-[1000] md:bg-transparent"
-      }`}
+      } ${isPropertyPage ? "mx-40" : "container-fluid"}`}
     >
       <div className={`${isSticky && "sticky"}`}>
         <nav className={`flex items-center justify-between h-16 lg:h-20`}>

@@ -1,15 +1,21 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { getCommercialData } from "@/actions/fetchCommercialActions";
 import { Image } from "react-bootstrap";
+import { useState, useEffect } from "react";
 
 const Footer = ({ cities }) => {
+  const [centered, setCentered] = useState(false);
   const pathname = usePathname();
 
   if (pathname.startsWith("/admin")) {
     return <></>;
   }
+  useEffect(() => {
+    if (pathname.includes("/listings")) {
+      setCentered(true);
+    }
+  }, []);
   return (
     <>
       <footer className="bg-gray-50 mt-20 w-screen">
@@ -18,7 +24,7 @@ const Footer = ({ cities }) => {
             <div className="relative px-8 py-12 md:p-16 xl:p-24 flex flex-col justify-center">
               <div className="max-w-3xl mx-auto">
                 <h2 className="text-3xl text-center font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                  Find Commercial Real Estate Today
+                  Find Residential Real Estate Today
                 </h2>
               </div>
               <Link
@@ -32,9 +38,9 @@ const Footer = ({ cities }) => {
               </Link>
             </div>
           </div>
-          <div className="container-fluid">
-            <div className="grid grid-cols-1 gap-x-4 md:gap-x-10 mt-12 sm:grid-cols-3 lg:grid-cols-4 sm:mt-16 lg:mt-20 gap-y-6 justify-content-center justify-content-md-start">
-              <div className="col-span-2 sm:col-span-1 lg:pl-12 justify-center">
+          <div className={`container-fluid ${centered && "max-w-[80%]"}`}>
+            <div className="grid grid-cols-2 gap-x-4 md:gap-x-10 mt-12 sm:grid-cols-3 lg:grid-cols-4 sm:mt-16 lg:mt-20 gap-y-6 justify-content-center justify-content-md-start">
+              <div className="col-span-2 sm:col-span-1 lg:pl-12 max-w-[80%]">
                 <p className="text-md font-bold tracking-widest text-black-600 uppercase">
                   Company
                 </p>
