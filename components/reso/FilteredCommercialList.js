@@ -130,12 +130,11 @@ const FilteredCommercialList = ({
     <>
       {filterState && (
         <div className="container-fluid">
-          <h3
+          <h1
             className={`font-medium font-sans mb-0 fs-2 ${
               isMobileView ? "pt-3" : "pt-4"
             }`}
           >
-            Find{" "}
             {filterState.type ? filterState.type : "Commercial Real Estate"}
             {plural[filterState.type]} {filterState.saleLease || "For Sale"} in{" "}
             {Object.values(areas).filter(
@@ -147,7 +146,7 @@ const FilteredCommercialList = ({
             {/* {filterState.priceRange.max
               ? `under $${filterState.priceRange.max}`
               : ``} */}
-          </h3>
+          </h1>
           <p
             className="fw-light"
             style={isMobileView ? { fontSize: "0.9rem" } : {}}
