@@ -128,7 +128,6 @@ const Filters = ({
           value={filterState.saleLease}
           handleFilterChange={handleFilterChange}
         />
-
         <IndividualFilterButton
           options={houseTypeOptions}
           name="type"
@@ -236,7 +235,7 @@ const TimeFilterButton = ({ name, handleFilterChange }) => {
   };
 
   return (
-    <div className="inline sm:block">
+    <div className="inline-flex sm:block">
       <Dropdown>
         <DropdownTrigger disableAnimation={true}>
           <span
@@ -511,7 +510,7 @@ const IndividualFilterButton = ({
   };
 
   return (
-    <div className="flex sm:mr-4 flex-wrap gap-y-2">
+    <div className="sm:inline-flex sm:mr-4 sm:flex-wrap sm:gap-y-2">
       {options.map((option, index) => {
         return (
           <span

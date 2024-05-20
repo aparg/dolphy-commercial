@@ -78,7 +78,7 @@ const page = async ({ params }) => {
 
   return (
     <>
-      <div className="fixed w-100 bottom-0 flex justify-between items-center sm:bottom-5 sm:hidden px-3 py-4 z-[999] bg-white border-top shadow-lg w-screen">
+      <div className="fixed w-100 bottom-0 flex justify-center items-center sm:bottom-5 sm:hidden px-3 py-4 z-[999] bg-white border-top shadow-lg w-screen">
         {/* <Link
           href="#contact"
           className="btn btn-md w-full bg-primary-green shadow-2xl text-white shadow-md rounded-pill"
