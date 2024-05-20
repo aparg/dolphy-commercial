@@ -77,16 +77,8 @@ const page = async ({ params }) => {
   };
 
   return (
-    <div className="mx-40">
-      {/* <button className="fixed w-full text-white text-2xl sm:text-xl bottom-2 sm:bottom-5 sm:hidden p-6 z-[999]">
-        <Link
-          href="#contact"
-          className="bg-primary-green rounded-md shadow-2xl px-[50px] sm:px-[100px] py-3 sm:py-5 text-white shadow-md"
-        >
-          Book a showing
-        </Link>
-      </button> */}
-      <div className="fixed w-100 bottom-0 flex justify-between items-center sm:bottom-5 sm:hidden px-3 py-4 z-[999] bg-white border-top shadow-lg ">
+    <>
+      <div className="fixed w-100 bottom-0 flex justify-between items-center sm:bottom-5 sm:hidden px-3 py-4 z-[999] bg-white border-top shadow-lg w-screen">
         {/* <Link
           href="#contact"
           className="btn btn-md w-full bg-primary-green shadow-2xl text-white shadow-md rounded-pill"
@@ -112,40 +104,50 @@ const page = async ({ params }) => {
           Whatsapp
         </div>
       </div>
-      <div className="pt-md-3 pt-0 ">
-        <div className="pt-3 pt-md-5">
-          <div className="fixed-breadcrumbs">
-            <nav
-              style={{
-                "--bs-breadcrumb-divider":
-                  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E\")",
-              }}
-              aria-label="breadcrumb"
-            >
-              <ol className="breadcrumb  ps-2">
-                <li className="breadcrumb-item ">
-                  <Link href="/">Dolphy</Link>
-                </li>
-                <li className="breadcrumb-item ">
-                  <Link href="/ontario">ON</Link>
-                </li>
-                <li className="breadcrumb-item ">
-                  <Link href={generateURL({ cityVal: city })}>
-                    {main_data.Municipality}
-                  </Link>
-                </li>
-                <li className="breadcrumb-item active" aria-current="page">
-                  {address}
-                </li>
-              </ol>
-            </nav>
-          </div>
-          <Gallery data={imageURLs} />
-        </div>
+      <div className="mx-2 sm:mx-40">
+        {/* <button className="fixed w-full text-white text-2xl sm:text-xl bottom-2 sm:bottom-5 sm:hidden p-6 z-[999]">
+        <Link
+          href="#contact"
+          className="bg-primary-green rounded-md shadow-2xl px-[50px] sm:px-[100px] py-3 sm:py-5 text-white shadow-md"
+        >
+          Book a showing
+        </Link>
+      </button> */}
 
-        <section className="padding-top flex items-center w-full text-sm">
-          <div className="padding-top flex items-center w-full">
-            <div className={`mx-auto row justify-between gap-x-1 w-full`}>
+        <div className="pt-md-3 pt-0 ">
+          <div className="pt-3 pt-md-5">
+            <div className="fixed-breadcrumbs">
+              <nav
+                style={{
+                  "--bs-breadcrumb-divider":
+                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E\")",
+                }}
+                aria-label="breadcrumb"
+              >
+                <ol className="breadcrumb  ps-2">
+                  <li className="breadcrumb-item ">
+                    <Link href="/">Dolphy</Link>
+                  </li>
+                  <li className="breadcrumb-item ">
+                    <Link href="/ontario">ON</Link>
+                  </li>
+                  <li className="breadcrumb-item ">
+                    <Link href={generateURL({ cityVal: city })}>
+                      {main_data.Municipality}
+                    </Link>
+                  </li>
+                  <li className="breadcrumb-item active" aria-current="page">
+                    {address}
+                  </li>
+                </ol>
+              </nav>
+            </div>
+            <Gallery data={imageURLs} />
+          </div>
+
+          <section className="w-full padding-top flex items-center justify-center w-full text-sm">
+            {/* <div className="padding-top flex items-center w-full"> */}
+            <div className={`row justify-between w-full`}>
               <div className="col-md-7">
                 <PropertyPage {...{ main_data }} />
                 <BookingDate bannerImage={imageURLs[0]} />
@@ -164,20 +166,21 @@ const page = async ({ params }) => {
                 ></BookShowingForm>
               </div>
             </div>
-          </div>
-        </section>
-
-        {formattedSlug && (
-          <section className="additonal__listing w-full mx-auto mt-24 sm:mt-52">
-            <AdditionalListing
-              city={formattedSlug}
-              newSalesData={newSalesData}
-              listingType={main_data?.TypeOwn1Out}
-            />
+            {/* </div> */}
           </section>
-        )}
+
+          {formattedSlug && (
+            <section className="additonal__listing mt-24 sm:mt-52">
+              <AdditionalListing
+                city={formattedSlug}
+                newSalesData={newSalesData}
+                listingType={main_data?.TypeOwn1Out}
+              />
+            </section>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

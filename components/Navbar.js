@@ -72,7 +72,7 @@ const Navbar = (sticky = false) => {
         isSticky
           ? "bg-white sticky top-0 shadow-lg z-[1000]"
           : "z-[1000] md:bg-transparent"
-      } ${isPropertyPage ? "mx-40" : "container-fluid"}`}
+      } ${isPropertyPage ? "sm:mx-40" : "container-fluid"}`}
     >
       <div className={`${isSticky && "sticky"}`}>
         <nav className={`flex items-center justify-between h-16 lg:h-20`}>

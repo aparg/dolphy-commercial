@@ -281,7 +281,7 @@ nav {
 
 .roundedPill {
   border-radius: 50rem !important;
-  border-color: #e5e7eb !important;
+  border-color: #000 !important;
 }
 
 /* .roundedPill:focus {
@@ -948,7 +948,7 @@ label {
 
 .cardd-subtitle_bg-black {
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .card-address {

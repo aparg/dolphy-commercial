@@ -16,11 +16,11 @@ import { saleLease, listingType, numberOfDays, areas } from "@/constant";
 import useDeviceView from "@/helpers/useDeviceView";
 
 const bgColor = {
-  saleLease: "bg-[#3a88ef]/[1]",
+  saleLease: "bg-[#eb7e6c]/[1]",
   areas: "bg-[#eb7e6c]/[1]",
-  time: "bg-[#43bb3f]/[1]",
-  type: "bg-[#94ad5c]/[1]",
-  minTimestampSql: "bg-[#94ad5c]/1",
+  time: "bg-[#eb7e6c]/[1]",
+  type: "bg-[#eb7e6c]/[1]",
+  minTimestampSql: "bg-[#eb7e6c]/1",
 };
 
 const textColor = {
@@ -29,6 +29,14 @@ const textColor = {
   time: "text-black",
   type: "text-white",
   minTimestampSql: "text-black",
+};
+
+const borderColor = {
+  saleLease: "border-black",
+  areas: "border-black",
+  time: "border-black",
+  type: "border-black",
+  minTimestampSql: "border-black",
 };
 
 const Filters = ({
@@ -104,7 +112,7 @@ const Filters = ({
   return (
     <>
       <div
-        className={`filters d-flex gap-2 gap-md-3 my-2 flex bg-white overflow-hidden sm:flex-row flex-col ${
+        className={`filters flex flex-wrap sm:flex gap-2 gap-md-3 my-2 bg-white overflow-hidden sm:flex-row ${
           navbar ? `filter__scrolled mt-4 pb-2 container-fluid` : `top-[0px]`
         }`}
       >
@@ -228,17 +236,19 @@ const TimeFilterButton = ({ name, handleFilterChange }) => {
   };
 
   return (
-    <div>
+    <div className="inline sm:block">
       <Dropdown>
         <DropdownTrigger disableAnimation={true}>
-          <Button
-            variant="faded"
-            className="capitalize bg-color roundedPill h-[34px] border-2"
-            size="md"
+          <span
+            // variant="faded"
+            className={`capitalize px-3 bg-color roundedPill h-[34px] border-2 font-medium flex items-center ${
+              borderColor[name]
+            } ${selectedKeys && bgColor[name]}`}
+            // size="md"
           >
             {selectedKeys ? selectedKeys : "Number Of Days"}
-            <i className="bi bi-chevron-down"></i>
-          </Button>
+            <i className="bi bi-chevron-down inline-flex pt-1 pl-[1px]"></i>
+          </span>
         </DropdownTrigger>
         <DropdownMenu
           aria-label="price filter"
@@ -501,20 +511,22 @@ const IndividualFilterButton = ({
   };
 
   return (
-    <div className="inline-flex mr-4 flex-wrap gap-y-2">
+    <div className="flex sm:mr-4 flex-wrap gap-y-2">
       {options.map((option, index) => {
         return (
-          <div
+          <span
             key={index}
-            className={`mx-[2px] px-3 py-1 cursor-pointer text-nowrap text-sm font-medium h-[34px] d-flex justify-content-center align-items-center rounded-pill border-2 ${
+            className={`mx-[2px] px-3 py-1 cursor-pointer text-nowrap text-sm font-medium h-[34px] align-items-center rounded-pill ${
+              borderColor[name]
+            } ${
               isActive(option)
-                ? `${bgColor[name]} border-0 font-extrabold ${textColor[name]}`
-                : ""
+                ? `${bgColor[name]} font-extrabold ${textColor[name]} border-0 `
+                : "border-2"
             }`}
             onClick={() => handleClick(name, option)}
           >
             {option}
-          </div>
+          </span>
         );
       })}
     </div>
