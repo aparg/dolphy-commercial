@@ -404,7 +404,7 @@ const PropertyPage = ({ main_data }) => {
 
                 <div className="collapse" id="collapseExample">
                   {/* Interior */}
-                  <h5 className="py-2 fw-bold pt-5">Interior</h5>
+                  {/* <h5 className="py-2 fw-bold pt-5">Interior</h5>
                   <div
                     className={`row row-cols-2  row-cols-md-4 w-100 ${
                       isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
@@ -436,16 +436,6 @@ const PropertyPage = ({ main_data }) => {
                     }`}
                   >
                     <div className="col-7 col-md border-bottom py-2 py-md-3">
-                      <p className="cardd-subtitle_bg-black">
-                        # of above grade bedrooms
-                      </p>
-                    </div>
-                    <div className="col-5 col-md border-bottom py-2 py-md-3">
-                      <p className="cardd-subtitle_bg-black">
-                        {main_data.Bedrooms}
-                      </p>
-                    </div>
-                    <div className="col-7 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black"># of rooms</p>
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
@@ -453,26 +443,7 @@ const PropertyPage = ({ main_data }) => {
                         {Number(main_data.Rooms) + Number(main_data.RoomsPlus)}
                       </p>
                     </div>
-                  </div>
-
-                  <div
-                    className={`row row-cols-2  row-cols-md-4 w-100 ${
-                      isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
-                    }`}
-                  >
-                    <div className="col-7 col-md border-bottom py-2 py-md-3">
-                      <p className="cardd-subtitle_bg-black">
-                        Family room available
-                      </p>
-                    </div>
-                    <div className="col-5 col-md border-bottom py-2 py-md-3">
-                      <p className="cardd-subtitle_bg-black">
-                        {Boolean(Number(main_data.FamilyRoom) > 0)
-                          ? "Yes"
-                          : "No"}
-                      </p>
-                    </div>
-                  </div>
+                  </div> */}
 
                   {/* Exterior */}
                   <h5 className="py-2 fw-bold pt-5">Exterior</h5>
