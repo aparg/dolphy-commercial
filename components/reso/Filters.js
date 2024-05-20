@@ -241,7 +241,7 @@ const TimeFilterButton = ({ name, handleFilterChange }) => {
         <DropdownTrigger disableAnimation={true}>
           <span
             // variant="faded"
-            className={`capitalize px-3 bg-color roundedPill h-[34px] border-2 font-medium flex items-center ${
+            className={`capitalize px-3 bg-color roundedPill h-[34px] border-2 font-medium flex items-center text-sm ${
               borderColor[name]
             } ${selectedKeys && bgColor[name]}`}
             // size="md"
