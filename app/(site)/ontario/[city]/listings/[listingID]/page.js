@@ -174,7 +174,7 @@ const page = async ({ params }) => {
               <AdditionalListing
                 city={formattedSlug}
                 newSalesData={newSalesData}
-                listingType={main_data?.TypeOwn1Out}
+                listingType={main_data?.Use}
               />
             </section>
           )}

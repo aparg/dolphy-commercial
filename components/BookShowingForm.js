@@ -50,7 +50,7 @@ export default function BookShowingForm(props) {
   }, []);
   return (
     <div
-      className="fixed-title pe-0 top-30 sticky pl-4 mt-24 sm:mt-0"
+      className="fixed-title pe-0 top-30 sticky sm:pl-4 mt-24 sm:mt-0"
       id="contact"
     >
       <div className="p-6 pb-0 box-shadow-custom rounded-mine bordt bg-white border-[#e8e9ea] flex-col items-center">
