@@ -148,7 +148,7 @@ const page = async ({ params }) => {
           <section className="w-full padding-top flex items-center justify-center w-full text-sm">
             {/* <div className="padding-top flex items-center w-full"> */}
             <div className={`row justify-between w-full`}>
-              <div className="col-md-7">
+              <div className="col-md-8">
                 <PropertyPage {...{ main_data }} />
                 <BookingDate bannerImage={imageURLs[0]} />
                 <div className="z-20 relative mt-24">
