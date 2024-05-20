@@ -122,7 +122,7 @@ const PropertyPage = ({ main_data }) => {
                         </p>
                       )} */}
                     </div>
-                    <h1 className="fs-6 mb-2 cardd-subtitle text-lg">
+                    <h1 className="fs-6 cardd-subtitle text-lg">
                       {main_data.Street} {main_data.StreetName}{" "}
                       {main_data.StreetAbbreviation}, {main_data.Municipality},{" "}
                       {main_data.Province}, {main_data.PostalCode}
@@ -161,7 +161,7 @@ const PropertyPage = ({ main_data }) => {
                         )}
                       </div>
                     </div> */}
-                    <span className="text-dark font-bold my-2 sm:my-0">
+                    <span className="text-dark font-bold my-1 sm:my-0">
                       <TimeAgo modificationTimestamp={main_data.TimestampSql} />
                     </span>
                   </div>
@@ -177,7 +177,7 @@ const PropertyPage = ({ main_data }) => {
               </div> */}
             </div>
           </div>
-          <div className="d-flex align-items-center flex-wrap mt-2">
+          <div className="d-flex align-items-center flex-wrap">
             <div className="flex">
               <p className="card-subtitle my-0 mb-0 fw-mine font-thin text-limit text-lg">
                 MLS - #{main_data.MLS}

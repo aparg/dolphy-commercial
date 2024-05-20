@@ -61,7 +61,7 @@ export default function BookShowingForm(props) {
           {/* with a {credentials.city}{" "}
           <span className="fw-bold pr-1">Buyer's</span>
           agent */}
-          Check out this home
+          Check out this listing
         </p>
 
         {/* <div className="my-4"></div> */}
