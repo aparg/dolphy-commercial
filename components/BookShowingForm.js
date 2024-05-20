@@ -169,10 +169,10 @@ export default function BookShowingForm(props) {
               ></Checkbox> */}
               <p className="showing-info showing-info__cb leading-tight text-center">
                 I would like to receive marketing and promotional messages by
-                telephone, text message, and email from Houseful, including
+                telephone, text message, and email from Dolphy, including
                 information and updates about properties of interest and the
-                services and features of Houseful and our selected partners. I
-                may withdraw my consent at any time. Message and data rates may
+                services and features of Dolphy and our selected partners. I may
+                withdraw my consent at any time. Message and data rates may
                 apply. Consent is not required to receive real estate services.
               </p>
             </div>
