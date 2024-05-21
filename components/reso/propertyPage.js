@@ -166,7 +166,6 @@ const PropertyPage = ({ main_data }) => {
                     </span>
                   </div>
                 </div>
-                <div></div>
               </div>
               {/* <CompareButton main_data={main_data} width={8} /> */}
               {/* <div className="flex flex-col font-md mt-2 text-lg">
@@ -179,7 +178,7 @@ const PropertyPage = ({ main_data }) => {
           </div>
           <div className="d-flex align-items-center flex-wrap">
             <div className="flex">
-              <p className="card-subtitle my-0 mb-0 fw-mine font-thin text-limit text-lg">
+              <p className="card-subtitle my-0 mb-0 font-medium text-lg text-[#676767]">
                 MLS - #{main_data.MLS}
               </p>
             </div>
@@ -190,9 +189,10 @@ const PropertyPage = ({ main_data }) => {
               {/* <div className="listingStatus"></div> */}
               FOR {main_data.SaleLease}
               {/* tailwind style classname for bottom dashed border gray*/}
-              {/* <span className="border-gray-500 border-dotted border-b">
+              {/* < className="border-gray-500 border-dotted border-b">
                 ACTIVE
-              </span> */}
+              </
+              span> */}
             </div>
           </h1>
         </div>
