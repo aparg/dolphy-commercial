@@ -133,13 +133,15 @@ const Filters = ({
           name="type"
           value={filterState.type}
           handleFilterChange={handleFilterChange}
+          numberOfDays={filterState.numberOfDays}
         />
-
-        <TimeFilterButton
-          name="minTimestampSql"
-          value={filterState.numberOfDays}
-          handleFilterChange={handleFilterChange}
-        />
+        <div className="hidden sm:block">
+          <TimeFilterButton
+            name="minTimestampSql"
+            value={filterState.numberOfDays}
+            handleFilterChange={handleFilterChange}
+          />
+        </div>
       </div>
       {!isMobileView ? (
         <div className="ml-2 price-range__filter h-[34px] pb-14 px-10">
@@ -493,6 +495,7 @@ const IndividualFilterButton = ({
   name,
   value,
   handleFilterChange,
+  numberOfDays,
   // color = "#94ad5c",
   // opacity = "1",
 }) => {
@@ -510,7 +513,7 @@ const IndividualFilterButton = ({
   };
 
   return (
-    <div className="sm:inline-flex sm:mr-4 sm:flex-wrap sm:gap-y-2">
+    <div className="inline-flex sm:mr-4 flex-wrap sm:gap-y-2 sm:mt-0 gap-y-2">
       {options.map((option, index) => {
         return (
           <span
@@ -519,7 +522,7 @@ const IndividualFilterButton = ({
               borderColor[name]
             } ${
               isActive(option)
-                ? `${bgColor[name]} font-extrabold ${textColor[name]} border-0 `
+                ? `${bgColor[name]} font-extrabold ${textColor[name]} border-0`
                 : "border-2"
             }`}
             onClick={() => handleClick(name, option)}
@@ -528,6 +531,15 @@ const IndividualFilterButton = ({
           </span>
         );
       })}
+      {name == "type" && (
+        <div className="block sm:hidden">
+          <TimeFilterButton
+            name="minTimestampSql"
+            value={numberOfDays}
+            handleFilterChange={handleFilterChange}
+          />
+        </div>
+      )}
     </div>
   );
 };
