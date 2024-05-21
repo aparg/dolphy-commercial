@@ -340,7 +340,7 @@ const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
         renderThumb={(props) => (
           <div
             {...props}
-            className="bg-white group p-1 top-1/2 shadow-medium rounded-full border-2 border-gray-600 bg-[#eb7e6c] cursor-grab data-[dragging=true]:cursor-grabbing"
+            className="bg-white group p-1 top-1/2 shadow-medium rounded-full border-2 border-[#eb7e6c] bg-[#eb7e6c] cursor-grab data-[dragging=true]:cursor-grabbing"
           >
             <span className="transition-transform rounded-full w-3 h-3 block group-data-[dragging=true]:scale-80"></span>
           </div>
