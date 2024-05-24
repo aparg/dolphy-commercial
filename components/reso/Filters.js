@@ -199,14 +199,15 @@ const IndividualFilter = ({ options, name, value, handleFilterChange }) => {
     (key) => Array.from(key).join(", ").replaceAll("_", " "),
     [selectedKeys]
   );
-
   return (
     <div>
       <Dropdown>
         <DropdownTrigger disableAnimation={true}>
           <Button
             variant="faded"
-            className="capitalize bg-color dynamic"
+            className={`capitalize bg-color dynamic ${
+              !selectedKeys[0].includes("House Type") ? "bg-primary-red" : ""
+            }`}
             size="md"
           >
             {getSelectedValue(selectedKeys)}
@@ -513,7 +514,7 @@ const IndividualFilterButton = ({
   };
 
   return (
-    <div className="inline-flex sm:mr-4 flex-wrap sm:gap-y-2 sm:mt-0 gap-y-2">
+    <div className="inline-flex mr-3 flex-wrap sm:gap-y-2 sm:mt-0 gap-y-2 ">
       {options.map((option, index) => {
         return (
           <span

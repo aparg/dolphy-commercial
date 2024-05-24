@@ -182,9 +182,9 @@ const CityResoCard = React.forwardRef(
                     </div>
                   </div>
                 </div>
-                <div className="text-black font-normal truncate text-ellipsis text-xs  py-1">
+                {/* <div className="text-black font-normal truncate text-ellipsis text-xs  py-1">
                   Listed by {curElem.ListBrokerage}
-                </div>
+                </div> */}
                 <div className="inline-flex justify-center items-center my-2">
                   <div
                     className={`min-w-[50px] inline-flex item-center justify-center bg-[#3a88ef]/[0.08] hover:bg-[#3a88ef]/[0.2] rounded-md leading-7 py-[4px] px-[8px] text-xs mx-1`}
