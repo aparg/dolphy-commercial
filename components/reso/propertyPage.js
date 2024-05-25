@@ -184,17 +184,15 @@ const PropertyPage = ({ main_data }) => {
             </div>
             <div className="tet-s d-flex"></div>
           </div>
-          <h1 className="vmain-title">
-            <div className="uppercase bannerSection text-lg">
-              {/* <div className="listingStatus"></div> */}
-              FOR {main_data.SaleLease}
-              {/* tailwind style classname for bottom dashed border gray*/}
-              {/* < className="border-gray-500 border-dotted border-b">
+          <div className="uppercase bannerSection text-lg">
+            {/* <div className="listingStatus"></div> */}
+            FOR {main_data.SaleLease}
+            {/* tailwind style classname for bottom dashed border gray*/}
+            {/* < className="border-gray-500 border-dotted border-b">
                 ACTIVE
               </
               span> */}
-            </div>
-          </h1>
+          </div>
         </div>
         {/* <div className="border-b border-[0.5px] border-gray-200 mt-2 sm:mt-0 sm:ml-4"></div> */}
         {/* Description */}
@@ -206,6 +204,9 @@ const PropertyPage = ({ main_data }) => {
             <p className="pty-description pt-4 text-lg">
               {main_data.RemarksForClients}
             </p>
+            <div className="text-black text-lg my-3">
+              Listed by: {main_data.ListBrokerage}
+            </div>
             <div
               className={`row row-cols-2  row-cols-md-4 w-100 ${
                 isMobileView ? "flex-wrap" : "flex-nowrap prp-gap"
