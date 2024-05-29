@@ -52,7 +52,7 @@ const page = async ({ params }) => {
     INITIAL_OFFSET,
     INITIAL_LIMIT,
     formattedSlug,
-    main_data?.TypeOwnSrch
+    main_data?.Use
   );
 
   const imageURLs = generateImageURLs(listingID);

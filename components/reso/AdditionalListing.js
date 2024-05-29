@@ -91,7 +91,7 @@ const AdditionalListing = ({
             // }`}
             href={generateURL({
               cityVal: city,
-              houseTypeVal: modifyType(listingType),
+              houseTypeVal: listingType,
               saleLeaseVal: saleLeaseValue,
               embeddedSite: pathname.includes("embedded-site"),
             })}
