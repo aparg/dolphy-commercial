@@ -99,7 +99,7 @@ const BookingDate = ({ bannerImage }) => {
 
   return (
     <div className="relative z-0 w-full rounded-md bg-gray-100 flex items-center mt-24">
-      <div className="flex sm:flex-row flex-col overflow-hidden">
+      <div className="flex sm:flex-row w-full flex-col overflow-hidden">
         <div className="w-full sm:w-1/2">
           <img
             src={bannerImage}

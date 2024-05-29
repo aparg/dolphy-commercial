@@ -12,6 +12,7 @@ import { generateURL } from "@/helpers/generateURL";
 import { usePathname } from "next/navigation";
 
 const AdditionalListing = ({
+  numberOfCards = 5,
   city,
   newSalesData,
   listingType = null,
@@ -118,7 +119,7 @@ const AdditionalListing = ({
         </button>
       </div>
       <div
-        className="row row-cols-lg-5 row-cols-md-3 row-cols-1 gap-x-0 sm:g-4 pb-4"
+        className={`row row-cols-lg-${numberOfCards} row-cols-md-3 row-cols-1 gap-x-0 sm:g-4 pb-4`}
         id="slider"
         ref={scrollRef}
       >

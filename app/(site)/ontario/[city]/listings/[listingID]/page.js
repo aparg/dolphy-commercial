@@ -175,6 +175,7 @@ const page = async ({ params }) => {
                 city={formattedSlug}
                 newSalesData={newSalesData}
                 listingType={main_data?.Use}
+                numberOfCards={4}
               />
             </section>
           )}

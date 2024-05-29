@@ -24,7 +24,7 @@ const Footer = ({ cities }) => {
             <div className="relative px-8 py-12 md:p-16 xl:p-24 flex flex-col justify-center">
               <div className="max-w-3xl mx-auto">
                 <h2 className="text-3xl text-center font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                  Find Residential Real Estate Today
+                  Find Commercial Real Estate Today
                 </h2>
               </div>
               <Link
