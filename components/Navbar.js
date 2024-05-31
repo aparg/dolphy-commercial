@@ -34,6 +34,7 @@ const Navbar = (sticky = false) => {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
+      console.log(offset);
       setIsSticky(offset > 0);
       if (offset > 0 && pathname.includes("/ontario")) {
         setShowNavbar(false);
@@ -77,17 +78,28 @@ const Navbar = (sticky = false) => {
       <div className={`${isSticky && "sticky"}`}>
         <nav className={`flex items-center justify-between h-16 lg:h-20`}>
           <div className="flex-shrink-0">
-            <Link href="/" className="logo d-flex align-items-center ">
+            {/* {<Link href="/" className="logo d-flex align-items-center ">
               <Image
                 className="w-20 hidden md:block"
                 src={isSticky || !isHomePage ? blackLogoPath : whiteLogoPath}
               />
               <Image className="w-20 md:hidden" src={blackLogoPath} />
-            </Link>
+            </Link>} */}
+            {/* <Link href="/" className="logo d-flex align-items-center "> */}
+            <h2
+              // className="w-20 hidden md:block"
+              className={`w-20 hidden md:block font-bold ${
+                isSticky || !isHomePage ? "text-black" : "text-white"
+              }`}
+            >
+              Commercial Website
+            </h2>
+            <Image className="w-20 md:hidden" src={blackLogoPath} />
+            {/* </Link> */}
           </div>
 
           {!isHomePage || isSticky ? (
-            <div className="input-group input-group-search me-2 me-md-0">
+            <div className="input-group input-group-search me-2 me-md-0 ml-6">
               <SearchBar />
               <button
                 className="input-group-text btn bg-light2 bg-lh mybtn d-block py-search"
