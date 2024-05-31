@@ -86,15 +86,16 @@ const Navbar = (sticky = false) => {
               <Image className="w-20 md:hidden" src={blackLogoPath} />
             </Link>} */}
             {/* <Link href="/" className="logo d-flex align-items-center "> */}
-            <h2
-              // className="w-20 hidden md:block"
-              className={`w-20 hidden md:block font-bold ${
-                isSticky || !isHomePage ? "text-black" : "text-white"
-              }`}
-            >
-              Commercial Website
-            </h2>
-            <Image className="w-20 md:hidden" src={blackLogoPath} />
+            <Link href="/" className="logo d-flex align-items-center ">
+              <h2
+                // className="w-20 hidden md:block"
+                className={`w-20 hidden md:block font-bold ${
+                  isSticky || !isHomePage ? "text-black" : "text-white"
+                }`}
+              >
+                Commercial Website
+              </h2>
+            </Link>
             {/* </Link> */}
           </div>
 
