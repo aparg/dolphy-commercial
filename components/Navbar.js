@@ -86,12 +86,15 @@ const Navbar = (sticky = false) => {
               <Image className="w-20 md:hidden" src={blackLogoPath} />
             </Link>} */}
             {/* <Link href="/" className="logo d-flex align-items-center "> */}
-            <Link href="/" className="logo d-flex align-items-center ">
+            <Link
+              href="/"
+              className="logo d-flex align-items-center text-black"
+            >
               <h2
                 // className="w-20 hidden md:block"
                 className={`w-20 hidden md:block font-bold ${
-                  isSticky || !isHomePage ? "text-black" : "text-white"
-                }`}
+                  isSticky || !isHomePage ? "text-black" : "sm:text-white"
+                } text-black`}
               >
                 Commercial Website
               </h2>
@@ -287,6 +290,19 @@ const Navbar = (sticky = false) => {
         >
           <div className="flow-root">
             <div className="flex flex-col px-6 -my-2 space-y-1">
+              <Link
+                href="/"
+                className="logo d-flex align-items-center text-black"
+              >
+                <h2
+                  // className="w-20 hidden md:block"
+                  className={`w-20 hidden md:block font-bold ${
+                    isSticky || !isHomePage ? "text-black" : "sm:text-white"
+                  } text-black`}
+                >
+                  Commercial Website
+                </h2>
+              </Link>
               <Dropdown
                 name="Business For Sale"
                 options={[
@@ -309,7 +325,6 @@ const Navbar = (sticky = false) => {
                 ]}
                 text={"black"}
               />
-
               <Link
                 href={`/compare`}
                 title=""
