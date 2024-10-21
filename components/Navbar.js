@@ -169,7 +169,7 @@ const Navbar = (sticky = false) => {
               options={[
                 {
                   name: "Restaurant for Sale",
-                  link: generateURL({ houseTypeVal: "restaurant" }),
+                  link: generateURL({ houseTypeVal:"restaurant" }),
                 },
                 {
                   name: "Convenience Store for sale",
@@ -308,7 +308,7 @@ const Navbar = (sticky = false) => {
                 options={[
                   {
                     name: "Restaurants for Sale",
-                    link: generateURL({ houseTypeVal: "restaurant" }),
+                    link: generateURL({ houseTypeVal:"restaurant" }),
                   },
                   {
                     name: "Convenience Stores for Sale",

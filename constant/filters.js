@@ -17,7 +17,7 @@ export const listingType = {
   "gas station": { name: "Gas Station", value: "Gas Stations" },
   motel: {
     name: "Motel",
-    value: "Hotel/Motel/Inn",
+    value: "Restaurant/Motel/Inn",
   },
   "convenience store": {
     name: "Convenience Store",
@@ -27,6 +27,7 @@ export const listingType = {
     name: "Restaurant",
     value: "Restaurant",
   },
+  "land": {name: "Land", value:"Land & Buildings"}
 };
 
 export const areas = {
@@ -37,7 +38,7 @@ export const areas = {
       "Mississauga",
       "Brampton",
       "Markham",
-      "Vaughan",
+      "Vaughan", 
       "Richmond Hill",
       "Oakville",
       "Burlington",

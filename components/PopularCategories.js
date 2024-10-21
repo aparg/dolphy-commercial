@@ -31,7 +31,7 @@ const PopularCategories = () => {
   return (
     <div className="">
       <h3 className="main-title fs-2">Popular Categories</h3>
-      <div className="flex flex-row items-center w-full justify-center md:justify-start items-center flex-wrap lg:mt-2">
+      <div className="flex flex-row w-full justify-center md:justify-start items-center flex-wrap lg:mt-2">
         {cardsData.map((card) => (
           <TextOverImageCard {...card} />
         ))}
