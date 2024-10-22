@@ -61,36 +61,47 @@ export default async function Home() {
       <div className="">
         <div className="">
           <div
-            className="container-fluid relative flex flex-col items-center w-screen justify-center md:max-md:mt-10 sm:h-[85vh]"
-            id="hero"
+            className="relative flex h-[50vh] sm:h-[70vh] flex-col lg:flex-row items-center justify-center pt-10 gap-x-10 lg:pb-20 gap-y-12 sm:gap-y-0 px-2 sm:px-0 bg-bottom bg-no-repeat"
+            // id="hero-section"
           >
-            <div>
-              <h1 className="text-[1.3rem] sm:text-[3rem] font-extrabold pb-0 mb-0 mt-2 mt-md-0 relative text-center">
-                <span className="d-block mb-2 text-white">Find Your Next </span>{" "}
-                <span className="text-white">Commercial Property </span>
-              </h1>
-              {/* <p className="text-center mt-0 pt-3 text-white text-xl font-semibold text-shadow">
+            <div className="w-full z-10 pb-20 sm:w-screen flex flex-col items-center mb-10 lg:mb-0 order-2 sm:order-1 cover">
+              <div>
+                <h1 className="text-[1.3rem] sm:text-[3rem] font-extrabold pb-0 mb-0 mt-2 mt-md-0 relative text-center">
+                  <span className="d-block mb-2 text-black">
+                    Find Your Next{" "}
+                  </span>{" "}
+                  <span className="text-black">Commercial Property </span>
+                </h1>
+                {/* <p className="text-center mt-0 pt-3 text-white text-xl font-semibold text-shadow">
                 Explore Endless Possibilities in Finding Your Dream Home with
                 us.
               </p> */}
-
-              <div className="pb-1 pt-3">
-                <div className="pb-1 ww d-flex justify-content-center">
-                  <SearchBar />
-                </div>
+              </div>
+              <div className="w-[90%] sm:w-[60%] mt-5 hidden sm:block">
+                <SearchBar numberOfSuggestions={3} />
+              </div>
+              <div className="w-[90%] sm:w-[60%] mt-2 sm:mt-10 block sm:hidden">
+                <SearchBar numberOfSuggestions={3} placeholder="Search" />
+              </div>
+              <div className="text-medium sm:text-xl mt-2 text-center">
+                Find{" "}
+                <span className="font-bold">
+                  commercial properties for sale or lease
+                </span>{" "}
+                across Ontario!
               </div>
             </div>
           </div>
-          <div className="container-fluid mt-4 sm:mt-24">
-            {/* <PopularCities /> */}
-            <PopularCategories />
-          </div>
-          <div className="mt-4 sm:mt-24">
-            <SuggestedCity defaultCitiesData={defaultCitiesData} />
-          </div>
-          <div className="mt-4 sm:mt-24">
-            <RecentListings data={recentData} />
-          </div>
+        </div>
+        <div className="container-fluid mt-4 sm:mt-24">
+          {/* <PopularCities /> */}
+          <PopularCategories />
+        </div>
+        <div className="mt-4 sm:mt-24">
+          <SuggestedCity defaultCitiesData={defaultCitiesData} />
+        </div>
+        <div className="mt-4 sm:mt-24">
+          <RecentListings data={recentData} />
           {/* <div className="container-fluid mt-4 sm:mt-24">
             <RealEstateNews />
           </div> */}

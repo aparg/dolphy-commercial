@@ -58,7 +58,7 @@ const page = async ({ params }) => {
       <button className="fixed w-full text-white text-2xl sm:text-xl bottom-2 sm:bottom-5 sm:hidden p-6 z-[999]">
         <Link
           href="#contact"
-          className="bg-primary-green rounded-md shadow-2xl px-[50px] sm:px-[100px] py-3 sm:py-5 text-white shadow-md"
+          className="bg-primary-green rounded-md px-[50px] sm:px-[100px] py-3 sm:py-5 text-white shadow-md"
         >
           Book a showing
         </Link>
@@ -66,10 +66,10 @@ const page = async ({ params }) => {
       <div className="container-fluid pt-md-3 pt-0 ">
         <div className="container-fluid pt-3 pt-md-5">
           <nav
-            style={{
-              "--bs-breadcrumb-divider":
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E\")",
-            }}
+            // style={{
+            //   "--bs-breadcrumb-divider":
+            //     "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E\")",
+            // }}
             aria-label="breadcrumb"
           >
             <ol className="breadcrumb  ps-2">
@@ -81,7 +81,7 @@ const page = async ({ params }) => {
               </li>
               <li className="breadcrumb-item ">
                 <Link href={generateURL({ cityVal: city })}>
-                  {main_data.Municipality}
+                  {main_data?.Municipality}
                 </Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
@@ -108,7 +108,7 @@ const page = async ({ params }) => {
               <div className="col col-md-4 ps-md-2 pt-5 pt-md-0" id="contact">
                 <BookShowingForm
                   defaultmessage={`Please book a showing for this property "${address}"`}
-                  city={main_data.Municipality}
+                  city={main_data?.Municipality}
                 ></BookShowingForm>
               </div>
             </div>

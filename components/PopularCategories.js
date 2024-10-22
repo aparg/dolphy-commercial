@@ -1,5 +1,6 @@
 import React from "react";
 import TextOverImageCard from "./TextOverImageCard";
+import { link } from "@nextui-org/theme";
 const cardsData = [
   {
     id: 1,
@@ -25,13 +26,19 @@ const cardsData = [
     title: "Gas Stations for sale",
     link: "/ontario/toronto/gas station",
   },
+  {
+    id: 5,
+    imageSrc: "/land.jpg",
+    title: "Land for sale",
+    link: "/ontario/toronto/land",
+  },
   // Add more cards as needed
 ];
 const PopularCategories = () => {
   return (
     <div className="">
       <h3 className="main-title fs-2">Popular Categories</h3>
-      <div className="flex flex-row w-full justify-center md:justify-start items-center flex-wrap lg:mt-2">
+      <div className="grid grid-cols-1 sm:space-x-2 sm:grid-cols-5 w-full justify-center md:justify-start items-center flex-wrap lg:mt-2">
         {cardsData.map((card) => (
           <TextOverImageCard {...card} />
         ))}

@@ -31,7 +31,6 @@ const fetchData = async (listingID) => {
     "$query",
     `?$select=MLS='${listingID}'`
   );
-
   const resMLSDetail = await fetch(urlToFetchMLSDetail, options);
   const data = await resMLSDetail.json();
   return data.results[0];
@@ -45,7 +44,6 @@ const page = async ({ params }) => {
   const listingID = lastPart;
 
   const main_data = await fetchData(listingID); //always a single object inside the array
-
   const resend = new Resend("re_EwHkJKn7_BqC3Jj57KVoFXeELa5b74Qhd");
 
   const newSalesData = await getCommercialData(
@@ -130,7 +128,7 @@ const page = async ({ params }) => {
               </li>
               <li className="breadcrumb-item ">
                 <Link href={generateURL({ cityVal: city })}>
-                  {main_data.Municipality}
+                  {main_data?.Municipality}
                 </Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
@@ -144,7 +142,7 @@ const page = async ({ params }) => {
             <Gallery data={imageURLs} />
           </div>
 
-          <section className="w-full padding-top flex items-center justify-center w-full text-sm">
+          <section className="w-full padding-top flex items-center justify-center text-sm">
             {/* <div className="padding-top flex items-center w-full"> */}
             <div className={`row justify-between w-full`}>
               <div className="col-md-8">
@@ -161,7 +159,7 @@ const page = async ({ params }) => {
               <div className="col col-md-4 ps-md-2 pt-5 pt-md-0" id="contact">
                 <BookShowingForm
                   defaultmessage={`Please book a showing for this property "${address}"`}
-                  city={main_data.Municipality}
+                  city={main_data?.Municipality}
                 ></BookShowingForm>
               </div>
             </div>

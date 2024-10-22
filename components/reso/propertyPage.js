@@ -72,14 +72,13 @@ const PropertyPage = ({ main_data }) => {
   };
 
   const dashedStreetName = [
-    main_data.Street,
-    main_data.StreetName,
-    main_data.StreetAbbreviation,
+    main_data?.Street,
+    main_data?.StreetName,
+    main_data?.StreetAbbreviation,
   ]
     .filter((value) => value !== null && value !== undefined)
     .join("-");
 
-  console.log(dashedStreetName);
   const price = formatCurrency(main_data?.ListPrice);
   const TaxAnnualAmount = formatCurrency(main_data?.Taxes);
   const AssociationFee = formatCurrency(main_data?.AddlMonthlyFees);
@@ -115,17 +114,17 @@ const PropertyPage = ({ main_data }) => {
                     <div className="flex flex-row items-center">
                       <h3 className="main-title fs-1">C{price}</h3>
 
-                      {/* {main_data.SaleLease.toLowerCase() === "sale" && (
+                      {/* {main_data?.SaleLease.toLowerCase() === "sale" && (
                         <p className="cardd-subtitle ml-4">
-                          est. {formatCurrency(MortCalc(main_data.ListPrice))} /
+                          est. {formatCurrency(MortCalc(main_data?.ListPrice))} /
                           month
                         </p>
                       )} */}
                     </div>
                     <h1 className="fs-6 cardd-subtitle text-lg">
-                      {main_data.Street} {main_data.StreetName}{" "}
-                      {main_data.StreetAbbreviation}, {main_data.Municipality},{" "}
-                      {main_data.Province}, {main_data.PostalCode}
+                      {main_data?.Street} {main_data?.StreetName}{" "}
+                      {main_data?.StreetAbbreviation}, {main_data?.Municipality}
+                      , {main_data?.Province}, {main_data?.PostalCode}
                     </h1>
                     {/* <div>
                       <div className="rounded-md flex items-center">
@@ -135,7 +134,7 @@ const PropertyPage = ({ main_data }) => {
                             alt="bedrooms"
                             className="w-4"
                           />{" "}
-                          {main_data.Bedrooms} Bedroom
+                          {main_data?.Bedrooms} Bedroom
                         </div>
                         <span className="text-lg mx-1">|</span>
                         <div className="d-flex justify-content-center align-items-center gap-1 text-lg">
@@ -144,9 +143,9 @@ const PropertyPage = ({ main_data }) => {
                             alt="washrooms"
                             className="w-4"
                           />{" "}
-                          {main_data.Washrooms} Bathroom
+                          {main_data?.Washrooms} Bathroom
                         </div>
-                        {main_data.GarageSpaces && (
+                        {main_data?.GarageSpaces && (
                           <>
                             <span className="text-lg">|</span>
                             <div className="d-flex justify-content-center align-items-center gap-1 text-lg ">
@@ -155,14 +154,16 @@ const PropertyPage = ({ main_data }) => {
                                 alt="garages"
                                 className="w-3"
                               />{" "}
-                              {Math.trunc(main_data.GarageSpaces)} Garage
+                              {Math.trunc(main_data?.GarageSpaces)} Garage
                             </div>
                           </>
                         )}
                       </div>
                     </div> */}
                     <span className="text-dark font-bold my-1 sm:my-0">
-                      <TimeAgo modificationTimestamp={main_data.TimestampSql} />
+                      <TimeAgo
+                        modificationTimestamp={main_data?.TimestampSql}
+                      />
                     </span>
                   </div>
                 </div>
@@ -170,8 +171,8 @@ const PropertyPage = ({ main_data }) => {
               {/* <CompareButton main_data={main_data} width={8} /> */}
               {/* <div className="flex flex-col font-md mt-2 text-lg">
                 <p class className="">
-                  {main_data.Municipality}, {main_data.Province},{" "}
-                  {main_data.PostalCode}
+                  {main_data?.Municipality}, {main_data?.Province},{" "}
+                  {main_data?.PostalCode}
                 </p>
               </div> */}
             </div>
@@ -179,14 +180,14 @@ const PropertyPage = ({ main_data }) => {
           <div className="d-flex align-items-center flex-wrap">
             <div className="flex">
               <p className="card-subtitle my-0 mb-0 font-medium text-lg text-[#676767]">
-                MLS - #{main_data.MLS}
+                MLS - #{main_data?.MLS}
               </p>
             </div>
             <div className="tet-s d-flex"></div>
           </div>
           <div className="uppercase bannerSection text-lg">
             {/* <div className="listingStatus"></div> */}
-            FOR {main_data.SaleLease}
+            FOR {main_data?.SaleLease}
             {/* tailwind style classname for bottom dashed border gray*/}
             {/* < className="border-gray-500 border-dotted border-b">
                 ACTIVE
@@ -202,10 +203,10 @@ const PropertyPage = ({ main_data }) => {
               Description
             </h2>
             <p className="pty-description pt-4 text-lg">
-              {main_data.RemarksForClients}
+              {main_data?.RemarksForClients}
             </p>
             <div className="text-black text-lg my-3">
-              Listed by: {main_data.ListBrokerage}
+              Listed by: {main_data?.ListBrokerage}
             </div>
             <div
               className={`row row-cols-2  row-cols-md-4 w-100 ${
@@ -219,7 +220,7 @@ const PropertyPage = ({ main_data }) => {
               </div>
               <div className="col-5 col-md border-bottom py-2 py-md-3">
                 <p className="cardd-subtitle_bg-black">
-                  <TimeAgo modificationTimestamp={main_data.TimestampSql} />
+                  <TimeAgo modificationTimestamp={main_data?.TimestampSql} />
                 </p>
               </div>
               <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -227,7 +228,7 @@ const PropertyPage = ({ main_data }) => {
               </div>
               <div className="col-5 col-md border-bottom py-2 py-md-3">
                 <p className="cardd-subtitle_bg-black">
-                  {main_data.TypeOwn1Out}
+                  {main_data?.TypeOwn1Out}
                 </p>
               </div>
             </div>
@@ -241,13 +242,15 @@ const PropertyPage = ({ main_data }) => {
                 <p className="cardd-subtitle_bg-black">Style </p>
               </div>
               <div className="col-5 col-md border-bottom py-2 py-md-3">
-                <p className="cardd-subtitle_bg-black">{main_data.Style}</p>
+                <p className="cardd-subtitle_bg-black">{main_data?.Style}</p>
               </div>
               <div className="col-7 col-md border-bottom py-2 py-md-3">
                 <p className="cardd-subtitle_bg-black">Community</p>
               </div>
               <div className="col-5 col-md border-bottom py-2 py-md-3">
-                <p className="cardd-subtitle_bg-black">{main_data.Community}</p>
+                <p className="cardd-subtitle_bg-black">
+                  {main_data?.Community}
+                </p>
               </div>
             </div>
 
@@ -262,7 +265,7 @@ const PropertyPage = ({ main_data }) => {
               <div className="col-5 col-md border-bottom border-sm py-2 py-md-3">
                 <p className="cardd-subtitle_bg-black">
                   {formatNumber(
-                    (main_data.LotDepth * main_data.LotFront).toFixed(0)
+                    (main_data?.LotDepth * main_data?.LotFront).toFixed(0)
                   )}{" "}
                   Sqft
                 </p>
@@ -272,7 +275,7 @@ const PropertyPage = ({ main_data }) => {
               </div>
               <div className="col-5 col-md border-bottom py-2 py-md-3">
                 <p className="cardd-subtitle_bg-black">
-                  {formatNumber(main_data.GarageSpaces)}
+                  {formatNumber(main_data?.GarageSpaces)}
                 </p>
               </div>
             </div>
@@ -311,7 +314,7 @@ const PropertyPage = ({ main_data }) => {
                   </div>
                   <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">
-                      <a href={main_data.VirtualTourURL} target="_blank">
+                      <a href={main_data?.VirtualTourURL} target="_blank">
                         Tour Now
                       </a>
                     </p>
@@ -320,7 +323,7 @@ const PropertyPage = ({ main_data }) => {
                     <p className="cardd-subtitle_bg-black">Mls® #</p>
                   </div>
                   <div className="col-5 col-md border-bottom py-2 py-md-3">
-                    <p className="cardd-subtitle_bg-black">{main_data.MLS}</p>
+                    <p className="cardd-subtitle_bg-black">{main_data?.MLS}</p>
                   </div>
                 </div>
 
@@ -334,7 +337,7 @@ const PropertyPage = ({ main_data }) => {
                   </div>
                   <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">
-                      {main_data.ApproxSquareFootage}
+                      {main_data?.ApproxSquareFootage}
                     </p>
                   </div>
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -342,7 +345,7 @@ const PropertyPage = ({ main_data }) => {
                   </div>
                   <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">
-                      {main_data.Status === "A" ? "Active" : "In-Active"}
+                      {main_data?.Status === "A" ? "Active" : "In-Active"}
                     </p>
                   </div>
                 </div>
@@ -357,7 +360,7 @@ const PropertyPage = ({ main_data }) => {
                   </div> */}
                   {/* <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">
-                      {main_data.PropertySubType}
+                      {main_data?.PropertySubType}
                     </p>
                   </div> */}
                   <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -371,7 +374,7 @@ const PropertyPage = ({ main_data }) => {
                   </div>
                   <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">
-                      {main_data.TaxYear}
+                      {main_data?.TaxYear}
                     </p>
                   </div>
                 </div>
@@ -392,7 +395,7 @@ const PropertyPage = ({ main_data }) => {
                   </div>
                   <div className="col-5 col-md border-bottom py-2 py-md-3">
                     <p className="cardd-subtitle_bg-black">
-                      {main_data.AssessmentYear || "--"}
+                      {main_data?.AssessmentYear || "--"}
                     </p>
                   </div>
                 </div>
@@ -418,7 +421,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.Washrooms}
+                        {main_data?.Washrooms}
                       </p>
                     </div>
                     <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -426,7 +429,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.Washrooms}
+                        {main_data?.Washrooms}
                       </p>
                     </div>
                   </div>
@@ -441,7 +444,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {Number(main_data.Rooms) + Number(main_data.RoomsPlus)}
+                        {Number(main_data?.Rooms) + Number(main_data?.RoomsPlus)}
                       </p>
                     </div>
                   </div> */}
@@ -460,7 +463,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.Exterior1}
+                        {main_data?.Exterior1}
                       </p>
                     </div>
                     <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -470,7 +473,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.OtherStructures1}
+                        {main_data?.OtherStructures1}
                       </p>
                     </div>
                   </div>
@@ -485,7 +488,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {formatNumber(main_data.GarageSpaces)}
+                        {formatNumber(main_data?.GarageSpaces)}
                       </p>
                     </div>
                     <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -495,7 +498,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.ParkingSpaces}
+                        {main_data?.ParkingSpaces}
                       </p>
                     </div>
                   </div>
@@ -510,7 +513,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.GarageType}
+                        {main_data?.GarageType}
                       </p>
                     </div>
                     <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -520,7 +523,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.Basement1 ? "Yes" : "No"}
+                        {main_data?.Basement1 ? "Yes" : "No"}
                       </p>
                     </div>
                   </div>
@@ -537,7 +540,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.GarageType ? "Yes" : "No"}
+                        {main_data?.GarageType ? "Yes" : "No"}
                       </p>
                     </div>
                     <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -545,7 +548,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.Drive}
+                        {main_data?.Drive}
                       </p>
                     </div>
                   </div>
@@ -562,7 +565,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.AirConditioning}
+                        {main_data?.AirConditioning}
                       </p>
                     </div>
                     <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -609,7 +612,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.Water}
+                        {main_data?.Water}
                       </p>
                     </div>
                     <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -617,7 +620,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.Area}
+                        {main_data?.Area}
                       </p>
                     </div>
                   </div>
@@ -631,7 +634,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.Community}
+                        {main_data?.Community}
                       </p>
                     </div>
                     <div className="col-7 col-md border-bottom py-2 py-md-3">
@@ -655,7 +658,7 @@ const PropertyPage = ({ main_data }) => {
                     </div>
                     <div className="col-5 col-md border-bottom py-2 py-md-3">
                       <p className="cardd-subtitle_bg-black">
-                        {main_data.DirectionsCrossStreets}
+                        {main_data?.DirectionsCrossStreets}
                       </p>
                     </div>
                   </div>
@@ -680,7 +683,7 @@ const PropertyPage = ({ main_data }) => {
               <div className="container bg-light rounded-3 p-4 border-0">
                 <h2 className="fw-bold pb-3 text-lg sm:text-xl">Extras</h2>
                 <div className="flex flex-row text-lg py-1">
-                  {main_data.Extras}
+                  {main_data?.Extras}
                 </div>
               </div>
             </div>
@@ -695,8 +698,8 @@ const PropertyPage = ({ main_data }) => {
             className="w-8 sm:w-10 inline mr-2"
             src="/walking.svg"
           />
-          Walk Score for {main_data.Street} {main_data.StreetName}{" "}
-          {main_data.StreetAbbreviation}
+          Walk Score for {main_data?.Street} {main_data?.StreetName}{" "}
+          {main_data?.StreetAbbreviation}
         </h2>
 
         <div className="">
@@ -709,7 +712,7 @@ const PropertyPage = ({ main_data }) => {
                 title="Walk Score"
                 className="ham p-0"
                 width="100%"
-                src={`https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName},${main_data.Municipality}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`}
+                src={`https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName},${main_data?.Municipality}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`}
               ></iframe>
               {/* </div> */}
               <script

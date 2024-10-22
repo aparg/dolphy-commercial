@@ -2374,3 +2374,14 @@ div.dynamic {
 .box-shadow-custom {
   box-shadow: 1rem 1rem 3rem rgba(0, 0, 0, 0.175) !important;
 }
+
+.searchbar-animation-open {
+  animation: searchbar-open 0.3s ease-out;
+  transform-origin: top;
+}
+
+.searchbar-animation-close {
+  animation: searchbar-close 0.2s ease-in;
+  transform-origin: top;
+  scale: 1 0;
+}

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const TextOverImageCard = ({ imageSrc, title, link }) => {
   const [hovered, setHovered] = useState(false);
   return (
-    <div className="h-56 w-80 mr-4 rounded-md overflow-hidden relative group/card mb-5">
+    <div className="h-56 rounded-md overflow-hidden relative group/card mb-5">
       <Link href={link} className="w-full h-full inline ">
         <div
           className="rounded w-full h-full shadow-lg bg-gradient-to-t from-black to-transparent absolute"

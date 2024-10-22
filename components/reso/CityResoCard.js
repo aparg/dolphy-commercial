@@ -130,7 +130,7 @@ const CityResoCard = React.forwardRef(
                   <div className="flex flex-row items-center">
                     {curElem.Use && (
                       <div
-                        className="text-black text-xs p-[2px] flex items-center rounded-md mx-1"
+                        className="text-black text-xs py-[2px] px-1 flex items-center rounded-md mx-1"
                         style={{
                           background: "white",
                           // "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
@@ -140,15 +140,23 @@ const CityResoCard = React.forwardRef(
                         {curElem.Use}
                       </div>
                     )}
-
-                    <div className="text-black text-xs p-[2px] rounded-md mx-1 bg-white flex items-centerS">
-                      <TimeAgo modificationTimestamp={curElem.TimestampSql} />
-                    </div>
+                    {curElem.ApproxSquareFootage && (
+                      <div
+                        className="text-black text-xs py-[2px] px-1 flex items-center rounded-md mx-1"
+                        style={{
+                          background: "white",
+                          // "linear-gradient(90deg, #ff924d 0, #ff6a5b)",
+                        }}
+                      >
+                        {/* {curElem.TypeOwn1Out}{" "} */}
+                        {curElem.ApproxSquareFootage}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
               <div className="flex-1 sm:px-3 py-2 px-2">
-                <h2 className="price fw-bold mb-1 fw-bold d-flex align-items-center justify-content-start">
+                {/* <h2 className="price fw-bold mb-1 fw-bold d-flex align-items-center justify-content-start">
                   {price}
                   {""}
 
@@ -163,7 +171,18 @@ const CityResoCard = React.forwardRef(
                   >
                     {Math.floor(curElem.TotalArea)} ft<sup>2</sup>
                   </span>
-                </h2>
+                </h2> */}
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                  <h2 className="font-bold text-2xl sm:text-2xl items-center justify-start mt-2 sm:my-2">
+                    <span className="font-bold text-black">{price}</span>
+                    {curElem.SaleLease === saleLease.lease.value && (
+                      <span> /mo</span>
+                    )}
+                  </h2>
+                  <div className="text-xs font-medium text-[#CC0B0B] mb-1 sm:mb-0">
+                    <TimeAgo modificationTimestamp={curElem.TimestampSql} />
+                  </div>
+                </div>
                 <p className="mb-0 fs-mine text-limit text-sm pb-0">
                   {" "}
                   MLS® #{curElem.MLS}

@@ -8,7 +8,7 @@ const config = {
     "./app/**/*.{js,ts,html}",
     "./app/**/**/*.{js,ts,html}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.js",
+    "./components/**/*.{js,jsx}",
     // "!./components/reso/Filters.js",
   ],
   theme: {
